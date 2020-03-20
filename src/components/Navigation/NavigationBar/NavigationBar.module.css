@@ -1,0 +1,14 @@
+.NavigationBar {
+  text-align: center;
+  
+}
+
+.NavigationBar ul {
+  text-decoration: none;
+}
+
+.NavigationBar li {
+  display: inline-block;
+  margin: 2em 1.5em;
+}
+

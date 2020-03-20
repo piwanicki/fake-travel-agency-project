@@ -1,0 +1,16 @@
+.InfoPanel {
+  right: 0;
+  width:100%;
+  text-align: right;
+}
+
+.InfoPanel ul {
+  list-style: none;
+}
+
+.InfoPanel li {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0.2em 1em;
+  font-size: 1em;
+}
