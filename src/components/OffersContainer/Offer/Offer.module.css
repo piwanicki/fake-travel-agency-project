@@ -1,0 +1,34 @@
+.Offer {
+  width: 80%;
+  min-height: 50%;
+  margin: 5em 2em;
+  display: flex;
+  justify-content: center;
+  border-radius: 2em;
+  padding: 1em 1em;
+}
+
+.Offer ul {
+  list-style: none;
+}
+
+.Offer li {
+  margin: 0.5em 0;
+}
+
+.Offer > div {
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto 1em;
+}
+
+.Offer img {
+  width: 200px;
+  height: 200px;
+  border-radius: 3em;
+}
+
+.Offer:hover {
+  background-color: rgba(137, 152, 87, 0.05);
+  transition: background-color 0.4s;
+}
