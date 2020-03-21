@@ -5,6 +5,7 @@ import SearchPanel from '../../components/SearchPanel/SearchPanel';
 import OffersContainer from '../../components/OffersContainer/OffersContainer';
 import Offers from '../../components/OffersContainer/Offers';
 import OffersServices from '../../components/OffersContainer/OffersServices/OffersServices';
+import Underline from '../Underline/Underline';
 
 
 class Layout extends Component {
@@ -15,6 +16,7 @@ class Layout extends Component {
         <NavigationHeader />
         <SearchPanel />
         <OffersContainer offers={Offers}/>
+        <Underline />
         <OffersServices />
         {this.props.children}
       </div>

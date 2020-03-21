@@ -1,0 +1,16 @@
+
+
+.Underline > div {
+  padding: 2px;
+  border-bottom-style: double;
+  border-color: #899857;
+  margin: 3px auto;
+}
+
+.UnderlineTop {
+  width:800px;
+}
+
+.UnderlineBottom {
+  width: 300px;
+}

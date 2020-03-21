@@ -11,16 +11,16 @@ const OffersServices = props => {
       />
       <OfferService
         header="Sightseeing Tour"
-        details="Go sightsing with our historician with passion and great humor! Checkout our offers."
+        details="Go sightseeing with our historician with passion and great humor! Checkout our offers."
       />
       <OfferService
         header="Facultative trips"
-        details="Join to sightsing tour in your current City!  Checkout our offers."
+        details="Join to sightseeing tour in your current City!  Checkout our offers."
       />
 
       <OfferService
         header="Cars"
-        details="Need transport? No problem! Rent a car from our huge collection! Checkout our new cars!"
+        details="Need transport? No problem! Rent a car from our huge fleet! Checkout our new cars!"
       />
     </div>
   );
