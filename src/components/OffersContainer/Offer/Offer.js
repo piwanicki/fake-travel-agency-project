@@ -16,9 +16,7 @@ const Offer = props => {
       </div>
       
       <div className={classes.ImgContainer}>
-
-      
-        <img src={`images/${props.cntrImgUrl}`} alt='landscape' />
+      <img src={`images/${props.cntrImgUrl}`} alt='landscape' />
     
     </div>
     </div>

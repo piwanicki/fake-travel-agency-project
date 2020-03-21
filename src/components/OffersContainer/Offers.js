@@ -18,7 +18,7 @@ const Offers = {
     details: ''
    },
   France: {
-    country: 'Croatia',
+    country: 'France',
     date: '15-08-2020 -> 01-08-2020',
     price: '400$',
     details: ''
@@ -30,7 +30,7 @@ const Offers = {
     details: ''
   },
   Japan: {
-    country: 'Croatia',
+    country: 'japan',
     date: '16-08-2020 -> 01-08-2020',
     price: '530$',
     details: ''
