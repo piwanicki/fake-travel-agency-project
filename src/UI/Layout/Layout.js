@@ -6,6 +6,7 @@ import OffersContainer from '../../components/OffersContainer/OffersContainer';
 import Offers from '../../components/OffersContainer/Offers';
 import OffersServices from '../../components/OffersContainer/OffersServices/OffersServices';
 import Underline from '../Underline/Underline';
+import SummerOffers from '../../components/OffersContainer/SummerOffers/SummerOffers';
 
 
 class Layout extends Component {
@@ -18,6 +19,8 @@ class Layout extends Component {
         <OffersContainer offers={Offers}/>
         <Underline />
         <OffersServices />
+        <Underline />
+        <SummerOffers />
         {this.props.children}
       </div>
     )

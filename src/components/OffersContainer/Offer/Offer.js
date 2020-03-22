@@ -2,8 +2,6 @@ import React from 'react';
 import classes from './Offer.module.css';
 
 const Offer = props => {
-
-  console.log(props.cntrImgUrl)
   return (
     <div className={classes.Offer}>
       <div>

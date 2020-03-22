@@ -1,0 +1,30 @@
+
+
+.SummerOffersContainer {
+  display: grid;
+  justify-content: center;
+  grid-template-rows: auto;
+  grid-template-columns: 3em auto auto auto auto 3em;
+  text-align: center;
+  align-items: center;
+}
+
+.Arrow {
+  margin: auto auto;
+  font-size: 3em;
+}
+
+.Arrow:hover {
+  transition: transform 0.7s;
+  transform: scale(1.2);
+}
+
+.SummerOffersSection { 
+  text-align: center;
+  margin: 3em auto;
+}
+
+.SummerOffersSection p {
+ font-size: 2em;
+ margin: 0 auto;
+}
