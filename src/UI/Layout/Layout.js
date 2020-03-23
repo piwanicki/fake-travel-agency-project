@@ -7,7 +7,8 @@ import Offers from '../../components/OffersContainer/Offers';
 import OffersServices from '../../components/OffersContainer/OffersServices/OffersServices';
 import Underline from '../Underline/Underline';
 import SummerOffers from '../../components/OffersContainer/SummerOffers/SummerOffers';
-
+import InspirationOffers from '../../components/InspirationSection/InspirationOffers/InspirationOffers'
+import NewsContainer from '../../components/NewsSection/NewsContainer/NewsContainer';
 
 class Layout extends Component {
 
@@ -21,6 +22,9 @@ class Layout extends Component {
         <OffersServices />
         <Underline />
         <SummerOffers />
+        <Underline />
+        <InspirationOffers />
+        <NewsContainer />
         {this.props.children}
       </div>
     )

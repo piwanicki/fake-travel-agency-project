@@ -1,0 +1,19 @@
+.InspirationOffersSection {
+  margin: 5em auto;
+  background-color: rgba(137, 152, 87, 0.1);
+  text-align: center;
+  height: auto;
+}
+
+.InspirationOffersBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-basis: 20%;
+}
+
+.InspirationOffersSection span {
+  font-size: 2em;
+  position: relative;
+  top: 0.5em;
+}
