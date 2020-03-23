@@ -4,7 +4,6 @@ import classes from "./OffersContainer.module.css";
 
 const OffersContainer = props => {
   const offers = props.offers;
-  console.log(offers);
   const OffersPanel = Object.keys(offers).map((offer, index) => (
     <Offer
       key={index}

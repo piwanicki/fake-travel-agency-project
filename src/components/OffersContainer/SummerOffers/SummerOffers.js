@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import classes from "./SummerOffers.module.css";
 import SummerOffer from "./SummerOffer/SummerOffer";
 import SummerOffersData from "./SummerOffersData";
@@ -8,29 +8,74 @@ import {
   faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 
-const SummerOffers = props => {
-  const cntrOffer = Object.keys(SummerOffersData)
-    .splice(0, 4)
-    .map((offer, index) => (
-      <SummerOffer
-        key={index}
-        price={SummerOffersData[offer].price}
-        country={SummerOffersData[offer].country}
-        discount={SummerOffersData[offer].discount}
-        oldPrice={SummerOffersData[offer].oldPrice}
-      />
-    ));
+class SummerOffers extends Component {
+  state = {
+    index: 0,
+    offerArrLength: Object.keys(SummerOffersData).length,
+    animation: false
+  };
 
-  return (
-    <div className={classes.SummerOffersSection}>
-      <p>Summer 2020!</p>
-      <div className={classes.SummerOffersContainer}>
-        <FontAwesomeIcon icon={faChevronLeft} className={classes.Arrow} />
-        {cntrOffer}
-        <FontAwesomeIcon icon={faChevronRight} className={classes.Arrow} />
+  nextOfferHandler = () => {
+    let currentIndex = this.state.index;
+    const offerArrLength = this.state.offerArrLength;
+    currentIndex = currentIndex + 4 >= offerArrLength ? 0 : currentIndex + 1;
+    this.setState({
+      index: currentIndex,
+      animation: true
+    });
+  };
+
+  previousOfferHandler = () => {
+    let currentIndex = this.state.index;
+    const offerArrLength = this.state.offerArrLength;
+    currentIndex = currentIndex - 1 < 0 ? offerArrLength - 4 : currentIndex - 1;
+    this.setState({
+      index: currentIndex,
+      animation: true
+    });
+  };
+
+  render() {
+    const index = this.state.index;
+    const cntrOffer = Object.keys(SummerOffersData)
+      .splice(index, 4)
+      .map((offer, index) => (
+        <SummerOffer
+          key={index}
+          price={SummerOffersData[offer].price}
+          country={SummerOffersData[offer].country}
+          discount={SummerOffersData[offer].discount}
+          oldPrice={SummerOffersData[offer].oldPrice}
+        />
+      ));
+
+    const attachedClasses = this.state.animation ? classes.animation: '';
+
+    return (
+      <div className={classes.SummerOffersSection}>
+        <p>Summer 2020!</p>
+        <div className={classes.SummerOffersContainer}>
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            className={classes.Arrow}
+            onClick={this.previousOfferHandler}
+          />
+          <div
+            className={attachedClasses}
+            onAnimationEnd={() => this.setState({ animation: false })}
+          >
+            {cntrOffer}
+          </div>
+
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className={classes.Arrow}
+            onClick={this.nextOfferHandler}
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default SummerOffers;
