@@ -9,6 +9,8 @@ import Underline from '../Underline/Underline';
 import SummerOffers from '../../components/OffersContainer/SummerOffers/SummerOffers';
 import InspirationOffers from '../../components/InspirationSection/InspirationOffers/InspirationOffers'
 import NewsContainer from '../../components/NewsSection/NewsContainer/NewsContainer';
+import GuideDescription from '../../components/GuideDescription/GuideDescription';
+import ContactInfoBar from '../../components/ContactInfoBar/ContactInfoBar';
 
 class Layout extends Component {
 
@@ -25,6 +27,8 @@ class Layout extends Component {
         <Underline />
         <InspirationOffers />
         <NewsContainer />
+        <GuideDescription />
+        <ContactInfoBar />
         {this.props.children}
       </div>
     )

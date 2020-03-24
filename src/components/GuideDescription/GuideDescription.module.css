@@ -1,0 +1,8 @@
+.GuideDescription {
+  border-top: 1px solid black;
+}
+.GuideDescription article {
+  display: inline-block;
+  width: 25%;
+  margin: 2em 3em;
+}
