@@ -1,0 +1,68 @@
+.Footer {
+  height: 25em;
+  width: 100%;
+  background-color: #899857;
+  color: #f5f5f0;
+}
+
+.FooterContent {
+  margin: auto 3em;
+  padding: 1em 1em;
+  font-size: 1.1em;
+  text-align: right;
+}
+
+.FooterContent p {
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.FooterContent > div {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  border-top: 1px #f5f5f080 solid;
+  margin: auto 1em;
+}
+
+.Footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Footer li {
+  padding: 0.2em 0.5em;
+  text-decoration: none;
+}
+
+.NewsLetterContainer {
+  border-top: 1px #f5f5f080 solid;
+  border-bottom: 1px #f5f5f080 solid;
+  width: 80%;
+  min-height: 4em;
+  margin: 1em auto;
+  text-align: center;
+}
+
+#newsLetterInput {
+  width: 30%;
+  height: 3em;
+  margin: 0 2em;
+}
+
+.NewsLetterContainer button {
+  margin: 1em 1em;
+  vertical-align: middle;
+  width: 10em;
+  height: 2.5em;
+  box-shadow: inset 0px 0px 15px 3px #feb72b;
+  background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
+  background-color: #eeb72b;
+  border-radius: 17px;
+  border: 1px solid #eeb72b;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1em;
+  text-shadow: 0px 1px 0px #feb72b;
+}

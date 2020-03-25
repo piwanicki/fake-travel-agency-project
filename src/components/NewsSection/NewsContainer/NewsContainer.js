@@ -10,8 +10,7 @@ const NewsContainer = props => {
       <div className={classes.NewsHeaderBox}>
         <span style={{ textAlign: "left" }}>News</span>
         <a href="/#">
-          {" "}
-          Read more... <FontAwesomeIcon icon={faArrowAltCircleRight} />{" "}
+          Read more... <FontAwesomeIcon icon={faArrowAltCircleRight} />
         </a>
       </div>
 

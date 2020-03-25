@@ -11,6 +11,7 @@ import InspirationOffers from '../../components/InspirationSection/InspirationOf
 import NewsContainer from '../../components/NewsSection/NewsContainer/NewsContainer';
 import GuideDescription from '../../components/GuideDescription/GuideDescription';
 import ContactInfoBar from '../../components/ContactInfoBar/ContactInfoBar';
+import Footer from '../../components/Navigation/Footer/Footer'
 
 class Layout extends Component {
 
@@ -29,6 +30,7 @@ class Layout extends Component {
         <NewsContainer />
         <GuideDescription />
         <ContactInfoBar />
+        <Footer />
         {this.props.children}
       </div>
     )
