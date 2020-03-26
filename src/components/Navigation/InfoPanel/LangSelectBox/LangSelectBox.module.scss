@@ -1,0 +1,21 @@
+.LangSelectBox {
+  position: absolute;
+  right: 3em;
+  border-radius: 0.5em;
+  background-color: rgba(137, 152, 87, 0.1);
+
+  img {
+    margin: 0.5em 0.5em;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      text-decoration: none;
+      margin: 0;
+    }
+  }
+}

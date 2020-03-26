@@ -15,7 +15,19 @@
 .Arrow:hover {
   transition: transform 0.7s;
   transform: scale(1.2);
+  cursor: pointer;
 }
+
+.Arrow:active {
+  position: relative;
+  top:1px;
+}
+
+.NewsLetterContainer button:active {
+  position: relative;
+  top: 1px;
+}
+
 
 .SummerOffersSection {
   text-align: center;

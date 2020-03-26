@@ -66,3 +66,13 @@
   font-size: 1em;
   text-shadow: 0px 1px 0px #feb72b;
 }
+
+.NewsLetterContainer button:hover {
+  background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
+  background-color: #eeb72b;
+}
+
+.NewsLetterContainer button:active {
+  position: relative;
+  top: 1px;
+}
