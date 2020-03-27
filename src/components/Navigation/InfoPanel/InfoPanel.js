@@ -25,6 +25,7 @@ class InfoPanel extends Component {
   langSelectHandler = event => {
     const langSelected = event.target.id;
     console.log(langSelected);
+    this.showLangSelectorBox();
   };
 
   render() {

@@ -4,11 +4,13 @@
   margin: auto auto;
   background-color: rgba(137, 152, 87, 0.2);
   border-radius: 1em;
+
 }
 
 .NavigationBar ul {
   text-decoration: none;
   padding: 0;
+  margin-bottom: 0;
 }
 
 .NavigationBar li {

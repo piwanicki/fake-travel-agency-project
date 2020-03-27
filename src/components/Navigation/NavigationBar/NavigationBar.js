@@ -1,22 +1,38 @@
-import React from 'react';
-import classes from './NavigationBar.module.css';
+import React from "react";
+import classes from "./NavigationBar.module.scss";
 
 const NavigationBar = props => {
-
   return (
     <div className={classes.NavigationBar}>
       <ul>
-        <li> LAST MINUTE </li>
-        <li> All Inclusive </li>
-        <li> Tours </li>
-        <li> Our Destinations </li>
-        <li> Cars </li>
-        <li> Insurance </li>
-        <li> Flight Tickets </li>
+        <li>
+          <a href="/#">LAST MINUTE</a>
+        </li>
+        <li>
+          <a href="/#"> All Inclusive </a>
+        </li>
+        <li>
+          <a href="/#"> Tours</a>
+        </li>
+        <li>
+
+          <a href="/#"> Our Destinations </a>
+        </li>
+        <li>
+
+          <a href="/#"> Cars</a>
+        </li>
+        <li>
+
+          <a href="/#"> Insurance</a>
+        </li>
+        <li>
+
+          <a href="/#"> Flight Tickets </a>
+        </li>
       </ul>
     </div>
-  )
-
-}
+  );
+};
 
 export default NavigationBar;

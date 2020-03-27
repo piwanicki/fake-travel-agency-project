@@ -9,7 +9,8 @@ $shadowColor: #feb72b;
 
   ul {
     list-style: none;
-
+    margin-top: 0;
+    padding-top: 1em;
     li {
       text-decoration: none;
       display: inline-block;
@@ -20,7 +21,7 @@ $shadowColor: #feb72b;
   }
 
   button {
-    margin-left: 2em;
+    margin: auto 2em;
     vertical-align: middle;
     width: 10em;
     height: 2.5em;
