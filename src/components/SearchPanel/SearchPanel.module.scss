@@ -1,0 +1,111 @@
+.SearchContainer {
+  background-image: url("background3.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 350px;
+  text-align: center;
+  //display: inline-block;
+
+  .SearchHeader {
+    font-size: 2.2em;
+    margin-top: 0;
+    position: relative;
+    top: 1em;
+  }
+
+  p {
+    font-size: 1em;
+    color: aliceblue;
+    margin: 0.3em;
+  }
+
+  .GridButton {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-end: span 2;
+    margin: auto auto;
+  }
+  button {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-end: 2;
+    grid-row-end: span 2;
+    width: 10em;
+    height: 2.5em;
+    box-shadow: inset 0px 0px 15px 3px #feb72b;
+    background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
+    background-color: #eeb72b;
+    border-radius: 17px;
+    border: 1px solid #eeb72b;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 6px 13px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #feb72b;
+
+    :hover {
+      background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
+      background-color: #eeb72b;
+    }
+
+    :active {
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+
+.SearchPanel {
+  display: grid;
+  grid-template-columns: auto auto 25% auto;
+  grid-template-rows: auto auto;
+
+  div {
+    display: inline-block;
+    margin: 0.5em 1em;
+  }
+
+  input[type="text"] {
+    width: 7em;
+  }
+}
+
+.SearchBox {
+  position: relative;
+  top: 35%;
+  transform: translateY(-50%);
+  width: 50%;
+  margin: auto auto;
+}
+
+.GuestBox {
+  width: 13em;
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-end: span 2;
+
+  div {
+    width: 10em;
+    font-size: 1.1em;
+    margin-left: 0;
+  }
+
+  span {
+    padding: 0.5em 0.5em;
+    width: 2em;
+  }
+
+  p {
+    display: inline-block;
+    width: 2em;
+    margin: 0.3em;
+  }
+
+  svg {
+    cursor: pointer;
+    font-size: 1.4em;
+    color: #feb72b;
+  }
+}
