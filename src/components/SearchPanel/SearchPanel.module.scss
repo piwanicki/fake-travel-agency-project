@@ -45,12 +45,12 @@
     text-decoration: none;
     text-shadow: 0px 1px 0px #feb72b;
 
-    :hover {
+    &:hover {
       background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
-      background-color: #eeb72b;
+      background-color: #eeb72b; 
     }
 
-    :active {
+    &:active {
       position: relative;
       top: 1px;
     }
