@@ -3,8 +3,6 @@ import Offer from "./Offer/Offer";
 import classes from "./OffersContainer.module.scss";
 
 class OffersContainer extends Component {
-  
-
   render() {
     const offers = this.props.offers;
     const OffersPanel = Object.keys(offers).map((offer, index) => (
@@ -16,7 +14,7 @@ class OffersContainer extends Component {
         to={offers[offer].to}
         city={offers[offer].city}
         price={offers[offer].price}
-        cntrImgUrl={`photo_${offer.toLowerCase()}.jpg`}
+        cntrImgUrl={`photo_${offers[offer].country.toLowerCase()}.jpg`}
       />
     ));
     return (

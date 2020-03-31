@@ -1,21 +1,21 @@
-import React from 'react';
-import classes from './LangSelectBox.module.scss';
+import React from "react";
+import classes from "./LangSelectBox.module.scss";
+import engIcon from "./langSelectorsIcon/england.png";
+import polIcon from "./langSelectorsIcon/poland.png";
 
 const LangSelectBox = props => {
   return (
     <div className={classes.LangSelectBox}>
-      <ul onClick={props.langSelectHandler}> 
+      <ul onClick={props.langSelectHandler}>
         <li>
-        <img src={`images/langSelector/england.png`} alt="language english" id='english' />
+          <img src={engIcon} alt="language english" id="english" />
         </li>
         <li>
-        <img src={`images/langSelector/poland.png`} alt="language english" id='polish' />
-
+          <img src={polIcon} alt="language polish" id="polish" />
         </li>
       </ul>
-
     </div>
-  )
-}
+  );
+};
 
 export default LangSelectBox;

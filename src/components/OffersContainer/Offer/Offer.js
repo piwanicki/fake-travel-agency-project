@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classes from "./Offer.module.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Offer extends Component {
   state = {
@@ -9,7 +10,7 @@ class Offer extends Component {
   };
 
   componentDidMount = () => {
-    this.weatherAPIHandler();
+    //this.weatherAPIHandler();
   };
 
   weatherAPIHandler = () => {
@@ -25,6 +26,8 @@ class Offer extends Component {
       )
       .catch(error => console.log(`Undefined city`));
   };
+
+  offerSelectedHandler = city => {};
 
   render() {
     return (
@@ -54,8 +57,16 @@ class Offer extends Component {
           </li>
         </ul>
 
-        <div className={classes.ImgContainer}>
-          <img src={`images/${this.props.cntrImgUrl}`} alt="landscape" />
+        <div
+          className={classes.ImgContainer}
+          onClick={() => this.offerSelectedHandler(this.props.city)}
+        >
+          <Link to={`/offerDetails/${this.props.city}`}>
+            <img
+              src={`images/${this.props.cntrImgUrl}`}
+              alt={`${this.props.city} landscape`}
+            />
+          </Link>
         </div>
       </div>
     );

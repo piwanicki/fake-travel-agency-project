@@ -1,0 +1,25 @@
+.OfferDetails {
+  margin: 2em 2em;
+  height: 50em;
+
+  .PhotoContainer {
+    width: 60%;
+    height: 70%;
+    border: 2px solid black;
+
+    .MainPhoto {
+      width: 100%;
+      height: 80%;
+      background-color: blue;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      display: inline-block;
+      width: 10em;
+    }
+  }
+}

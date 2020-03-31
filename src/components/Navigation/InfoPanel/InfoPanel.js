@@ -9,6 +9,8 @@ import {
   faEnvelopeOpen
 } from "@fortawesome/free-solid-svg-icons";
 import LangSelectBox from "./LangSelectBox/LangSelectBox";
+import english from "./LangSelectBox/langSelectorsIcon/england.png";
+// import polish from "./LangSelectBox/langSelectorsIcon/poland.png";
 
 class InfoPanel extends Component {
   state = {
@@ -53,10 +55,7 @@ class InfoPanel extends Component {
             className={classes.LangSelector}
             onClick={this.showLangSelectorBox}
           >
-            <img
-              src={`images/langSelector/england.png`}
-              alt="language english"
-            />
+            <img src={english} alt="language icon" />
           </li>
           {this.state.langSelectBox ? (
             <LangSelectBox langSelectHandler={this.langSelectHandler} />

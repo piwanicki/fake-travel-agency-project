@@ -11,8 +11,7 @@ import {
 class SummerOffers extends Component {
   state = {
     index: 0,
-    offerArrLength: Object.keys(SummerOffersData).length,
-    // animation: false
+    offerArrLength: Object.keys(SummerOffersData).length
   };
 
   nextOfferHandler = () => {
@@ -20,8 +19,7 @@ class SummerOffers extends Component {
     const offerArrLength = this.state.offerArrLength;
     currentIndex = currentIndex + 4 >= offerArrLength ? 0 : currentIndex + 1;
     this.setState({
-      index: currentIndex,
-      // animation: true
+      index: currentIndex
     });
   };
 
@@ -30,8 +28,7 @@ class SummerOffers extends Component {
     const offerArrLength = this.state.offerArrLength;
     currentIndex = currentIndex - 1 < 0 ? offerArrLength - 4 : currentIndex - 1;
     this.setState({
-      index: currentIndex,
-      // animation: true
+      index: currentIndex
     });
   };
 
@@ -49,7 +46,6 @@ class SummerOffers extends Component {
         />
       ));
 
-
     return (
       <div className={classes.SummerOffersSection}>
         <p>Summer 2020!</p>
@@ -59,13 +55,7 @@ class SummerOffers extends Component {
             className={classes.Arrow}
             onClick={this.previousOfferHandler}
           />
-          {/* <div
-            className={attachedClasses}
-            onAnimationEnd={() => this.setState({ animation: false })}
-          > */}
-            {cntrOffer}
-          {/* </div> */}
-
+          {cntrOffer}
           <FontAwesomeIcon
             icon={faChevronRight}
             className={classes.Arrow}

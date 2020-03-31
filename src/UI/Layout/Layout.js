@@ -1,39 +1,29 @@
-import React, { Component } from 'react';
-import classes from './Layout.module.css'
-import NavigationHeader from '../../components/Navigation/NavigationHeader/NavigationHeader';
-import SearchPanel from '../../components/SearchPanel/SearchPanel';
-import OffersContainer from '../../components/OffersContainer/OffersContainer';
-import Offers from '../../components/OffersContainer/Offers';
-import OffersServices from '../../components/OffersContainer/OffersServices/OffersServices';
-import Underline from '../Underline/Underline';
-import SummerOffers from '../../components/OffersContainer/SummerOffers/SummerOffers';
-import InspirationOffers from '../../components/InspirationSection/InspirationOffers/InspirationOffers'
-import NewsContainer from '../../components/NewsSection/NewsContainer/NewsContainer';
-import GuideDescription from '../../components/GuideDescription/GuideDescription';
-import ContactInfoBar from '../../components/ContactInfoBar/ContactInfoBar';
-import Footer from '../../components/Navigation/Footer/Footer'
+import React, { Component } from "react";
+import classes from "./Layout.module.css";
+import NavigationHeader from "../../components/Navigation/NavigationHeader/NavigationHeader";
+import ContactInfoBar from "../../components/ContactInfoBar/ContactInfoBar";
+import Footer from "../../components/Navigation/Footer/Footer";
+import MainPage from "../../components/MainPage/MainPage";
+import { Switch, Route, Redirect } from "react-router-dom";
+import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
 
 class Layout extends Component {
-
   render() {
     return (
       <div className={classes.Layout}>
         <NavigationHeader />
-        <SearchPanel />
-        <OffersContainer offers={Offers}/>
-        <Underline />
-        <OffersServices />
-        <Underline />
-        <SummerOffers />
-        <Underline />
-        <InspirationOffers />
-        <NewsContainer />
-        <GuideDescription />
+
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route path="/offerDetails/:city" component={OfferDetails} />
+          <Redirect from="/" to="/" />
+        </Switch>
+
         <ContactInfoBar />
         <Footer />
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 

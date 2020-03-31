@@ -1,5 +1,5 @@
 const Offers = {
-  Croatia: {
+  Dubrovnik: {
     country: 'Croatia',
     city: 'Dubrovnik',
     from: '15-07-2020',
@@ -8,7 +8,7 @@ const Offers = {
     price: '500$',
     details: ''
   },
-  Italy: {
+  Roma: {
     country: 'Italy',
     city: 'Roma',
     from: '17-07-2020',
@@ -17,7 +17,7 @@ const Offers = {
     price: '600$',
     details: ''
   },
-  Spain: {
+  Madrid: {
     country: 'Spain',
     city: 'Madrid',
     from: '1-07-2020',
@@ -26,7 +26,7 @@ const Offers = {
     price: '300$',
     details: ''
    },
-  France: {
+   Paris: {
     country: 'France',
     city: 'Paris',
     from: '15-08-2020',
@@ -35,7 +35,7 @@ const Offers = {
     price: '400$',
     details: ''
   },
-  Portugal: {
+  Lisboa: {
     country: 'Portugal',
     city: 'Lisboa',
     from: '18-07-2020',
@@ -44,7 +44,7 @@ const Offers = {
     price: '900$',
     details: ''
   },
-  Japan: {
+  Tokio: {
     country: 'Japan',
     city: 'Tokio',
     from: '16-08-2020',
