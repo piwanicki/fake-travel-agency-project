@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./SearchPanel.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusSquare, faMinusSquare } from "@fortawesome/free-solid-svg-icons";
+
+import GuestBox from "./GuestBox/GuestBox";
 
 class SearchPanel extends Component {
   state = {
@@ -53,6 +53,15 @@ class SearchPanel extends Component {
               <input type="date" placeholder="To" />
             </div>
 
+            <GuestBox
+              addAdultHandler={this.addAdultHandler}
+              removeAdultHandler={this.removeAdultHandler}
+              addKidHandler={this.addKidHandler}
+              removeKidHandler={this.removeKidHandler}
+              adults={this.state.adults}
+              kids={this.state.kids}
+            />
+            {/* 
             <div className={classes.GuestBox} style={{ marginLeft: "0" }}>
               <p>Guests</p>
               <div>
@@ -84,7 +93,7 @@ class SearchPanel extends Component {
                   onClick={this.removeKidHandler}
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className={classes.GridButton}>
               <button type="button"> Search </button>
