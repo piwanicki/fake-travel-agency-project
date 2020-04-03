@@ -13,7 +13,7 @@ class OffersContainer extends Component {
         from={offers[offer].from}
         to={offers[offer].to}
         city={offers[offer].city}
-        price={offers[offer].price}
+        price={`${offers[offer].price} $`}
         cntrImgUrl={`photo_${offers[offer].country.toLowerCase()}.jpg`}
       />
     ));

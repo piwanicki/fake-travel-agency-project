@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../Offers";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
+import { connect } from "react-redux";
 
 class OfferDetails extends Component {
   state = {
@@ -34,10 +35,10 @@ class OfferDetails extends Component {
             alt={`big landscape`}
           ></div>
           <div className={classes.PhotosSlider}>
+            <button>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
             <ul>
-              <button>
-                <FontAwesomeIcon icon={faArrowLeft} />
-              </button>
               <li>
                 {/* <img src={""} alt={""} /> */}
                 <div>1 photo</div>
@@ -58,14 +59,13 @@ class OfferDetails extends Component {
                 {/* <img src={""} alt={""} /> */}
                 <div>5 photo</div>
               </li>
-              <button>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </button>
             </ul>
+            <button>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
           </div>
         </div>
         <div className={classes.DetailsContainer}>
-          <h3>Check price : {offerDetails.price}</h3>
           <div>
             <p>Date :</p>
             From :
@@ -110,11 +110,35 @@ class OfferDetails extends Component {
             </label>
           </div>
 
-          <div className={classes.PricingDetails}></div>
+          <div className={classes.PricingDetails}>
+            <div>
+              {" "}
+              Adult :<p>{offerDetails.price} $</p>
+            </div>
+            <div>
+              Kid :<p>{offerDetails.kidPrice} $</p>
+            </div>
+
+            <div className={classes.SummaryPrice}>
+              Summary :
+              <p>
+                {this.props.adults * offerDetails.price +
+                  this.props.kids * offerDetails.kidPrice}{" "}
+                $
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default OfferDetails;
+const mapStateToProps = state => {
+  return {
+    adults: state.adults,
+    kids: state.kids
+  };
+};
+
+export default connect(mapStateToProps, null)(OfferDetails);

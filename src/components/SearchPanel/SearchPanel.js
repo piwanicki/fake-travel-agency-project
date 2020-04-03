@@ -4,35 +4,6 @@ import classes from "./SearchPanel.module.scss";
 import GuestBox from "./GuestBox/GuestBox";
 
 class SearchPanel extends Component {
-  state = {
-    adults: 0,
-    kids: 0
-  };
-
-  addAdultHandler = () => {
-    const adults = this.state.adults;
-    this.setState({
-      adults: adults + 1
-    });
-  };
-
-  removeAdultHandler = () => {
-    const adults = this.state.adults;
-    if (adults > 0) this.setState({ adults: adults - 1 });
-  };
-
-  addKidHandler = () => {
-    const kids = this.state.kids;
-    this.setState({
-      kids: kids + 1
-    });
-  };
-
-  removeKidHandler = () => {
-    const kids = this.state.kids;
-    if (kids > 0) this.setState({ kids: kids - 1 });
-  };
-
   render() {
     return (
       <div className={classes.SearchContainer}>
@@ -53,47 +24,7 @@ class SearchPanel extends Component {
               <input type="date" placeholder="To" />
             </div>
 
-            <GuestBox
-              addAdultHandler={this.addAdultHandler}
-              removeAdultHandler={this.removeAdultHandler}
-              addKidHandler={this.addKidHandler}
-              removeKidHandler={this.removeKidHandler}
-              adults={this.state.adults}
-              kids={this.state.kids}
-            />
-            {/* 
-            <div className={classes.GuestBox} style={{ marginLeft: "0" }}>
-              <p>Guests</p>
-              <div>
-                <span>
-                  <p>Adult</p>
-                </span>
-                <FontAwesomeIcon
-                  icon={faPlusSquare}
-                  onClick={this.addAdultHandler}
-                />
-                <p>{this.state.adults}</p>
-                <FontAwesomeIcon
-                  icon={faMinusSquare}
-                  onClick={this.removeAdultHandler}
-                />
-              </div>
-
-              <div>
-                <span>
-                  <p>Kids</p>
-                </span>
-                <FontAwesomeIcon
-                  icon={faPlusSquare}
-                  onClick={this.addKidHandler}
-                />
-                <p>{this.state.kids}</p>
-                <FontAwesomeIcon
-                  icon={faMinusSquare}
-                  onClick={this.removeKidHandler}
-                />
-              </div>
-            </div> */}
+            <GuestBox />
 
             <div className={classes.GridButton}>
               <button type="button"> Search </button>

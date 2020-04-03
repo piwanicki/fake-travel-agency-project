@@ -5,7 +5,8 @@ const Offers = {
     from: '15-07-2020',
     to: '01-08-2020',
     date: '15-07-2020 -> 01-08-2020',
-    price: '500$',
+    price: 500,
+    kidPrice: 240,
     details: ''
   },
   Roma: {
@@ -14,7 +15,8 @@ const Offers = {
     from: '17-07-2020',
     to: ' 28-08-2020',
     date: '17-07-2020 -> 28-08-2020',
-    price: '600$',
+    price: 600,
+    kidPrice: 240,
     details: ''
   },
   Madrid: {
@@ -23,7 +25,8 @@ const Offers = {
     from: '1-07-2020',
     to: '01-08-2020',
     date: '1-07-2020 -> 01-08-2020',
-    price: '300$',
+    price: 300,
+    kidPrice: 240,
     details: ''
    },
    Paris: {
@@ -32,7 +35,8 @@ const Offers = {
     from: '15-08-2020',
     to: '01-08-2020',
     date: '15-08-2020 -> 01-08-2020',
-    price: '400$',
+    price: 400,
+    kidPrice: 240,
     details: ''
   },
   Lisboa: {
@@ -41,7 +45,8 @@ const Offers = {
     from: '18-07-2020',
     to: '01-08-2020',
     date: '18-07-2020 -> 01-08-2020',
-    price: '900$',
+    price: 900,
+    kidPrice: 240,
     details: ''
   },
   Tokio: {
@@ -50,7 +55,8 @@ const Offers = {
     from: '16-08-2020',
     to: '01-08-2020',
     date: '16-08-2020 -> 01-08-2020',
-    price: '530$',
+    price: 530,
+    kidPrice: 240,
     details: ''
   }
 }
