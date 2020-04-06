@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./SummerOffer.module.css";
 
-const SummerOffer = props => {
+const SummerOffer = (props) => {
   return (
     <div className={classes.SummerOffer}>
       <img
@@ -17,7 +17,7 @@ const SummerOffer = props => {
           {props.price}
           <br />
           <span>
-            <div style={{ backgroundColor: "#FF0000", margin: "0.3em 0.3em" }}>
+            <div style={{ backgroundColor: "#FF0000", margin: "0.3em" }}>
               {props.discount}
             </div>
             <strike>{props.oldPrice}</strike>

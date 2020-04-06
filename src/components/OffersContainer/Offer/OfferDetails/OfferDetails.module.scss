@@ -9,19 +9,21 @@
   .PhotoContainer {
     margin: 0;
     width: 60vw;
-    height: 40em;
-    border: 2px solid black;
+    height: 42em;
+    // border: 1px solid black;
 
     .MainPhoto {
-      margin: 0.5%;
-      width: 99%;
+      width: 100%;
       height: 80%;
       background-color: green;
     }
 
     ul {
+      border-top: 1px solid black;
+      vertical-align: top;
       list-style: none;
       padding: 0;
+      margin: 0 auto;
       width: 95%;
       height: 100%;
       display: inline-block;
@@ -30,20 +32,36 @@
     li {
       display: inline-block;
       width: 20%;
+      height: 100%;
+
+      img {
+        width: 98%;
+        height: 98%;
+        padding : 0.1em;
+      }
 
       div {
+        text-align: center;
         width: 100%;
+        height: 100%;
         border: 1px solid black;
       }
     }
 
     .PhotosSlider {
-      border-top: 1px solid black;
-      height: 18%;
+
+      height: 17%;
 
       button {
+        padding:0;
+        text-align: center;
         width: 2.5%;
-        display: inline-block;
+        height: 100%;
+        border: none;
+        font-size: 130%;
+        margin: 0;
+        cursor: pointer;
+        background-color: inherit;
       }
     }
   }
@@ -134,5 +152,17 @@
       padding-top: 0.7em;
       border-top: 1px solid grey;
     }
+  }
+
+  .BookBtn {
+    width: 5em;
+    height: 2.5em;
+    position: relative;
+    bottom: 4em;
+    left: 2em;
+    background-color: #feb72b;
+    font-size: 1.5em;
+    color: #f5f5f0;
+    cursor: pointer;
   }
 }

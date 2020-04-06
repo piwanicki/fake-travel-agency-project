@@ -1,3 +1,12 @@
+// Dubrovnik images
+import dubrovnik1 from './offerDetailsPhotos/dubrovnikPhotos/dubrovnik1.jpg'
+import dubrovnik2 from './offerDetailsPhotos/dubrovnikPhotos/dubrovnik2.jpg'
+import dubrovnik3 from './offerDetailsPhotos/dubrovnikPhotos/dubrovnik3.jpg'
+import dubrovnik4 from './offerDetailsPhotos/dubrovnikPhotos/dubrovnik4.jpg'
+import dubrovnik5 from './offerDetailsPhotos/dubrovnikPhotos/dubrovnik5.jpg'
+
+
+
 const Offers = {
   Dubrovnik: {
     country: 'Croatia',
@@ -7,7 +16,8 @@ const Offers = {
     date: '15-07-2020 -> 01-08-2020',
     price: 500,
     kidPrice: 240,
-    details: ''
+    details: '',
+    photos: [dubrovnik1,dubrovnik2,dubrovnik3,dubrovnik4, dubrovnik5]
   },
   Roma: {
     country: 'Italy',

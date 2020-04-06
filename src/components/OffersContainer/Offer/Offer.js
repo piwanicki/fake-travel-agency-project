@@ -10,7 +10,7 @@ class Offer extends Component {
   };
 
   componentDidMount = () => {
-    //this.weatherAPIHandler();
+    this.weatherAPIHandler();
   };
 
   weatherAPIHandler = () => {

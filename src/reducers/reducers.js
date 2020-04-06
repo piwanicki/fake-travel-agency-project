@@ -1,6 +1,6 @@
 const initialState = {
   adults: 2,
-  kids: 0
+  kids: 0,
 };
 
 const reducers = (state = initialState, action) => {
@@ -10,8 +10,11 @@ const reducers = (state = initialState, action) => {
     }
 
     case "REMOVE_ADULT": {
-      if (state.adults > 0) return { ...state, adults: state.adults - 1 };
-      break;
+      if (state.adults > 0) {
+        return { ...state, adults: state.adults - 1 };
+      } else {
+        return { ...state };
+      }
     }
 
     case "ADD_KID": {
@@ -19,8 +22,11 @@ const reducers = (state = initialState, action) => {
     }
 
     case "REMOVE_KID": {
-      if (state.kids > 0) return { ...state, kids: state.kids - 1 };
-      break;
+      if (state.kids > 0) {
+        return { ...state, kids: state.kids - 1 };
+      } else {
+        return { ...state };
+      }
     }
 
     default:
