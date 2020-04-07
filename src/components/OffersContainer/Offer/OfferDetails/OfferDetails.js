@@ -8,11 +8,13 @@ import {
 import Offers from "../../Offers";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
 import { connect } from "react-redux";
+import ReactDOM from "react-dom";
 
 class OfferDetails extends Component {
   state = {
     photoIndex: 0,
     showGuestBox: false,
+    images: null,
   };
 
   reformatDate = (date) => {
@@ -20,9 +22,21 @@ class OfferDetails extends Component {
   };
 
   changeImageHandler = (index) => {
+    this.state.images[this.state.photoIndex].classList.remove(
+      classes.SelectedImg
+    );
+    this.state.images[index].classList.add(classes.SelectedImg);
     this.setState({
       photoIndex: index,
     });
+  };
+
+  componentDidMount = () => {
+    const imagesList = ReactDOM.findDOMNode(this).getElementsByClassName(
+      "PhotosList"
+    )[0].children;
+    imagesList[this.state.photoIndex].classList.add(classes.SelectedImg);
+    this.setState({ images: imagesList });
   };
 
   nextImageHandler = () => {
@@ -71,7 +85,7 @@ class OfferDetails extends Component {
             >
               <FontAwesomeIcon icon={faChevronCircleLeft} />
             </button>
-            <ul>{photos}</ul>
+            <ul className="PhotosList">{photos}</ul>
             <button
               onClick={this.nextImageHandler}
               disabled={this.state.photoIndex === photos.length - 1}
@@ -143,7 +157,9 @@ class OfferDetails extends Component {
               </p>
             </div>
           </div>
-        <button className={classes.BookBtn}>Book</button>
+          <button className={classes.BookBtn} type="button">
+            Book
+          </button>
         </div>
       </div>
     );
