@@ -71,6 +71,7 @@ class OfferDetails extends Component {
     ));
 
     return (
+      <div className={classes.OfferDetailsContainer}>
       <div className={classes.OfferDetails}>
         <div className={classes.PhotoContainer}>
           <img
@@ -161,6 +162,15 @@ class OfferDetails extends Component {
             Book
           </button>
         </div>
+      </div>
+      <div className={classes.OfferDescription}>
+          <div className={classes.DescriptionTabs}>
+              <div className={classes.Tab}> Description </div>
+              <div className={classes.Tab}> Localization </div>
+              <div className={classes.Tab}> Guide </div>
+              <div className={classes.Tab}> Reviews </div>
+          </div>
+      </div>
       </div>
     );
   }
