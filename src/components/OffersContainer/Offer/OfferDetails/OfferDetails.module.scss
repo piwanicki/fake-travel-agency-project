@@ -191,24 +191,45 @@
     bottom: 9em;
     width: 60vw;
     min-height: 70em;
-    background-color: blue;
+
+    .SelectedTab {
+      background-color:#eeb72b81;
+   
+    }
+
 
     .DescriptionTabs {
       width:100%;
-      height:5em;
+      height:4em;
       background-color: white;
+      border-bottom: 1px solid grey;
+      border-top-left-radius: 3em;
+      border-top-right-radius: 3em;
       text-align: left;
+      font-size: 1.3em;
+
 
       .Tab {
-        margin: 1em;
-        width: 6em;
-        vertical-align: bottom;
+        margin: 1em 0.5em;
+        height: 2em;
+        width: 7em;
         display: inline-block;
         text-align: center;
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 15%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        
+        border-bottom: 2px solid #feb72b;
+        cursor: pointer;
       }
+    }
+
+    .DescriptionText {
+      width: 100%;
+      min-height: 40em;
+      background-color: white;
     }
   }
 }

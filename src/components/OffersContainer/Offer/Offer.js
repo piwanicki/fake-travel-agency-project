@@ -18,12 +18,12 @@ class Offer extends Component {
       .get(
         `http://api.weatherstack.com/current?access_key=22109322a48c375ebd5e83eb3ce12344&query=${this.props.city}`
       )
-      .then(response =>
-        this.setState({
-          weather: response.data.current.temperature,
-          weatherIcon: response.data.current.weather_icons
-        })
-      )
+      //.then(response =>
+        // this.setState({
+        //   weather: response.data.current.temperature,
+        //   weatherIcon: response.data.current.weather_icons
+        // })
+     // )
       .catch(error => console.log(`Undefined city`));
   };
 

@@ -9,12 +9,15 @@ import Offers from "../../Offers";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
 import { connect } from "react-redux";
 import ReactDOM from "react-dom";
+import LocalizationMap from "./LocalizationMap/LocalizationMap";
+import DescriptionText from "./DescriptionText/DescriptionText";
 
 class OfferDetails extends Component {
   state = {
     photoIndex: 0,
     showGuestBox: false,
     images: null,
+    activeTab: "desc",
   };
 
   reformatDate = (date) => {
@@ -36,6 +39,9 @@ class OfferDetails extends Component {
       "PhotosList"
     )[0].children;
     imagesList[this.state.photoIndex].classList.add(classes.SelectedImg);
+    document
+      .getElementById(this.state.activeTab)
+      .classList.add(classes.SelectedTab);
     this.setState({ images: imagesList });
   };
 
@@ -53,9 +59,20 @@ class OfferDetails extends Component {
     });
   };
 
+  selectTabHandler = (key) => {
+    console.log(key);
+    if (key !== "") {
+      console.log(document.getElementById(this.state.activeTab).classList);
+      document.getElementById(this.state.activeTab).classList.remove(classes.SelectedTab);
+      document.getElementById(key).classList.add(classes.SelectedTab);
+      this.setState({ activeTab: key });
+    }
+  };
+
   render() {
     const cityOffer = this.props.match.params.city;
     const offerDetails = Offers[cityOffer];
+    console.log(offerDetails);
     const fromDt = this.reformatDate(offerDetails.from);
     const toDt = this.reformatDate(offerDetails.to);
     const mainPhoto = offerDetails.photos[this.state.photoIndex];
@@ -70,107 +87,155 @@ class OfferDetails extends Component {
       </li>
     ));
 
+    let descriptionContent;
+
+    switch (this.state.activeTab) {
+      case "desc": {
+        descriptionContent = <DescriptionText details={offerDetails.details} />;
+        break;
+      }
+
+      case "loc": {
+        descriptionContent = (
+          <LocalizationMap lat={offerDetails.lat} lon={offerDetails.lon} />
+        );
+        break;
+      }
+
+      case "guide": {
+        // descriptionContent =  <GuideText />
+        console.log(` <GuideText />`);
+        break;
+      }
+
+      case "rev": {
+        console.log(`<ReviewsText />`);
+        break;
+        // descriptionContent = <ReviewsText />
+      }
+
+      default: {
+        descriptionContent = <DescriptionText details={offerDetails.details} />;
+      }
+    }
+
     return (
       <div className={classes.OfferDetailsContainer}>
-      <div className={classes.OfferDetails}>
-        <div className={classes.PhotoContainer}>
-          <img
-            className={classes.MainPhoto}
-            src={mainPhoto}
-            alt={`big landscape`}
-          />
-          <div className={classes.PhotosSlider}>
-            <button
-              onClick={this.previousImageHandler}
-              disabled={this.state.photoIndex === 0}
-            >
-              <FontAwesomeIcon icon={faChevronCircleLeft} />
-            </button>
-            <ul className="PhotosList">{photos}</ul>
-            <button
-              onClick={this.nextImageHandler}
-              disabled={this.state.photoIndex === photos.length - 1}
-            >
-              <FontAwesomeIcon icon={faChevronCircleRight} />
+        <div className={classes.OfferDetails}>
+          <div className={classes.PhotoContainer}>
+            <img
+              className={classes.MainPhoto}
+              src={mainPhoto}
+              alt={`big landscape`}
+            />
+            <div className={classes.PhotosSlider}>
+              <button
+                onClick={this.previousImageHandler}
+                disabled={this.state.photoIndex === 0}
+              >
+                <FontAwesomeIcon icon={faChevronCircleLeft} />
+              </button>
+              <ul className="PhotosList">{photos}</ul>
+              <button
+                onClick={this.nextImageHandler}
+                disabled={this.state.photoIndex === photos.length - 1}
+              >
+                <FontAwesomeIcon icon={faChevronCircleRight} />
+              </button>
+            </div>
+          </div>
+          <div className={classes.DetailsContainer}>
+            <div>
+              <p>Date :</p>
+              From :
+              <input type="date" defaultValue={fromDt} />
+              To :
+              <input type="date" defaultValue={toDt} />
+            </div>
+
+            <GuestBox />
+
+            <div>
+              <p>From where?</p>
+              <label className={classes.customSelect} htmlFor="styledSelect1">
+                <select id="styledSelect1">
+                  <option>somewhere 1</option>
+                  <option>somewhere 2</option>
+                  <option>somewhere 3</option>
+                  <option>somewhere 4</option>
+                </select>
+              </label>
+            </div>
+
+            <div>
+              <p>Room</p>
+              <label className={classes.customSelect} htmlFor="styledSelect1">
+                <select id="styledSelect1">
+                  <option>Single room</option>
+                  <option>Double room</option>
+                  <option>Triple room</option>
+                </select>
+              </label>
+            </div>
+
+            <div>
+              <p>Feeding</p>
+              <label className={classes.customSelect} htmlFor="styledSelect1">
+                <select id="styledSelect1" name="options">
+                  <option>Only breakfasts</option>
+                  <option>Only dinners</option>
+                  <option>Full feeding</option>
+                </select>
+              </label>
+            </div>
+
+            <div className={classes.PricingDetails}>
+              <div>
+                {" "}
+                Adult :<p>{offerDetails.price} $</p>
+              </div>
+              <div>
+                Kid :<p>{offerDetails.kidPrice} $</p>
+              </div>
+
+              <div className={classes.SummaryPrice}>
+                Summary :
+                <p>
+                  {this.props.adults * offerDetails.price +
+                    this.props.kids * offerDetails.kidPrice}{" "}
+                  $
+                </p>
+              </div>
+            </div>
+            <button className={classes.BookBtn} type="button">
+              Book
             </button>
           </div>
         </div>
-        <div className={classes.DetailsContainer}>
-          <div>
-            <p>Date :</p>
-            From :
-            <input type="date" defaultValue={fromDt} />
-            To :
-            <input type="date" defaultValue={toDt} />
-          </div>
-
-          <GuestBox />
-
-          <div>
-            <p>From where?</p>
-            <label className={classes.customSelect} htmlFor="styledSelect1">
-              <select id="styledSelect1">
-                <option>somewhere 1</option>
-                <option>somewhere 2</option>
-                <option>somewhere 3</option>
-                <option>somewhere 4</option>
-              </select>
-            </label>
-          </div>
-
-          <div>
-            <p>Room</p>
-            <label className={classes.customSelect} htmlFor="styledSelect1">
-              <select id="styledSelect1">
-                <option>Single room</option>
-                <option>Double room</option>
-                <option>Triple room</option>
-              </select>
-            </label>
-          </div>
-
-          <div>
-            <p>Feeding</p>
-            <label className={classes.customSelect} htmlFor="styledSelect1">
-              <select id="styledSelect1" name="options">
-                <option>Only breakfasts</option>
-                <option>Only dinners</option>
-                <option>Full feeding</option>
-              </select>
-            </label>
-          </div>
-
-          <div className={classes.PricingDetails}>
-            <div>
+        <div className={classes.OfferDescription}>
+          <div
+            className={classes.DescriptionTabs}
+            onClick={(e) => this.selectTabHandler(e.target.id)}
+          >
+            <div className={classes.Tab} id="desc">
+              Description{" "}
+            </div>
+            <div className={classes.Tab} id="loc">
               {" "}
-              Adult :<p>{offerDetails.price} $</p>
+              Localization{" "}
             </div>
-            <div>
-              Kid :<p>{offerDetails.kidPrice} $</p>
+            <div className={classes.Tab} id="guide">
+              {" "}
+              Guide
             </div>
+            <div className={classes.Tab} id="rev">
+              {" "}
+              Reviews{" "}
+            </div>
+          </div>
 
-            <div className={classes.SummaryPrice}>
-              Summary :
-              <p>
-                {this.props.adults * offerDetails.price +
-                  this.props.kids * offerDetails.kidPrice}{" "}
-                $
-              </p>
-            </div>
-          </div>
-          <button className={classes.BookBtn} type="button">
-            Book
-          </button>
+          <div className={classes.DescriptionText}>{descriptionContent}</div>
         </div>
-      </div>
-      <div className={classes.OfferDescription}>
-          <div className={classes.DescriptionTabs}>
-              <div className={classes.Tab}> Description </div>
-              <div className={classes.Tab}> Localization </div>
-              <div className={classes.Tab}> Guide </div>
-              <div className={classes.Tab}> Reviews </div>
-          </div>
-      </div>
       </div>
     );
   }
