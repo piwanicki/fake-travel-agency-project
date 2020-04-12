@@ -1,0 +1,18 @@
+.OfferReview {
+    padding: 2em 1em;
+    margin: 0 1em;
+    border-bottom: 1px solid grey;
+
+
+  svg {
+      width: 2em;
+      font-size: 2em;
+      margin: 0;
+      color: grey;
+
+      &:hover {
+        color: orange;
+        cursor: pointer;
+      }
+    }
+}

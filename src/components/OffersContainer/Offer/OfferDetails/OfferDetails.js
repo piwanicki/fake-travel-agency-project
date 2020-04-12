@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import LocalizationMap from "./LocalizationMap/LocalizationMap";
 import DescriptionText from "./DescriptionText/DescriptionText";
+import OfferReview from './OfferReview/OfferReview'
 
 class OfferDetails extends Component {
   state = {
@@ -108,9 +109,9 @@ class OfferDetails extends Component {
       }
 
       case "rev": {
-        console.log(`<ReviewsText />`);
+        descriptionContent = <OfferReview />
         break;
-        // descriptionContent = <ReviewsText />
+      
       }
 
       default: {
