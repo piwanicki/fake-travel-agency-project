@@ -1,14 +1,62 @@
 .DescriptionText {
 
-    .RecommendationContent {
-       display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      .RecomendationLogo {
-          width: 30%;
-          height: 30%;
-      }
+  .RecommendationContent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 3em;
+
+    h3 {
+      font-size: 1.5em;
+      color: #cd0000;
+    }
+
+    .RecomendationLogo {
+      width: 25%;
+      height: 25%;
+      padding-right: 6em;
+    }
+  }
+
+
+
+  .AdvantagesDescription {
+
+    padding: 0 1em;
+
+    span {
+      font-size: 1.3em;
+      color: #cd0000;
+    }
+
+    ul {
+      font-size: 1.2em;
 
     }
+
+  }
+
+
+  .DetailsSection {
+    padding: 0 1em;
+
+    h3 {
+      margin-top: 2em;
+    }
+
+    h4 {
+      margin-top: 2em;
+      margin-bottom: 1em;
+    }
+
+    p {
+      margin: 1em 1em;
+      padding: 0.5em 0;
+      border-bottom: 1px double grey;
+    }
+
+  }
+
+
 
 }

@@ -60,10 +60,10 @@ class OfferDetails extends Component {
   };
 
   selectTabHandler = (key) => {
-    console.log(key);
     if (key !== "") {
-      console.log(document.getElementById(this.state.activeTab).classList);
-      document.getElementById(this.state.activeTab).classList.remove(classes.SelectedTab);
+      document
+        .getElementById(this.state.activeTab)
+        .classList.remove(classes.SelectedTab);
       document.getElementById(key).classList.add(classes.SelectedTab);
       this.setState({ activeTab: key });
     }
@@ -72,7 +72,6 @@ class OfferDetails extends Component {
   render() {
     const cityOffer = this.props.match.params.city;
     const offerDetails = Offers[cityOffer];
-    console.log(offerDetails);
     const fromDt = this.reformatDate(offerDetails.from);
     const toDt = this.reformatDate(offerDetails.to);
     const mainPhoto = offerDetails.photos[this.state.photoIndex];

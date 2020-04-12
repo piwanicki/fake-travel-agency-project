@@ -23,9 +23,55 @@ const Offers = {
     date: "15-07-2020 -> 01-08-2020",
     price: 500,
     kidPrice: 240,
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu.",
+    details: {
+      desc:
+        "Located in the center of Sunny Beach, just 250 meters from the sea and close to shops, bars and restaurants.",
+
+      rooms:
+        "Double (with the possibility of an extra bed), spacious, tastefully furnished, with a bathroom (toilet, bath tub or shower, hair dryer). Equipment: individually controlled air-conditioning, heating, telephone, satellite TV, fridge with mini bar (extra content), balcony or terrace.",
+
+      facilities: [
+        "reception, safe deposit 6 BGN / day",
+        "swimming pool, pool bar",
+        "restaurant, 2 bars",
+        "playground, paddling pool",
+        "massages, billiards, gym, spa (extra charge)",
+        "Wi-Fi payable (1 hour - 2.4 BGN; 1 day - 12 BGN; 3 days - 24 BGN; 7 days - 36 BGN)",
+      ],
+
+      meals: [
+        "ALL INCLUSIVE - breakfasts, lunches and dinners, soft drinks and local alcohols",
+        "ONLY DINNERS - lunches and dinners",
+        "ONLY BREAKFAST - breakfasts",
+      ],
+
+      baggage: `
+      For flights with charter flights, the price includes hand baggage of 5 kg and 20 kg of main luggage
+      The price includes hand baggage (40x20x25)
+      Customers can buy additional luggage weighing 10 kg (55x40x20)
+      - EXBAG service - PLN 125 / person,
+      You can also buy checked baggage with a weight of each booking;
+      - 20 kg - 245 PLN
+      Warning! If luggage is added after confirming the booking, its price will be higher. Katowice (WizzAir);
+      The price includes hand baggage (40x30x20);
+      Customers can buy additional luggage weighing 10 kg (55x40x23)
+      - EXBAG service - PLN 110 / person
+      You can also buy checked baggage with a weight of each booking;
+      - 20 kg - PLN 340
+      - 32 kg - 470 PLN
+      Warning! If luggage or additional services are added after confirming the booking, their price will be higher
+      Warsaw (WizzAir);
+      The price includes hand baggage (40x30x20);
+      Customers can buy additional luggage weighing 10 kg (55x40x23)
+      - EXBAG service - PLN 110 / person
+      You can also buy checked baggage with a weight of each booking;
+      - 20 kg - PLN 340
+      - 32 kg - 470 PLN
+      Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
+    },
     photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5],
   },
+
   Rome: {
     country: "Italy",
     city: "Rome",
@@ -36,7 +82,8 @@ const Offers = {
     date: "17-07-2020 -> 28-08-2020",
     price: 600,
     kidPrice: 240,
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu.",
+    details:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu.",
     photos: [rome1, rome2, rome3, rome4, rome5],
   },
   Madrid: {
@@ -49,8 +96,9 @@ const Offers = {
     date: "1-07-2020 -> 01-08-2020",
     price: 300,
     kidPrice: 240,
-    details: "",
-    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5]
+    details:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu.",
+    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5],
   },
   Paris: {
     country: "France",
@@ -63,7 +111,7 @@ const Offers = {
     price: 400,
     kidPrice: 240,
     details: "",
-    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5]
+    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5],
   },
   Lisboa: {
     country: "Portugal",
@@ -73,8 +121,9 @@ const Offers = {
     date: "18-07-2020 -> 01-08-2020",
     price: 900,
     kidPrice: 240,
-    details: "",
-    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5]
+    details:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu.",
+    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5],
   },
   Tokyo: {
     country: "Japan",
@@ -86,8 +135,9 @@ const Offers = {
     date: "16-08-2020 -> 01-08-2020",
     price: 530,
     kidPrice: 240,
-    details: "",
-    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5]
+    details:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel eros leo. Integer convallis eleifend nulla, sed ornare mauris convallis eu. Fusce pellentesque cursus ornare. Donec volutpat varius posuere. Vivamus fringilla leo vel ipsum sollicitudin, id eleifend magna sodales. Etiam eget feugiat arcu, vel commodo orci. Maecenas lacinia, lacus ut hendrerit consequat, tortor risus dapibus augue, vel accumsan tortor diam ac erat. Ut ante mauris, pellentesque nec posuere eget, interdum ac tellus. Quisque justo diam, pharetra ullamcorper libero at, efficitur tincidunt libero. Vestibulum non tincidunt ligula. Aliquam congue efficitur arcu.",
+    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5],
   },
 };
 
