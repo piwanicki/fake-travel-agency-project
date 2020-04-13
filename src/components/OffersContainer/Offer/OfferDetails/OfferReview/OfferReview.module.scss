@@ -1,8 +1,16 @@
 .OfferReview {
-    padding: 2em 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 2em;
+    padding-bottom: 0.5em;
     margin: 0 1em;
     border-bottom: 1px solid grey;
 
+    .StarRating {
+      display: inline-block;
+      width: 95%;
+      text-align: right;
+    }
 
   svg {
       width: 2em;
