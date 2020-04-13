@@ -103,8 +103,7 @@ class OfferDetails extends Component {
       }
 
       case "guide": {
-        // descriptionContent =  <GuideText />
-        console.log(` <GuideText />`);
+        // descriptionContent =  <OfferGuide />
         break;
       }
 
