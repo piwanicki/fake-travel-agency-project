@@ -9,8 +9,8 @@ const OfferGuide = props => {
   <div className={classes.OfferGuide}>
 
       <p>
-        {this.props.city}
-        {this.props.weather}
+        {props.city}
+        {/* {props.weather} */}
       </p>
 
       <div className={classes.Termins}>
@@ -21,7 +21,7 @@ const OfferGuide = props => {
       </div>
 
       <div className={classes.WeatherDetails} >
-
+          Weather details
       </div>
 
       <div className={classes.FacilitiesIcons}>
@@ -29,6 +29,9 @@ const OfferGuide = props => {
         <FontAwesomeIcon icon={faSwimmingPool} />
         <FontAwesomeIcon icon={faParking} />
         <FontAwesomeIcon icon={faGlassCheers} />
+        <FontAwesomeIcon icon={faBlind} />
+        <FontAwesomeIcon icon={faBaby} />
+        <FontAwesomeIcon icon={faTableTennis} />
       </div> 
   </div>
   )

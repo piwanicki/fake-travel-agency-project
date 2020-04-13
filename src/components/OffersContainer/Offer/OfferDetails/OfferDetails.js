@@ -11,7 +11,8 @@ import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import LocalizationMap from "./LocalizationMap/LocalizationMap";
 import DescriptionText from "./DescriptionText/DescriptionText";
-import OfferReview from './OfferReview/OfferReview'
+import OfferReview from './OfferReview/OfferReview';
+import OfferGuide from './OfferGuide/OfferGuide';
 
 class OfferDetails extends Component {
   state = {
@@ -103,7 +104,7 @@ class OfferDetails extends Component {
       }
 
       case "guide": {
-        // descriptionContent =  <OfferGuide />
+        descriptionContent =  <OfferGuide city={cityOffer}/>
         break;
       }
 
