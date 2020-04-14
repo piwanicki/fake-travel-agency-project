@@ -8,6 +8,10 @@
   .OfferDetails {
     display: flex;
 
+    input {
+      width: 10em;
+    }
+
     .SelectedImg {
       opacity: 1 !important;
     }
@@ -140,7 +144,7 @@
       margin: 0;
 
       div {
-        width: 14em;
+        width: 45%;
         position: relative;
         left: 50%;
         text-align: right;
@@ -150,7 +154,7 @@
       }
 
       p {
-        padding: 0 1em;
+        // padding: 0 1em;
         font-size: 1.5em;
         color: #cd0000;
         display: inline-block;
@@ -193,21 +197,18 @@
     min-height: 70em;
 
     .SelectedTab {
-      background-color:#eeb72b81;
-   
+      background-color: #eeb72b81;
     }
 
-
     .DescriptionTabs {
-      width:100%;
-      height:4em;
+      width: 100%;
+      height: 4em;
       background-color: white;
       border-bottom: 1px solid grey;
       border-top-left-radius: 3em;
       border-top-right-radius: 3em;
       text-align: left;
       font-size: 1.3em;
-
 
       .Tab {
         margin: 1em 0.5em;
@@ -220,7 +221,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        
+
         border-bottom: 2px solid #feb72b;
         cursor: pointer;
       }

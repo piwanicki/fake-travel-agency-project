@@ -68,6 +68,52 @@ const Offers = {
       - 20 kg - PLN 340
       - 32 kg - 470 PLN
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
+
+      term: [
+        {from: "15-07-2020", to: "01-08-2020"},
+        {from: "16-07-2020", to: "02-08-2020"},
+        {from: "17-07-2020", to: "03-08-2020"},
+        {from: "18-07-2020", to: "04-08-2020"},
+        {from: "19-07-2020", to: "05-08-2020"},
+      ],
+
+      flights: {
+        RyanAir: {
+          Katowice: {
+            departure: "15-07-2020",
+            arrival: "01-08-2020",
+          },
+          Gdansk: {
+            departure: "16-07-2020",
+            arrival: "02-08-2020",
+          },
+          Warszawa: {
+            departure: "17-07-2020",
+            arrival: "03-08-2020",
+          },
+
+          Krakow: {
+            departure: "18-07-2020",
+            arrival: "04-08-2020",
+          },
+
+          Wroclaw: {
+            departure: "19-07-2020",
+            arrival: "05-08-2020",
+          },
+        },
+
+        WizzAir: {
+          Wroclaw: {
+            departure: "19-07-2020",
+            arrival: "05-08-2020",
+          },
+          Krakow: {
+            departure: "18-07-2020",
+            arrival: "04-08-2020",
+          },
+        },
+      },
     },
     photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5],
   },

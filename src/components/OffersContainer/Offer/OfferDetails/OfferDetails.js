@@ -1,25 +1,25 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import classes from "./OfferDetails.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../Offers";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import ReactDOM from "react-dom";
 import LocalizationMap from "./LocalizationMap/LocalizationMap";
 import DescriptionText from "./DescriptionText/DescriptionText";
-import OfferReview from './OfferReview/OfferReview';
-import OfferGuide from './OfferGuide/OfferGuide';
+import OfferReview from "./OfferReview/OfferReview";
+import OfferGuide from "./OfferGuide/OfferGuide";
 
 class OfferDetails extends Component {
   state = {
     photoIndex: 0,
     showGuestBox: false,
     images: null,
-    activeTab: "desc",
+    activeTab: "guide",
   };
 
   reformatDate = (date) => {
@@ -44,7 +44,7 @@ class OfferDetails extends Component {
     document
       .getElementById(this.state.activeTab)
       .classList.add(classes.SelectedTab);
-    this.setState({ images: imagesList });
+    this.setState({images: imagesList});
   };
 
   nextImageHandler = () => {
@@ -67,7 +67,7 @@ class OfferDetails extends Component {
         .getElementById(this.state.activeTab)
         .classList.remove(classes.SelectedTab);
       document.getElementById(key).classList.add(classes.SelectedTab);
-      this.setState({ activeTab: key });
+      this.setState({activeTab: key});
     }
   };
 
@@ -104,14 +104,15 @@ class OfferDetails extends Component {
       }
 
       case "guide": {
-        descriptionContent =  <OfferGuide city={cityOffer}/>
+        descriptionContent = (
+          <OfferGuide city={cityOffer} country={offerDetails.country} />
+        );
         break;
       }
 
       case "rev": {
-        descriptionContent = <OfferReview />
+        descriptionContent = <OfferReview />;
         break;
-      
       }
 
       default: {
@@ -191,7 +192,6 @@ class OfferDetails extends Component {
 
             <div className={classes.PricingDetails}>
               <div>
-                {" "}
                 Adult :<p>{offerDetails.price} $</p>
               </div>
               <div>
@@ -202,7 +202,7 @@ class OfferDetails extends Component {
                 Summary :
                 <p>
                   {this.props.adults * offerDetails.price +
-                    this.props.kids * offerDetails.kidPrice}{" "}
+                    this.props.kids * offerDetails.kidPrice}
                   $
                 </p>
               </div>
@@ -218,19 +218,16 @@ class OfferDetails extends Component {
             onClick={(e) => this.selectTabHandler(e.target.id)}
           >
             <div className={classes.Tab} id="desc">
-              Description{" "}
+              Description
             </div>
             <div className={classes.Tab} id="loc">
-              {" "}
-              Localization{" "}
+              Localization
             </div>
             <div className={classes.Tab} id="guide">
-              {" "}
               Guide
             </div>
             <div className={classes.Tab} id="rev">
-              {" "}
-              Reviews{" "}
+              Reviews
             </div>
           </div>
 

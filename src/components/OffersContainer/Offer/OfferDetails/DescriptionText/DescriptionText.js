@@ -45,7 +45,7 @@ const DescriptionText = (props) => {
         </p>
         <h3> Baggage : </h3>
         <p className={classes.BaggageInfo}>
-          <strong>Gdańsk, Kraków, Katowice, Warszawa Modlin (RyanAir)</strong>{" "}
+          <strong>Gdańsk, Kraków, Katowice, Warszawa Modlin (RyanAir)</strong>
           <br />
           For flights with charter flights, the price includes hand baggage of 5
           kg and 20 kg of main luggage. <br />
@@ -63,9 +63,8 @@ const DescriptionText = (props) => {
           </li>
         </ul>
         <span>
-          {" "}
           <strong>Katowice (WizzAir)</strong>
-          <br />{" "}
+          <br />
         </span>
         The price includes hand baggage (40x30x20). <br />
         Customers can buy additional luggage weighing 10 kg (55x40x23).

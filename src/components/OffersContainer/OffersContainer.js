@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Offer from "./Offer/Offer";
+import RecommendedOffer from "./Offer/RecommendedOffer";
 import classes from "./OffersContainer.module.scss";
 
 class OffersContainer extends Component {
   render() {
     const offers = this.props.offers;
     const OffersPanel = Object.keys(offers).map((offer, index) => (
-      <Offer
+      <RecommendedOffer
         key={index}
         country={offers[offer].country}
         date={offers[offer].date}

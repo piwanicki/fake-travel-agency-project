@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import classes from "./Offer.module.scss";
+import classes from "./RecommendedOffer.module.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-class Offer extends Component {
+class RecommendedOffer extends Component {
   state = {
     weather: null,
     weatherIcon: null
@@ -18,12 +18,12 @@ class Offer extends Component {
       .get(
         `http://api.weatherstack.com/current?access_key=22109322a48c375ebd5e83eb3ce12344&query=${this.props.city}`
       )
-      //.then(response =>
-        // this.setState({
-        //   weather: response.data.current.temperature,
-        //   weatherIcon: response.data.current.weather_icons
-        // })
-     // )
+      .then(response =>
+        this.setState({
+          weather: response.data.current.temperature,
+          weatherIcon: response.data.current.weather_icons
+        })
+     )
       .catch(error => console.log(`Undefined city`));
   };
 
@@ -31,7 +31,7 @@ class Offer extends Component {
 
   render() {
     return (
-      <div className={classes.Offer}>
+      <div className={classes.RecommendedOffer}>
         <ul>
           <li>
             <div>
@@ -73,4 +73,4 @@ class Offer extends Component {
   }
 }
 
-export default Offer;
+export default RecommendedOffer;
