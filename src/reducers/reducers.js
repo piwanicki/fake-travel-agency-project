@@ -1,6 +1,7 @@
 const initialState = {
   adults: 2,
   kids: 0,
+  weathers : new Map(),
 };
 
 const reducers = (state = initialState, action) => {
@@ -26,6 +27,15 @@ const reducers = (state = initialState, action) => {
         return { ...state, kids: state.kids - 1 };
       } else {
         return { ...state };
+      }
+    }
+
+    case "UPD_WEATHER" : {
+      const updWeathersState = state.weathers;
+      const updWeather = updWeathersState.set(action.city, action.weatherDetails);
+      return {
+        ...state,
+        weathers: updWeather
       }
     }
 

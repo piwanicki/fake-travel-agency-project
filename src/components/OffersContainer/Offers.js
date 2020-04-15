@@ -80,37 +80,37 @@ const Offers = {
       flights: {
         RyanAir: {
           Katowice: {
-            departure: "15-07-2020",
-            arrival: "01-08-2020",
+            departure: ['15:35',"15-07-2020"],
+            arrival: ['15:35',"01-08-2020"]
           },
           Gdansk: {
-            departure: "16-07-2020",
-            arrival: "02-08-2020",
+            departure: ['12:30',"16-07-2020"],
+            arrival: ['12:30',"02-08-2020"],
           },
           Warszawa: {
-            departure: "17-07-2020",
-            arrival: "03-08-2020",
+            departure: ['17:30',"17-07-2020"],
+            arrival:   ['12:30',"03-08-2020"],
           },
 
           Krakow: {
-            departure: "18-07-2020",
-            arrival: "04-08-2020",
+            departure:['17:30',"18-07-2020"],
+            arrival:  ['12:30',"04-08-2020"],
           },
 
           Wroclaw: {
-            departure: "19-07-2020",
-            arrival: "05-08-2020",
+            departure:['17:30',"19-07-2020"],
+            arrival:  ['12:30',"05-08-2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: "19-07-2020",
-            arrival: "05-08-2020",
+            departure: ['17:30',"19-07-2020",],
+            arrival:   ['12:30',"05-08-2020"],
           },
           Krakow: {
-            departure: "18-07-2020",
-            arrival: "04-08-2020",
+            departure: ['17:30','18-07-2020'],
+            arrival:   ['12:30','04-08-2020'],
           },
         },
       },

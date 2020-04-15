@@ -7,7 +7,10 @@ import MainPage from "../../components/MainPage/MainPage";
 import { Switch, Route, Redirect } from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
 
-class Layout extends Component {
+
+ class Layout extends Component {
+
+
   render() {
     return (
       <div className={classes.Layout}>
@@ -27,4 +30,6 @@ class Layout extends Component {
   }
 }
 
+
 export default Layout;
+

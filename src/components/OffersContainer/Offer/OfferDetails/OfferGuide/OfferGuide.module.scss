@@ -1,3 +1,5 @@
+$border-bottom: 1px solid grey;
+
 .OfferGuide {
   h2 {
     margin: 0;
@@ -8,5 +10,96 @@
   h3 {
     margin: 0 2em;
     color: #000066;
+  }
+
+  p {
+    color: #000066;
+    font-size: 1.3em;
+    padding-left: 2em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  .Termins {
+    border-bottom: $border-bottom;
+    table {
+      text-align: center;
+      padding-left: 2em;
+      font-size: 1.3em;
+      border-spacing: 0.5em;
+
+      th {
+        text-align: left;
+      }
+
+      svg {
+        padding: 0.3em;
+      }
+    }
+  }
+
+  .Flights {
+    border-bottom: $border-bottom;
+    table {
+      margin-bottom: 2em;
+      margin-left: auto;
+      margin-right: auto;
+
+      width: 90%;
+      text-align: center;
+      border: 2px double #e6e6fa;
+      font-size: 1.5em;
+      border-spacing: 0;
+
+      th {
+        border-bottom: 2px double #e6e6fa;
+        padding: 0;
+        margin: 0;
+      }
+
+      tr {
+        &:last-child {
+          border-bottom: none;
+        }
+
+        td {
+          padding: 0;
+          margin: 0;
+          border-left: 2px double #e6e6fa;
+          border-bottom: 2px double #e6e6fa;
+
+          &:first-child {
+            border-left: none;
+          }
+
+          svg {
+            font-size: 0.7em;
+            color: grey;
+          }
+        }
+      }
+    }
+  }
+
+  .WeatherDetails {
+    border-bottom: $border-bottom;
+  }
+
+  .Facilities {
+    .FacilitiesIcons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      svg {
+        font-size: 2em;
+        padding-right: 0.2em;
+      }
+
+      span {
+        margin: 1em;
+        width: auto;
+      }
+    }
   }
 }
