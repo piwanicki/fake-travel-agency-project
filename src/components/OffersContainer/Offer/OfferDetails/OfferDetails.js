@@ -13,6 +13,7 @@ import LocalizationMap from "./LocalizationMap/LocalizationMap";
 import DescriptionText from "./DescriptionText/DescriptionText";
 import OfferReview from "./OfferReview/OfferReview";
 import OfferGuide from "./OfferGuide/OfferGuide";
+import ImageModal from "./ImageModal/ImageModal";
 
 class OfferDetails extends Component {
   state = {
@@ -20,6 +21,7 @@ class OfferDetails extends Component {
     showGuestBox: false,
     images: null,
     activeTab: "guide",
+    showImgModal: false,
   };
 
   reformatDate = (date) => {
@@ -48,16 +50,19 @@ class OfferDetails extends Component {
   };
 
   nextImageHandler = () => {
-    const currentIndex = this.state.photoIndex;
+    let currentIndex = this.state.photoIndex;
+    currentIndex =
+      currentIndex + 1 === this.state.images.length ? 0 : currentIndex + 1;
     this.setState({
-      photoIndex: currentIndex + 1,
+      photoIndex: currentIndex,
     });
   };
 
   previousImageHandler = () => {
-    const currentIndex = this.state.photoIndex;
+    let currentIndex = this.state.photoIndex;
+    currentIndex = currentIndex - 1 < 0 ? 0 : currentIndex - 1;
     this.setState({
-      photoIndex: currentIndex - 1,
+      photoIndex: currentIndex,
     });
   };
 
@@ -69,6 +74,11 @@ class OfferDetails extends Component {
       document.getElementById(key).classList.add(classes.SelectedTab);
       this.setState({activeTab: key});
     }
+  };
+
+  showImgModalHandler = () => {
+    const isShowing = this.state.showImgModal;
+    this.setState({showImgModal: !isShowing});
   };
 
   render() {
@@ -128,6 +138,7 @@ class OfferDetails extends Component {
               className={classes.MainPhoto}
               src={mainPhoto}
               alt={`big landscape`}
+              onClick={this.showImgModalHandler}
             />
             <div className={classes.PhotosSlider}>
               <button
@@ -232,6 +243,15 @@ class OfferDetails extends Component {
           </div>
 
           <div className={classes.DescriptionText}>{descriptionContent}</div>
+          {this.state.showImgModal ? (
+            <ImageModal
+              mainImage={mainPhoto}
+              showModal={this.showImgModalHandler}
+              photos={photos}
+              previousImage={this.previousImageHandler}
+              nextImage={this.nextImageHandler}
+            />
+          ) : null}
         </div>
       </div>
     );

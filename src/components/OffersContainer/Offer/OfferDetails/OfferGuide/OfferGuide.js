@@ -1,26 +1,18 @@
 import React from "react";
 import classes from "./OfferGuide.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-  faWifi,
-  faSwimmingPool,
-  faParking,
-  faGlassCheers,
-  faWheelchair,
-  faBaby,
-  faTableTennis,
-  faPlaneDeparture,
-  faPlaneArrival,
-} from "@fortawesome/free-solid-svg-icons";
-import {faCalendarAlt} from "@fortawesome/free-regular-svg-icons";
+import * as icons from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../../Offers";
 import {connect} from "react-redux";
+console.log(icons);
 
 const OfferGuide = (props) => {
   const OfferObj = Offers[`${props.city}`];
   const term = OfferObj.details["term"];
   const flights = OfferObj.details["flights"];
   const ryanFlights = flights["RyanAir"];
+  const faciIcons = OfferObj.details["facilitiesIcons"];
+  console.log(faciIcons);
 
   const ryanAirCities = Object.keys(flights["RyanAir"]);
   const wizzairAirCities = Object.keys(flights["WizzAir"]);
@@ -29,20 +21,20 @@ const OfferGuide = (props) => {
     return cities.map((city, key) => (
       <tr key={key}>
         <td>
-          <FontAwesomeIcon icon={faPlaneDeparture} />{" "}
+          <FontAwesomeIcon icon={icons.faPlaneDeparture} />{" "}
           {ryanFlights[city].departure[0]}
         </td>
         <td>{city.split("").splice(0, 3).join("").toUpperCase()}</td>
         <td>
-          <FontAwesomeIcon icon={faCalendarAlt} />{" "}
+          <FontAwesomeIcon icon={icons.faCalendarAlt} />{" "}
           {ryanFlights[city].departure[1]}
         </td>
         <td>
-          <FontAwesomeIcon icon={faPlaneArrival} />{" "}
+          <FontAwesomeIcon icon={icons.faPlaneArrival} />{" "}
           {ryanFlights[city].arrival[0]}
         </td>
         <td>
-          <FontAwesomeIcon icon={faCalendarAlt} />{" "}
+          <FontAwesomeIcon icon={icons.faCalendarAlt} />{" "}
           {ryanFlights[city].arrival[1]}
         </td>
       </tr>
@@ -53,14 +45,14 @@ const OfferGuide = (props) => {
     return term.map((term, key) => (
       <tr key={key}>
         <td>
-          <FontAwesomeIcon icon={faCalendarAlt} />
+          <FontAwesomeIcon icon={icons.faCalendarAlt} />
           {term.from}
         </td>
         <td>
           <span>-</span>
         </td>
         <td>
-          <FontAwesomeIcon icon={faCalendarAlt} />
+          <FontAwesomeIcon icon={icons.faCalendarAlt} />
           {term.to}
         </td>
       </tr>
@@ -79,6 +71,12 @@ const OfferGuide = (props) => {
       </tr>
     </>
   );
+
+  const facilitiesIconsJSX = faciIcons.map((el, key) => (
+    <span key={key}>
+      <FontAwesomeIcon icon={icons[el[0]]} /> {el[1]}
+    </span>
+  ));
 
   return (
     <div className={classes.OfferGuide}>
@@ -125,23 +123,38 @@ const OfferGuide = (props) => {
             </tr>
             <tr>
               <td>Time</td>
-              {/* <td>{currentCityWeather.observation_time}</td> */}
+              <td>
+                example time
+                {/* {currentCityWeather.observation_time} */}
+              </td>
             </tr>
             <tr>
               <td>Temperature</td>
-              {/* <td>{currentCityWeather.temperature}</td> */}
+              <td>
+                example time Temperature
+                {/* {currentCityWeather.temperature}*/}
+              </td>
             </tr>
             <tr>
               <td>Pressure</td>
-              {/* <td>{currentCityWeather.pressure}</td> */}
+              <td>
+                example Pressure
+                {/*  {currentCityWeather.pressure}*/}
+              </td>
             </tr>
             <tr>
               <td>Wind </td>
-              {/* <td>currentCityWeather.wind_speed / currentCityWeather.wind_dir </td> */}
+              <td>
+                example Wind
+                {/* currentCityWeather.wind_speed / currentCityWeather.wind_dir */}
+              </td>
             </tr>
             <tr>
               <td>Visiblity</td>
-              {/* <td>{currentCityWeather.visibility}</td> */}
+              <td>
+                example Visiblity
+                {/* {currentCityWeather.visibility} */}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -150,31 +163,33 @@ const OfferGuide = (props) => {
       <div className={classes.Facilities}>
         <p>Facilities </p>
         <div className={classes.FacilitiesIcons}>
-          <span>
-            <FontAwesomeIcon icon={faWifi} /> Free WiFi
+          {facilitiesIconsJSX}
+
+          {/* <span>
+            <FontAwesomeIcon icon={icons.faWifi} /> Free WiFi
           </span>
           <span>
-            <FontAwesomeIcon icon={faSwimmingPool} /> Swimming Pool
+            <FontAwesomeIcon icon={icons.faSwimmingPool} /> Swimming Pool
           </span>
           <span>
-            <FontAwesomeIcon icon={faParking} /> Free Parking
+            <FontAwesomeIcon icon={icons.faParking} /> Free Parking
           </span>
           <span>
-            <FontAwesomeIcon icon={faGlassCheers} />
+            <FontAwesomeIcon icon={icons.faGlassCheers} />
             Open Bar
           </span>
           <span>
-            <FontAwesomeIcon icon={faWheelchair} />
+            <FontAwesomeIcon icon={icons.faWheelchair} />
             Adapted for disabled Persons
           </span>
           <span>
-            <FontAwesomeIcon icon={faBaby} />
+            <FontAwesomeIcon icon={icons.faBaby} />
             Baby Room
           </span>
           <span>
-            <FontAwesomeIcon icon={faTableTennis} />
+            <FontAwesomeIcon icon={icons.faTableTennis} />
             Play Room
-          </span>
+          </span> */}
         </div>
       </div>
     </div>

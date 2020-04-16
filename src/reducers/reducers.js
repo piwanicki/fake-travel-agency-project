@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const initialState = {
   adults: 2,
   kids: 0,
@@ -38,6 +40,15 @@ const reducers = (state = initialState, action) => {
         weathers: updWeather
       }
     }
+
+    case "FETCH_WEATHERS" : {
+      return axios.get(
+        `http://api.weatherstack.com/current?access_key=22109322a48c375ebd5e83eb3ce12344&query=${'Dubrovnik'}`
+      ).then(response => console.log(response))
+      .catch(error => console.log(error));
+
+      }
+    
 
     default:
       return state;

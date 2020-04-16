@@ -1,0 +1,88 @@
+.ImageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: #000000e5;
+
+  .ImageControls {
+    position: relative;
+
+    .Arrow {
+        position: absolute;
+        top: 10vh;
+        z-index: 200;
+    }
+
+    .Left {
+      left: 10vw;
+    }
+
+    .Right {
+      right: 10vw;
+    }
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 5vw;
+      font-size: 3em;
+      color: honeydew;
+      text-align: center;
+      height: 70vh;
+      opacity: 0.7;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.336);
+        transition: opacity 0.5s;
+        opacity: 1;
+      }
+    }
+  }
+
+  .MainImage {
+    width: 80%;
+    height: 70vh;
+    margin-top: 10vh;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 1em;
+  }
+
+  ul {
+    width: 90%;
+    margin: auto;
+    list-style: none;
+
+    li {
+      vertical-align: top;
+      display: inline-block;
+      text-decoration: none;
+      width: 10em;
+      height: 7em;
+      padding: 1em;
+      img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+      }
+    }
+  }
+
+  .ClosingBtn {
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+    font-size: 2.5em;
+    color: honeydew;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.5s;
+      cursor: pointer;
+    }
+  }
+}

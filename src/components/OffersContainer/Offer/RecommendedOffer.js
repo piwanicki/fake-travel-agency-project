@@ -10,7 +10,7 @@ class RecommendedOffer extends Component {
   };
 
   componentDidMount = () => {
-    this.weatherAPIHandler();
+    //this.weatherAPIHandler();
   };
 
   weatherAPIHandler = () => {
