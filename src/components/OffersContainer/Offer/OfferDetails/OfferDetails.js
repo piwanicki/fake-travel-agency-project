@@ -18,10 +18,11 @@ import ImageModal from "./ImageModal/ImageModal";
 class OfferDetails extends Component {
   state = {
     photoIndex: 0,
-    showGuestBox: false,
-    images: null,
+    images: [],
     activeTab: "guide",
     showImgModal: false,
+    modalPhotoIndex: 0,
+    listSite: 0,
   };
 
   reformatDate = (date) => {
@@ -29,13 +30,19 @@ class OfferDetails extends Component {
   };
 
   changeImageHandler = (index) => {
-    this.state.images[this.state.photoIndex].classList.remove(
-      classes.SelectedImg
-    );
-    this.state.images[index].classList.add(classes.SelectedImg);
-    this.setState({
-      photoIndex: index,
-    });
+    if (this.state.showImgModal) {
+      this.setState({
+        modalPhotoIndex: index,
+      });
+    } else {
+      this.state.images[this.state.photoIndex].classList.remove(
+        classes.SelectedImg
+      );
+      this.state.images[index].classList.add(classes.SelectedImg);
+      this.setState({
+        photoIndex: index,
+      });
+    }
   };
 
   componentDidMount = () => {
@@ -51,19 +58,47 @@ class OfferDetails extends Component {
 
   nextImageHandler = () => {
     let currentIndex = this.state.photoIndex;
+    let currentPhotoModalIndex = this.state.modalPhotoIndex;
     currentIndex =
       currentIndex + 1 === this.state.images.length ? 0 : currentIndex + 1;
-    this.setState({
-      photoIndex: currentIndex,
-    });
+    currentPhotoModalIndex =
+      currentPhotoModalIndex + 1 === this.state.images.length
+        ? 0
+        : currentPhotoModalIndex + 1;
+    if (this.state.showImgModal) {
+      this.setState({
+        modalPhotoIndex: currentPhotoModalIndex,
+      });
+    } else {
+      this.state.images[this.state.photoIndex].classList.remove(
+        classes.SelectedImg
+      );
+      this.state.images[currentIndex].classList.add(classes.SelectedImg);
+      this.setState({
+        photoIndex: currentIndex,
+      });
+    }
   };
 
   previousImageHandler = () => {
     let currentIndex = this.state.photoIndex;
+    let currentPhotoModalIndex = this.state.modalPhotoIndex;
     currentIndex = currentIndex - 1 < 0 ? 0 : currentIndex - 1;
-    this.setState({
-      photoIndex: currentIndex,
-    });
+    currentPhotoModalIndex =
+      currentPhotoModalIndex - 1 < 0 ? 0 : currentPhotoModalIndex - 1;
+    if (this.state.showImgModal) {
+      this.setState({
+        modalPhotoIndex: currentPhotoModalIndex,
+      });
+    } else {
+      this.state.images[this.state.photoIndex].classList.remove(
+        classes.SelectedImg
+      );
+      this.state.images[currentIndex].classList.add(classes.SelectedImg);
+      this.setState({
+        photoIndex: currentIndex,
+      });
+    }
   };
 
   selectTabHandler = (key) => {
@@ -78,7 +113,31 @@ class OfferDetails extends Component {
 
   showImgModalHandler = () => {
     const isShowing = this.state.showImgModal;
-    this.setState({showImgModal: !isShowing});
+    const currentMainPhotoIx = this.state.photoIndex;
+    this.setState({
+      showImgModal: !isShowing,
+      modalPhotoIndex: currentMainPhotoIx,
+    });
+  };
+
+  nextImageListItem = () => {
+    let listSite = this.state.listSite;
+    console.log(listSite)
+    if (listSite + 5 < Offers[this.props.match.params.city].photos.length) {
+      this.setState({
+        listSite: listSite + 1,
+      });
+    }
+  };
+
+  previousImageListItem = () => {
+    let listSite = this.state.listSite;
+    console.log(listSite)
+    if (listSite - 1 >= 0) {
+      this.setState({
+        listSite: listSite - 1,
+      });
+    }
   };
 
   render() {
@@ -87,16 +146,20 @@ class OfferDetails extends Component {
     const fromDt = this.reformatDate(offerDetails.from);
     const toDt = this.reformatDate(offerDetails.to);
     const mainPhoto = offerDetails.photos[this.state.photoIndex];
+    const modalMainPhoto = offerDetails.photos[this.state.modalPhotoIndex];
+    const offerPhotos = offerDetails.photos;
 
-    const photos = offerDetails.photos.map((photo, index) => (
-      <li key={index}>
-        <img
-          src={`${photo}`}
-          alt={`${photo}`}
-          onClick={() => this.changeImageHandler(index)}
-        />
-      </li>
-    ));
+    const photos = offerDetails.photos
+      .map((photo, index) => (
+        <li key={index}>
+          <img
+            src={photo}
+            alt={photo}
+            onClick={() => this.changeImageHandler(index)}
+          />
+        </li>
+      ))
+      .splice(this.state.listSite, 5);
 
     let descriptionContent;
 
@@ -142,15 +205,15 @@ class OfferDetails extends Component {
             />
             <div className={classes.PhotosSlider}>
               <button
-                onClick={this.previousImageHandler}
-                disabled={this.state.photoIndex === 0}
+                onClick={this.previousImageListItem}
+                disabled={this.state.listSite === 0}
               >
                 <FontAwesomeIcon icon={faChevronCircleLeft} />
               </button>
               <ul className="PhotosList">{photos}</ul>
               <button
-                onClick={this.nextImageHandler}
-                disabled={this.state.photoIndex === photos.length - 1}
+                onClick={this.nextImageListItem}
+                disabled={this.state.listSite === offerPhotos.length - 5}
               >
                 <FontAwesomeIcon icon={faChevronCircleRight} />
               </button>
@@ -245,11 +308,15 @@ class OfferDetails extends Component {
           <div className={classes.DescriptionText}>{descriptionContent}</div>
           {this.state.showImgModal ? (
             <ImageModal
-              mainImage={mainPhoto}
+              mainImage={modalMainPhoto}
               showModal={this.showImgModalHandler}
               photos={photos}
               previousImage={this.previousImageHandler}
               nextImage={this.nextImageHandler}
+              previousImagesList={this.previousImageListItem}
+              nextImagesList={this.nextImageListItem}
+              offerPhotos={offerPhotos}
+              listSite={this.state.listSite}
             />
           ) : null}
         </div>

@@ -12,7 +12,6 @@ const OfferGuide = (props) => {
   const flights = OfferObj.details["flights"];
   const ryanFlights = flights["RyanAir"];
   const faciIcons = OfferObj.details["facilitiesIcons"];
-  console.log(faciIcons);
 
   const ryanAirCities = Object.keys(flights["RyanAir"]);
   const wizzairAirCities = Object.keys(flights["WizzAir"]);
@@ -41,19 +40,32 @@ const OfferGuide = (props) => {
     ));
   };
 
+  const changeTermHandler = (e) => {
+    console.log(e);
+  };
+
   const prepareTermTable = (term) => {
     return term.map((term, key) => (
-      <tr key={key}>
+      <tr
+        key={key}
+        onClick={(e) => changeTermHandler(e)}
+        className={classes.TermTableRow}
+      >
         <td>
-          <FontAwesomeIcon icon={icons.faCalendarAlt} />
+        <FontAwesomeIcon icon={icons.faCalendarAlt} />
+        </td>
+        
+        <td>
+          <span>From : </span>
           {term.from}
         </td>
+
         <td>
-          <span>-</span>
+          <span>To : </span>
+          {term.to}
         </td>
         <td>
-          <FontAwesomeIcon icon={icons.faCalendarAlt} />
-          {term.to}
+          <button>Check</button>
         </td>
       </tr>
     ));
@@ -162,35 +174,7 @@ const OfferGuide = (props) => {
 
       <div className={classes.Facilities}>
         <p>Facilities </p>
-        <div className={classes.FacilitiesIcons}>
-          {facilitiesIconsJSX}
-
-          {/* <span>
-            <FontAwesomeIcon icon={icons.faWifi} /> Free WiFi
-          </span>
-          <span>
-            <FontAwesomeIcon icon={icons.faSwimmingPool} /> Swimming Pool
-          </span>
-          <span>
-            <FontAwesomeIcon icon={icons.faParking} /> Free Parking
-          </span>
-          <span>
-            <FontAwesomeIcon icon={icons.faGlassCheers} />
-            Open Bar
-          </span>
-          <span>
-            <FontAwesomeIcon icon={icons.faWheelchair} />
-            Adapted for disabled Persons
-          </span>
-          <span>
-            <FontAwesomeIcon icon={icons.faBaby} />
-            Baby Room
-          </span>
-          <span>
-            <FontAwesomeIcon icon={icons.faTableTennis} />
-            Play Room
-          </span> */}
-        </div>
+        <div className={classes.FacilitiesIcons}>{facilitiesIconsJSX}</div>
       </div>
     </div>
   );
