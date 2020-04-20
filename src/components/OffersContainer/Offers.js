@@ -121,7 +121,7 @@ const Offers = {
         },
       },
     },
-    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5,dubrovnik6,dubrovnik7],
+    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5,dubrovnik6,dubrovnik7,dubrovnik1],
   },
 
   Rome: {

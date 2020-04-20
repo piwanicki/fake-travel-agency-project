@@ -23,6 +23,7 @@ class OfferDetails extends Component {
     showImgModal: false,
     modalPhotoIndex: 0,
     listSite: 1,
+    photosList: null,
   };
 
   reformatDate = (date) => {
@@ -59,11 +60,17 @@ class OfferDetails extends Component {
     const imagesList = ReactDOM.findDOMNode(this).getElementsByClassName(
       "PhotosList"
     )[0].children;
+    const photosListDiv = ReactDOM.findDOMNode(this).getElementsByClassName(
+      classes.PhotosListDiv
+    )[0];
     imagesList[this.state.photoIndex].classList.add(classes.SelectedImg);
     document
       .getElementById(this.state.activeTab)
       .classList.add(classes.SelectedTab);
-    this.setState({images: imagesList});
+    this.setState({
+      images: imagesList,
+      photosListDiv: photosListDiv,
+    });
   };
 
   nextImageHandler = () => {
@@ -132,43 +139,23 @@ class OfferDetails extends Component {
 
   nextImageListItem = () => {
     let listSite = this.state.listSite;
-    // console.log(listSite);
-    // if (listSite + 5 < Offers[this.props.match.params.city].photos.length) {
-    //
-    // }
+    const currentPosition = listSite * 180;
+    console.log(currentPosition);
 
-    const photosList = ReactDOM.findDOMNode(this).getElementsByClassName(
-      "PhotosList"
-    )[0];
-    photosList.style.transform = `translateX(-${listSite * 10}em)`;
-    photosList.style.transition = "transform 0.5s";
-    console.log(photosList);
+    const PhotosListDiv = document.querySelector(".PhotosList");
+    PhotosListDiv.style.transform = `translateX(-${listSite * 180}px)`;
+    PhotosListDiv.style.transition = "transform 0.5s";
     this.setState({
       listSite: listSite + 1,
     });
-    // photosList.classList.add(classes.slideRight);
-
-    // photosList[this.state.photoIndex].classList.add(classes.slideRight);
-    // document
-    //   .getElementById(this.state.activeTab)
-    //   .classList.add(classes.photosList);
   };
 
   previousImageListItem = () => {
     let listSite = this.state.listSite;
-    // console.log(listSite);
-    // if (listSite - 1 >= 0) {
-    //   this.setState({
-    //     listSite: listSite - 1,
-    //   });
-    // }
-
-    const photosList = ReactDOM.findDOMNode(this).getElementsByClassName(
-      "PhotosList"
-    )[0];
-    photosList.style.transform = `translateX(${listSite * 10}em)`;
-    photosList.style.transition = "transform 0.5s";
-    console.log(photosList);
+    const currentPosition = listSite * 180 - 180;
+    const PhotosListDiv = document.querySelector(".PhotosList");
+    PhotosListDiv.style.transform = `translateX(-${currentPosition - 180}px)`;
+    PhotosListDiv.style.transition = "transform 0.5s";
     this.setState({
       listSite: listSite - 1,
     });
@@ -192,7 +179,6 @@ class OfferDetails extends Component {
         />
       </li>
     ));
-    // .splice(this.state.listSite, 5);
 
     let descriptionContent;
 
@@ -243,13 +229,13 @@ class OfferDetails extends Component {
               >
                 <FontAwesomeIcon icon={faChevronCircleLeft} />
               </button>
-              <div className={classes.PhotosListDiv}>
+              <div className={classes.PhotosListDiv} id="PhotosListDivID">
                 <ul className="PhotosList">{photos}</ul>
               </div>
 
               <button
                 onClick={this.nextImageListItem}
-                disabled={this.state.listSite + 4 === offerPhotos.length}
+                disabled={this.state.listSite + 5 === offerPhotos.length}
               >
                 <FontAwesomeIcon icon={faChevronCircleRight} />
               </button>

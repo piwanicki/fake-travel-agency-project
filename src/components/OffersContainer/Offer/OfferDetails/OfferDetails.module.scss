@@ -35,6 +35,9 @@
       .PhotosSlider {
         height: 17%;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         button {
           padding: 0;
@@ -49,7 +52,7 @@
         }
 
         .PhotosListDiv {
-          width: 95%;
+          width: 1080px;
           height: 100%;
           display: inline-block;
           vertical-align: top;
@@ -70,7 +73,7 @@
 
         li {
           display: inline-block;
-          width: 10em;
+          width: 180px;
           height: 100%;
           opacity: 0.6;
 
