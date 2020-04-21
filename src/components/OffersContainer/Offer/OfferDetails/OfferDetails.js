@@ -14,6 +14,8 @@ import DescriptionText from "./DescriptionText/DescriptionText";
 import OfferReview from "./OfferReview/OfferReview";
 import OfferGuide from "./OfferGuide/OfferGuide";
 import ImageModal from "./ImageModal/ImageModal";
+import CheckingTermModal from "./CheckingTermModal/CheckingTermModal";
+import {animateScroll as scroll} from "react-scroll";
 
 class OfferDetails extends Component {
   state = {
@@ -24,6 +26,8 @@ class OfferDetails extends Component {
     modalPhotoIndex: 0,
     listSite: 1,
     photosList: null,
+    checkingTerm: false,
+    termStatus: false,
   };
 
   reformatDate = (date) => {
@@ -139,9 +143,6 @@ class OfferDetails extends Component {
 
   nextImageListItem = () => {
     let listSite = this.state.listSite;
-    const currentPosition = listSite * 180;
-    console.log(currentPosition);
-
     const PhotosListDiv = document.querySelector(".PhotosList");
     PhotosListDiv.style.transform = `translateX(-${listSite * 180}px)`;
     PhotosListDiv.style.transition = "transform 0.5s";
@@ -159,6 +160,30 @@ class OfferDetails extends Component {
     this.setState({
       listSite: listSite - 1,
     });
+  };
+
+  checkTerminHandler = (key) => {
+    this.setState({checkingTerm: true});
+    const offer = Offers[this.props.match.params.city];
+    const from = offer.details["term"][key].from;
+    const to = offer.details["term"][key].to;
+
+    setTimeout(() => {
+      this.setState({termStatus: true});
+    }, 1000);
+    setTimeout(() => {
+      this.setState({checkingTerm: false});
+      scroll.scrollToTop();
+      this.toDateRef.classList.add(classes.SlideBckCenter);
+      this.fromDateRef.classList.add(classes.SlideBckCenter);
+      this.toDateRef.value = this.reformatDate(to);
+      this.fromDateRef.value = this.reformatDate(from);
+    }, 2000);
+    setTimeout(() => {
+      this.setState({termStatus: false});
+      this.toDateRef.classList.remove(classes.SlideBckCenter);
+      this.fromDateRef.classList.remove(classes.SlideBckCenter);
+    }, 7000);
   };
 
   render() {
@@ -197,7 +222,11 @@ class OfferDetails extends Component {
 
       case "guide": {
         descriptionContent = (
-          <OfferGuide city={cityOffer} country={offerDetails.country} />
+          <OfferGuide
+            city={cityOffer}
+            country={offerDetails.country}
+            checkTerminHandler={this.checkTerminHandler}
+          />
         );
         break;
       }
@@ -225,11 +254,11 @@ class OfferDetails extends Component {
             <div className={classes.PhotosSlider}>
               <button
                 onClick={this.previousImageListItem}
-                disabled={this.state.listSite === 0}
+                disabled={this.state.listSite === 1}
               >
                 <FontAwesomeIcon icon={faChevronCircleLeft} />
               </button>
-              <div className={classes.PhotosListDiv} id="PhotosListDivID">
+              <div className={classes.PhotosListDiv}>
                 <ul className="PhotosList">{photos}</ul>
               </div>
 
@@ -242,12 +271,24 @@ class OfferDetails extends Component {
             </div>
           </div>
           <div className={classes.DetailsContainer}>
-            <div>
+            <div className={classes.Dates} style={{textAlign: "end"}}>
               <p>Date :</p>
-              From :
-              <input type="date" defaultValue={fromDt} />
-              To :
-              <input type="date" defaultValue={toDt} />
+              <span>
+                From :
+                <input
+                  type="date"
+                  defaultValue={fromDt}
+                  ref={(el) => (this.fromDateRef = el)}
+                />
+              </span>
+              <span>
+                To :
+                <input
+                  type="date"
+                  defaultValue={toDt}
+                  ref={(el) => (this.toDateRef = el)}
+                />
+              </span>
             </div>
 
             <GuestBox />
@@ -295,7 +336,7 @@ class OfferDetails extends Component {
               </div>
 
               <div className={classes.SummaryPrice}>
-                Summary :
+                <span style={{fontSize: "0.9em"}}> Summary :</span>
                 <p>
                   {this.props.adults * offerDetails.price +
                     this.props.kids * offerDetails.kidPrice}
@@ -340,6 +381,10 @@ class OfferDetails extends Component {
               offerPhotos={offerPhotos}
               listSite={this.state.listSite}
             />
+          ) : null}
+
+          {this.state.checkingTerm ? (
+            <CheckingTermModal status={this.state.termStatus} />
           ) : null}
         </div>
       </div>

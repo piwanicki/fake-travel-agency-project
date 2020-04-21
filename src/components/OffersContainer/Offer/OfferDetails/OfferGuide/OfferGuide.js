@@ -40,21 +40,13 @@ const OfferGuide = (props) => {
     ));
   };
 
-  const changeTermHandler = (e) => {
-    console.log(e);
-  };
-
   const prepareTermTable = (term) => {
     return term.map((term, key) => (
-      <tr
-        key={key}
-        onClick={(e) => changeTermHandler(e)}
-        className={classes.TermTableRow}
-      >
+      <tr key={key} className={classes.TermTableRow}>
         <td>
-        <FontAwesomeIcon icon={icons.faCalendarAlt} />
+          <FontAwesomeIcon icon={icons.faCalendarAlt} />
         </td>
-        
+
         <td>
           <span>From : </span>
           {term.from}
@@ -65,7 +57,12 @@ const OfferGuide = (props) => {
           {term.to}
         </td>
         <td>
-          <button>Check</button>
+          <button
+            id={key}
+            onClick={(e) => props.checkTerminHandler(e.target.id)}
+          >
+            Check
+          </button>
         </td>
       </tr>
     ));

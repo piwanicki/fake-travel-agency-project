@@ -1,0 +1,18 @@
+.CheckingTermModal {
+  width: 300px;
+  height: 300px;
+  background-color:  #e0e2da;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 2em;
+  color: #3b3a30;
+}
+
+
+
