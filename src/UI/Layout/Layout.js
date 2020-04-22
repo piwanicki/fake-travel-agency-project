@@ -6,6 +6,7 @@ import Footer from "../../components/Navigation/Footer/Footer";
 import MainPage from "../../components/MainPage/MainPage";
 import { Switch, Route, Redirect } from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
+import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
 
 
  class Layout extends Component {
@@ -19,6 +20,8 @@ import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/Of
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route path="/offerDetails/:city" component={OfferDetails} />
+          <Route path="/offerServices/cars" component={Cars} />
+
           <Redirect from="/" to="/" />
         </Switch>
 

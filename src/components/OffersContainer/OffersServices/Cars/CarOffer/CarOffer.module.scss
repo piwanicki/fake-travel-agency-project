@@ -1,0 +1,22 @@
+.CarOffer {
+  width: 98%;
+  margin: auto 1%;
+  height: 200px;
+  border: 2px solid grey;
+  display: flex;
+  
+
+  img {
+    
+    width: 250px;
+    height: 100%;
+  }
+
+  h3 {
+    width: 30%;
+  }
+
+  p {
+    width: 30%;
+  }
+}

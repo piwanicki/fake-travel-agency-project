@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./NavigationBar.module.scss";
+import {Link } from 'react-router-dom'
 
 const NavigationBar = props => {
   return (
@@ -20,7 +21,8 @@ const NavigationBar = props => {
         </li>
         <li>
 
-          <a href="/#"> Cars</a>
+          <Link to={'/offerServices/cars'}>Cars </Link>
+          {/* <a href="/offerServices/cars"> </a> */}
         </li>
         <li>
 
