@@ -5,6 +5,7 @@ import CarsFilter from "./CarOffer/CarsFilter/CarsFilter";
 import CarsOffers from "./CarsOffers";
 
 const Cars = (props) => {
+
   const vehicleBrands = Object.keys(CarsOffers);
   const brandsModels = new Map();
 
@@ -14,12 +15,13 @@ const Cars = (props) => {
     console.log(brandsModels);
   });
   brandsModels.forEach((brandsModels, brand) => {
-    const models = Object.keys(brandsModels);
+    const models = Object.keys(brandsModels.models);
+    const brandLogo = brandsModels.logo;
     allModels.push(
-      models.map((model) => (
-        <CarOffer brand={brand} model={brandsModels[model]} />
+      models.map((model,index) => (
+        <CarOffer brand={brand} model={brandsModels.models[model]} modelName={model} logo={brandLogo}/>
       ))
-    );
+    )
   });
 
   return (

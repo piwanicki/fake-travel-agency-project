@@ -1,22 +1,114 @@
 .CarOffer {
   width: 98%;
-  margin: auto 1%;
+  margin: 1em 1%;
   height: 200px;
-  border: 2px solid grey;
+  border: 1px solid grey;
   display: flex;
-  
 
-  img {
-    
-    width: 250px;
-    height: 100%;
+  div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
   }
 
-  h3 {
+  table {
+    margin: auto;
     width: 30%;
+    font-size: 1.2em;
+    border-spacing: 1.5em 0.2em;
+    tr {
+      td {
+        margin: 0 1em;
+        text-align: start;
+        // border-bottom: 1px solid grey;
+      }
+    }
+    th {
+      margin-bottom: 0.5em;
+      h3 {
+        margin: 0;
+
+        svg {
+          font-size: 0.8em;
+        }
+      }
+    }
   }
 
-  p {
-    width: 30%;
+  .FuelConsumptionTable {
+    font-size: 1.35em;
+  }
+
+  .Pricing {
+    margin-top: 7em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+
+    button {
+      height: 4rem;
+      width: 8rem;
+      margin-top: 0.3rem;
+      margin-left: 5.5rem;
+      box-shadow: inset 0px 0px 15px 3px #feb72b;
+      background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
+      background-color: #eeb72b;
+      border-radius: 17px;
+      border: 1px solid #eeb72b;
+      display: inline-block;
+      cursor: pointer;
+      color: #ffffff;
+      font-size: 2em;
+      padding: 6px 13px;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #feb72b;
+
+      &:hover {
+        background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
+        background-color: #eeb72b;
+      }
+
+      &:active {
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+
+  .VehicleBrand {
+    margin-right: 2em;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    .BrandLogo {
+      width: 70px;
+      height: 50px;
+    }
+  }
+
+  .ImageZoom {
+    width: 240px;
+    height: 190px;
+    margin: 5px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      width: 100%;
+      &:hover {
+        cursor: pointer;
+        transition: transform 1s;
+        transform: scale(1.2);
+        overflow: hidden;
+      }
+    }
   }
 }
