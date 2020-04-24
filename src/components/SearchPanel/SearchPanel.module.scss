@@ -4,6 +4,7 @@
   width: 100%;
   height: 350px;
   text-align: center;
+  margin-top: 2em;
   //display: inline-block;
 
   .SearchHeader {
@@ -47,7 +48,7 @@
 
     &:hover {
       background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
-      background-color: #eeb72b; 
+      background-color: #eeb72b;
     }
 
     &:active {

@@ -1,11 +1,11 @@
 .Underline {
-  margin: 5em auto;
+  margin: 2em auto;
 }
 
 .Underline > div {
   padding: 2px;
   border-bottom-style: double;
-  border-color: #feb72b;
+  border-color: #005082;
   margin: 3px auto;
 }
 

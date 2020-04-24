@@ -48,7 +48,7 @@ const CarOffer = (props) => {
 
       <table className={classes.FuelConsumptionTable}>
         <tbody>
-          <th>
+          <th colSpan='2'>
             <h3>
               <FontAwesomeIcon icon={faGasPump} /> Fuel consumption
             </h3>
