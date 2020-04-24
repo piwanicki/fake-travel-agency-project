@@ -35,11 +35,6 @@ class OfferDetails extends Component {
   };
 
   changeImageHandler = (index) => {
-    if (this.state.showImgModal) {
-      this.setState({
-        modalPhotoIndex: index,
-      });
-    } else {
       this.state.images[this.state.photoIndex].classList.remove(
         classes.SelectedImg
       );
@@ -47,7 +42,6 @@ class OfferDetails extends Component {
       this.setState({
         photoIndex: index,
       });
-    }
   };
 
   componentDidUpdate = () => {
@@ -75,51 +69,6 @@ class OfferDetails extends Component {
       images: imagesList,
       photosListDiv: photosListDiv,
     });
-  };
-
-  nextImageHandler = () => {
-    let currentIndex = this.state.photoIndex;
-    let currentPhotoModalIndex = this.state.modalPhotoIndex;
-    currentIndex =
-      currentIndex + 1 === this.state.images.length ? 0 : currentIndex + 1;
-    currentPhotoModalIndex =
-      currentPhotoModalIndex + 1 === this.state.images.length
-        ? 0
-        : currentPhotoModalIndex + 1;
-    if (this.state.showImgModal) {
-      this.setState({
-        modalPhotoIndex: currentPhotoModalIndex,
-      });
-    } else {
-      this.state.images[this.state.photoIndex].classList.remove(
-        classes.SelectedImg
-      );
-      this.state.images[currentIndex].classList.add(classes.SelectedImg);
-      this.setState({
-        photoIndex: currentIndex,
-      });
-    }
-  };
-
-  previousImageHandler = () => {
-    let currentIndex = this.state.photoIndex;
-    let currentPhotoModalIndex = this.state.modalPhotoIndex;
-    currentIndex = currentIndex - 1 < 0 ? 0 : currentIndex - 1;
-    currentPhotoModalIndex =
-      currentPhotoModalIndex - 1 < 0 ? 0 : currentPhotoModalIndex - 1;
-    if (this.state.showImgModal) {
-      this.setState({
-        modalPhotoIndex: currentPhotoModalIndex,
-      });
-    } else {
-      this.state.images[this.state.photoIndex].classList.remove(
-        classes.SelectedImg
-      );
-      this.state.images[currentIndex].classList.add(classes.SelectedImg);
-      this.setState({
-        photoIndex: currentIndex,
-      });
-    }
   };
 
   selectTabHandler = (key) => {
@@ -371,15 +320,11 @@ class OfferDetails extends Component {
           <div className={classes.DescriptionText}>{descriptionContent}</div>
           {this.state.showImgModal ? (
             <ImageModal
-              mainImage={modalMainPhoto}
-              showModal={this.showImgModalHandler}
-              photos={photos}
-              previousImage={this.previousImageHandler}
-              nextImage={this.nextImageHandler}
-              previousImagesList={this.previousImageListItem}
-              nextImagesList={this.nextImageListItem}
-              offerPhotos={offerPhotos}
+              mainPhoto={modalMainPhoto}
+              photos={offerPhotos}
+              photoIndex={this.state.photoIndex}
               listSite={this.state.listSite}
+              showModal={this.showImgModalHandler}
             />
           ) : null}
 

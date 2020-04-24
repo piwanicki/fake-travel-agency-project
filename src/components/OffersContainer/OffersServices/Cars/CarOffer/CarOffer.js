@@ -26,6 +26,16 @@ class CarOffer extends Component {
     const mainPhoto = this.props.model["photos"][0];
     const brandLogo = this.props.logo;
 
+    // const photos = this.props.model["photos"].map((photo, index) => (
+    //   <li key={index}>
+    //     <img
+    //       src={photo}
+    //       alt={photo}
+    //       onClick={this.changeImageHandler}
+    //     />
+    //   </li>
+    // ));
+
     return (
       <div className={classes.CarOffer}>
         <div className={classes.ImageZoom}>
@@ -98,11 +108,9 @@ class CarOffer extends Component {
 
         {this.state.galleryIsOpen ? (
           <ImageModal
-            mainImage={mainPhoto}
+            mainPhoto={mainPhoto}
             showModal={this.openGalleryHandler}
             photos={this.props.model["photos"]}
-            previousImage={this.previousImageHandler}
-            nextImage={this.nextImageHandler}
           />
         ) : null}
       </div>
