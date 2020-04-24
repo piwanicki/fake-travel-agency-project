@@ -52,7 +52,7 @@ class ImageModal extends Component {
             <li onClick={this.props.nextImagesList}>
               <button
                 disabled={
-                  this.props.listSite === this.props.offerPhotos.length - 5
+                  this.props.listSite === this.props.photos.length - 5
                 }
               >
                 <FontAwesomeIcon icon={faChevronRight} />
