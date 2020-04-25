@@ -2,7 +2,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
   height: 100vh;
   z-index: 100;
   background-color: #000000e5;
@@ -85,11 +84,12 @@
         height: 100%;
         background: none;
         cursor: inherit;
-        
+
         &:disabled {
           svg {
             color: grey;
           }
+
           &:hover {
             transition: none;
             transform: none;
@@ -106,7 +106,7 @@
           transform: scale(1.2);
         }
 
-        
+
       }
     }
   }

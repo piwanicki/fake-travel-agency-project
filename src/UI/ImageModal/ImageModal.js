@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import classes from "./ImageModal.module.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
   faChevronLeft,
@@ -70,8 +70,8 @@ class ImageModal extends Component {
     ));
 
     return (
-      <div className={classes.ImageModal}>
-        <div className={classes.ImageControls}>
+      <div className={classes.ImageModal} style={{ width: "100vw" }}>
+        <div className={classes.ImageControls} style={{ width: "100vw" }}>
           <span className={leftArrowClass} onClick={this.previousImageHandler}>
             <FontAwesomeIcon icon={faChevronLeft} />
           </span>
@@ -90,7 +90,7 @@ class ImageModal extends Component {
           </span>
         </div>
 
-        <div className={classes.ImagesList}>
+        <div className={classes.ImagesList} style={{ width: "100vw" }}>
           <ul>
             <li onClick={this.props.previousImagesList}>
               <button disabled={this.props.listSite === 0}>

@@ -39,7 +39,7 @@ const CarsOffers = {
           "Max power : 350 HP",
           "Traction : AWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
+        fuelConsumption : ["Mixed cycle : 11,5 l/100km",'Road : 10.2 l/100km','Urban : 15.4 l/100km']
 
         /* 
           Engine Layout: V6
@@ -61,7 +61,7 @@ const CarsOffers = {
           "Max power : 350 HP",
           "Traction : RWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
+        fuelConsumption : ["Mixed cycle : 11,2 l/100km",'Road : 9.8 l/100km','Urban : 15,0 l/100km']
 
       },
     },
@@ -124,11 +124,11 @@ const CarsOffers = {
         price: "100$ / 24h",
         photos: [audiA3Photo1],
         details: [
-          "Engine Layout : V6",
-          "Displacement : 2979 cc",
-          "Acceleration : 6.0 sec",
-          "Max speed : 251 km/h",
-          "Max power : 350 HP",
+          "Engine Layout : R4",
+          "Displacement : 1395  cc",
+          "Acceleration : 8.1 sec",
+          "Max speed : 220 km/h",
+          "Max power : 150 HP",
           "Traction : AWD",
   
         ],

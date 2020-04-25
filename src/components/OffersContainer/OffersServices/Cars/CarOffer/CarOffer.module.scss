@@ -4,51 +4,62 @@
   height: 200px;
   border: 1px solid #000839;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 10px;
 
- div {
-    // margin-top: 5px;
-    // margin-bottom: 5px;
+  div {
     text-align: center;
- }
+    width: 30%;
+  }
+
+  .ImageModal {
+    div {
+      width: initial;
+    }
+
+  }
 
   table {
     margin: auto;
-    width: 30%;
+    width: 75%;
     font-size: 1.2em;
     border-spacing: 1.5em 0.2em;
+
     tr {
       td {
         margin: 0 1em;
         text-align: start;
-        // border-bottom: 1px solid grey;
       }
     }
+
     th {
       margin-bottom: 0.5em;
-      h3 {
-        margin: 0;
+      text-align: center;
 
-        svg {
-          font-size: 0.8em;
-        }
+      svg {
+        font-size: 0.8em;
       }
     }
   }
 
   .FuelConsumptionTable {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 
   .Pricing {
-    margin-top: 7em;
+    margin-right: 0.5em;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
+    vertical-align: bottom;
     width: 20%;
+    height: 100%;
 
     button {
-      height: 4rem;
-      width: 8rem;
+      height: 5rem;
+      width: 50%;
       margin-top: 0.3rem;
       margin-left: 5.5rem;
       box-shadow: inset 0px 0px 15px 3px #feb72b;
@@ -87,6 +98,11 @@
     border-left: 1px solid #000839;
     margin-top: 0;
     margin-bottom: 0;
+    height: 100%;
+
+    div {
+      width: initial;
+    }
 
     .BrandLogo {
       width: 70px;
@@ -103,6 +119,7 @@
     img {
       height: 100%;
       width: 100%;
+
       &:hover {
         cursor: pointer;
         transition: transform 1s;

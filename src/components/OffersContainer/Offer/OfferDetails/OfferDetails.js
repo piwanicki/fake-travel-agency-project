@@ -1,21 +1,21 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import classes from "./OfferDetails.module.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../Offers";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import LocalizationMap from "./LocalizationMap/LocalizationMap";
 import DescriptionText from "./DescriptionText/DescriptionText";
 import OfferReview from "./OfferReview/OfferReview";
 import OfferGuide from "./OfferGuide/OfferGuide";
-import ImageModal from "./ImageModal/ImageModal";
+import ImageModal from "../../../../UI/ImageModal/ImageModal";
 import CheckingTermModal from "./CheckingTermModal/CheckingTermModal";
-import {animateScroll as scroll} from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 
 class OfferDetails extends Component {
   state = {
@@ -35,13 +35,13 @@ class OfferDetails extends Component {
   };
 
   changeImageHandler = (index) => {
-      this.state.images[this.state.photoIndex].classList.remove(
-        classes.SelectedImg
-      );
-      this.state.images[index].classList.add(classes.SelectedImg);
-      this.setState({
-        photoIndex: index,
-      });
+    this.state.images[this.state.photoIndex].classList.remove(
+      classes.SelectedImg
+    );
+    this.state.images[index].classList.add(classes.SelectedImg);
+    this.setState({
+      photoIndex: index,
+    });
   };
 
   componentDidUpdate = () => {
@@ -77,7 +77,7 @@ class OfferDetails extends Component {
         .getElementById(this.state.activeTab)
         .classList.remove(classes.SelectedTab);
       document.getElementById(key).classList.add(classes.SelectedTab);
-      this.setState({activeTab: key});
+      this.setState({ activeTab: key });
     }
   };
 
@@ -112,16 +112,16 @@ class OfferDetails extends Component {
   };
 
   checkTerminHandler = (key) => {
-    this.setState({checkingTerm: true});
+    this.setState({ checkingTerm: true });
     const offer = Offers[this.props.match.params.city];
     const from = offer.details["term"][key].from;
     const to = offer.details["term"][key].to;
 
     setTimeout(() => {
-      this.setState({termStatus: true});
+      this.setState({ termStatus: true });
     }, 1000);
     setTimeout(() => {
-      this.setState({checkingTerm: false});
+      this.setState({ checkingTerm: false });
       scroll.scrollToTop();
       this.toDateRef.classList.add(classes.SlideBckCenter);
       this.fromDateRef.classList.add(classes.SlideBckCenter);
@@ -129,7 +129,7 @@ class OfferDetails extends Component {
       this.fromDateRef.value = this.reformatDate(from);
     }, 2000);
     setTimeout(() => {
-      this.setState({termStatus: false});
+      this.setState({ termStatus: false });
       this.toDateRef.classList.remove(classes.SlideBckCenter);
       this.fromDateRef.classList.remove(classes.SlideBckCenter);
     }, 7000);
@@ -220,7 +220,7 @@ class OfferDetails extends Component {
             </div>
           </div>
           <div className={classes.DetailsContainer}>
-            <div className={classes.Dates} style={{textAlign: "end"}}>
+            <div className={classes.Dates} style={{ textAlign: "end" }}>
               <p>Date :</p>
               <span>
                 From :
@@ -285,7 +285,7 @@ class OfferDetails extends Component {
               </div>
 
               <div className={classes.SummaryPrice}>
-                <span style={{fontSize: "0.9em"}}> Summary :</span>
+                <span style={{ fontSize: "0.9em" }}> Summary :</span>
                 <p>
                   {this.props.adults * offerDetails.price +
                     this.props.kids * offerDetails.kidPrice}

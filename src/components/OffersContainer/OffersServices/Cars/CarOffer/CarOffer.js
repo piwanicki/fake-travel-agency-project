@@ -1,8 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import classes from "./CarOffer.module.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faWrench, faGasPump} from "@fortawesome/free-solid-svg-icons";
-import ImageModal from "../../../Offer/OfferDetails/ImageModal/ImageModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWrench, faGasPump } from "@fortawesome/free-solid-svg-icons";
+import ImageModal from "../../../../../UI/ImageModal/ImageModal";
 
 class CarOffer extends Component {
   state = {
@@ -11,7 +11,7 @@ class CarOffer extends Component {
 
   openGalleryHandler = () => {
     const galleryIsOpen = this.state.galleryIsOpen;
-    this.setState({galleryIsOpen: !galleryIsOpen});
+    this.setState({ galleryIsOpen: !galleryIsOpen });
   };
 
   previousImageHandler = () => {
@@ -25,16 +25,6 @@ class CarOffer extends Component {
   render() {
     const mainPhoto = this.props.model["photos"][0];
     const brandLogo = this.props.logo;
-
-    // const photos = this.props.model["photos"].map((photo, index) => (
-    //   <li key={index}>
-    //     <img
-    //       src={photo}
-    //       alt={photo}
-    //       onClick={this.changeImageHandler}
-    //     />
-    //   </li>
-    // ));
 
     return (
       <div className={classes.CarOffer}>
@@ -58,52 +48,67 @@ class CarOffer extends Component {
 
           <h4>{this.props.modelName}</h4>
         </div>
-        <div></div>
 
-        <table>
-          <th>
-            <h3>
-              <FontAwesomeIcon icon={faWrench} /> Specification
-            </h3>
-          </th>
-          <tbody>
-            {this.props.model.details.map((detail) => {
-              const separateDetail = detail.split(":");
-              return (
-                <tr>
-                  <td>{separateDetail[0]}</td>
-                  <td>{separateDetail[1]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className={classes.SpecTable}>
+          <table>
+            <tbody>
+              <tr>
+                <th colSpan="2">
+                  <FontAwesomeIcon icon={faWrench} /> Specification
+                </th>
+              </tr>
 
-        <table className={classes.FuelConsumptionTable}>
-          <tbody>
-            <th colSpan="2">
-              <h3>
+              {this.props.model.details.map((detail, index) => {
+                const separateDetail = detail.split(":");
+                return (
+                  <tr key={index}>
+                    <td>{separateDetail[0]}</td>
+                    <td>{separateDetail[1]}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <div className={classes.FuelConsumptionTable}>
+          <table>
+           
+
+            <tbody>
+            <tr>
+              <th colSpan="2">
                 <FontAwesomeIcon icon={faGasPump} /> Fuel consumption
-              </h3>
-            </th>
-            {this.props.model.fuelConsumption.map((cons) => {
-              const separateDetail = cons.split(":");
-              return (
-                <tr>
-                  <td>{separateDetail[0]}</td>
-                  <td>{separateDetail[1]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </th>
+            </tr>
+              {this.props.model.fuelConsumption.map((cons, index) => {
+                const separateDetail = cons.split(":");
+                return (
+                  <tr key={index}>
+                    <td>{separateDetail[0]}</td>
+                    <td>{separateDetail[1]}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
 
         <div className={classes.Pricing}>
-          <span>
-            Price from:{" "}
-            <span style={{fontSize: "1.4em"}}>{this.props.model.price}</span>
-          </span>
-          <button>Rent</button>
+          <p style={{ textAlign: "end", marginBottom: "0", paddingTop: "15%" }}>
+            Price from <br />
+            <span
+              style={{
+                fontSize: "1.8em",
+                color: "#cd0000",
+                marginTop: "0.5em",
+              }}
+            >
+              {this.props.model.price}
+            </span>
+          </p>
+
+          <button>Details</button>
         </div>
 
         {this.state.galleryIsOpen ? (

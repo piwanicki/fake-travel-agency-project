@@ -4,7 +4,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import * as icons from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../../Offers";
 import {connect} from "react-redux";
-console.log(icons);
 
 const OfferGuide = (props) => {
   const OfferObj = Offers[`${props.city}`];
