@@ -29,7 +29,9 @@ const CarsOffers = {
 
     models: {
       Levante: {
-        price: "500$ / 24h",
+        vehicle: "Car",
+        type: 'Suv',
+        price: 500,
         photos: [levantePhoto1],
         details: [
           "Engine Layout : V6 Benz.",
@@ -39,7 +41,11 @@ const CarsOffers = {
           "Max power : 350 HP",
           "Traction : AWD",
         ],
-        fuelConsumption : ["Mixed cycle : 11,5 l/100km",'Road : 10.2 l/100km','Urban : 15.4 l/100km']
+        fuelConsumption: [
+          "Mixed cycle : 11,5 l/100km",
+          "Road : 10.2 l/100km",
+          "Urban : 15.4 l/100km",
+        ],
 
         /* 
           Engine Layout: V6
@@ -51,7 +57,9 @@ const CarsOffers = {
       */
       },
       Ghibli: {
-        price: "450$ / 24h",
+        vehicle: "Car",
+        type: 'Sedan',
+        price: 450,
         photos: [ghibliPhoto1],
         details: [
           "Engine Layout : V6 Benz.",
@@ -61,8 +69,11 @@ const CarsOffers = {
           "Max power : 350 HP",
           "Traction : RWD",
         ],
-        fuelConsumption : ["Mixed cycle : 11,2 l/100km",'Road : 9.8 l/100km','Urban : 15,0 l/100km']
-
+        fuelConsumption: [
+          "Mixed cycle : 11,2 l/100km",
+          "Road : 9.8 l/100km",
+          "Urban : 15,0 l/100km",
+        ],
       },
     },
   },
@@ -72,7 +83,9 @@ const CarsOffers = {
 
     models: {
       Golf7: {
-        price: "150$ / 24h",
+        vehicle: "Car",
+        type: 'Hatchback',
+        price: 150,
         photos: [golf7Photo1],
         details: [
           "Engine Layout : R4 Benz.",
@@ -82,11 +95,16 @@ const CarsOffers = {
           "Max power : 245 HP",
           "Traction : FWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
-
+        fuelConsumption: [
+          "Mixed cycle : 4,2 l/100km",
+          "Road : 3,8 l/100km",
+          "Urban : 5,0 l/100km",
+        ],
       },
       Golf8: {
-        price: "250$ / 24h",
+        vehicle: "Car",
+        type: 'Hatchback',
+        price: 250,
         photos: [golf8Photo1],
         details: [
           "Engine Layout : R4 Benz.",
@@ -96,12 +114,17 @@ const CarsOffers = {
           "Max power : 130  HP",
           "Traction : FWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
-
+        fuelConsumption: [
+          "Mixed cycle : 4,2 l/100km",
+          "Road : 3,8 l/100km",
+          "Urban : 5,0 l/100km",
+        ],
       },
 
       Jetta: {
-        price: "200$ / 24h",
+        vehicle: "Car",
+        type: 'Sedan',
+        price: 200,
         photos: [jettaPhoto1, jettaPhoto2],
         details: [
           "Engine Layout : R4 Diesel",
@@ -111,7 +134,11 @@ const CarsOffers = {
           "Max power : 150 HP",
           "Traction : FWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
+        fuelConsumption: [
+          "Mixed cycle : 4,2 l/100km",
+          "Road : 3,8 l/100km",
+          "Urban : 5,0 l/100km",
+        ],
       },
     },
   },
@@ -121,7 +148,9 @@ const CarsOffers = {
 
     models: {
       A3: {
-        price: "100$ / 24h",
+        vehicle: "Car",
+        type: 'Hatchback',
+        price: 100,
         photos: [audiA3Photo1],
         details: [
           "Engine Layout : R4",
@@ -130,14 +159,18 @@ const CarsOffers = {
           "Max speed : 220 km/h",
           "Max power : 150 HP",
           "Traction : AWD",
-  
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
-
+        fuelConsumption: [
+          "Mixed cycle : 4,2 l/100km",
+          "Road : 3,8 l/100km",
+          "Urban : 5,0 l/100km",
+        ],
       },
 
       A4: {
-        price: "130$ / 24h",
+        vehicle: "Car",
+        type: 'Sedan',
+        price: 130,
         photos: [audiA4Photo1],
         details: [
           "Engine Layout : V6",
@@ -147,12 +180,17 @@ const CarsOffers = {
           "Max power : 350 HP",
           "Traction : AWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
-
+        fuelConsumption: [
+          "Mixed cycle : 4,2 l/100km",
+          "Road : 3,8 l/100km",
+          "Urban : 5,0 l/100km",
+        ],
       },
 
       A4Avant: {
-        price: "130$ / 24h",
+        vehicle: "Car",
+        type: 'Combi',
+        price: 130,
         photos: [audiA4AvantPhoto1],
         details: [
           "Engine Layout : V6",
@@ -162,12 +200,17 @@ const CarsOffers = {
           "Max power : 350 HP",
           "Traction : AWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
-
+        fuelConsumption: [
+          "Mixed cycle : 4,2 l/100km",
+          "Road : 3,8 l/100km",
+          "Urban : 5,0 l/100km",
+        ],
       },
 
       A5: {
-        price: "130$ / 24h",
+        vehicle: "Car",
+        type: 'Sedan',
+        price: 130,
         photos: [audiA5Photo1, audiA5Photo2],
         details: [
           "Engine Layout : V6",
@@ -177,8 +220,11 @@ const CarsOffers = {
           "Max power : 350 HP",
           "Traction : AWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
-
+        fuelConsumption: [
+          "Mixed cycle : 4,2 l/100km",
+          "Road : 3,8 l/100km",
+          "Urban : 5,0 l/100km",
+        ],
       },
     },
   },
@@ -187,7 +233,9 @@ const CarsOffers = {
     logo: mbLogo,
     models: {
       ClassA: {
-        price: "120$ / 24h",
+        vehicle: "Car",
+        type: 'Hatchback',
+        price: 120,
         photos: [mbClassAPhoto1, mbClassAPhoto2, mbClassAPhoto3],
         details: [
           "Engine Layout : V6",
@@ -197,8 +245,11 @@ const CarsOffers = {
           "Max power : 350 HP",
           "Traction : AWD",
         ],
-        fuelConsumption : ["Mixed cycle : 4,2 l/100km",'Road : 3,8 l/100km','Urban : 5,0 l/100km']
-
+        fuelConsumption: [
+          "Mixed cycle : 4,2 l/100km",
+          "Road : 3,8 l/100km",
+          "Urban : 5,0 l/100km",
+        ],
       },
     },
   },

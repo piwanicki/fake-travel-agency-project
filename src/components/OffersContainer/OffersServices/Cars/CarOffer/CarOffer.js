@@ -104,7 +104,7 @@ class CarOffer extends Component {
                 marginTop: "0.5em",
               }}
             >
-              {this.props.model.price}
+              {this.props.model.price}$ / 24h
             </span>
           </p>
 
