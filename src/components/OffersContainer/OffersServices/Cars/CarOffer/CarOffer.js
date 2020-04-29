@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import classes from "./CarOffer.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWrench, faGasPump } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faWrench, faGasPump} from "@fortawesome/free-solid-svg-icons";
 import ImageModal from "../../../../../UI/ImageModal/ImageModal";
+import {Link} from "react-router-dom";
 
 class CarOffer extends Component {
   state = {
@@ -11,7 +12,7 @@ class CarOffer extends Component {
 
   openGalleryHandler = () => {
     const galleryIsOpen = this.state.galleryIsOpen;
-    this.setState({ galleryIsOpen: !galleryIsOpen });
+    this.setState({galleryIsOpen: !galleryIsOpen});
   };
 
   previousImageHandler = () => {
@@ -73,14 +74,12 @@ class CarOffer extends Component {
 
         <div className={classes.FuelConsumptionTable}>
           <table>
-           
-
             <tbody>
-            <tr>
-              <th colSpan="2">
-                <FontAwesomeIcon icon={faGasPump} /> Fuel consumption
-              </th>
-            </tr>
+              <tr>
+                <th colSpan="2">
+                  <FontAwesomeIcon icon={faGasPump} /> Fuel consumption
+                </th>
+              </tr>
               {this.props.model.fuelConsumption.map((cons, index) => {
                 const separateDetail = cons.split(":");
                 return (
@@ -95,7 +94,7 @@ class CarOffer extends Component {
         </div>
 
         <div className={classes.Pricing}>
-          <p style={{ textAlign: "end", marginBottom: "0", paddingTop: "15%" }}>
+          <p style={{textAlign: "end", marginBottom: "0", paddingTop: "15%"}}>
             Price from <br />
             <span
               style={{
@@ -107,8 +106,11 @@ class CarOffer extends Component {
               {this.props.model.price}$ / 24h
             </span>
           </p>
-
-          <button>Details</button>
+          <span>
+            <Link to={`/offerServices/cars/${this.props.brand}/${this.props.modelName}`}>
+              <button>Details</button>
+            </Link>
+          </span>
         </div>
 
         {this.state.galleryIsOpen ? (

@@ -1,5 +1,10 @@
 //maserati images
 import levantePhoto1 from "./carsPhotos/Maserati-Levante_01.jpg";
+import levantePhoto2 from "./carsPhotos/Maserati-Levante_02.jpg";
+import levantePhoto3 from "./carsPhotos/Maserati-Levante_03.jpg";
+import levantePhoto4 from "./carsPhotos/Maserati-Levante_04.jpg";
+import levantePhoto5 from "./carsPhotos/Maserati-Levante_05.jpg";
+import levantePhoto6 from "./carsPhotos/Maserati-Levante_06.jpg";
 import ghibliPhoto1 from "./carsPhotos/Maserati-Ghibli.jpg";
 //volkswagen images
 import golf7Photo1 from "./carsPhotos/golf7.jpg";
@@ -18,7 +23,7 @@ import audiA4AvantPhoto1 from "./carsPhotos/audiA4Avant.jpg";
 import audiA3Photo1 from "./carsPhotos/audiA3.jpg";
 
 //brands logos
-import audiLogo from "./carsPhotos/audiLogo.jpg";
+import audiLogo from "./carsPhotos/audiLogo3.png";
 import vwLogo from "./carsPhotos/vwLogo.png";
 import mbLogo from "./carsPhotos/mercedesLogo.png";
 import maseratiLogo from "./carsPhotos/maseratiLogo.png";
@@ -32,7 +37,7 @@ const CarsOffers = {
         vehicle: "Car",
         type: 'Suv',
         price: 500,
-        photos: [levantePhoto1],
+        photos: [levantePhoto1,levantePhoto2,levantePhoto3,levantePhoto4,levantePhoto5,levantePhoto6],
         details: [
           "Engine Layout : V6 Benz.",
           "Displacement : 2979 cc",
@@ -82,7 +87,7 @@ const CarsOffers = {
     logo: vwLogo,
 
     models: {
-      Golf7: {
+      Golf_7: {
         vehicle: "Car",
         type: 'Hatchback',
         price: 150,
@@ -101,7 +106,7 @@ const CarsOffers = {
           "Urban : 5,0 l/100km",
         ],
       },
-      Golf8: {
+      Golf_8: {
         vehicle: "Car",
         type: 'Hatchback',
         price: 250,
@@ -187,7 +192,7 @@ const CarsOffers = {
         ],
       },
 
-      A4Avant: {
+      A4_Avant: {
         vehicle: "Car",
         type: 'Combi',
         price: 130,
@@ -232,7 +237,7 @@ const CarsOffers = {
   Mercedes: {
     logo: mbLogo,
     models: {
-      ClassA: {
+      Class_A: {
         vehicle: "Car",
         type: 'Hatchback',
         price: 120,

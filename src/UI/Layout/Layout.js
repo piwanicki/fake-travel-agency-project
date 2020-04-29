@@ -7,10 +7,9 @@ import MainPage from "../../components/MainPage/MainPage";
 import { Switch, Route, Redirect } from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
 import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
-
+import CarOfferDetails from '../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails';
 
  class Layout extends Component {
-
 
   render() {
     return (
@@ -19,8 +18,9 @@ import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
 
         <Switch>
           <Route exact path="/" component={MainPage} />
-          <Route path="/offerDetails/:city" component={OfferDetails} />
-          <Route path="/offerServices/cars" component={Cars} />
+          <Route exact path="/offerDetails/:city" component={OfferDetails} />
+          <Route exact path="/offerServices/cars" component={Cars} />
+          <Route exact path='/offerServices/cars/:carBrand/:carModel' component={CarOfferDetails} />
 
           <Redirect from="/" to="/" />
         </Switch>

@@ -28,8 +28,6 @@ class RecommendedOffer extends Component {
   };
 
   render() {
-    console.log(this.state.weather);
-    console.log(this.state.weatherIcon);
     return (
       <div className={classes.RecommendedOffer}>
         <ul>

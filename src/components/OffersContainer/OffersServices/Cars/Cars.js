@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import classes from "./Cars.module.scss";
 import CarOffer from "./CarOffer/CarOffer";
 import CarsFilter from "./CarOffer/CarsFilter/CarsFilter";
@@ -54,8 +54,12 @@ class Cars extends Component {
     return array.sort((a, b) => {
       const model1 = a.props["model"].price;
       const model2 = b.props["model"].price;
-      if (how === "ascending") return model1 < model2 ? -1 : model1 > model2 ? 1 : 0;
-      if (how === "descending") return model1 > model2 ? -1 : model1 < model2 ? 1 : 0;
+      let sorted;
+      if (how === "ascending")
+        sorted = model1 < model2 ? -1 : model1 > model2 ? 1 : 0;
+      if (how === "descending")
+        sorted = model1 > model2 ? -1 : model1 < model2 ? 1 : 0;
+      return sorted;
     });
   };
 
@@ -76,8 +80,8 @@ class Cars extends Component {
           console.log(outputList);
 
           this.state.filterModels.length > 0
-            ? this.setState({ filterModels: outputList })
-            : this.setState({ allModels: outputList });
+            ? this.setState({filterModels: outputList})
+            : this.setState({allModels: outputList});
           break;
         }
 
@@ -85,8 +89,8 @@ class Cars extends Component {
           console.log(`price ascending`);
           outputList = this.sortByPrice("ascending", arrayToSort);
           this.state.filterModels.length > 0
-            ? this.setState({ filterModels: outputList })
-            : this.setState({ allModels: outputList });
+            ? this.setState({filterModels: outputList})
+            : this.setState({allModels: outputList});
           break;
         }
 
@@ -94,13 +98,13 @@ class Cars extends Component {
           console.log(`price descending`);
           outputList = this.sortByPrice("descending", arrayToSort);
           this.state.filterModels.length > 0
-            ? this.setState({ filterModels: outputList })
-            : this.setState({ allModels: outputList });
+            ? this.setState({filterModels: outputList})
+            : this.setState({allModels: outputList});
           break;
         }
 
-        default : {
-            this.setState({ filterModels: [] });
+        default: {
+          this.setState({filterModels: []});
         }
       }
     } else {
@@ -109,7 +113,7 @@ class Cars extends Component {
           outputList = allModels.filter(
             (car) => car.props.brand === methodValue
           );
-          this.setState({ filterModels: outputList });
+          this.setState({filterModels: outputList});
           break;
         }
 
@@ -119,7 +123,7 @@ class Cars extends Component {
           outputList = allModels.filter(
             (car) => car.props["model"].vehicle === methodValue
           );
-          this.setState({ filterModels: outputList });
+          this.setState({filterModels: outputList});
           break;
         }
 
@@ -127,12 +131,12 @@ class Cars extends Component {
           outputList = allModels.filter(
             (car) => car.props["model"].type === methodValue
           );
-          this.setState({ filterModels: outputList });
+          this.setState({filterModels: outputList});
           break;
         }
 
-        default : {
-          this.setState({ filterModels: [] });
+        default: {
+          this.setState({filterModels: []});
         }
       }
     }
@@ -142,7 +146,7 @@ class Cars extends Component {
     document
       .querySelectorAll("#styledSelect1")
       .forEach((select) => (select.selectedIndex = 0));
-    this.setState({ filterModels: [] });
+    this.setState({filterModels: []});
   };
 
   render() {
