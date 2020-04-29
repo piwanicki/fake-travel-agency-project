@@ -27,18 +27,24 @@ class CarOffer extends Component {
     const mainPhoto = this.props.model["photos"][0];
     const brandLogo = this.props.logo;
 
+    const carModelSplitted = this.props.modelName.includes("_")
+      ? `${this.props.modelName.split("_")[0]} ${
+          this.props.modelName.split("_")[1]
+        }`
+      : this.props.modelName;
+
     return (
       <div className={classes.CarOffer}>
         <div className={classes.ImageZoom}>
           <img
             src={mainPhoto}
-            alt={this.props.model}
+            alt={carModelSplitted}
             onClick={this.openGalleryHandler}
           />
         </div>
         <div className={classes.VehicleBrand}>
           <div>
-            <h3>{this.props.brand}</h3>
+            <h3 style={{color: "#000066"}}>{this.props.brand}</h3>
 
             <img
               src={brandLogo}
@@ -47,7 +53,7 @@ class CarOffer extends Component {
             />
           </div>
 
-          <h4>{this.props.modelName}</h4>
+          <h4 style={{color: "#cd0000"}}>{carModelSplitted}</h4>
         </div>
 
         <div className={classes.SpecTable}>
@@ -107,7 +113,9 @@ class CarOffer extends Component {
             </span>
           </p>
           <span>
-            <Link to={`/offerServices/cars/${this.props.brand}/${this.props.modelName}`}>
+            <Link
+              to={`/offerServices/cars/${this.props.brand}/${this.props.modelName}`}
+            >
               <button>Details</button>
             </Link>
           </span>

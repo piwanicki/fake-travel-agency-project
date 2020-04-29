@@ -23,13 +23,13 @@ class Cars extends Component {
       const models = Object.keys(brandsModels.models);
       const brandLogo = brandsModels.logo;
       allModels = allModels.concat(
-        models.map((model) => {
+        models.map((modelName) => {
           return (
             <CarOffer
-              key={model}
+              key={modelName}
               brand={brand}
-              model={brandsModels.models[model]}
-              modelName={model}
+              model={brandsModels.models[modelName]}
+              modelName={modelName}
               logo={brandLogo}
             />
           );

@@ -7,22 +7,20 @@
   border-radius: 2em;
   background-color: rgba(128, 128, 128, 0.11);
 
-
-
   .BrandLogo {
     width: 100px;
     height: 100px;
   }
 
-//   .Dates {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
+  //   .Dates {
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
 
-//     span {
-//       width: 15em;
-//     }
-//   }
+  //     span {
+  //       width: 15em;
+  //     }
+  //   }
 
   .OfferDetails {
     display: flex;
@@ -49,6 +47,7 @@
         width: 100%;
         height: 80%;
         cursor: pointer;
+        border: 1px solid #005082;
       }
 
       .PhotosSlider {
@@ -129,15 +128,12 @@
       flex-direction: column;
       border: 2px solid black;
 
-
-
       table {
         width: 90%;
         font-size: 1.5em;
         margin: 1em 1em;
         border-spacing: 0;
         background-color: #00083909;
-   
 
         th {
           border: 1px solid grey;
@@ -151,9 +147,7 @@
             border-right: 1px solid grey;
           }
         }
-
       }
-
 
       div {
         width: 100%;
@@ -232,7 +226,6 @@
     }
 
     .RentBtn {
-
       margin-bottom: 1em;
       width: 6em;
       height: 2.5em;
@@ -251,9 +244,9 @@
         background-color: #eeb72b;
       }
 
-      &:active{
-        position:relative;
-        top:1px;
+      &:active {
+        position: relative;
+        top: 1px;
       }
     }
   }

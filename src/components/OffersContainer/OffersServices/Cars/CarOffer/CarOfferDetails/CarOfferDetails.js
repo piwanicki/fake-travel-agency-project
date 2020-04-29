@@ -9,6 +9,8 @@ import {
   faGasPump,
 } from "@fortawesome/free-solid-svg-icons";
 import ImageModal from "../../../../../../UI/ImageModal/ImageModal";
+import CarRentDetails from "./CarRentDetails/CarRentDetails";
+import CarRentForm from "./CarRentForm/CarRentForm";
 
 class CarOfferDetails extends Component {
   state = {
@@ -40,9 +42,11 @@ class CarOfferDetails extends Component {
       .getElementById(this.state.activeTab)
       .classList.add(classes.SelectedTab);
     this.setState({images: imagesList});
+    window.scrollTo(0, 0);
   };
 
   selectTabHandler = (key) => {
+    console.log(key)
     if (key !== "") {
       document
         .getElementById(this.state.activeTab)
@@ -55,15 +59,10 @@ class CarOfferDetails extends Component {
   render() {
     const carBrand = this.props.match.params.carBrand;
     const carModel = this.props.match.params.carModel;
+
     const carModelSplitted = carModel.includes("_")
       ? `${carModel.split("_")[0]} ${carModel.split("_")[1]}`
       : carModel;
-
-    console.log(carBrand);
-    console.log(carModel);
-
-    console.log(carBrand);
-    console.log(carModel);
 
     const carLogo = CarsOffers[carBrand].logo;
     const Car = CarsOffers[carBrand].models[carModel];
@@ -78,6 +77,24 @@ class CarOfferDetails extends Component {
         />
       </li>
     ));
+
+    let descriptionContent;
+
+    switch (this.state.activeTab) {
+      case "rentDetails": {
+        descriptionContent = <CarRentDetails />;
+        break;
+      }
+
+      case "rentForm": {
+        descriptionContent = <CarRentForm />;
+        break;
+      }
+
+      default : {
+        descriptionContent = <CarRentDetails />;
+      }
+    }
 
     return (
       <div className={classes.CarOfferDetails}>
@@ -111,11 +128,18 @@ class CarOfferDetails extends Component {
             />
             <span style={{textAlign: "center"}}>
               <p
-                style={{fontSize: "2em", marginTop: "0", marginBottom: "0.2em"}}
+                style={{
+                  fontSize: "2em",
+                  marginTop: "0",
+                  marginBottom: "0.2em",
+                  color: "#000066",
+                }}
               >
                 {carBrand}
               </p>
-              <span style={{fontSize: "1.5em"}}>{carModelSplitted}</span>
+              <span style={{fontSize: "1.5em", color: "#cd0000"}}>
+                {carModelSplitted}
+              </span>
             </span>
 
             <table>
@@ -185,6 +209,7 @@ class CarOfferDetails extends Component {
                 <input type="date" ref={(el) => (this.toDateRef = el)} />
               </span>
             </div>
+            {descriptionContent}
           </div>
         </div>
 

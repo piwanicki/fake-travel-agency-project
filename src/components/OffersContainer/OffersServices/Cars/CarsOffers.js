@@ -1,29 +1,29 @@
 //maserati images
-import levantePhoto1 from "./carsPhotos/Maserati-Levante_01.jpg";
-import levantePhoto2 from "./carsPhotos/Maserati-Levante_02.jpg";
-import levantePhoto3 from "./carsPhotos/Maserati-Levante_03.jpg";
-import levantePhoto4 from "./carsPhotos/Maserati-Levante_04.jpg";
-import levantePhoto5 from "./carsPhotos/Maserati-Levante_05.jpg";
-import levantePhoto6 from "./carsPhotos/Maserati-Levante_06.jpg";
-import ghibliPhoto1 from "./carsPhotos/Maserati-Ghibli.jpg";
+import levantePhoto1 from "./carsPhotos/Maserati-Levante_01-min.jpg";
+import levantePhoto2 from "./carsPhotos/Maserati-Levante_02-min.jpg";
+import levantePhoto3 from "./carsPhotos/Maserati-Levante_03-min.jpg";
+import levantePhoto4 from "./carsPhotos/Maserati-Levante_04-min.jpg";
+import levantePhoto5 from "./carsPhotos/Maserati-Levante_05-min.jpg";
+import levantePhoto6 from "./carsPhotos/Maserati-Levante_06-min.jpg";
+import ghibliPhoto1 from "./carsPhotos/Maserati-Ghibli-min.jpg";
 //volkswagen images
-import golf7Photo1 from "./carsPhotos/golf7.jpg";
-import golf8Photo1 from "./carsPhotos/golf8.jpg";
-import jettaPhoto1 from "./carsPhotos/volkswagen-jetta.jpg";
-import jettaPhoto2 from "./carsPhotos/volkswagen-jetta2.jpg";
+import golf7Photo1 from "./carsPhotos/golf7-min.jpg";
+import golf8Photo1 from "./carsPhotos/golf8-min.jpg";
+import jettaPhoto1 from "./carsPhotos/volkswagen-jetta-min.jpg";
+import jettaPhoto2 from "./carsPhotos/volkswagen-jetta2-min.jpg";
 //mercedes images
-import mbClassAPhoto1 from "./carsPhotos/mb-classA.jpg";
-import mbClassAPhoto2 from "./carsPhotos/mb-classA2.jpg";
-import mbClassAPhoto3 from "./carsPhotos/mb-classA3.jpg";
+import mbClassAPhoto1 from "./carsPhotos/mb-classA-min.jpg";
+import mbClassAPhoto2 from "./carsPhotos/mb-classA2-min.jpg";
+import mbClassAPhoto3 from "./carsPhotos/mb-classA3-min.jpg";
 //Audi images
-import audiA5Photo1 from "./carsPhotos/audiA5.jpg";
-import audiA5Photo2 from "./carsPhotos/audiA5_2.jpg";
-import audiA4Photo1 from "./carsPhotos/audiA4.jpg";
-import audiA4AvantPhoto1 from "./carsPhotos/audiA4Avant.jpg";
-import audiA3Photo1 from "./carsPhotos/audiA3.jpg";
+import audiA5Photo1 from "./carsPhotos/audiA5-min.jpg";
+import audiA5Photo2 from "./carsPhotos/audiA5_2-min.jpg";
+import audiA4Photo1 from "./carsPhotos/audiA4-min.jpg";
+import audiA4AvantPhoto1 from "./carsPhotos/audiA4Avant-min.jpg";
+import audiA3Photo1 from "./carsPhotos/audiA3-min.jpg";
 
 //brands logos
-import audiLogo from "./carsPhotos/audiLogo3.png";
+import audiLogo from "./carsPhotos/audiLogo.png";
 import vwLogo from "./carsPhotos/vwLogo.png";
 import mbLogo from "./carsPhotos/mercedesLogo.png";
 import maseratiLogo from "./carsPhotos/maseratiLogo.png";
@@ -35,9 +35,16 @@ const CarsOffers = {
     models: {
       Levante: {
         vehicle: "Car",
-        type: 'Suv',
+        type: "Suv",
         price: 500,
-        photos: [levantePhoto1,levantePhoto2,levantePhoto3,levantePhoto4,levantePhoto5,levantePhoto6],
+        photos: [
+          levantePhoto1,
+          levantePhoto2,
+          levantePhoto3,
+          levantePhoto4,
+          levantePhoto5,
+          levantePhoto6,
+        ],
         details: [
           "Engine Layout : V6 Benz.",
           "Displacement : 2979 cc",
@@ -63,7 +70,7 @@ const CarsOffers = {
       },
       Ghibli: {
         vehicle: "Car",
-        type: 'Sedan',
+        type: "Sedan",
         price: 450,
         photos: [ghibliPhoto1],
         details: [
@@ -89,7 +96,7 @@ const CarsOffers = {
     models: {
       Golf_7: {
         vehicle: "Car",
-        type: 'Hatchback',
+        type: "Hatchback",
         price: 150,
         photos: [golf7Photo1],
         details: [
@@ -108,7 +115,7 @@ const CarsOffers = {
       },
       Golf_8: {
         vehicle: "Car",
-        type: 'Hatchback',
+        type: "Hatchback",
         price: 250,
         photos: [golf8Photo1],
         details: [
@@ -128,7 +135,7 @@ const CarsOffers = {
 
       Jetta: {
         vehicle: "Car",
-        type: 'Sedan',
+        type: "Sedan",
         price: 200,
         photos: [jettaPhoto1, jettaPhoto2],
         details: [
@@ -154,7 +161,7 @@ const CarsOffers = {
     models: {
       A3: {
         vehicle: "Car",
-        type: 'Hatchback',
+        type: "Hatchback",
         price: 100,
         photos: [audiA3Photo1],
         details: [
@@ -174,7 +181,7 @@ const CarsOffers = {
 
       A4: {
         vehicle: "Car",
-        type: 'Sedan',
+        type: "Sedan",
         price: 130,
         photos: [audiA4Photo1],
         details: [
@@ -194,7 +201,7 @@ const CarsOffers = {
 
       A4_Avant: {
         vehicle: "Car",
-        type: 'Combi',
+        type: "Combi",
         price: 130,
         photos: [audiA4AvantPhoto1],
         details: [
@@ -214,7 +221,7 @@ const CarsOffers = {
 
       A5: {
         vehicle: "Car",
-        type: 'Sedan',
+        type: "Sedan",
         price: 130,
         photos: [audiA5Photo1, audiA5Photo2],
         details: [
@@ -239,7 +246,7 @@ const CarsOffers = {
     models: {
       Class_A: {
         vehicle: "Car",
-        type: 'Hatchback',
+        type: "Hatchback",
         price: 120,
         photos: [mbClassAPhoto1, mbClassAPhoto2, mbClassAPhoto3],
         details: [
