@@ -1,0 +1,15 @@
+.DescriptionTabs {
+    background-color: white;
+    border-bottom: 1px solid grey;
+    border-top-left-radius: 3em;
+    border-top-right-radius: 3em;
+    text-align: left;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .SelectedTab {
+        background-color: #eeb72b81;
+    }
+}

@@ -131,45 +131,6 @@
           margin: 0.5em 1em;
         }
       }
-
-      .customSelect {
-        position: relative;
-        display: block;
-        width: 50%;
-        margin: 0 auto;
-        border: 1px solid #000839;
-        background-color: white;
-        z-index: 10;
-
-        select {
-          border: none;
-          outline: none;
-          background: transparent;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          border-radius: 0;
-          margin: 0;
-          display: block;
-          width: 100%;
-          padding: 12px 55px 15px 15px;
-          font-size: 14px;
-        }
-
-        &:after {
-          position: absolute;
-          right: 0;
-          top: 0;
-          width: 50px;
-          height: 100%;
-          line-height: 38px;
-          content: "\2228";
-          text-align: center;
-          font-size: 1.5em;
-          border-left: 1px solid #000839;
-          z-index: -1;
-        }
-      }
     }
 
     .PricingDetails {
@@ -227,39 +188,6 @@
     width: 60vw;
     min-height: 70em;
 
-    .SelectedTab {
-      background-color: #eeb72b81;
-    }
-
-    .DescriptionTabs {
-      width: 100%;
-      // height: 4em;
-      background-color: white;
-      border-bottom: 1px solid grey;
-      border-top-left-radius: 3em;
-      border-top-right-radius: 3em;
-      text-align: left;
-      font-size: 1.3em;
-
-      .Tab {
-        margin: 0.3em 0.5em;
-        height: 2em;
-        width: 7em;
-        display: inline-block;
-        text-align: center;
-        position: relative;
-        top: 15%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        border-bottom: 2px solid #feb72b;
-        cursor: pointer;
-
-        &:first-child {
-          border-top-left-radius: 1.55em;
-        }
-      }
-    }
 
     .DescriptionText {
       width: 100%;
@@ -290,17 +218,20 @@
       -webkit-transform: scale(1.3);
       transform: scale(1.3);
     }
+
     100% {
       -webkit-transform: scale(1);
       transform: scale(1);
     }
   }
+
   @keyframes SlideBckCenter {
     0% {
       -webkit-transform: scale(1.3);
       transform: scale(1.3);
       color: red;
     }
+
     100% {
       -webkit-transform: scale(1);
       transform: scale(1);

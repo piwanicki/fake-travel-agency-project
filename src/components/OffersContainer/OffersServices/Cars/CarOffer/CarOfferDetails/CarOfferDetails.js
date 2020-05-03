@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import classes from "./CarOfferDetails.module.scss";
 import CarsOffers from "../../CarsOffers";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,
@@ -11,6 +11,8 @@ import {
 import ImageModal from "../../../../../../UI/ImageModal/ImageModal";
 import CarRentDetails from "./CarRentDetails/CarRentDetails";
 import CarRentForm from "./CarRentForm/CarRentForm";
+import DescriptionTabs from "../../../../../../UI/DescriptionTabs/DescriptionTabs";
+import Tab from "../../../../../../UI/DescriptionTabs/Tab/Tab";
 
 class CarOfferDetails extends Component {
   state = {
@@ -22,7 +24,7 @@ class CarOfferDetails extends Component {
 
   showImgModalHandler = () => {
     const isShowing = this.state.showGallery;
-    this.setState({showGallery: !isShowing});
+    this.setState({ showGallery: !isShowing });
   };
 
   changeImageHandler = (index) => {
@@ -38,23 +40,23 @@ class CarOfferDetails extends Component {
   componentDidMount = () => {
     const imagesList = document.querySelector(".PhotosList").children;
     imagesList[this.state.photoIndex].classList.add(classes.SelectedImg);
-    document
-      .getElementById(this.state.activeTab)
-      .classList.add(classes.SelectedTab);
-    this.setState({images: imagesList});
+    // document
+    //   .getElementById(this.state.activeTab)
+    //   .classList.add(classes.SelectedTab);
+    this.setState({ images: imagesList });
     window.scrollTo(0, 0);
   };
 
-  selectTabHandler = (key) => {
-    console.log(key)
-    if (key !== "") {
-      document
-        .getElementById(this.state.activeTab)
-        .classList.remove(classes.SelectedTab);
-      document.getElementById(key).classList.add(classes.SelectedTab);
-      this.setState({activeTab: key});
-    }
-  };
+  // selectTabHandler = (key) => {
+  //   console.log(key);
+  //   if (key !== "") {
+  //     document
+  //       .getElementById(this.state.activeTab)
+  //       .classList.remove(classes.SelectedTab);
+  //     document.getElementById(key).classList.add(classes.SelectedTab);
+  //     this.setState({ activeTab: key });
+  //   }
+  // };
 
   render() {
     const carBrand = this.props.match.params.carBrand;
@@ -91,7 +93,7 @@ class CarOfferDetails extends Component {
         break;
       }
 
-      default : {
+      default: {
         descriptionContent = <CarRentDetails />;
       }
     }
@@ -124,9 +126,9 @@ class CarOfferDetails extends Component {
               src={carLogo}
               alt={carLogo}
               className={classes.BrandLogo}
-              style={{marginTop: "1em"}}
+              style={{ marginTop: "1em" }}
             />
-            <span style={{textAlign: "center"}}>
+            <span style={{ textAlign: "center" }}>
               <p
                 style={{
                   fontSize: "2em",
@@ -137,7 +139,7 @@ class CarOfferDetails extends Component {
               >
                 {carBrand}
               </p>
-              <span style={{fontSize: "1.5em", color: "#cd0000"}}>
+              <span style={{ fontSize: "1.5em", color: "#cd0000" }}>
                 {carModelSplitted}
               </span>
             </span>
@@ -186,31 +188,11 @@ class CarOfferDetails extends Component {
         </div>
 
         <div className={classes.RentForm}>
-          <div
-            className={classes.DescriptionTabs}
-            onClick={(e) => this.selectTabHandler(e.target.id)}
-          >
-            <div className={classes.Tab} id="rentDetails">
-              Details
-            </div>
-            <div className={classes.Tab} id="rentForm">
-              Rent Form
-            </div>
-          </div>
-          <div className={classes.DescriptionText}>
-            <div className={classes.Dates}>
-              Date :
-              <span>
-                From :
-                <input type="date" ref={(el) => (this.fromDateRef = el)} />
-              </span>
-              <span>
-                To :
-                <input type="date" ref={(el) => (this.toDateRef = el)} />
-              </span>
-            </div>
-            {descriptionContent}
-          </div>
+          <DescriptionTabs width="340px">
+            <Tab tabTitle="Details" id="rentDetails" />
+            <Tab tabTitle="Rent Form" id="rentForm" />
+          </DescriptionTabs>
+          <div className={classes.DescriptionText}>{descriptionContent}</div>
         </div>
 
         {this.state.showGallery ? (

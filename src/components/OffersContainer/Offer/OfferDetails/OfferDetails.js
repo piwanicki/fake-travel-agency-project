@@ -1,13 +1,13 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import classes from "./OfferDetails.module.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../Offers";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import LocalizationMap from "./LocalizationMap/LocalizationMap";
 import DescriptionText from "./DescriptionText/DescriptionText";
@@ -15,7 +15,10 @@ import OfferReview from "./OfferReview/OfferReview";
 import OfferGuide from "./OfferGuide/OfferGuide";
 import ImageModal from "../../../../UI/ImageModal/ImageModal";
 import CheckingTermModal from "./CheckingTermModal/CheckingTermModal";
-import {animateScroll as scroll} from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
+import CustomSelect from "../../../../UI/CustomSelect/CustomSelect";
+import DescriptionTabs from "../../../../UI/DescriptionTabs/DescriptionTabs";
+import Tab from "../../../../UI/DescriptionTabs/Tab/Tab";
 
 class OfferDetails extends Component {
   state = {
@@ -28,6 +31,7 @@ class OfferDetails extends Component {
     photosList: null,
     checkingTerm: false,
     termStatus: false,
+    descriptionContent: null,
   };
 
   reformatDate = (date) => {
@@ -49,12 +53,11 @@ class OfferDetails extends Component {
       "PhotosList"
     )[0].children;
     imagesList[this.state.photoIndex].classList.add(classes.SelectedImg);
-    document
-      .getElementById(this.state.activeTab)
-      .classList.add(classes.SelectedTab);
   };
 
   componentDidMount = () => {
+    // this.setState({ cityOffer: cityOffer, offerDetails: offerDetails });
+
     const imagesList = ReactDOM.findDOMNode(this).getElementsByClassName(
       "PhotosList"
     )[0].children;
@@ -62,23 +65,12 @@ class OfferDetails extends Component {
       classes.PhotosListDiv
     )[0];
     imagesList[this.state.photoIndex].classList.add(classes.SelectedImg);
-    document
-      .getElementById(this.state.activeTab)
-      .classList.add(classes.SelectedTab);
     this.setState({
       images: imagesList,
       photosListDiv: photosListDiv,
     });
-  };
 
-  selectTabHandler = (key) => {
-    if (key !== "") {
-      document
-        .getElementById(this.state.activeTab)
-        .classList.remove(classes.SelectedTab);
-      document.getElementById(key).classList.add(classes.SelectedTab);
-      this.setState({activeTab: key});
-    }
+    this.updateContent("desc");
   };
 
   showImgModalHandler = () => {
@@ -112,16 +104,16 @@ class OfferDetails extends Component {
   };
 
   checkTerminHandler = (key) => {
-    this.setState({checkingTerm: true});
+    this.setState({ checkingTerm: true });
     const offer = Offers[this.props.match.params.city];
     const from = offer.details["term"][key].from;
     const to = offer.details["term"][key].to;
 
     setTimeout(() => {
-      this.setState({termStatus: true});
+      this.setState({ termStatus: true });
     }, 1000);
     setTimeout(() => {
-      this.setState({checkingTerm: false});
+      this.setState({ checkingTerm: false });
       scroll.scrollToTop();
       this.toDateRef.classList.add(classes.SlideBckCenter);
       this.fromDateRef.classList.add(classes.SlideBckCenter);
@@ -129,34 +121,17 @@ class OfferDetails extends Component {
       this.fromDateRef.value = this.reformatDate(from);
     }, 2000);
     setTimeout(() => {
-      this.setState({termStatus: false});
+      this.setState({ termStatus: false });
       this.toDateRef.classList.remove(classes.SlideBckCenter);
       this.fromDateRef.classList.remove(classes.SlideBckCenter);
     }, 7000);
   };
 
-  render() {
+  updateContent = (id) => {
+    let descriptionContent;
     const cityOffer = this.props.match.params.city;
     const offerDetails = Offers[cityOffer];
-    const fromDt = this.reformatDate(offerDetails.from);
-    const toDt = this.reformatDate(offerDetails.to);
-    const mainPhoto = offerDetails.photos[this.state.photoIndex];
-    const modalMainPhoto = offerDetails.photos[this.state.modalPhotoIndex];
-    const offerPhotos = offerDetails.photos;
-
-    const photos = offerDetails.photos.map((photo, index) => (
-      <li key={index}>
-        <img
-          src={photo}
-          alt={photo}
-          onClick={() => this.changeImageHandler(index)}
-        />
-      </li>
-    ));
-
-    let descriptionContent;
-
-    switch (this.state.activeTab) {
+    switch (id) {
       case "desc": {
         descriptionContent = <DescriptionText details={offerDetails.details} />;
         break;
@@ -189,6 +164,27 @@ class OfferDetails extends Component {
         descriptionContent = <DescriptionText details={offerDetails.details} />;
       }
     }
+    this.setState({ descriptionContent: descriptionContent });
+  };
+
+  render() {
+    const cityOffer = this.props.match.params.city;
+    const offerDetails = Offers[cityOffer];
+    const fromDt = this.reformatDate(offerDetails.from);
+    const toDt = this.reformatDate(offerDetails.to);
+    const mainPhoto = offerDetails.photos[this.state.photoIndex];
+    const modalMainPhoto = offerDetails.photos[this.state.modalPhotoIndex];
+    const offerPhotos = offerDetails.photos;
+
+    const photos = offerDetails.photos.map((photo, index) => (
+      <li key={index}>
+        <img
+          src={photo}
+          alt={photo}
+          onClick={() => this.changeImageHandler(index)}
+        />
+      </li>
+    ));
 
     return (
       <div className={classes.OfferDetailsContainer}>
@@ -220,7 +216,7 @@ class OfferDetails extends Component {
             </div>
           </div>
           <div className={classes.DetailsContainer}>
-            <div className={classes.Dates} style={{textAlign: "end"}}>
+            <div className={classes.Dates} style={{ textAlign: "end" }}>
               <p>Date :</p>
               <span>
                 From :
@@ -242,39 +238,24 @@ class OfferDetails extends Component {
 
             <GuestBox />
 
-            <div>
-              <p>From where?</p>
-              <label className={classes.customSelect} htmlFor="styledSelect1">
-                <select id="styledSelect1">
-                  <option>somewhere 1</option>
-                  <option>somewhere 2</option>
-                  <option>somewhere 3</option>
-                  <option>somewhere 4</option>
-                </select>
-              </label>
-            </div>
+            <CustomSelect description="From">
+              <option>somewhere 1</option>
+              <option>somewhere 2</option>
+              <option>somewhere 3</option>
+              <option>somewhere 4</option>
+            </CustomSelect>
 
-            <div>
-              <p>Room</p>
-              <label className={classes.customSelect} htmlFor="styledSelect1">
-                <select id="styledSelect1">
-                  <option>Single room</option>
-                  <option>Double room</option>
-                  <option>Triple room</option>
-                </select>
-              </label>
-            </div>
+            <CustomSelect description="Room">
+              <option>Single room</option>
+              <option>Double room</option>
+              <option>Triple room</option>
+            </CustomSelect>
 
-            <div>
-              <p>Feeding</p>
-              <label className={classes.customSelect} htmlFor="styledSelect1">
-                <select id="styledSelect1" name="options">
-                  <option>Only breakfasts</option>
-                  <option>Only dinners</option>
-                  <option>Full feeding</option>
-                </select>
-              </label>
-            </div>
+            <CustomSelect description="Meal">
+              <option>Only breakfasts</option>
+              <option>Only dinners</option>
+              <option>Full feeding</option>
+            </CustomSelect>
 
             <div className={classes.PricingDetails}>
               <div>
@@ -285,7 +266,7 @@ class OfferDetails extends Component {
               </div>
 
               <div className={classes.SummaryPrice}>
-                <span style={{fontSize: "0.9em"}}> Summary :</span>
+                <span style={{ fontSize: "0.9em" }}> Summary :</span>
                 <p>
                   {this.props.adults * offerDetails.price +
                     this.props.kids * offerDetails.kidPrice}
@@ -299,7 +280,7 @@ class OfferDetails extends Component {
           </div>
         </div>
         <div className={classes.OfferDescription}>
-          <div
+          {/* <div
             className={classes.DescriptionTabs}
             onClick={(e) => this.selectTabHandler(e.target.id)}
           >
@@ -315,9 +296,18 @@ class OfferDetails extends Component {
             <div className={classes.Tab} id="rev">
               Reviews
             </div>
-          </div>
+          </div> */}
 
-          <div className={classes.DescriptionText}>{descriptionContent}</div>
+          <DescriptionTabs width="680px" updateContent={this.updateContent}>
+            <Tab tabTitle="Description" id="desc" />
+            <Tab tabTitle="Localization" id="loc" />
+            <Tab tabTitle="Guide" id="guide" />
+            <Tab tabTitle="Reviews" id="rev" />
+          </DescriptionTabs>
+
+          <div className={classes.DescriptionText}>
+            {this.state.descriptionContent}
+          </div>
           {this.state.showImgModal ? (
             <ImageModal
               mainPhoto={modalMainPhoto}
