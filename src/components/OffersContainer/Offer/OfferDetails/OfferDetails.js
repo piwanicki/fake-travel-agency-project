@@ -24,14 +24,13 @@ class OfferDetails extends Component {
   state = {
     photoIndex: 0,
     images: [],
-    activeTab: "guide",
+    descContent: "desc",
     showImgModal: false,
     modalPhotoIndex: 0,
     listSite: 1,
     photosList: null,
     checkingTerm: false,
     termStatus: false,
-    descriptionContent: null,
   };
 
   reformatDate = (date) => {
@@ -56,8 +55,6 @@ class OfferDetails extends Component {
   };
 
   componentDidMount = () => {
-    // this.setState({ cityOffer: cityOffer, offerDetails: offerDetails });
-
     const imagesList = ReactDOM.findDOMNode(this).getElementsByClassName(
       "PhotosList"
     )[0].children;
@@ -69,8 +66,6 @@ class OfferDetails extends Component {
       images: imagesList,
       photosListDiv: photosListDiv,
     });
-
-    this.updateContent("desc");
   };
 
   showImgModalHandler = () => {
@@ -128,10 +123,30 @@ class OfferDetails extends Component {
   };
 
   updateContent = (id) => {
-    let descriptionContent;
+    this.setState({ descContent: id });
+  };
+
+  render() {
     const cityOffer = this.props.match.params.city;
     const offerDetails = Offers[cityOffer];
-    switch (id) {
+    const fromDt = this.reformatDate(offerDetails.from);
+    const toDt = this.reformatDate(offerDetails.to);
+    const mainPhoto = offerDetails.photos[this.state.photoIndex];
+    const modalMainPhoto = offerDetails.photos[this.state.modalPhotoIndex];
+    const offerPhotos = offerDetails.photos;
+    let descriptionContent;
+
+    const photos = offerDetails.photos.map((photo, index) => (
+      <li key={index}>
+        <img
+          src={photo}
+          alt={photo}
+          onClick={() => this.changeImageHandler(index)}
+        />
+      </li>
+    ));
+
+    switch (this.state.descContent) {
       case "desc": {
         descriptionContent = <DescriptionText details={offerDetails.details} />;
         break;
@@ -164,27 +179,6 @@ class OfferDetails extends Component {
         descriptionContent = <DescriptionText details={offerDetails.details} />;
       }
     }
-    this.setState({ descriptionContent: descriptionContent });
-  };
-
-  render() {
-    const cityOffer = this.props.match.params.city;
-    const offerDetails = Offers[cityOffer];
-    const fromDt = this.reformatDate(offerDetails.from);
-    const toDt = this.reformatDate(offerDetails.to);
-    const mainPhoto = offerDetails.photos[this.state.photoIndex];
-    const modalMainPhoto = offerDetails.photos[this.state.modalPhotoIndex];
-    const offerPhotos = offerDetails.photos;
-
-    const photos = offerDetails.photos.map((photo, index) => (
-      <li key={index}>
-        <img
-          src={photo}
-          alt={photo}
-          onClick={() => this.changeImageHandler(index)}
-        />
-      </li>
-    ));
 
     return (
       <div className={classes.OfferDetailsContainer}>
@@ -279,25 +273,8 @@ class OfferDetails extends Component {
             </button>
           </div>
         </div>
-        <div className={classes.OfferDescription}>
-          {/* <div
-            className={classes.DescriptionTabs}
-            onClick={(e) => this.selectTabHandler(e.target.id)}
-          >
-            <div className={classes.Tab} id="desc">
-              Description
-            </div>
-            <div className={classes.Tab} id="loc">
-              Localization
-            </div>
-            <div className={classes.Tab} id="guide">
-              Guide
-            </div>
-            <div className={classes.Tab} id="rev">
-              Reviews
-            </div>
-          </div> */}
 
+        <div className={classes.OfferDescription}>
           <DescriptionTabs width="680px" updateContent={this.updateContent}>
             <Tab tabTitle="Description" id="desc" />
             <Tab tabTitle="Localization" id="loc" />
@@ -305,9 +282,8 @@ class OfferDetails extends Component {
             <Tab tabTitle="Reviews" id="rev" />
           </DescriptionTabs>
 
-          <div className={classes.DescriptionText}>
-            {this.state.descriptionContent}
-          </div>
+          <div className={classes.DescriptionText}>{descriptionContent}</div>
+
           {this.state.showImgModal ? (
             <ImageModal
               mainPhoto={modalMainPhoto}

@@ -19,7 +19,7 @@ class CarOfferDetails extends Component {
     showGallery: false,
     photoIndex: 0,
     images: null,
-    activeTab: "rentDetails",
+    descContent: "rentForm",
   };
 
   showImgModalHandler = () => {
@@ -40,23 +40,13 @@ class CarOfferDetails extends Component {
   componentDidMount = () => {
     const imagesList = document.querySelector(".PhotosList").children;
     imagesList[this.state.photoIndex].classList.add(classes.SelectedImg);
-    // document
-    //   .getElementById(this.state.activeTab)
-    //   .classList.add(classes.SelectedTab);
     this.setState({ images: imagesList });
     window.scrollTo(0, 0);
   };
 
-  // selectTabHandler = (key) => {
-  //   console.log(key);
-  //   if (key !== "") {
-  //     document
-  //       .getElementById(this.state.activeTab)
-  //       .classList.remove(classes.SelectedTab);
-  //     document.getElementById(key).classList.add(classes.SelectedTab);
-  //     this.setState({ activeTab: key });
-  //   }
-  // };
+  updateContent = (id) => {
+    this.setState({ descContent: id });
+  };
 
   render() {
     const carBrand = this.props.match.params.carBrand;
@@ -82,7 +72,7 @@ class CarOfferDetails extends Component {
 
     let descriptionContent;
 
-    switch (this.state.activeTab) {
+    switch (this.state.descContent) {
       case "rentDetails": {
         descriptionContent = <CarRentDetails />;
         break;
@@ -188,7 +178,7 @@ class CarOfferDetails extends Component {
         </div>
 
         <div className={classes.RentForm}>
-          <DescriptionTabs width="340px">
+          <DescriptionTabs width="340px" updateContent={this.updateContent}>
             <Tab tabTitle="Details" id="rentDetails" />
             <Tab tabTitle="Rent Form" id="rentForm" />
           </DescriptionTabs>
