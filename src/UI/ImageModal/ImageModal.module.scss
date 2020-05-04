@@ -12,16 +12,16 @@
 
     .Arrow {
       position: absolute;
-      top: 10vh;
+      top: 2vh;
       z-index: 200;
     }
 
     .Left {
-      left: 10vw;
+      left: 5vw;
     }
 
     .Right {
-      right: 10vw;
+      right: 5vw;
     }
 
     span {
@@ -32,7 +32,7 @@
       font-size: 3em;
       color: honeydew;
       text-align: center;
-      height: 70vh;
+      height: 83vh;
       opacity: 0.7;
 
       &:hover {
@@ -44,11 +44,11 @@
   }
 
   .MainImage {
-    width: 80%;
-    height: 70vh;
-    margin-top: 10vh;
-    margin-right: 10%;
-    margin-left: 10%;
+    width: 90vw;
+    height: 83vh;
+    margin-top: 2vh;
+    margin-right: 5vw;
+    margin-left:  5vw;
   }
 
   ul {
@@ -64,7 +64,7 @@
     li {
       text-decoration: none;
       width: 10em;
-      height: 7em;
+      height: 5em;
       padding: 1em;
       text-align: center;
       cursor: pointer;
@@ -113,7 +113,7 @@
 
   .ClosingBtn {
     position: absolute;
-    right: 1em;
+    right: 0.5em;
     top: 0.5em;
     font-size: 2.5em;
     color: honeydew;
