@@ -275,7 +275,7 @@ class OfferDetails extends Component {
         </div>
 
         <div className={classes.OfferDescription}>
-          <DescriptionTabs width="680px" updateContent={this.updateContent}>
+          <DescriptionTabs width="680px" updateContent={this.updateContent} activeTab={this.state.descContent}>
             <Tab tabTitle="Description" id="desc" />
             <Tab tabTitle="Localization" id="loc" />
             <Tab tabTitle="Guide" id="guide" />
