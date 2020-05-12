@@ -1,6 +1,6 @@
 .ContactInfoBar {
   background-color: #00a8cc;
-  width: 100%;
+  width: 100vw;
   height: 15em;
   display: flex;
   justify-content: center;

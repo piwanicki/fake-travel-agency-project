@@ -3,25 +3,25 @@ import SearchPanel from "../SearchPanel/SearchPanel";
 import OffersContainer from "../OffersContainer/OffersContainer";
 import Offers from "../OffersContainer/Offers";
 import OffersServices from "../OffersContainer/OffersServices/OffersServices";
-import Underline from "../../UI/Underline/Underline";
+// import Underline from "../../UI/Underline/Underline";
 import SummerOffers from "../OffersContainer/SummerOffers/SummerOffers";
 import InspirationOffers from "../InspirationSection/InspirationOffers/InspirationOffers";
 import NewsContainer from "../NewsSection/NewsContainer/NewsContainer";
-import GuideDescription from "../GuideDescription/GuideDescription";
+// import GuideDescription from "../GuideDescription/GuideDescription";
 
-const MainPage = props => {
+const MainPage = (props) => {
   return (
     <>
       <SearchPanel />
       <OffersContainer offers={Offers} />
-      <Underline />
+      {/* <Underline /> */}
       <OffersServices />
-      <Underline />
+      {/* <Underline /> */}
       <SummerOffers />
-      <Underline />
+      {/* <Underline /> */}
       <InspirationOffers />
       <NewsContainer />
-      <GuideDescription />
+      {/* <GuideDescription /> */}
     </>
   );
 };

@@ -8,26 +8,29 @@ import {Switch, Route, Redirect} from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
 import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
 import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
+import Wrapper from "./Wrapper/Wrapper";
 
 class Layout extends Component {
   render() {
     return (
       <div className={classes.Layout}>
         <NavigationHeader />
+        <Wrapper>
+     
 
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route exact path="/offerDetails/:city" component={OfferDetails} />
-          <Route exact path="/offerServices/cars" component={Cars} />
-          <Route
-            exact
-            path="/offerServices/cars/:carBrand/:carModel"
-            component={CarOfferDetails}
-          />
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/offerDetails/:city" component={OfferDetails} />
+            <Route exact path="/offerServices/cars" component={Cars} />
+            <Route
+              exact
+              path="/offerServices/cars/:carBrand/:carModel"
+              component={CarOfferDetails}
+            />
 
-          <Redirect from="/" to="/" />
-        </Switch>
-
+            <Redirect from="/" to="/" />
+          </Switch>
+        </Wrapper>
         <ContactInfoBar />
         <Footer />
         {this.props.children}
