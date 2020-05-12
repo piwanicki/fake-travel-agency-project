@@ -11,6 +11,12 @@
   flex-flow: row;
   flex-wrap: wrap;
 
+  p {
+    width: 100%;
+    font-size: 1.2em;
+    padding: 0;
+  }
+
   input[type="text"],
   input[type="date"],
   input[type="time"] {
@@ -55,13 +61,8 @@
     label {
       width: 100%;
       margin-bottom: 2em;
+      border-color: grey;
     }
-  }
-
-  p {
-    width: 100%;
-    font-size: 1.2em;
-    padding: 0;
   }
 
   .AcceptBtn {
