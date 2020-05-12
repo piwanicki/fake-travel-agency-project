@@ -1,19 +1,95 @@
-.CarRentForm {
-    height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+@mixin flexboxColumn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-flow: column;
+}
 
-    p {
-        width: 100%;
-        font-size: 1.2em;
-        padding: 1em;
+.CarRentForm {
+  height: 10vh;
+  @include flexboxColumn();
+  flex-flow: row;
+  flex-wrap: wrap;
+
+  p {
+    width: 100%;
+    font-size: 1.2em;
+    padding: 0;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  input[type="time"] {
+    width: 200px;
+    height: 50px;
+    font-size: 1.2em;
+    margin: 1em 0;
+  }
+
+  input[type="checkbox"] {
+    height: 2em;
+    width: 2em;
+  }
+
+  input[type="number"] {
+    height: 50px;
+  }
+
+  .PersonalData {
+    @include flexboxColumn();
+    width: 20%;
+  }
+
+  .TermData {
+    @include flexboxColumn();
+    width: 20%;
+    input[type="date"],
+    input[type="time"] {
+      margin-top: 0;
+      margin-bottom: 2em;
     }
-    input { 
-        width: 200px;
-        height:50px;
-        font-size: 1.5em;
-        margin: 2em;
+  }
+
+  .RentLocation {
+    @include flexboxColumn();
+    width: 20%;
+
+    select {
+      width: 200px;
+      height: 50px;
     }
+    label {
+      width: 100%;
+      margin-bottom: 2em;
+      border-color: grey;
+    }
+  }
+
+  .AcceptBtn {
+    align-self: flex-end;
+    button {
+      margin-bottom: 1em;
+      margin-left: 1em;
+      width: 6em;
+      height: 2.5em;
+      background-color: #feb72b;
+      font-size: 1.8em;
+      color: #f5f5f0;
+      cursor: pointer;
+      box-shadow: inset 0px 0px 15px 3px #feb72b;
+      background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
+      border-radius: 17px;
+      border: 1px solid #eeb72b;
+      color: #ffffff;
+      &:hover {
+        background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
+        background-color: #eeb72b;
+      }
+
+      &:active {
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
 }

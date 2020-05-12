@@ -178,7 +178,7 @@ class CarOfferDetails extends Component {
         </div>
 
         <div className={classes.RentForm}>
-          <DescriptionTabs width="340px" updateContent={this.updateContent}>
+          <DescriptionTabs width="340px" updateContent={this.updateContent} activeTab={this.state.descContent}>
             <Tab tabTitle="Details" id="rentDetails" />
             <Tab tabTitle="Rent Form" id="rentForm" />
           </DescriptionTabs>

@@ -3,7 +3,7 @@ import classes from "./DescriptionTabs.module.scss";
 import { useEffect } from "react";
 
 const DescriptionTabs = (props) => {
-  const [activeTab, selectTab] = useState(props.children[0].props.id);
+  const [activeTab, selectTab] = useState(props.activeTab);
 
   const selectTabHandler = (id) => {
     if (id !== "") {

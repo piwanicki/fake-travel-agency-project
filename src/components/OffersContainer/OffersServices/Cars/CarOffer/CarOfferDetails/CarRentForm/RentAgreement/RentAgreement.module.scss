@@ -1,0 +1,19 @@
+.RentAgreement {
+  position: fixed;
+  top: 10%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  border: 2px solid black;
+  background-color: whitesmoke;
+  overflow-y: scroll;
+  z-index: 100;
+  padding: 2em;
+
+  .RejectBtn {
+    color: red;
+    cursor: pointer;
+    float: right;
+    font-size: 1.3em;
+  }
+}
