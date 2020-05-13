@@ -4,8 +4,11 @@ import GuestBox from "./GuestBox/GuestBox";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
+import SelectSearch from 'react-select-search';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlane, faBus, faTaxi} from "@fortawesome/free-solid-svg-icons";
+import Offers from "../OffersContainer/Offers";
+import './SearchSelect.css';
 
 class SearchPanel extends Component {
   state = {
@@ -33,7 +36,7 @@ class SearchPanel extends Component {
   };
 
   render() {
-    const options = [
+    const transportOptions = [
       {
         value: "fly",
         label: (
@@ -60,14 +63,18 @@ class SearchPanel extends Component {
       },
     ];
 
+    const whereOptions = Object.keys(Offers).map((country) => {
+      return {name: country, value: country.toLowerCase()};
+    });
+
     return (
       <div className={classes.SearchContainer}>
         <p className={classes.SearchHeader}>Find your dreamy vacation!</p>
         <div className={classes.SearchBox}>
           <div className={classes.SearchPanel}>
-            <div>
+            <div style={{width: "50%", margin: "auto"}}>
               <p>Transport</p>
-              <Select options={options} />
+              <Select options={transportOptions} />
             </div>
 
             <div>
@@ -75,7 +82,6 @@ class SearchPanel extends Component {
               <DatePicker
                 selected={this.state.startDate}
                 onChange={this.startDateHandleChange}
-                todayButton="Today"
                 placeholderText="Click to select a date"
               />
             </div>
@@ -84,21 +90,19 @@ class SearchPanel extends Component {
 
             <div className={classes.GridButton}>
               <button type="button" className={classes.SearchButton}>
-                {" "}
-                Search{" "}
+                Search
               </button>
             </div>
 
             <div>
               <p>Where</p>
-              <input type="text" placeholder="Direction" width="2em" />
+              <SelectSearch options={whereOptions} placeholder='Search destination...' search={true} isOpen={true} closeOnSelect={false}/>
             </div>
             <div>
               <p>Since when</p>
               <DatePicker
                 selected={this.state.endDate}
                 onChange={this.endDateHandleChange}
-                todayButton="Today"
                 placeholderText="Click to select a date"
               />
             </div>

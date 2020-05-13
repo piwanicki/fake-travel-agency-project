@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import classes from "./OfferDetails.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../Offers";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import ReactDOM from "react-dom";
 import LocalizationMap from "./LocalizationMap/LocalizationMap";
 import DescriptionText from "./DescriptionText/DescriptionText";
@@ -15,10 +15,13 @@ import OfferReview from "./OfferReview/OfferReview";
 import OfferGuide from "./OfferGuide/OfferGuide";
 import ImageModal from "../../../../UI/ImageModal/ImageModal";
 import CheckingTermModal from "./CheckingTermModal/CheckingTermModal";
-import { animateScroll as scroll } from "react-scroll";
-import CustomSelect from "../../../../UI/CustomSelect/CustomSelect";
+import {animateScroll as scroll} from "react-scroll";
+// import CustomSelect from "../../../../UI/CustomSelect/CustomSelect";
 import DescriptionTabs from "../../../../UI/DescriptionTabs/DescriptionTabs";
 import Tab from "../../../../UI/DescriptionTabs/Tab/Tab";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Select from "react-select";
 
 class OfferDetails extends Component {
   state = {
@@ -31,6 +34,20 @@ class OfferDetails extends Component {
     photosList: null,
     checkingTerm: false,
     termStatus: false,
+    startDate: new Date(),
+    endDate: new Date(),
+  };
+
+  startDateHandleChange = (date) => {
+    this.setState({
+      startDate: date,
+    });
+  };
+
+  endDateHandleChange = (date) => {
+    this.setState({
+      endDate: date,
+    });
   };
 
   reformatDate = (date) => {
@@ -99,16 +116,16 @@ class OfferDetails extends Component {
   };
 
   checkTerminHandler = (key) => {
-    this.setState({ checkingTerm: true });
+    this.setState({checkingTerm: true});
     const offer = Offers[this.props.match.params.city];
     const from = offer.details["term"][key].from;
     const to = offer.details["term"][key].to;
 
     setTimeout(() => {
-      this.setState({ termStatus: true });
+      this.setState({termStatus: true});
     }, 1000);
     setTimeout(() => {
-      this.setState({ checkingTerm: false });
+      this.setState({checkingTerm: false});
       scroll.scrollToTop();
       this.toDateRef.classList.add(classes.SlideBckCenter);
       this.fromDateRef.classList.add(classes.SlideBckCenter);
@@ -116,21 +133,21 @@ class OfferDetails extends Component {
       this.fromDateRef.value = this.reformatDate(from);
     }, 2000);
     setTimeout(() => {
-      this.setState({ termStatus: false });
+      this.setState({termStatus: false});
       this.toDateRef.classList.remove(classes.SlideBckCenter);
       this.fromDateRef.classList.remove(classes.SlideBckCenter);
     }, 7000);
   };
 
   updateContent = (id) => {
-    this.setState({ descContent: id });
+    this.setState({descContent: id});
   };
 
   render() {
     const cityOffer = this.props.match.params.city;
     const offerDetails = Offers[cityOffer];
-    const fromDt = this.reformatDate(offerDetails.from);
-    const toDt = this.reformatDate(offerDetails.to);
+    // const fromDt = this.reformatDate(offerDetails.from);
+    // const toDt = this.reformatDate(offerDetails.to);
     const mainPhoto = offerDetails.photos[this.state.photoIndex];
     const modalMainPhoto = offerDetails.photos[this.state.modalPhotoIndex];
     const offerPhotos = offerDetails.photos;
@@ -180,6 +197,54 @@ class OfferDetails extends Component {
       }
     }
 
+    const fromOptions = [
+      {
+        value: "somewhere1",
+        label: <span>Somewhere 1</span>,
+      },
+      {
+        value: "somewhere2",
+        label: <span>Somewhere 2</span>,
+      },
+      {
+        value: "somewhere3",
+        label: <span>Somewhere 3</span>,
+      },
+    ];
+
+    const roomOptions = [
+      {
+        value: "singleRoom",
+        label: <span>Single room</span>,
+      },
+      {
+        value: "doubleRoom",
+        label: <span>Double room</span>,
+      },
+      {
+        value: "tripleRoom",
+        label: <span>Triple room</span>,
+      },
+    ];
+    const mealOptions = [
+      {
+        value: "onlyBreakfasts",
+        label: <span>Only breakfasts</span>,
+      },
+      {
+        value: "onlyDinners",
+        label: <span>Only dinners</span>,
+      },
+      {
+        value: "fullFeeding",
+        label: <span>Full feeding</span>,
+      },
+    ];
+
+    // const customSelectStyles = {
+    //   margin: '2em'
+    // }
+
     return (
       <div className={classes.OfferDetailsContainer}>
         <div className={classes.OfferDetails}>
@@ -210,29 +275,45 @@ class OfferDetails extends Component {
             </div>
           </div>
           <div className={classes.DetailsContainer}>
-            <div className={classes.Dates} style={{ textAlign: "end" }}>
+            <div className={classes.Dates} style={{textAlign: "end"}}>
               <p>Date :</p>
               <span>
                 From :
-                <input
-                  type="date"
-                  defaultValue={fromDt}
-                  ref={(el) => (this.fromDateRef = el)}
+                <DatePicker
+                  selected={this.state.startDate}
+                  onChange={this.startDateHandleChange}
+                  placeholderText="Select a date"
                 />
               </span>
               <span>
                 To :
-                <input
-                  type="date"
-                  defaultValue={toDt}
-                  ref={(el) => (this.toDateRef = el)}
+                <DatePicker
+                  selected={this.state.endDate}
+                  onChange={this.endDateHandleChange}
+                  placeholderText="Select a date"
                 />
               </span>
             </div>
 
             <GuestBox />
 
-            <CustomSelect description="From">
+            <div className={classes.CustomOptions}>
+              <p>
+                From:
+                <Select options={fromOptions} />
+              </p>
+
+              <p>
+                Room:
+                <Select options={roomOptions} />
+              </p>
+
+              <p>
+                Meal:
+                <Select options={mealOptions} />
+              </p>
+
+              {/* <CustomSelect description="From">
               <option>somewhere 1</option>
               <option>somewhere 2</option>
               <option>somewhere 3</option>
@@ -249,7 +330,8 @@ class OfferDetails extends Component {
               <option>Only breakfasts</option>
               <option>Only dinners</option>
               <option>Full feeding</option>
-            </CustomSelect>
+            </CustomSelect> */}
+            </div>
 
             <div className={classes.PricingDetails}>
               <div>
@@ -260,7 +342,7 @@ class OfferDetails extends Component {
               </div>
 
               <div className={classes.SummaryPrice}>
-                <span style={{ fontSize: "0.9em" }}> Summary :</span>
+                <span style={{fontSize: "0.9em"}}> Summary :</span>
                 <p>
                   {this.props.adults * offerDetails.price +
                     this.props.kids * offerDetails.kidPrice}
@@ -275,7 +357,11 @@ class OfferDetails extends Component {
         </div>
 
         <div className={classes.OfferDescription}>
-          <DescriptionTabs width="680px" updateContent={this.updateContent} activeTab={this.state.descContent}>
+          <DescriptionTabs
+            width="680px"
+            updateContent={this.updateContent}
+            activeTab={this.state.descContent}
+          >
             <Tab tabTitle="Description" id="desc" />
             <Tab tabTitle="Localization" id="loc" />
             <Tab tabTitle="Guide" id="guide" />

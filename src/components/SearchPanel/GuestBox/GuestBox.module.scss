@@ -4,21 +4,23 @@
   grid-column-end: 3;
   grid-row-end: span 2;
 
+
   div {
-    width: 10em;
+    // width: 10em;
     font-size: 1.1em;
     margin-left: 0;
+    text-align: center;
   }
 
   span {
-    padding: 0.5em 0.5em;
+    padding: 0.5em 0.9em;
     width: 2em;
   }
 
   p {
     display: inline-block;
-    width: 2em;
-    margin: 0.3em;
+    width: 3em;
+    margin:  0.3em ;
   }
 
   svg {

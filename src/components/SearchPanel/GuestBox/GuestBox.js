@@ -36,7 +36,7 @@ class GuestBox extends Component {
 
   render() {
     return (
-      <div className={classes.GuestBox} style={{ marginLeft: "0" }}>
+      <div className={classes.GuestBox} style={{ margin: "1em auto" }}>
         <p>Guests</p>
         <div>
           <span>
