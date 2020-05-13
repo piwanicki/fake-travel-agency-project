@@ -30,31 +30,6 @@ class RecommendedOffer extends Component {
   render() {
     return (
       <div className={classes.RecommendedOffer}>
-        <ul>
-          <li>
-            <div>
-              <h3>{this.props.country}</h3>
-              <p>
-                <strong>{this.props.city}</strong>
-              </p>
-            </div>
-          </li>
-          <li style={{margin: "1.1em"}}>
-            <img src={this.state.weatherIcon} alt="weather" />
-            <h3>{this.state.weather} &#186; C</h3>
-          </li>
-          <li>
-            Date:
-            <br />
-            {this.props.from}
-            <br />
-            {this.props.to}
-          </li>
-          <li>
-            <h2>{this.props.price}</h2>
-          </li>
-        </ul>
-
         <div className={classes.ImgContainer}>
           <Link to={`/offerDetails/${this.props.city}`}>
             <img
@@ -62,6 +37,37 @@ class RecommendedOffer extends Component {
               alt={`${this.props.city} landscape`}
             />
           </Link>
+        </div>
+        <div>
+          <ul>
+            <li>
+              <div>
+                <h3>{this.props.country}</h3>
+                <p>
+                  <strong>{this.props.city}</strong>
+                </p>
+
+                <h2>{this.props.price}</h2>
+              </div>
+            </li>
+            <li style={{margin: "1.1em"}}>
+              <img src={this.state.weatherIcon} alt="weather" />
+              <h3>{this.state.weather} &#186; C</h3>
+            </li>
+            <li
+              style={{
+                color: "#000066",
+                fontSize: "1.2em",
+                transform: "translateY(50%)",
+              }}
+            >
+              Date:
+              <br />
+              {this.props.from}
+              <br />
+              {this.props.to}
+            </li>
+          </ul>
         </div>
       </div>
     );

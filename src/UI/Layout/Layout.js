@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import classes from "./Layout.module.css";
+import classes from "./Layout.module.scss";
 import NavigationHeader from "../../components/Navigation/NavigationHeader/NavigationHeader";
 import ContactInfoBar from "../../components/ContactInfoBar/ContactInfoBar";
 import Footer from "../../components/Navigation/Footer/Footer";
@@ -8,29 +8,27 @@ import {Switch, Route, Redirect} from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
 import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
 import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
-import Wrapper from "./Wrapper/Wrapper";
+// import Wrapper from "./Wrapper/Wrapper";
 
 class Layout extends Component {
   render() {
     return (
       <div className={classes.Layout}>
         <NavigationHeader />
-        <Wrapper>
-     
 
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route exact path="/offerDetails/:city" component={OfferDetails} />
-            <Route exact path="/offerServices/cars" component={Cars} />
-            <Route
-              exact
-              path="/offerServices/cars/:carBrand/:carModel"
-              component={CarOfferDetails}
-            />
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/offerDetails/:city" component={OfferDetails} />
+          <Route exact path="/offerServices/cars" component={Cars} />
+          <Route
+            exact
+            path="/offerServices/cars/:carBrand/:carModel"
+            component={CarOfferDetails}
+          />
 
-            <Redirect from="/" to="/" />
-          </Switch>
-        </Wrapper>
+          <Redirect from="/" to="/" />
+        </Switch>
+
         <ContactInfoBar />
         <Footer />
         {this.props.children}

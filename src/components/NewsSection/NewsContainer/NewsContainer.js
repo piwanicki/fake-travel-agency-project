@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./NewsContainer.module.css";
+import classes from "./NewsContainer.module.scss";
 import News from "./News/News";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";

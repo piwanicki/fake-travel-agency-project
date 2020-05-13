@@ -8,20 +8,23 @@ import SummerOffers from "../OffersContainer/SummerOffers/SummerOffers";
 import InspirationOffers from "../InspirationSection/InspirationOffers/InspirationOffers";
 import NewsContainer from "../NewsSection/NewsContainer/NewsContainer";
 // import GuideDescription from "../GuideDescription/GuideDescription";
+import "./MainPage.scss";
+import Wrapper from "../../UI/Layout/Wrapper/Wrapper";
 
 const MainPage = (props) => {
   return (
     <>
       <SearchPanel />
-      <OffersContainer offers={Offers} />
-      {/* <Underline /> */}
-      <OffersServices />
-      {/* <Underline /> */}
-      <SummerOffers />
-      {/* <Underline /> */}
-      <InspirationOffers />
-      <NewsContainer />
-      {/* <GuideDescription /> */}
+      <Wrapper>
+        <OffersContainer offers={Offers} />
+        {/* <Underline /> */}
+        <OffersServices />
+        {/* <Underline /> */}
+        <SummerOffers />
+        {/* <Underline /> */}
+        <InspirationOffers />
+        <NewsContainer />
+      </Wrapper>
     </>
   );
 };
