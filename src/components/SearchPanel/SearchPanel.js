@@ -3,12 +3,11 @@ import classes from "./SearchPanel.module.scss";
 import GuestBox from "./GuestBox/GuestBox";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
-import SelectSearch from 'react-select-search';
+import SelectSearch from "react-select-search";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlane, faBus, faTaxi} from "@fortawesome/free-solid-svg-icons";
 import Offers from "../OffersContainer/Offers";
-import './SearchSelect.css';
+import "./SearchSelect.css";
 
 class SearchPanel extends Component {
   state = {
@@ -39,7 +38,7 @@ class SearchPanel extends Component {
     const transportOptions = [
       {
         value: "fly",
-        label: (
+        name: (
           <span>
             <FontAwesomeIcon icon={faPlane} /> Fly
           </span>
@@ -47,7 +46,7 @@ class SearchPanel extends Component {
       },
       {
         value: "bus",
-        label: (
+        name: (
           <span>
             <FontAwesomeIcon icon={faBus} /> Bus
           </span>
@@ -55,7 +54,7 @@ class SearchPanel extends Component {
       },
       {
         value: "onYourOwn",
-        label: (
+        name: (
           <span>
             <FontAwesomeIcon icon={faTaxi} /> On your Own
           </span>
@@ -72,12 +71,16 @@ class SearchPanel extends Component {
         <p className={classes.SearchHeader}>Find your dreamy vacation!</p>
         <div className={classes.SearchBox}>
           <div className={classes.SearchPanel}>
-            <div style={{width: "50%", margin: "auto"}}>
+            <div style={{width: "60%", margin: "auto"}}>
               <p>Transport</p>
-              <Select options={transportOptions} />
+              <SelectSearch
+                options={transportOptions}
+                placeholder={"Select"}
+                search={false}
+              />
             </div>
 
-            <div>
+            <div className={classes.DatePickerWrapper}>
               <p>Until when</p>
               <DatePicker
                 selected={this.state.startDate}
@@ -94,11 +97,15 @@ class SearchPanel extends Component {
               </button>
             </div>
 
-            <div>
+            <div style={{width: "60%", margin: "auto"}}>
               <p>Where</p>
-              <SelectSearch options={whereOptions} placeholder='Search destination...' search={true} isOpen={true} closeOnSelect={false}/>
+              <SelectSearch
+                options={whereOptions}
+                placeholder="Search destination..."
+                search={true}
+              />
             </div>
-            <div>
+            <div className={classes.DatePickerWrapper}>
               <p>Since when</p>
               <DatePicker
                 selected={this.state.endDate}

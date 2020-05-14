@@ -3,13 +3,14 @@
   grid-column-start: 3;
   grid-column-end: 3;
   grid-row-end: span 2;
-
+  margin: auto;
 
   div {
     // width: 10em;
     font-size: 1.1em;
     margin-left: 0;
     text-align: center;
+    margin: 1em 0;
   }
 
   span {
@@ -20,7 +21,7 @@
   p {
     display: inline-block;
     width: 3em;
-    margin:  0.3em ;
+    margin: 0.3em;
   }
 
   svg {

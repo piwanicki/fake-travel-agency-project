@@ -23,7 +23,8 @@
     width: 200px;
     height: 50px;
     font-size: 1.2em;
-    margin: 1em 0;
+    margin: 1rem 0;
+    text-align: center;
   }
 
   input[type="checkbox"] {
@@ -33,6 +34,8 @@
 
   input[type="number"] {
     height: 50px;
+    font-size: 1.2em;
+    text-align: center;
   }
 
   .PersonalData {
@@ -52,21 +55,21 @@
 
   .RentLocation {
     @include flexboxColumn();
-    width: 20%;
 
-    select {
-      width: 200px;
-      height: 50px;
-    }
-    label {
-      width: 100%;
-      margin-bottom: 2em;
-      border-color: grey;
+    span {
+      input {
+        margin: 1rem 0;
+        height: 56px;
+        border-color: grey;
+        display: inline-block;
+        font-size: 1.2em;
+      }
     }
   }
 
   .AcceptBtn {
     align-self: flex-end;
+    margin-top: 2em;
     button {
       margin-bottom: 1em;
       margin-left: 1em;

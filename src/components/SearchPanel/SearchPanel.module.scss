@@ -14,7 +14,6 @@
     top: 1em;
   }
 
-
   p {
     font-size: 1em;
     color: aliceblue;
@@ -25,7 +24,7 @@
     grid-column-start: 4;
     grid-column-end: 4;
     grid-row-end: span 2;
-    margin: auto auto;
+    margin: auto;
   }
 
   .SearchButton {
@@ -34,7 +33,7 @@
     grid-row-end: 2;
     grid-row-end: span 2;
     width: 10em;
-    height: 2.5em;
+    height: 3.5em;
     box-shadow: inset 0px 0px 15px 3px #feb72b;
     background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
     background-color: #eeb72b;
@@ -47,6 +46,7 @@
     padding: 6px 13px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #feb72b;
+    // margin-top:1em;
 
     &:hover {
       background: linear-gradient(to bottom, #eeb72b 5%, #eeb72b 100%);
@@ -63,20 +63,22 @@
 .SearchPanel {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto;
-
-  input {
-    // width: 8em;
-    // text-align: center;
-    // font-size: 1.1em;
-    // min-height: 38px;
-  }
+  grid-template-rows: auto;
+  grid-gap: 1em;
 }
 
 .SearchBox {
   position: relative;
-  top: 35%;
+  top: 40%;
   transform: translateY(-50%);
   width: 1100px;
-  margin: auto auto;
+  margin: auto;
+
+  .DatePickerWrapper {
+    margin: auto;
+    input {
+      height: 30px;
+      font-family: "Josefin Sans", sans-serif;
+    }
+  }
 }

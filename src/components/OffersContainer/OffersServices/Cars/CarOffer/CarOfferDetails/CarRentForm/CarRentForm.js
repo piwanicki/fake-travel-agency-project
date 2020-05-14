@@ -1,11 +1,23 @@
 import React, {useState} from "react";
 import classes from "./CarRentForm.module.scss";
-import CustomSelect from "../../../../../../../UI/CustomSelect/CustomSelect";
 import RentAgreement from "./RentAgreement/RentAgreement";
+import DatePicker from "react-datepicker";
+import SelectSearch from "react-select-search";
+import Offers from "../../../../../Offers";
 
 const CarRentForm = (props) => {
   const [showRentAgreement, showHandler] = useState(false);
   const [acceptAgreement, acceptHandler] = useState(false);
+  const today = new Date();
+  const [startTime, setStartTime] = useState( new Date().setHours(today.getHours() + 1));
+  const [endTime, setEndTime] = useState(
+    new Date().setHours(today.getHours() + 2)
+  );
+
+  const [startDay, setStartDay] = useState(new Date());
+  const [endDay, setEndDay] = useState(
+    new Date().setDate(startDay.getDate() + 1)
+  );
 
   const openRentAgreementHandler = () => {
     showHandler(!showRentAgreement);
@@ -20,6 +32,25 @@ const CarRentForm = (props) => {
     console.log(`rentHandler`);
   };
 
+  const setStartTimeHandler = (time) => {
+    setStartTime(time);
+  };
+
+  const setEndTimeHandler = (time) => {
+    setEndTime(time);
+  };
+
+  const setStartDayHandler = (day) => {
+    setStartDay(day);
+  };
+
+  const setEndDayHandler = (day) => {
+    setEndDay(day);
+  };
+
+  const locOptions = Object.keys(Offers).map((country) => {
+    return {name: country, value: country.toLowerCase()};
+  });
   return (
     <form onSubmit={rentHandler}>
       <div className={classes.CarRentForm}>
@@ -36,34 +67,60 @@ const CarRentForm = (props) => {
         <div className={classes.TermData}>
           <p>Term </p>
           <span>
-            From : <br />
-            <input type="date" required />
+            <DatePicker
+              selected={startDay}
+              onChange={(day) => setStartDayHandler(day)}
+              placeholderText="From..."
+              required
+            />
           </span>
           <span>
-            To : <br />
-            <input type="date" required />
+            <DatePicker
+              selected={endDay}
+              onChange={(day) => setEndDayHandler(day)}
+              placeholderText="To..."
+              required
+            />
           </span>
         </div>
 
         <div className={classes.TermData}>
           <p>Hours </p>
           <span>
-            Start time : <br />
-            <input type="time" placeholder="Start" required />
+            <DatePicker
+              selected={startTime}
+              onChange={(time) => setStartTimeHandler(time)}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={60}
+              timeCaption="Time"
+              dateFormat="h:00 aa"
+              placeholderText="Start..."
+            />
           </span>
           <span>
-            End time : <br />
-            <input type="time" placeholder="End" required />
+            <DatePicker
+              selected={endTime}
+              onChange={(time) => setEndTimeHandler(time)}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={60}
+              timeCaption="Time"
+              dateFormat="h:00 aa"
+              placeholderText="End..."
+            />
           </span>
         </div>
 
         <div className={classes.RentLocation}>
-          <CustomSelect description="Location" descDetails="Pick your city :">
-            <option>Somewhere1</option>
-            <option>Somewhere2</option>
-            <option>Somewhere3</option>
-            <option>Somewhere4</option>
-          </CustomSelect>
+          <p>Location</p>
+          <span>
+            <SelectSearch
+              options={locOptions}
+              placeholder={"Location"}
+              search={true}
+            ></SelectSearch>
+          </span>
 
           <div style={{textAlign: "left", width: "210px", marginTop: "1em"}}>
             <div

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import classes from "./CarOfferDetails.module.scss";
 import CarsOffers from "../../CarsOffers";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,
@@ -24,7 +24,7 @@ class CarOfferDetails extends Component {
 
   showImgModalHandler = () => {
     const isShowing = this.state.showGallery;
-    this.setState({ showGallery: !isShowing });
+    this.setState({showGallery: !isShowing});
   };
 
   changeImageHandler = (index) => {
@@ -40,12 +40,12 @@ class CarOfferDetails extends Component {
   componentDidMount = () => {
     const imagesList = document.querySelector(".PhotosList").children;
     imagesList[this.state.photoIndex].classList.add(classes.SelectedImg);
-    this.setState({ images: imagesList });
+    this.setState({images: imagesList});
     window.scrollTo(0, 0);
   };
 
   updateContent = (id) => {
-    this.setState({ descContent: id });
+    this.setState({descContent: id});
   };
 
   render() {
@@ -116,9 +116,9 @@ class CarOfferDetails extends Component {
               src={carLogo}
               alt={carLogo}
               className={classes.BrandLogo}
-              style={{ marginTop: "1em" }}
+              style={{marginTop: "1em"}}
             />
-            <span style={{ textAlign: "center" }}>
+            <span style={{textAlign: "center"}}>
               <p
                 style={{
                   fontSize: "2em",
@@ -129,7 +129,7 @@ class CarOfferDetails extends Component {
               >
                 {carBrand}
               </p>
-              <span style={{ fontSize: "1.5em", color: "#cd0000" }}>
+              <span style={{fontSize: "1.5em", color: "#cd0000"}}>
                 {carModelSplitted}
               </span>
             </span>
@@ -178,7 +178,11 @@ class CarOfferDetails extends Component {
         </div>
 
         <div className={classes.RentForm}>
-          <DescriptionTabs width="340px" updateContent={this.updateContent} activeTab={this.state.descContent}>
+          <DescriptionTabs
+            width="340px"
+            updateContent={this.updateContent}
+            activeTab={this.state.descContent}
+          >
             <Tab tabTitle="Details" id="rentDetails" />
             <Tab tabTitle="Rent Form" id="rentForm" />
           </DescriptionTabs>

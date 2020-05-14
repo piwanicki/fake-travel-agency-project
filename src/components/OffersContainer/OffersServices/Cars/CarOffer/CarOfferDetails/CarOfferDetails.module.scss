@@ -1,9 +1,10 @@
 .CarOfferDetails {
-  margin: 2em;
+  margin: 2em auto;
   padding: 2em;
   min-height: 50em;
-  width: auto;
-  border: 2px solid #000839;
+  width: 1300px;
+
+  // border: 2px solid #000839;
   border-radius: 2em;
   background-color: rgba(128, 128, 128, 0.11);
 
@@ -30,7 +31,7 @@
 
     .PhotoContainer {
       margin: 0;
-      width: 60vw;
+      width: 940px;
       height: 45em;
 
       .MainPhoto {
@@ -120,7 +121,7 @@
 
       table {
         width: 90%;
-        font-size: 1.5em;
+        font-size: 1.3em;
         margin: 1em 1em;
         border-spacing: 0;
         background-color: #00083909;
