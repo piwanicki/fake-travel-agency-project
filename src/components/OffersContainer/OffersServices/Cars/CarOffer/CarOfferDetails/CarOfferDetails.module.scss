@@ -1,11 +1,8 @@
 .CarOfferDetails {
-  margin: 2em auto;
-  padding: 2em;
+  margin:auto;
+  padding:2em 0 ;
   min-height: 50em;
-  width: 1300px;
-
-  // border: 2px solid #000839;
-  border-radius: 2em;
+  width: 100%;
   background-color: rgba(128, 128, 128, 0.11);
 
   .BrandLogo {
@@ -30,7 +27,7 @@
     }
 
     .PhotoContainer {
-      margin: 0;
+      margin: 0 1%;
       width: 940px;
       height: 45em;
 
@@ -109,8 +106,8 @@
     }
 
     .CarDetailsContainer {
-      margin-left: 4em;
-      width: 30vw;
+      margin-left: 2em;
+      // width: 30vw;
       border: 1px solid grey;
       box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
       display: flex;
@@ -205,7 +202,8 @@
 
   .RentForm {
     margin-top: 2em;
-    width: 100%;
+    width: 98%;
+    margin:0 1%;
 
     .DescriptionText {
       width: 100%;

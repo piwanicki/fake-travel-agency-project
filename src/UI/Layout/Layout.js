@@ -9,6 +9,7 @@ import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/Of
 import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
 import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
 import DemoAlert from "../DemoAlert/DemoAlert";
+import Wrapper from "./Wrapper/Wrapper";
 
 class Layout extends Component {
   state = {
@@ -28,22 +29,24 @@ class Layout extends Component {
         ) : null}
 
         <NavigationHeader />
+        <Wrapper>
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/offerDetails/:city" component={OfferDetails} />
+            <Route exact path="/offerServices/cars" component={Cars} />
+            <Route
+              exact
+              path="/offerServices/cars/:carBrand/:carModel"
+              component={CarOfferDetails}
+            />
 
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route exact path="/offerDetails/:city" component={OfferDetails} />
-          <Route exact path="/offerServices/cars" component={Cars} />
-          <Route
-            exact
-            path="/offerServices/cars/:carBrand/:carModel"
-            component={CarOfferDetails}
-          />
+            <Redirect from="/" to="/" />
+          </Switch>
 
-          <Redirect from="/" to="/" />
-        </Switch>
+          <ContactInfoBar />
+          <Footer />
+        </Wrapper>
 
-        <ContactInfoBar />
-        <Footer />
         {this.props.children}
       </div>
     );
