@@ -1,6 +1,7 @@
-.CheckingTermModal {
-  width: 300px;
-  height: 300px;
+.DemoAlert {
+  padding: 2em;
+  width: 430px;
+  // height: 200px;
   background-color: #e0e2da;
   position: fixed;
   top: 30%;
@@ -12,4 +13,14 @@
   flex-direction: column;
   border-radius: 2em;
   color: #3b3a30;
+
+  li {
+    margin: 0.5em;
+  }
+
+  span {
+    cursor: pointer;
+    color: red;
+    font-size: 1.2em;
+  }
 }

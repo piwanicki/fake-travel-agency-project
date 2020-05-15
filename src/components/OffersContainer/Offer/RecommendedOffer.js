@@ -10,7 +10,7 @@ class RecommendedOffer extends Component {
   };
 
   componentDidMount = () => {
-    //this.weatherAPIHandler();
+    this.weatherAPIHandler();
   };
 
   weatherAPIHandler = () => {
@@ -50,7 +50,7 @@ class RecommendedOffer extends Component {
                 <h2>{this.props.price}</h2>
               </div>
             </li>
-            <li style={{margin: "1.1em"}}>
+            <li style={{margin: "1em 2em"}} className={classes.WeatherBox}>
               <img src={this.state.weatherIcon} alt="weather" />
               <h3>{this.state.weather} &#186; C</h3>
             </li>
@@ -58,7 +58,6 @@ class RecommendedOffer extends Component {
               style={{
                 color: "#000066",
                 fontSize: "1.2em",
-                transform: "translateY(50%)",
               }}
             >
               Date:

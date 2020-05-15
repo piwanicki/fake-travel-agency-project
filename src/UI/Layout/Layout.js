@@ -8,12 +8,25 @@ import {Switch, Route, Redirect} from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
 import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
 import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
-// import Wrapper from "./Wrapper/Wrapper";
+import DemoAlert from "../DemoAlert/DemoAlert";
 
 class Layout extends Component {
+  state = {
+    showDemoAlert: true,
+  };
+
+  showDemoALertHandler = () => {
+    const isShowing = this.state.showDemoAlert;
+    this.setState({showDemoAlert: !isShowing});
+  };
+
   render() {
     return (
       <div className={classes.Layout}>
+        {this.state.showDemoAlert ? (
+          <DemoAlert onClick={this.showDemoALertHandler} />
+        ) : null}
+
         <NavigationHeader />
 
         <Switch>

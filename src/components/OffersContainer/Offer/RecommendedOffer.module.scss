@@ -12,15 +12,28 @@
     width: 100%;
     padding-left: 0;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     img {
       width: 2.5em;
       height: 2.5em;
     }
 
+    .WeatherBox {
+      img {
+        border-radius: 2em;
+      }
+
+      margin: auto;
+    }
+
+
     li {
       margin: 0.5em 0;
       display: inline-block;
+      
 
       div {
         margin-left: 0;
