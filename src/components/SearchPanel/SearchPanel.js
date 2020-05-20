@@ -4,8 +4,8 @@ import GuestBox from "./GuestBox/GuestBox";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import SelectSearch from "react-select-search";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlane, faBus, faTaxi} from "@fortawesome/free-solid-svg-icons";
+// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+// import {faPlane, faBus, faTaxi} from "@fortawesome/free-solid-svg-icons";
 import Offers from "../OffersContainer/Offers";
 import "./SearchSelect.css";
 
@@ -39,25 +39,29 @@ class SearchPanel extends Component {
       {
         value: "fly",
         name: (
-          <span>
-            <FontAwesomeIcon icon={faPlane} /> Fly
-          </span>
+          // <span>
+          //   <FontAwesomeIcon icon={faPlane} /> Fly
+          // </span>
+          'fly'
         ),
       },
       {
         value: "bus",
         name: (
-          <span>
-            <FontAwesomeIcon icon={faBus} /> Bus
-          </span>
+          // <span>
+          //   <FontAwesomeIcon icon={faBus} /> Bus
+          // </span>
+          "bus"
         ),
       },
       {
         value: "onYourOwn",
         name: (
-          <span>
-            <FontAwesomeIcon icon={faTaxi} /> On your Own
-          </span>
+          // <span>
+          // <><FontAwesomeIcon icon={faTaxi} /> On your Own</>
+          // </span>
+          // 'f1ba'
+          'On Your own'
         ),
       },
     ];

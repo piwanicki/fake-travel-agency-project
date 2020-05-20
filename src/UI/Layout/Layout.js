@@ -11,12 +11,13 @@ import CarOfferDetails from "../../components/OffersContainer/OffersServices/Car
 import DemoAlert from "../DemoAlert/DemoAlert";
 import Wrapper from "./Wrapper/Wrapper";
 
+
 class Layout extends Component {
   state = {
-    showDemoAlert: true,
+    showDemoAlert: false,
   };
 
-  showDemoALertHandler = () => {
+  showDemoAlertHandler = () => {
     const isShowing = this.state.showDemoAlert;
     this.setState({showDemoAlert: !isShowing});
   };
@@ -25,7 +26,7 @@ class Layout extends Component {
     return (
       <div className={classes.Layout}>
         {this.state.showDemoAlert ? (
-          <DemoAlert onClick={this.showDemoALertHandler} />
+          <DemoAlert onClick={this.showDemoAlertHandler} />
         ) : null}
 
         <NavigationHeader />
@@ -52,5 +53,6 @@ class Layout extends Component {
     );
   }
 }
+
 
 export default Layout;

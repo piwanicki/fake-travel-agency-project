@@ -298,39 +298,14 @@ class OfferDetails extends Component {
             <GuestBox />
 
             <div className={classes.CustomOptions}>
-              <p>
-                From:
-                <Select options={fromOptions} />
-              </p>
-
-              <p>
-                Room:
-                <Select options={roomOptions} />
-              </p>
-
-              <p>
-                Meal:
-                <Select options={mealOptions} />
-              </p>
-
-              {/* <CustomSelect description="From">
-              <option>somewhere 1</option>
-              <option>somewhere 2</option>
-              <option>somewhere 3</option>
-              <option>somewhere 4</option>
-            </CustomSelect>
-
-            <CustomSelect description="Room">
-              <option>Single room</option>
-              <option>Double room</option>
-              <option>Triple room</option>
-            </CustomSelect>
-
-            <CustomSelect description="Meal">
-              <option>Only breakfasts</option>
-              <option>Only dinners</option>
-              <option>Full feeding</option>
-            </CustomSelect> */}
+              <span>From: </span>
+              <Select options={fromOptions} />
+              <br />
+              <span>Room: </span>
+              <Select options={roomOptions} />
+              <br />
+              <span>Meal: </span>
+              <Select options={mealOptions} />
             </div>
 
             <div className={classes.PricingDetails}>

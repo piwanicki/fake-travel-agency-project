@@ -1,54 +1,43 @@
-import axios from "axios";
-
 const initialState = {
   adults: 2,
   kids: 0,
-  weathers : new Map(),
+  weathers: new Map(),
 };
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_ADULT": {
-      return { ...state, adults: state.adults + 1 };
+      return {...state, adults: state.adults + 1};
     }
 
     case "REMOVE_ADULT": {
       if (state.adults > 0) {
-        return { ...state, adults: state.adults - 1 };
+        return {...state, adults: state.adults - 1};
       } else {
-        return { ...state };
+        return {...state};
       }
     }
 
     case "ADD_KID": {
-      return { ...state, kids: state.kids + 1 };
+      return {...state, kids: state.kids + 1};
     }
 
     case "REMOVE_KID": {
       if (state.kids > 0) {
-        return { ...state, kids: state.kids - 1 };
+        return {...state, kids: state.kids - 1};
       } else {
-        return { ...state };
+        return {...state};
       }
     }
 
-    case "UPD_WEATHER" : {
-      const updWeathersState = state.weathers;
-      const updWeather = updWeathersState.set(action.city, action.weatherDetails);
+    case "UPD_WEATHERS": {
+      const updWeathers = state.weathers;
+      updWeathers.set(action.value.city, action.value.current);
       return {
         ...state,
-        weathers: updWeather
-      }
+        weathers: updWeathers,
+      };
     }
-
-    case "FETCH_WEATHERS" : {
-      return axios.get(
-        `http://api.weatherstack.com/current?access_key=22109322a48c375ebd5e83eb3ce12344&query=${'Dubrovnik'}`
-      ).then(response => console.log(response))
-      .catch(error => console.log(error));
-
-      }
-    
 
     default:
       return state;
