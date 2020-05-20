@@ -42,7 +42,7 @@ class SearchPanel extends Component {
           // <span>
           //   <FontAwesomeIcon icon={faPlane} /> Fly
           // </span>
-          'fly'
+          'Fly'
         ),
       },
       {
@@ -51,16 +51,15 @@ class SearchPanel extends Component {
           // <span>
           //   <FontAwesomeIcon icon={faBus} /> Bus
           // </span>
-          "bus"
+          "Bus"
         ),
       },
       {
         value: "onYourOwn",
         name: (
           // <span>
-          // <><FontAwesomeIcon icon={faTaxi} /> On your Own</>
+          // <FontAwesomeIcon icon={faTaxi} /> On your Own
           // </span>
-          // 'f1ba'
           'On Your own'
         ),
       },

@@ -7,7 +7,7 @@ const NavigationBar = props => {
     <div className={classes.NavigationBar}>
       <ul>
         <li>
-          <a href="/#">LAST MINUTE</a>
+          <Link to="/lastMinute">LAST MINUTE</Link>
         </li>
         <li>
           <a href="/#"> All Inclusive </a>
@@ -22,7 +22,6 @@ const NavigationBar = props => {
         <li>
 
           <Link to={'/offerServices/cars'}>Cars </Link>
-          {/* <a href="/offerServices/cars"> </a> */}
         </li>
         <li>
 

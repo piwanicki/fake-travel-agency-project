@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 // import classes from "./InfoPanel.module.css";
 import classes from "./InfoPanel.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faPhone,
   faMobile,
   faMapMarkedAlt,
-  faEnvelopeOpen
+  faEnvelopeOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import LangSelectBox from "./LangSelectBox/LangSelectBox";
 import english from "./LangSelectBox/langSelectorsIcon/england.png";
@@ -14,17 +14,17 @@ import english from "./LangSelectBox/langSelectorsIcon/england.png";
 
 class InfoPanel extends Component {
   state = {
-    langSelectBox: false
+    langSelectBox: false,
   };
 
   showLangSelectorBox = () => {
     const isShowing = this.state.langSelectBox;
     this.setState({
-      langSelectBox: !isShowing
+      langSelectBox: !isShowing,
     });
   };
 
-  langSelectHandler = event => {
+  langSelectHandler = (event) => {
     const langSelected = event.target.id;
     console.log(langSelected);
     this.showLangSelectorBox();
@@ -46,21 +46,24 @@ class InfoPanel extends Component {
           <li>
             <FontAwesomeIcon icon={faEnvelopeOpen} /> email@example.com
           </li>
-          <li>
-            <button type="button">
-              <strong>Login</strong>
-            </button>
-          </li>
-          <li
+        </ul>
+
+        <span className={classes.LoginLangBox}>
+          <button type="button">
+            <strong>Login</strong>
+          </button>
+
+          <img
+            src={english}
+            alt="language icon"
             className={classes.LangSelector}
             onClick={this.showLangSelectorBox}
-          >
-            <img src={english} alt="language icon" />
-          </li>
-          {this.state.langSelectBox ? (
-            <LangSelectBox langSelectHandler={this.langSelectHandler} />
-          ) : null}
-        </ul>
+          />
+        </span>
+
+        {this.state.langSelectBox ? (
+          <LangSelectBox langSelectHandler={this.langSelectHandler} />
+        ) : null}
       </div>
     );
   }

@@ -10,6 +10,7 @@ import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
 import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
 import DemoAlert from "../DemoAlert/DemoAlert";
 import Wrapper from "./Wrapper/Wrapper";
+import LastMinuteOffersList from "../../components/OffersContainer/LastMinuteModule/LastMinuteOffersList/LastMinuteOffersList";
 
 
 class Layout extends Component {
@@ -35,6 +36,7 @@ class Layout extends Component {
             <Route exact path="/" component={MainPage} />
             <Route exact path="/offerDetails/:city" component={OfferDetails} />
             <Route exact path="/offerServices/cars" component={Cars} />
+            <Route exact path="/lastMinute" component={LastMinuteOffersList} />
             <Route
               exact
               path="/offerServices/cars/:carBrand/:carModel"
