@@ -38,30 +38,27 @@ class SearchPanel extends Component {
     const transportOptions = [
       {
         value: "fly",
-        name: (
+        name:
           // <span>
           //   <FontAwesomeIcon icon={faPlane} /> Fly
           // </span>
-          'Fly'
-        ),
+          "Fly",
       },
       {
         value: "bus",
-        name: (
+        name:
           // <span>
           //   <FontAwesomeIcon icon={faBus} /> Bus
           // </span>
-          "Bus"
-        ),
+          "Bus",
       },
       {
         value: "onYourOwn",
-        name: (
+        name:
           // <span>
           // <FontAwesomeIcon icon={faTaxi} /> On your Own
           // </span>
-          'On Your own'
-        ),
+          "On Your own",
       },
     ];
 
@@ -92,7 +89,7 @@ class SearchPanel extends Component {
               />
             </div>
 
-            <GuestBox />
+            <GuestBox customDivStyle={{margin: "1em 0"}} />
 
             <div className={classes.GridButton}>
               <button type="button" className={classes.SearchButton}>

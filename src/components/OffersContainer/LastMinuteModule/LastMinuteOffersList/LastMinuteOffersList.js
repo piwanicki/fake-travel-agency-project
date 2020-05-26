@@ -1,14 +1,18 @@
 import React, {Component} from "react";
 import classes from "./LastMinuteOffersList.module.scss";
 import {lastMinuteData} from "../LastMinuteOffersData";
+import LastMinFilters from  './LastMinFilters/LastMinFilters'
 
 class LastMinuteOffersList extends Component {
   state = {
     allOffers: [],
+    countries: Object.keys(lastMinuteData)
   };
 
   componentDidMount = () => {
     const lastMinuteCountries = Object.keys(lastMinuteData);
+    console.log(lastMinuteCountries)
+    
     // const vehicleBrands = Object.keys(CarsOffers);
     // const brandsModels = new Map();
     // let allModels = this.state.allModels;
@@ -140,14 +144,19 @@ class LastMinuteOffersList extends Component {
   };
 
   clearFilters = () => {
-    document
-      .querySelectorAll("#styledSelect1")
-      .forEach((select) => (select.selectedIndex = 0));
-    this.setState({filterModels: []});
+    // document
+    //   .querySelectorAll("#styledSelect1")
+    //   .forEach((select) => (select.selectedIndex = 0));
+    // this.setState({filterModels: []});
   };
 
   render() {
-    return <div className={classes.LastMinuteList}></div>;
+    return <div className={classes.LastMinuteList}>
+      <LastMinFilters 
+        countries={this.state.countries}
+        when={'kiedy'}
+      />
+    </div>;
   }
 }
 
