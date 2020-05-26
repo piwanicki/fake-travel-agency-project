@@ -1,6 +1,4 @@
 .CarsFilter {
-  // margin: 2% 2%;
-  padding-bottom: 2em;
   width: 100%;
   height: 100px;
   border-bottom: 2px solid grey;
@@ -10,7 +8,6 @@
   text-align: center;
 
   div {
-    width: 15%;
     margin: 0 1em;
 
     .customSelect {
@@ -54,7 +51,7 @@
   }
 
   span {
-    transform: translateY(200%);
     cursor: pointer;
+    width: 140px;
   }
 }

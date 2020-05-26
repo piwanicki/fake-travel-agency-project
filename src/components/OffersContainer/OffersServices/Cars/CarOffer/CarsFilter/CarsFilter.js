@@ -1,64 +1,92 @@
 import React from "react";
 import classes from "./CarsFilter.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFilter} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faFilter} from "@fortawesome/free-solid-svg-icons";
+import SelectSearch from "react-select-search";
 
 const CarsFilter = (props) => {
-  const brands = props.brands.sort().map((brand, key) => (
-    <option value={brand} key={key}>
-      {brand}
-    </option>
-  ));
+  const brandsOptions = props.brands
+    .sort()
+    .map((brand, key) => ({value: brand.toLowerCase(), name: brand}));
+
+  const vehicleOptions = [
+    {
+      value: "all",
+      name: "All",
+    },
+    {
+      value: "car",
+      name: "Car",
+    },
+    {
+      value: "motorcycle",
+      name: "Motorcycle",
+    },
+  ];
+
+  const vehicleTypeOptions = [
+    {
+      value: "sedan",
+      name: "Sedan",
+    },
+    {
+      value: "combi",
+      name: "Combi",
+    },
+    {
+      value: "suv",
+      name: "Suv",
+    },
+    {
+      value: "hatchback",
+      name: "Hatchback",
+    },
+  ];
+
+  const sortOptions = [
+    {
+      value: "default",
+      name: "Default",
+    },
+    {
+      value: "alphabetical",
+      name: "Alphabetical",
+    },
+    {
+      value: "price ascending",
+      name: "Price ascending",
+    },
+    {
+      value: "price descending",
+      name: "Price descending",
+    },
+  ];
 
   return (
-    <div className={classes.CarsFilter} onChange={(e) => props.filterList(e)}>
+    <div className={classes.CarsFilter} onChange={props.filterList}>
       <div className={classes.Vehicle}>
-        <p>Vehicle</p>
-        <label className={classes.customSelect} htmlFor="styledSelect1">
-          <select id="styledSelect1" data-filter="vehicle">
-            <option >All</option>
-            <option>Car</option>
-            <option >Motorcycle</option>
-          </select>
-        </label>
+        <SelectSearch options={vehicleOptions} placeholder={"Vehicle"} onChange={props.filterList}/>
       </div>
 
       <div className={classes.VehicleBrand}>
-        <p>Brand</p>
-        <label className={classes.customSelect} htmlFor="styledSelect1">
-          <select id="styledSelect1" data-filter="vehicleBrand">
-            <option defaultValue>All</option>
-            {brands}
-          </select>
-        </label>
+        <SelectSearch options={brandsOptions} placeholder={"Brands"} />
       </div>
 
       <div className={classes.VehicleType}>
-        <p>Vehicle</p>
-        <label className={classes.customSelect} htmlFor="styledSelect1">
-          <select id="styledSelect1" data-filter="vehicleType">
-            <option defaultValue>All</option>
-            <option>Sedan</option>
-            <option>Combi</option>
-            <option>Suv</option>
-            <option>Hatchback</option>
-          </select>
-        </label>
+        <SelectSearch
+          options={vehicleTypeOptions}
+          placeholder={"Vehicle Type"}
+        />
       </div>
 
       <div className={classes.SortBy}>
-        <p>Sort by</p>
-        <label className={classes.customSelect} htmlFor="styledSelect1">
-          <select id="styledSelect1" data-filter="sorting">
-            <option defaultValue>default</option>
-            <option>alphabetical</option>
-            <option>price ascending</option>
-            <option>price descending</option>
-          </select>
-        </label>
+        <SelectSearch options={sortOptions} placeholder={"Sort by"} />
       </div>
 
-      <span onClick={props.clearFilters}><FontAwesomeIcon icon={faFilter}/>Clear Filters</span>
+      <span onClick={props.clearFilters}>
+        <FontAwesomeIcon icon={faFilter} />
+        Clear Filters
+      </span>
     </div>
   );
 };

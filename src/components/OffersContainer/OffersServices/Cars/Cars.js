@@ -64,6 +64,7 @@ class Cars extends Component {
   };
 
   filterList = (e) => {
+    console.log(e)
     const dataSetVal = Object.values(e.target.dataset);
     const method = dataSetVal[0];
     const methodValue = e.target.value;

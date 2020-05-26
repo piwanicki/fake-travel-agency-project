@@ -39,7 +39,7 @@ class GuestBox extends Component {
 
     return (
       <div className={classes.GuestBox} style={this.props.customStyle}>
-        <p>Guests</p>
+        <div>Guests</div>
         <div style={customDivStyle}>
           <span>
             <p>Adult</p>

@@ -1,9 +1,11 @@
 .GuestBox {
-  // width: 13em;
+  width: 13em;
   grid-column-start: 3;
   grid-column-end: 3;
   grid-row-end: span 2;
   margin: auto;
+  z-index:1;
+  color:white;
 
   div {
     // width: 10em;
@@ -14,7 +16,7 @@
   }
 
   span {
-    padding: 0.5em 0.9em;
+    padding: 0.5em 0;
     width: 2em;
   }
 
@@ -22,6 +24,7 @@
     display: inline-block;
     width: 3em;
     margin: 0.3em;
+
   }
 
   svg {
