@@ -72,6 +72,7 @@ const CarRentForm = (props) => {
               onChange={(day) => setStartDayHandler(day)}
               placeholderText="From..."
               required
+              className={classes.TermPicker}
             />
           </span>
           <span>
@@ -80,6 +81,7 @@ const CarRentForm = (props) => {
               onChange={(day) => setEndDayHandler(day)}
               placeholderText="To..."
               required
+              className={classes.TermPicker}
             />
           </span>
         </div>
@@ -96,6 +98,7 @@ const CarRentForm = (props) => {
               timeCaption="Time"
               dateFormat="h:00 aa"
               placeholderText="Start..."
+              className={classes.TermPicker}
             />
           </span>
           <span>
@@ -108,6 +111,7 @@ const CarRentForm = (props) => {
               timeCaption="Time"
               dateFormat="h:00 aa"
               placeholderText="End..."
+              className={classes.TermPicker}
             />
           </span>
         </div>

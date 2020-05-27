@@ -38,7 +38,7 @@ class GuestBox extends Component {
     const customDivStyle = this.props.customDivStyle;
 
     return (
-      <div className={classes.GuestBox} style={this.props.customStyle}>
+      <div className={classes.GuestBox} style={this.props.customStyle} >
         <div>Guests</div>
         <div style={customDivStyle}>
           <span>

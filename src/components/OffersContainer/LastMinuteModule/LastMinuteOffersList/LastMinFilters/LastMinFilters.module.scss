@@ -7,12 +7,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-
+  position: relative;
   span {
     margin: 0 1em;
   }
 
   .GuestBoxHandler {
+    font: 400 13.3333px Arial;
     color: grey;
     margin: 0 1em;
     display: flex;
@@ -26,6 +27,7 @@
     box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
     border-radius: 3px;
 
+
     &:hover {
       border: 1px solid grey;
     }
@@ -35,7 +37,7 @@
     box-sizing: border-box;
     cursor: pointer;
     margin: 0 1em;
-    width: 50px;
+    width: 80px;
     height: 36px;
 
     background: #fff;

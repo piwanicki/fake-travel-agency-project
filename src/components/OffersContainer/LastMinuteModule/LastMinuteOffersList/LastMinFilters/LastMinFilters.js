@@ -15,10 +15,14 @@ import {
 const LastMinFilters = (props) => {
   const [showGuestBox, setShowGuestBox] = useState(false);
 
+  const ShowGuestBoxHandler = (e) => {
+      setShowGuestBox(!showGuestBox);
+  };
+
   const guestBoxCustomStyles = {
     position: "absolute",
-    right: "25%",
-    top: "40%",
+    right: "10%",
+    top: "75%",
     backgroundColor: "white",
     padding: ".5em",
     color: "black",
@@ -49,48 +53,53 @@ const LastMinFilters = (props) => {
 
   return (
     <div className={classes.LastMinFilters}>
-        <span style={{width: "200px"}}>
-          <SelectSearch
-            options={whereOptions}
-            placeholder={"Where..."}
-            search={true}
-          />
-        </span>
+      <span style={{width: "200px"}}>
+        <SelectSearch
+          options={whereOptions}
+          placeholder={"Where..."}
+          search={true}
+        />
+      </span>
 
+      <span>
+        <SelectSearch
+          options={transportOptions}
+          placeholder={"Type..."}
+          search={true}
+        />
+      </span>
+
+      <span>
+        <SelectSearch
+          options={transportOptions}
+          placeholder={"Transport..."}
+          search={true}
+        
+        />
+      </span>
+
+      <FontAwesomeIcon icon={faCalendarAlt} />
+      <DatePicker className={classes.DateFilters} placeholderText="Start Date" />
+      <FontAwesomeIcon icon={faCalendarAlt} />
+      <DatePicker className={classes.DateFilters} placeholderText="End Date" />
+
+      <div
+        onClick={(e) => ShowGuestBoxHandler(e)}
+        className={classes.GuestBoxHandler}
+      >
+        Guests 0 - 2{" "}
         <span>
-          <SelectSearch
-            options={transportOptions}
-            placeholder={"Type..."}
-            search={true}
-          />
+          <FontAwesomeIcon icon={guestBoxIcon} />
         </span>
-
-        <span>
-          <SelectSearch
-            options={transportOptions}
-            placeholder={"Transport..."}
-            search={true}
-          />
-        </span>
-
-        <FontAwesomeIcon icon={faCalendarAlt} />
-        <DatePicker className={classes.DateFilters} placeholderText="Start" />
-        <FontAwesomeIcon icon={faCalendarAlt} />
-        <DatePicker className={classes.DateFilters} placeholderText="End" />
-
-        <div
-          onClick={() => setShowGuestBox(!showGuestBox)}
-          className={classes.GuestBoxHandler}
-        >
-          Guests 0 - 2 <span><FontAwesomeIcon icon={guestBoxIcon} /></span>
-        </div>
-        {showGuestBox ? <GuestBox customStyle={guestBoxCustomStyles} /> : null}
-        <span onClick={props.clearFilters} className={classes.ClearFiltersBtn}>
-          <FontAwesomeIcon icon={faFilter} />
-          Clear Filters
-        </span>
+       
       </div>
+      {showGuestBox ? <GuestBox customStyle={guestBoxCustomStyles} /> : null}
 
+      <span onClick={props.clearFilters} className={classes.ClearFiltersBtn}>
+        <FontAwesomeIcon icon={faFilter} />
+        Clear Filters
+      </span>
+    </div>
   );
 };
 

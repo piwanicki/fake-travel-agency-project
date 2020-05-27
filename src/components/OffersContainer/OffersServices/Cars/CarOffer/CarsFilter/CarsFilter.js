@@ -10,18 +10,9 @@ const CarsFilter = (props) => {
     .map((brand, key) => ({value: brand.toLowerCase(), name: brand}));
 
   const vehicleOptions = [
-    {
-      value: "all",
-      name: "All",
-    },
-    {
-      value: "car",
-      name: "Car",
-    },
-    {
-      value: "motorcycle",
-      name: "Motorcycle",
-    },
+    {name: "All", value: "all",},
+    {name: "Car", value: "car"},
+    {name: "Motorcycle", value: "motorcycle"},
   ];
 
   const vehicleTypeOptions = [
@@ -45,19 +36,19 @@ const CarsFilter = (props) => {
 
   const sortOptions = [
     {
-      value: "default",
+      value: "so-default",
       name: "Default",
     },
     {
-      value: "alphabetical",
+      value: "so-alphabetical",
       name: "Alphabetical",
     },
     {
-      value: "price ascending",
+      value: "so-price ascending",
       name: "Price ascending",
     },
     {
-      value: "price descending",
+      value: "so-price descending",
       name: "Price descending",
     },
   ];
@@ -65,22 +56,34 @@ const CarsFilter = (props) => {
   return (
     <div className={classes.CarsFilter} onChange={props.filterList}>
       <div className={classes.Vehicle}>
-        <SelectSearch options={vehicleOptions} placeholder={"Vehicle"} onChange={props.filterList}/>
+        <SelectSearch
+          options={vehicleOptions}
+          placeholder={"Vehicle"}
+        />
       </div>
 
       <div className={classes.VehicleBrand}>
-        <SelectSearch options={brandsOptions} placeholder={"Brands"} />
+        <SelectSearch
+          options={brandsOptions}
+          placeholder={"Brands"}
+          
+        />
       </div>
 
       <div className={classes.VehicleType}>
         <SelectSearch
           options={vehicleTypeOptions}
           placeholder={"Vehicle Type"}
+          // onChange={props.filterList}
         />
       </div>
 
       <div className={classes.SortBy}>
-        <SelectSearch options={sortOptions} placeholder={"Sort by"} />
+        <SelectSearch
+          options={sortOptions}
+          placeholder={"Sort by"}
+          // onChange={props.filterList}
+        />
       </div>
 
       <span onClick={props.clearFilters}>

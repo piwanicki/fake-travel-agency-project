@@ -11,6 +11,24 @@
   flex-flow: row;
   flex-wrap: wrap;
 
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+  }
+
+  .TermPicker {
+
+    color:grey;
+
+    &:hover {
+      border-color: grey;
+    }
+  }
+
   p {
     width: 100%;
     font-size: 1.2em;
@@ -24,7 +42,11 @@
     height: 50px;
     font-size: 1.2em;
     margin: 1rem 0;
-    text-align: center;
+
+
+    &:hover {
+      border-color: grey;
+    }
   }
 
   input[type="checkbox"] {
@@ -35,7 +57,9 @@
   input[type="number"] {
     height: 50px;
     font-size: 1.2em;
-    text-align: center;
+    &:hover {
+      border-color: grey;
+    }
   }
 
   .PersonalData {
@@ -60,7 +84,7 @@
       input {
         margin: 1rem 0;
         height: 56px;
-        border-color: grey;
+       
         display: inline-block;
         font-size: 1.2em;
       }

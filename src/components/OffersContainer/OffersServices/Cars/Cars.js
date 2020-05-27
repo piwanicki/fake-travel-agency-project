@@ -63,11 +63,13 @@ class Cars extends Component {
     });
   };
 
-  filterList = (e) => {
-    console.log(e)
-    const dataSetVal = Object.values(e.target.dataset);
-    const method = dataSetVal[0];
-    const methodValue = e.target.value;
+  filterList = (method,value) => {
+    console.log(method)
+    console.log(value)
+    // const value = 'vo-sx'
+    const valueSplit = value.split('-');
+    // const method = valueSplit[0];
+    const methodValue = valueSplit[1];
     let outputList = [];
     const allModels = [...this.state.allModels];
     const filterModels = [...this.state.filterModels];
@@ -110,7 +112,7 @@ class Cars extends Component {
       }
     } else {
       switch (method) {
-        case "vehicleBrand": {
+        case "brandFilter": {
           outputList = allModels.filter(
             (car) => car.props.brand === methodValue
           );
@@ -118,8 +120,7 @@ class Cars extends Component {
           break;
         }
 
-        case "vehicle": {
-          console.log(`switch vehicle`);
+        case "vehicleFilter": {
           console.log(methodValue);
           outputList = allModels.filter(
             (car) => car.props["model"].vehicle === methodValue
@@ -128,7 +129,7 @@ class Cars extends Component {
           break;
         }
 
-        case "vehicleType": {
+        case "vehicleTypeFilter": {
           outputList = allModels.filter(
             (car) => car.props["model"].type === methodValue
           );
