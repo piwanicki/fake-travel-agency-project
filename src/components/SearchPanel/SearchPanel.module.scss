@@ -65,6 +65,20 @@
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto;
   grid-gap: 1em;
+
+  input {
+    background: #fff;
+    border: 1px solid transparent;
+    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 36px;
+
+    &:hover {
+      border-color: grey;
+    }
+  }
 }
 
 .SearchBox {
@@ -76,8 +90,10 @@
 
   .DatePickerWrapper {
     margin: auto;
-    input {
-      height: 30px;
+
+    .DatePicker {
+      text-align: center;
+      color: grey;
       font-family: "Josefin Sans", sans-serif;
     }
   }

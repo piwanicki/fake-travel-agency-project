@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faChevronCircleLeft,
   faChevronCircleRight,
+  faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../Offers";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
@@ -21,7 +22,7 @@ import DescriptionTabs from "../../../../UI/DescriptionTabs/DescriptionTabs";
 import Tab from "../../../../UI/DescriptionTabs/Tab/Tab";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
+import SelectSearch from "react-select-search";
 
 class OfferDetails extends Component {
   state = {
@@ -200,44 +201,44 @@ class OfferDetails extends Component {
     const fromOptions = [
       {
         value: "somewhere1",
-        label: <span>Somewhere 1</span>,
+        name: "Somewhere 1",
       },
       {
         value: "somewhere2",
-        label: <span>Somewhere 2</span>,
+        name: "Somewhere 2",
       },
       {
         value: "somewhere3",
-        label: <span>Somewhere 3</span>,
+        name: "Somewhere 3",
       },
     ];
 
     const roomOptions = [
       {
         value: "singleRoom",
-        label: <span>Single room</span>,
+        name: "Single room",
       },
       {
         value: "doubleRoom",
-        label: <span>Double room</span>,
+        name: "Double Room",
       },
       {
         value: "tripleRoom",
-        label: <span>Triple room</span>,
+        name: "Triple Room",
       },
     ];
     const mealOptions = [
       {
         value: "onlyBreakfasts",
-        label: <span>Only breakfasts</span>,
+        name: "Only Breakfasts",
       },
       {
         value: "onlyDinners",
-        label: <span>Only dinners</span>,
+        name: "Only Dinners",
       },
       {
         value: "fullFeeding",
-        label: <span>Full feeding</span>,
+        name: "Full Feeding",
       },
     ];
 
@@ -275,37 +276,41 @@ class OfferDetails extends Component {
             </div>
           </div>
           <div className={classes.DetailsContainer}>
-            <div className={classes.Dates} style={{textAlign: "end"}}>
+            <div className={classes.Dates}>
               <p>Date :</p>
-              <span>
-                From :
+              <div className={classes.DatePickerBox}>
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                Start
                 <DatePicker
                   selected={this.state.startDate}
                   onChange={this.startDateHandleChange}
-                  placeholderText="Select a date"
+                  placeholderText="Start Date"
+                  className={classes.DatePicker}
                 />
-              </span>
-              <span>
-                To :
+              </div>
+              <div className={classes.DatePickerBox}>
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                End
                 <DatePicker
                   selected={this.state.endDate}
                   onChange={this.endDateHandleChange}
-                  placeholderText="Select a date"
+                  placeholderText="End Date"
+                  className={classes.DatePicker}
                 />
-              </span>
+              </div>
             </div>
 
-            <GuestBox />
+            <GuestBox customStyle={{color: "black"}} />
 
             <div className={classes.CustomOptions}>
               <span>From: </span>
-              <Select options={fromOptions} />
+              <SelectSearch options={fromOptions} />
               <br />
               <span>Room: </span>
-              <Select options={roomOptions} />
+              <SelectSearch options={roomOptions} />
               <br />
               <span>Meal: </span>
-              <Select options={mealOptions} />
+              <SelectSearch options={mealOptions} />
             </div>
 
             <div className={classes.PricingDetails}>

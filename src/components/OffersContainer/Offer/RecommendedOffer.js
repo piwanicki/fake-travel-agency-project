@@ -15,7 +15,6 @@ class RecommendedOffer extends Component {
   //   }
   // };
 
-
   weatherAPIAxios = () => {
     axios
       .get(
@@ -37,7 +36,6 @@ class RecommendedOffer extends Component {
   };
 
   render() {
-
     return (
       <div className={classes.RecommendedOffer}>
         <div className={classes.ImgContainer}>

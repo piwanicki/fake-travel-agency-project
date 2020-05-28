@@ -86,6 +86,7 @@ class SearchPanel extends Component {
                 selected={this.state.startDate}
                 onChange={this.startDateHandleChange}
                 placeholderText="Click to select a date"
+                className={classes.DatePicker}
               />
             </div>
 
@@ -111,6 +112,7 @@ class SearchPanel extends Component {
                 selected={this.state.endDate}
                 onChange={this.endDateHandleChange}
                 placeholderText="Click to select a date"
+                className={classes.DatePicker}
               />
             </div>
           </div>

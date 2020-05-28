@@ -5,50 +5,51 @@ import {faFilter} from "@fortawesome/free-solid-svg-icons";
 import SelectSearch from "react-select-search";
 
 const CarsFilter = (props) => {
-  const brandsOptions = props.brands
-    .sort()
-    .map((brand, key) => ({value: brand.toLowerCase(), name: brand}));
+  const brandsOptions = props.brands.map((brand) => ({
+    value: brand,
+    name: brand,
+  }));
 
   const vehicleOptions = [
-    {name: "All", value: "all",},
-    {name: "Car", value: "car"},
-    {name: "Motorcycle", value: "motorcycle"},
+    {name: "All", value: "All"},
+    {name: "Car", value: "Car"},
+    {name: "Motorcycle", value: "Motorcycle"},
   ];
 
   const vehicleTypeOptions = [
     {
-      value: "sedan",
+      value: "Sedan",
       name: "Sedan",
     },
     {
-      value: "combi",
+      value: "Combi",
       name: "Combi",
     },
     {
-      value: "suv",
+      value: "Suv",
       name: "Suv",
     },
     {
-      value: "hatchback",
+      value: "Hatchback",
       name: "Hatchback",
     },
   ];
 
   const sortOptions = [
     {
-      value: "so-default",
+      value: "default",
       name: "Default",
     },
     {
-      value: "so-alphabetical",
+      value: "alphabetical",
       name: "Alphabetical",
     },
     {
-      value: "so-price ascending",
+      value: "price ascending",
       name: "Price ascending",
     },
     {
-      value: "so-price descending",
+      value: "price descending",
       name: "Price descending",
     },
   ];
@@ -59,6 +60,7 @@ const CarsFilter = (props) => {
         <SelectSearch
           options={vehicleOptions}
           placeholder={"Vehicle"}
+          onChange={props.filterByVehicle}
         />
       </div>
 
@@ -66,7 +68,7 @@ const CarsFilter = (props) => {
         <SelectSearch
           options={brandsOptions}
           placeholder={"Brands"}
-          
+          onChange={props.filterByBrand}
         />
       </div>
 
@@ -74,7 +76,7 @@ const CarsFilter = (props) => {
         <SelectSearch
           options={vehicleTypeOptions}
           placeholder={"Vehicle Type"}
-          // onChange={props.filterList}
+          onChange={props.filterByVehicleType}
         />
       </div>
 
@@ -82,7 +84,7 @@ const CarsFilter = (props) => {
         <SelectSearch
           options={sortOptions}
           placeholder={"Sort by"}
-          // onChange={props.filterList}
+          onChange={props.sortList}
         />
       </div>
 

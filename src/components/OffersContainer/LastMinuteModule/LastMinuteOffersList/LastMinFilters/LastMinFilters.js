@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import classes from "./LastMinFilters.module.scss";
 import SelectSearch from "react-select-search";
-import GuestBox from "../../../../SearchPanel/GuestBox/GuestBox";
+import CustomGuestBox from "../../../../SearchPanel/GuestBox/CustomGuestBox";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -14,14 +14,16 @@ import {
 
 const LastMinFilters = (props) => {
   const [showGuestBox, setShowGuestBox] = useState(false);
+  const [adults, setAdults] = useState(2);
+  const [kids, setKids] = useState(0);
 
   const ShowGuestBoxHandler = (e) => {
-      setShowGuestBox(!showGuestBox);
+    setShowGuestBox(!showGuestBox);
   };
 
-  const guestBoxCustomStyles = {
+  const customGuestBoxStyles = {
     position: "absolute",
-    right: "10%",
+    right: "8%",
     top: "75%",
     backgroundColor: "white",
     padding: ".5em",
@@ -33,15 +35,30 @@ const LastMinFilters = (props) => {
   const transportOptions = [
     {
       value: "fly",
-      name: "fly",
+      name: "Fly",
     },
     {
       value: "bus",
-      name: "fly",
+      name: "Bus",
     },
     {
       value: "onYourOwn",
-      name: "fly",
+      name: "On Your Own",
+    },
+  ];
+
+  const typeOptions = [
+    {
+      value: "type1",
+      name: "Type 1",
+    },
+    {
+      value: "type2",
+      name: "Type 2",
+    },
+    {
+      value: "type3",
+      name: "Type 3",
     },
   ];
 
@@ -58,14 +75,16 @@ const LastMinFilters = (props) => {
           options={whereOptions}
           placeholder={"Where..."}
           search={true}
+          onChange={props.filterByWhere}
         />
       </span>
 
       <span>
         <SelectSearch
-          options={transportOptions}
+          options={typeOptions}
           placeholder={"Type..."}
           search={true}
+          onChange={props.filterByType}
         />
       </span>
 
@@ -74,26 +93,52 @@ const LastMinFilters = (props) => {
           options={transportOptions}
           placeholder={"Transport..."}
           search={true}
-        
+          onChange={props.filterByTransport}
         />
       </span>
 
-      <FontAwesomeIcon icon={faCalendarAlt} />
-      <DatePicker className={classes.DateFilters} placeholderText="Start Date" />
-      <FontAwesomeIcon icon={faCalendarAlt} />
-      <DatePicker className={classes.DateFilters} placeholderText="End Date" />
+      <span>
+        <FontAwesomeIcon icon={faCalendarAlt} />
+        <DatePicker
+          className={classes.DateFilters}
+          placeholderText="Start Date"
+          onChange={props.filterByStartDate}
+        />
+      </span>
+      <span>
+        <FontAwesomeIcon icon={faCalendarAlt} />
+        <DatePicker
+          className={classes.DateFilters}
+          placeholderText="End Date"
+          onChange={props.filterByEndDate}
+        />
+      </span>
 
       <div
         onClick={(e) => ShowGuestBoxHandler(e)}
         className={classes.GuestBoxHandler}
       >
         Guests 0 - 2{" "}
-        <span>
-          <FontAwesomeIcon icon={guestBoxIcon} />
-        </span>
-       
+        <FontAwesomeIcon
+          icon={guestBoxIcon}
+          className={classes.GuestBoxHandlerAngle}
+        />
       </div>
-      {showGuestBox ? <GuestBox customStyle={guestBoxCustomStyles} /> : null}
+      {showGuestBox ? (
+        <CustomGuestBox
+          customStyle={customGuestBoxStyles}
+          customAddAdultHandler={() => setAdults(adults + 1)}
+          customRmAdultHandler={() => {
+            if (adults > 0) setAdults(adults - 1);
+          }}
+          customAddKidHandler={() => setKids(kids + 1)}
+          customRmKidHandler={() => {
+            if (kids > 0) setKids(kids - 1);
+          }}
+          kids={kids}
+          adults={adults}
+        />
+      ) : null}
 
       <span onClick={props.clearFilters} className={classes.ClearFiltersBtn}>
         <FontAwesomeIcon icon={faFilter} />

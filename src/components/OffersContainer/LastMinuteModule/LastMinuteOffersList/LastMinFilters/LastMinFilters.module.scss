@@ -4,12 +4,14 @@
   border-bottom: 2px solid grey;
   background-color: rgba(128, 128, 128, 0.11);
   display: inline-flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   position: relative;
-  span {
-    margin: 0 1em;
+
+  .GuestBoxHandlerAngle {
+    font-size: 2em;
+    margin-left: 0.5em;
   }
 
   .GuestBoxHandler {
@@ -26,7 +28,6 @@
     border: 1px solid transparent;
     box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
     border-radius: 3px;
-
 
     &:hover {
       border: 1px solid grey;
