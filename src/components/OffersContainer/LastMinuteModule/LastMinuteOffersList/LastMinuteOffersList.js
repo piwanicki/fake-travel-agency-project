@@ -1,46 +1,21 @@
 import React, {Component} from "react";
 import classes from "./LastMinuteOffersList.module.scss";
 import {lastMinuteData} from "../LastMinuteOffersData";
-import LastMinFilters from  './LastMinFilters/LastMinFilters'
+import LastMinFilters from "./LastMinFilters/LastMinFilters";
+import LastMinuteOffer from "./LastMinuteOffer/LastMinuteOffer";
 
 class LastMinuteOffersList extends Component {
   state = {
     allOffers: [],
-    countries: Object.keys(lastMinuteData)
+    countries: Object.keys(lastMinuteData),
   };
 
   componentDidMount = () => {
-    const lastMinuteCountries = Object.keys(lastMinuteData);
-    console.log(lastMinuteCountries)
-    
-    // const vehicleBrands = Object.keys(CarsOffers);
-    // const brandsModels = new Map();
-    // let allModels = this.state.allModels;
-
-    // vehicleBrands.forEach((brand) => {
-    //   brandsModels.set(brand, CarsOffers[brand]);
-    // });
-    // brandsModels.forEach((brandsModels, brand) => {
-    //   const models = Object.keys(brandsModels.models);
-    //   const brandLogo = brandsModels.logo;
-    //   allModels = allModels.concat(
-    //     models.map((modelName) => {
-    //       return (
-    //         <CarOffer
-    //           key={modelName}
-    //           brand={brand}
-    //           model={brandsModels.models[modelName]}
-    //           modelName={modelName}
-    //           logo={brandLogo}
-    //         />
-    //       );
-    //     })
-    //   );
-    // });
-    // this.setState({
-    //   allModels: allModels,
-    //   vehicleBrands: vehicleBrands,
-    // });
+    const lastMinuteOffers = Object.keys(lastMinuteData);
+    console.log(lastMinuteOffers);
+    console.log(lastMinuteData);
+    const offers = lastMinuteOffers.map((offer) => <LastMinuteOffer offer={lastMinuteData[offer]} />);
+    this.setState({allOffers: offers});
   };
 
   sortByKey = (key, array) => {
@@ -151,12 +126,14 @@ class LastMinuteOffersList extends Component {
   };
 
   render() {
-    return <div className={classes.LastMinuteList}>
-      <LastMinFilters 
-        countries={this.state.countries}
-        when={'kiedy'}
-      />
-    </div>;
+
+
+    return (
+      <div className={classes.LastMinuteList}>
+        <LastMinFilters countries={this.state.countries} when={"kiedy"} />
+        {this.state.allOffers}
+      </div>
+    );
   }
 }
 

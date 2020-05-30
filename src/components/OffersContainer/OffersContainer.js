@@ -20,7 +20,7 @@ class OffersContainer extends Component {
     return (
       <div className={classes.OffersSection}>
         <div className={classes.RecommendedHeader}>
-          <p>Our recommended Offers!</p>
+          <span>Our recommended Offers!</span>
         </div>
         <div className={classes.OffersContainer}>{OffersPanel}</div>
       </div>

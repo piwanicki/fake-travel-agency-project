@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faWrench, faGasPump} from "@fortawesome/free-solid-svg-icons";
 import ImageModal from "../../../../../UI/ImageModal/ImageModal";
 import {Link} from "react-router-dom";
+import styled from "styled-components";
 
 class CarOffer extends Component {
   state = {
@@ -22,6 +23,18 @@ class CarOffer extends Component {
   nextImageHandler = () => {
     console.log(`nextImageHandler`);
   };
+
+  PriceSpan = styled.span`
+    font-size: 1.8em;
+    color: #cd0000;
+    margin-top: 0.5em;
+  `;
+
+  PriceP = styled.p`
+    text-align: end;
+    margin-bottom: 0;
+    padding-top: 15%;
+  `;
 
   render() {
     const mainPhoto = this.props.model["photos"][0];
@@ -100,18 +113,12 @@ class CarOffer extends Component {
         </div>
 
         <div className={classes.Pricing}>
-          <p style={{textAlign: "end", marginBottom: "0", paddingTop: "15%"}}>
+          <this.PriceP>
+            {" "}
             Price from <br />
-            <span
-              style={{
-                fontSize: "1.8em",
-                color: "#cd0000",
-                marginTop: "0.5em",
-              }}
-            >
-              {this.props.model.price}$ / 24h
-            </span>
-          </p>
+            <this.PriceSpan> {this.props.model.price}$ / 24h</this.PriceSpan>
+          </this.PriceP>
+
           <span>
             <Link
               to={`/offerServices/cars/${this.props.brand}/${this.props.modelName}`}
