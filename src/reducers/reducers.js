@@ -1,7 +1,11 @@
+// import axios from "axios";
+// import offers from "../components/OffersContainer/Offers";
+
 const initialState = {
   adults: 2,
   kids: 0,
   weathers: new Map(),
+  isFetching: true,
 };
 
 const reducers = (state = initialState, action) => {
@@ -30,14 +34,39 @@ const reducers = (state = initialState, action) => {
       }
     }
 
-    case "UPD_WEATHERS": {
-      const updWeathers = state.weathers;
-      updWeathers.set(action.value.city, action.value.current);
-      return {
-        ...state,
-        weathers: updWeathers,
-      };
-    }
+    // case "UPD_WEATHERS": {
+    //   const updWeathers = state.weathers;
+    //   updWeathers.set(action.value.city, action.value.current);
+    //   return {
+    //     ...state,
+    //     weathers: updWeathers,
+    //   };
+    // }
+
+    // case "FETCH_WEATHERS": {
+    //   // Object.keys(offers).forEach((city) => {
+    //     return axios
+    //       .get(
+    //         `http://api.weatherstack.com/current?access_key=22109322a48c375ebd5e83eb3ce12344&query=${"Dubrovnik"}`
+    //       )
+    //       .then((response) => {
+    //         const city = response.data.location.name;
+    //         const cityData = response.data.current;
+
+    //         return {
+    //           ...state,
+    //           isFetching: !state.isFetching,
+    //         };
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //         return {
+    //           ...state,
+    //           isFetching: !state.isFetching,
+    //         };
+    //       });
+      
+    //     }
 
     default:
       return state;

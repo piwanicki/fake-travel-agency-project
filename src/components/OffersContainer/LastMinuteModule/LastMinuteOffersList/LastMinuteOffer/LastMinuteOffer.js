@@ -4,83 +4,139 @@ import {Link} from "react-router-dom";
 import ImageModal from "../../../../../UI/ImageModal/ImageModal";
 import styled from "styled-components";
 import Ratings from "react-ratings-declarative";
+import {connect} from "react-redux";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faClock} from "@fortawesome/free-regular-svg-icons";
+import {faGlassCheers, faCar, faPlane} from "@fortawesome/free-solid-svg-icons";
+
+const PriceP = styled.p`
+  text-align: end;
+  margin-bottom: 0;
+  padding-top: 15%;
+`;
+
+const PriceSpan = styled.span`
+  font-size: 1.8em;
+  color: #cd0000;
+  margin-top: 0.5em;
+`;
+
+const OfferDetailsDiv = styled.div`
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
+  margin: 5px auto;
+  height: 190px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  p {
+    color: #cd0000;
+  }
+  h2 {
+    color: #cd0000;
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
+    color: #000066;
+  }
+
+  .hotelInfo {
+    margin-right: 5px;
+  }
+`;
+
+const DivFlexStart = styled.div`
+  align-self: flex-start;
+  justify-self: flex-start;
+  margin-top: 1em;
+`;
+
+const ReviewContainer = styled.div`
+  margin-top: 0.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  .reviewRatings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 40px;
+    background: #66cd00;
+    color: whitesmoke;
+    font-size: 1.4em;
+    border-radius: 5px;
+  }
+`;
+
+const FacilitiesBox = styled.div`
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  justify-contentl: center;
+  width: 98%;
+  margin: 0 auto;
+  height: 30px;
+  span {
+    padding-right: 2em;
+  }
+`;
 
 const LastMinuteOffer = (props) => {
   const [galleryIsOpen, showGallery] = useState(false);
-
-  const PriceSpan = styled.span`
-    font-size: 1.8em;
-    color: #cd0000;
-    margin-top: 0.5em;
-  `;
 
   const roundHalf = (num) => {
     return Math.round(num * 2) / 2;
   };
 
-  const PriceP = styled.p`
-    text-align: end;
-    margin-bottom: 0;
-    padding-top: 15%;
-  `;
-
-  const OfferDetailsDiv = styled.div`
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid black;
-    margin: 5px auto;
-    height: 190px;
-    box-sizing: border-box;
-    p {
-      color: #cd0000;
-    }
-    h2 {
-      color: #cd0000;
-      margin: 0;
-    }
-    h3 {
-      margin: 0;
-      color: #000066;
-    }
-
-    .hotelInfo {
-      margin-right: 5px;
-    }
-  `;
-
-  const DivFlexStart = styled.div`
-    align-self: flex-start;
-    justify-self: flex-start;
-    margin: 1em;
-  `;
-
-  const ReviewContainer = styled.div`
-    margin-top: 1em;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    .reviewRatings {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 75px;
-      height: 40px;
-      background: #66cd00;
-      color: whitesmoke;
-      font-size: 1.4em;
-      border-radius: 5px;
-    }
-  `;
-
   const hotelRatings = () => {
     const ratingsWidgets = [];
     for (let i = 0; i < props.offer.hotelRat; i++) {
-      ratingsWidgets.push(<Ratings.Widget />);
+      ratingsWidgets.push(<Ratings.Widget key={i} />);
     }
     return ratingsWidgets;
   };
+
+  const prepFacilitiesIcons = props.offer.facilitiesTags.map((tag, index) => {
+    let icon;
+    switch (tag) {
+      case "All Inclusive": {
+        icon = faGlassCheers;
+        break;
+      }
+
+      case "On Your Own": {
+        icon = faCar;
+        break;
+      }
+
+      case "Last Minute": {
+        icon = faClock;
+        break;
+      }
+
+      case "Flight": {
+        icon = faPlane;
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+
+    return (
+      <span key={index}>
+        <FontAwesomeIcon icon={icon} />
+        &nbsp;
+        {tag}
+      </span>
+    );
+  });
 
   return (
     <div className={classes.LastMinuteOffer}>
@@ -140,6 +196,7 @@ const LastMinuteOffer = (props) => {
         {props.offer.from}
         <br />
         {props.offer.to}
+        <FacilitiesBox>{prepFacilitiesIcons}</FacilitiesBox>
       </OfferDetailsDiv>
 
       <div className={classes.Pricing}>
@@ -165,4 +222,11 @@ const LastMinuteOffer = (props) => {
   );
 };
 
-export default LastMinuteOffer;
+const mapStateToProps = (state) => {
+  return {
+    weathers: state.weathers,
+    isFetching: state.isFetching,
+  };
+};
+
+export default connect(mapStateToProps, null)(LastMinuteOffer);

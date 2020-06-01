@@ -111,7 +111,9 @@ export const lastMinuteData = {
       },
     },
     photos: [dubrovnik1],
-    reviews: [5,3,2]
+    reviews: [5,3,2],
+    facilitiesTags: ['Last Minute', 'All Inclusive', 'Flight']
+
   },
 
   Egipt : {
@@ -223,7 +225,8 @@ export const lastMinuteData = {
       },
     },
     photos: [dubrovnik1],
-    reviews: [5,3,2,4,5]
+    reviews: [5,3,2,4,5],
+    facilitiesTags: ['Last Minute', 'All Inclusive', 'On Your Own']
   },
 
   Tailand : {
@@ -335,7 +338,9 @@ export const lastMinuteData = {
       },
     },
     photos: [dubrovnik1],
-    reviews: [5,3,2]
+    reviews: [5,3,2],
+    facilitiesTags: ['Last Minute', 'On Your Own']
+
   }
 }
 

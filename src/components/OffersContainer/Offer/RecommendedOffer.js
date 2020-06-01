@@ -1,40 +1,11 @@
 import React, {Component} from "react";
 import classes from "./RecommendedOffer.module.scss";
-import axios from "axios";
+//import axios from "axios";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import LoadingSpinner from "../../../UI/LoadingSpinner/LoadingSpinner";
 
 class RecommendedOffer extends Component {
-  state = {
-    weather: this.props.weather.get(this.props.city),
-  };
-
-  // componentDidMount = () => {
-  //   if (this.props.weather.get(this.props.city) === undefined) {
-  //     this.weatherAPIAxios();
-  //   }
-  // };
-
-  weatherAPIAxios = () => {
-    axios
-      .get(
-        `http://api.weatherstack.com/current?access_key=22109322a48c375ebd5e83eb3ce12344&query=${this.props.city}`
-      )
-      .then((response) => {
-        const cityWeatherObj = {
-          city: this.props.city,
-          location: response.data.location,
-          current: response.data.current,
-        };
-        this.props.weatherAPIHandler(cityWeatherObj);
-        // this.setState({
-        //   weather: response.data.current.temperature,
-        //   weatherIcon: response.data.current.weather_icons,
-        // });
-      })
-      .catch((error) => console.log(`Undefined city`));
-  };
-
   render() {
     return (
       <div className={classes.RecommendedOffer}>
@@ -59,8 +30,12 @@ class RecommendedOffer extends Component {
               </div>
             </li>
             <li style={{margin: "1em 2em"}} className={classes.WeatherBox}>
-              <img src={this.props.weather.weather_icon} alt="weather" />
-              <h3>{this.props.weather.temperature} &#186; C</h3>
+              {this.props.isFetching ? <LoadingSpinner /> : null}
+
+              {/* <>
+                  <img src={this.props.weather.weather_icon} alt="weather" />
+                  <h3>{this.props.weather.temperature} &#186; C</h3>
+                </>  */}
             </li>
             <li
               style={{
@@ -83,7 +58,8 @@ class RecommendedOffer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    weather: state.weathers,
+    weathers: state.weathers,
+    isFetching: state.isFetching,
   };
 };
 
