@@ -1,11 +1,17 @@
 // import axios from "axios";
 // import offers from "../components/OffersContainer/Offers";
+import {
+  FETCH_WEATHERS_PENDING,
+  FETCH_WEATHERS_SUCCESS,
+  FETCH_WEATHERS_ERROR,
+} from "../actions/fetchWeathersAction";
 
 const initialState = {
   adults: 2,
   kids: 0,
   weathers: new Map(),
-  isFetching: true,
+  isFetching: false,
+  error: null,
 };
 
 const reducers = (state = initialState, action) => {
@@ -33,44 +39,36 @@ const reducers = (state = initialState, action) => {
         return {...state};
       }
     }
-
-    // case "UPD_WEATHERS": {
-    //   const updWeathers = state.weathers;
-    //   updWeathers.set(action.value.city, action.value.current);
-    //   return {
-    //     ...state,
-    //     weathers: updWeathers,
-    //   };
-    // }
-
-    // case "FETCH_WEATHERS": {
-    //   // Object.keys(offers).forEach((city) => {
-    //     return axios
-    //       .get(
-    //         `http://api.weatherstack.com/current?access_key=22109322a48c375ebd5e83eb3ce12344&query=${"Dubrovnik"}`
-    //       )
-    //       .then((response) => {
-    //         const city = response.data.location.name;
-    //         const cityData = response.data.current;
-
-    //         return {
-    //           ...state,
-    //           isFetching: !state.isFetching,
-    //         };
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //         return {
-    //           ...state,
-    //           isFetching: !state.isFetching,
-    //         };
-    //       });
-      
-    //     }
+    case FETCH_WEATHERS_PENDING:
+      console.log("fetchWeathers pending");
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case FETCH_WEATHERS_SUCCESS:
+      console.log("fetchWeathers success");
+      const weathers = new Map(state.weathers);
+      weathers.set(action.city, action.weathers);
+      return {
+        ...state,
+        isFetching: false,
+        weathers: weathers,
+      };
+    case FETCH_WEATHERS_ERROR:
+      console.log("fetchWeathers error");
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error,
+      };
 
     default:
       return state;
   }
 };
+
+export const getWeathers = (state) => state.weathers;
+export const getWeathersPending = (state) => state.isFetching;
+export const getWeathersError = (state) => state.error;
 
 export default reducers;

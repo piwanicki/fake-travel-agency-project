@@ -11,11 +11,23 @@ import CarOfferDetails from "../../components/OffersContainer/OffersServices/Car
 import DemoAlert from "../DemoAlert/DemoAlert";
 import Wrapper from "./Wrapper/Wrapper";
 import LastMinuteOffersList from "../../components/OffersContainer/LastMinuteModule/LastMinuteOffersList/LastMinuteOffersList";
-
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {
+  getWeathers,
+  getWeathersPending,
+  getWeathersError,
+} from "../../reducers/reducers";
+import fetchWeathersHandler from "../../actions/fetchWeathers";
 
 class Layout extends Component {
   state = {
     showDemoAlert: false,
+  };
+
+  componentDidMount = () => {
+    //const {fetchWeathers} = this.props;
+    //fetchWeathers();
   };
 
   showDemoAlertHandler = () => {
@@ -56,5 +68,25 @@ class Layout extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  error: getWeathersError(state),
+  weathers: getWeathers(state),
+  pending: getWeathersPending(state),
+});
 
-export default Layout;
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     fetchWeathers: () => dispatch(fetchWeathersHandler),
+//   }
+// }
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      fetchWeathers: fetchWeathersHandler,
+    },
+    dispatch
+  );
+
+//export default Layout;
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

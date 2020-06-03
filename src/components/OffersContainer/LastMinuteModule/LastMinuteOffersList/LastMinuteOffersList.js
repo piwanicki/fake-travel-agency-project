@@ -3,6 +3,7 @@ import classes from "./LastMinuteOffersList.module.scss";
 import {lastMinuteData} from "../LastMinuteOffersData";
 import LastMinFilters from "./LastMinFilters/LastMinFilters";
 import LastMinuteOffer from "./LastMinuteOffer/LastMinuteOffer";
+import {connect} from 'react-redux';
 
 class LastMinuteOffersList extends Component {
   state = {
@@ -135,4 +136,19 @@ class LastMinuteOffersList extends Component {
   }
 }
 
-export default LastMinuteOffersList;
+const mapStateToProps = (state) => {
+  return {
+    weathers: state.weathers,
+    isFetching: state.isFetching,
+  };
+};
+
+// const dispatchPropsToState = (dispatch) => {
+
+// };
+
+
+//export default LastMinuteOffersList;
+export default connect(mapStateToProps, null)(LastMinuteOffersList);
+
+

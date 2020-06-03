@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-regular-svg-icons";
 import {faGlassCheers, faCar, faPlane} from "@fortawesome/free-solid-svg-icons";
+import LoadingSpinner from "../../../../../UI/LoadingSpinner/LoadingSpinner";
 
 const PriceP = styled.p`
   text-align: end;
@@ -89,6 +90,15 @@ const FacilitiesBox = styled.div`
 
 const LastMinuteOffer = (props) => {
   const [galleryIsOpen, showGallery] = useState(false);
+
+  let weatherIcon;
+  let weatherDegree;
+
+  if (props.weathers.get(props.offer.city) !== undefined) {
+    weatherIcon = props.weathers.get(props.offer.city).current.weather_icons[0];
+    console.log(weatherIcon);
+    weatherDegree = props.weathers.get(props.offer.city).current.temperature;
+  }
 
   const roundHalf = (num) => {
     return Math.round(num * 2) / 2;
@@ -186,10 +196,15 @@ const LastMinuteOffer = (props) => {
             </ReviewContainer>
           </div>
         </DivFlexStart>
-        <div style={{margin: "1em 2em"}} className={classes.WeatherBox}>
-          {/* <img src={props.weather.weather_icon} alt="weather" />
-              <h3>{props.weather.temperature} &#186; C</h3> */}
-          POGODA
+        <div className={classes.WeatherBox}>
+          {props.isFetching ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              <img src={weatherIcon} alt="weather" />
+              <h3>{weatherDegree} &#186; C</h3>
+            </>
+          )}
         </div>
         Date:
         <br />

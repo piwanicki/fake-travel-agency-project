@@ -11,9 +11,9 @@ const DemoAlert = (props) => {
           There are two modules already implemented:
           </p>
           <ul>
-            <li>Cars -> where you can find list of available cars to rent</li>
+            <li>Cars -&gt; where you can find list of available cars to rent</li>
             <li>
-              Recommended offers -> you can click on recommended offer to see
+              Recommended offers -&gt; you can click on recommended offer to see
               offer details
             </li>
           </ul>

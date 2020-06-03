@@ -7,6 +7,15 @@ import LoadingSpinner from "../../../UI/LoadingSpinner/LoadingSpinner";
 
 class RecommendedOffer extends Component {
   render() {
+    let weatherIcon;
+    let weatherDegree;
+    if (this.props.weathers.get(this.props.city) !== undefined) {
+      weatherIcon = this.props.weathers.get(this.props.city).current
+        .weather_icons[0];
+      weatherDegree = this.props.weathers.get(this.props.city).current
+        .temperature;
+    }
+
     return (
       <div className={classes.RecommendedOffer}>
         <div className={classes.ImgContainer}>
@@ -30,12 +39,14 @@ class RecommendedOffer extends Component {
               </div>
             </li>
             <li style={{margin: "1em 2em"}} className={classes.WeatherBox}>
-              {this.props.isFetching ? <LoadingSpinner /> : null}
-
-              {/* <>
-                  <img src={this.props.weather.weather_icon} alt="weather" />
-                  <h3>{this.props.weather.temperature} &#186; C</h3>
-                </>  */}
+              {this.props.isFetching ? (
+                <LoadingSpinner />
+              ) : (
+                <>
+                  <img src={weatherIcon} alt="weather" />
+                  <h3>{weatherDegree} &#186; C</h3>
+                </>
+              )}
             </li>
             <li
               style={{
@@ -63,11 +74,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const dispatchPropsToState = (dispatch) => {
-  return {
-    weatherAPIHandler: (weatherObj) =>
-      dispatch({type: "UPD_WEATHERS", value: weatherObj}),
-  };
-};
+// const dispatchPropsToState = (dispatch) => {
 
-export default connect(mapStateToProps, dispatchPropsToState)(RecommendedOffer);
+// };
+
+export default connect(mapStateToProps, null)(RecommendedOffer);

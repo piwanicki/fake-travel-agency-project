@@ -1,11 +1,10 @@
-import dubrovnik1 from '../../OffersContainer/offerDetailsPhotos/dubrovnikPhotos/dubrovnik1.jpg'
-
+import dubrovnik1 from "../../OffersContainer/offerDetailsPhotos/dubrovnikPhotos/dubrovnik1.jpg";
 
 export const lastMinuteData = {
-  Turkey : {
+  Stambul: {
     country: "Turkey",
     city: "Stambul",
-    hotel: 'Hotel Turkey',
+    hotel: "Hotel Turkey",
     hotelRat: 3,
     lat: "42.651",
     lon: "18.091",
@@ -31,7 +30,13 @@ export const lastMinuteData = {
       ],
 
       facilitiesIcons: [
-        ['faWifi','Free Wifi'],['faSwimmingPool','Swimming Pool'],['faParking','Free Parking'],['faGlassCheers','Open Bar'],['faWheelchair','Adapted for disabled persons'],['faBaby','Baby Room'],['faTableTennis','Play Room']
+        ["faWifi", "Free Wifi"],
+        ["faSwimmingPool", "Swimming Pool"],
+        ["faParking", "Free Parking"],
+        ["faGlassCheers", "Open Bar"],
+        ["faWheelchair", "Adapted for disabled persons"],
+        ["faBaby", "Baby Room"],
+        ["faTableTennis", "Play Room"],
       ],
 
       meals: [
@@ -75,51 +80,50 @@ export const lastMinuteData = {
       flights: {
         RyanAir: {
           Katowice: {
-            departure: ['15:35',"15-07-2020"],
-            arrival: ['15:35',"01-08-2020"]
+            departure: ["15:35", "15-07-2020"],
+            arrival: ["15:35", "01-08-2020"],
           },
           Gdansk: {
-            departure: ['12:30',"16-07-2020"],
-            arrival: ['12:30',"02-08-2020"],
+            departure: ["12:30", "16-07-2020"],
+            arrival: ["12:30", "02-08-2020"],
           },
           Warszawa: {
-            departure: ['17:30',"17-07-2020"],
-            arrival:   ['12:30',"03-08-2020"],
+            departure: ["17:30", "17-07-2020"],
+            arrival: ["12:30", "03-08-2020"],
           },
 
           Krakow: {
-            departure:['17:30',"18-07-2020"],
-            arrival:  ['12:30',"04-08-2020"],
+            departure: ["17:30", "18-07-2020"],
+            arrival: ["12:30", "04-08-2020"],
           },
 
           Wroclaw: {
-            departure:['17:30',"19-07-2020"],
-            arrival:  ['12:30',"05-08-2020"],
+            departure: ["17:30", "19-07-2020"],
+            arrival: ["12:30", "05-08-2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: ['17:30',"19-07-2020",],
-            arrival:   ['12:30',"05-08-2020"],
+            departure: ["17:30", "19-07-2020"],
+            arrival: ["12:30", "05-08-2020"],
           },
           Krakow: {
-            departure: ['17:30','18-07-2020'],
-            arrival:   ['12:30','04-08-2020'],
+            departure: ["17:30", "18-07-2020"],
+            arrival: ["12:30", "04-08-2020"],
           },
         },
       },
     },
     photos: [dubrovnik1],
-    reviews: [5,3,2],
-    facilitiesTags: ['Last Minute', 'All Inclusive', 'Flight']
-
+    reviews: [5, 3, 2],
+    facilitiesTags: ["Last Minute", "All Inclusive", "Flight"],
   },
 
-  Egipt : {
+  Cairo: {
     country: "Egipt",
-    city: "Egipt",
-    hotel: 'Hotel Egipt',
+    city: "Cairo",
+    hotel: "Hotel Cairo",
     hotelRat: 3,
     lat: "42.651",
     lon: "18.091",
@@ -145,7 +149,13 @@ export const lastMinuteData = {
       ],
 
       facilitiesIcons: [
-        ['faWifi','Free Wifi'],['faSwimmingPool','Swimming Pool'],['faParking','Free Parking'],['faGlassCheers','Open Bar'],['faWheelchair','Adapted for disabled persons'],['faBaby','Baby Room'],['faTableTennis','Play Room']
+        ["faWifi", "Free Wifi"],
+        ["faSwimmingPool", "Swimming Pool"],
+        ["faParking", "Free Parking"],
+        ["faGlassCheers", "Open Bar"],
+        ["faWheelchair", "Adapted for disabled persons"],
+        ["faBaby", "Baby Room"],
+        ["faTableTennis", "Play Room"],
       ],
 
       meals: [
@@ -189,51 +199,51 @@ export const lastMinuteData = {
       flights: {
         RyanAir: {
           Katowice: {
-            departure: ['15:35',"15-07-2020"],
-            arrival: ['15:35',"01-08-2020"]
+            departure: ["15:35", "15-07-2020"],
+            arrival: ["15:35", "01-08-2020"],
           },
           Gdansk: {
-            departure: ['12:30',"16-07-2020"],
-            arrival: ['12:30',"02-08-2020"],
+            departure: ["12:30", "16-07-2020"],
+            arrival: ["12:30", "02-08-2020"],
           },
           Warszawa: {
-            departure: ['17:30',"17-07-2020"],
-            arrival:   ['12:30',"03-08-2020"],
+            departure: ["17:30", "17-07-2020"],
+            arrival: ["12:30", "03-08-2020"],
           },
 
           Krakow: {
-            departure:['17:30',"18-07-2020"],
-            arrival:  ['12:30',"04-08-2020"],
+            departure: ["17:30", "18-07-2020"],
+            arrival: ["12:30", "04-08-2020"],
           },
 
           Wroclaw: {
-            departure:['17:30',"19-07-2020"],
-            arrival:  ['12:30',"05-08-2020"],
+            departure: ["17:30", "19-07-2020"],
+            arrival: ["12:30", "05-08-2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: ['17:30',"19-07-2020",],
-            arrival:   ['12:30',"05-08-2020"],
+            departure: ["17:30", "19-07-2020"],
+            arrival: ["12:30", "05-08-2020"],
           },
           Krakow: {
-            departure: ['17:30','18-07-2020'],
-            arrival:   ['12:30','04-08-2020'],
+            departure: ["17:30", "18-07-2020"],
+            arrival: ["12:30", "04-08-2020"],
           },
         },
       },
     },
     photos: [dubrovnik1],
-    reviews: [5,3,2,4,5],
-    facilitiesTags: ['Last Minute', 'All Inclusive', 'On Your Own']
+    reviews: [5, 3, 2, 4, 5],
+    facilitiesTags: ["Last Minute", "All Inclusive", "On Your Own"],
   },
 
-  Tailand : {
+  Bangkok: {
     country: "Tailand",
-    hotel: 'Hotel Tailand',
+    hotel: "Hotel Bangkok",
     hotelRat: 5,
-    city: "Stambul",
+    city: "Bangkok",
     lat: "42.651",
     lon: "18.091",
     from: "15-07-2020",
@@ -258,7 +268,13 @@ export const lastMinuteData = {
       ],
 
       facilitiesIcons: [
-        ['faWifi','Free Wifi'],['faSwimmingPool','Swimming Pool'],['faParking','Free Parking'],['faGlassCheers','Open Bar'],['faWheelchair','Adapted for disabled persons'],['faBaby','Baby Room'],['faTableTennis','Play Room']
+        ["faWifi", "Free Wifi"],
+        ["faSwimmingPool", "Swimming Pool"],
+        ["faParking", "Free Parking"],
+        ["faGlassCheers", "Open Bar"],
+        ["faWheelchair", "Adapted for disabled persons"],
+        ["faBaby", "Baby Room"],
+        ["faTableTennis", "Play Room"],
       ],
 
       meals: [
@@ -302,45 +318,43 @@ export const lastMinuteData = {
       flights: {
         RyanAir: {
           Katowice: {
-            departure: ['15:35',"15-07-2020"],
-            arrival: ['15:35',"01-08-2020"]
+            departure: ["15:35", "15-07-2020"],
+            arrival: ["15:35", "01-08-2020"],
           },
           Gdansk: {
-            departure: ['12:30',"16-07-2020"],
-            arrival: ['12:30',"02-08-2020"],
+            departure: ["12:30", "16-07-2020"],
+            arrival: ["12:30", "02-08-2020"],
           },
           Warszawa: {
-            departure: ['17:30',"17-07-2020"],
-            arrival:   ['12:30',"03-08-2020"],
+            departure: ["17:30", "17-07-2020"],
+            arrival: ["12:30", "03-08-2020"],
           },
 
           Krakow: {
-            departure:['17:30',"18-07-2020"],
-            arrival:  ['12:30',"04-08-2020"],
+            departure: ["17:30", "18-07-2020"],
+            arrival: ["12:30", "04-08-2020"],
           },
 
           Wroclaw: {
-            departure:['17:30',"19-07-2020"],
-            arrival:  ['12:30',"05-08-2020"],
+            departure: ["17:30", "19-07-2020"],
+            arrival: ["12:30", "05-08-2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: ['17:30',"19-07-2020",],
-            arrival:   ['12:30',"05-08-2020"],
+            departure: ["17:30", "19-07-2020"],
+            arrival: ["12:30", "05-08-2020"],
           },
           Krakow: {
-            departure: ['17:30','18-07-2020'],
-            arrival:   ['12:30','04-08-2020'],
+            departure: ["17:30", "18-07-2020"],
+            arrival: ["12:30", "04-08-2020"],
           },
         },
       },
     },
     photos: [dubrovnik1],
-    reviews: [5,3,2],
-    facilitiesTags: ['Last Minute', 'On Your Own']
-
-  }
-}
-
+    reviews: [5, 3, 2],
+    facilitiesTags: ["Last Minute", "On Your Own"],
+  },
+};
