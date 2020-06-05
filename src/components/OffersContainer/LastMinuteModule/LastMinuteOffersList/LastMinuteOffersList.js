@@ -13,7 +13,7 @@ class LastMinuteOffersList extends Component {
 
   componentDidMount = () => {
     const lastMinuteOffers = Object.keys(lastMinuteData);
-    const offers = lastMinuteOffers.map((offer,index) => <LastMinuteOffer offer={lastMinuteData[offer]} key={index}/>);
+    const offers = lastMinuteOffers.map((offer,index) => <LastMinuteOffer offer={lastMinuteData[offer]} key={index} />);
     this.setState({allOffers: offers});
   };
 

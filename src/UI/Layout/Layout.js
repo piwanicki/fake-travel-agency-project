@@ -26,8 +26,8 @@ class Layout extends Component {
   };
 
   componentDidMount = () => {
-    //const {fetchWeathers} = this.props;
-    //fetchWeathers();
+    // const {fetchWeathers} = this.props;
+    // fetchWeathers();
   };
 
   showDemoAlertHandler = () => {

@@ -7,7 +7,13 @@ import Ratings from "react-ratings-declarative";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-regular-svg-icons";
-import {faGlassCheers, faCar, faPlane} from "@fortawesome/free-solid-svg-icons";
+import {
+  faGlassCheers,
+  faCar,
+  faPlane,
+  faThumbsUp,
+  faCalendarAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../../../../../UI/LoadingSpinner/LoadingSpinner";
 
 const PriceP = styled.p`
@@ -55,6 +61,33 @@ const DivFlexStart = styled.div`
   align-self: flex-start;
   justify-self: flex-start;
   margin-top: 1em;
+  width: 200px;
+  height: 150px;
+  display: inline-flex;
+  align-items: center;
+`;
+
+const DivFlexEnd = styled.div`
+  width: 300px;
+  align-self: flex-end;
+  justify-self: flex-end;
+  height: 150px;
+`;
+
+const InlineFlexDiv = styled.div`
+  display: inline-flex;
+`;
+
+const UserRatings = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 40px;
+  background: #66cd00;
+  color: whitesmoke;
+  font-size: 1.4em;
+  border-radius: 5px;
 `;
 
 const ReviewContainer = styled.div`
@@ -73,6 +106,13 @@ const ReviewContainer = styled.div`
     font-size: 1.4em;
     border-radius: 5px;
   }
+  .usersRecommendation {
+    font-size: 1.3em;
+    color: gray;
+    svg {
+      margin-left: 5px;
+    }
+  }
 `;
 
 const FacilitiesBox = styled.div`
@@ -87,6 +127,19 @@ const FacilitiesBox = styled.div`
     padding-right: 2em;
   }
 `;
+
+const DateDiv = styled.div`
+  color: gray;
+  font-size:1.2em;
+  display: flex;
+  flex-direction: column;
+  span {
+    padding:0.5em;
+  }
+  svg {
+    margin-right:.5em;
+  }
+`
 
 const LastMinuteOffer = (props) => {
   const [galleryIsOpen, showGallery] = useState(false);
@@ -158,44 +211,68 @@ const LastMinuteOffer = (props) => {
         />
       </div>
       <OfferDetailsDiv>
-        <DivFlexStart>
-          <h3>{props.offer.country}</h3>
-          <p>
-            <strong>{props.offer.city}</strong>
-          </p>
-
-          <span>
-            <span className="hotelInfo">
-              <strong>{props.offer.hotel}</strong>
-            </span>
-
-            <Ratings
-              rating={props.offer.hotelRat}
-              widgetDimensions="12px"
-              widgetSpacings="2px"
-              widgetEmptyColor="grey"
-              widgetHoverColors="orange"
-              widgetRatedColors="orange"
-            >
-              {hotelRatings()}
-            </Ratings>
-          </span>
-
-          <div>
-            <ReviewContainer>
-              <span className="reviewRatings">
-                <strong>
-                  {roundHalf(
-                    props.offer.reviews.reduce((acc, red) => acc + red) /
-                      props.offer.reviews.length
-                  ).toFixed(1)}
-                </strong>
-                &nbsp;/&nbsp;5
+        <InlineFlexDiv>
+          <DivFlexStart>
+            <div>
+              <h3>{props.offer.country}</h3>
+              <p>
+                <strong>{props.offer.city}</strong>
+              </p>
+              <span>
+                <span className="hotelInfo">
+                  <strong>{props.offer.hotel}</strong>
+                </span>
               </span>
-              <span>&nbsp; {props.offer.reviews.length} reviews</span>
+              <Ratings
+                rating={props.offer.hotelRat}
+                widgetDimensions="12px"
+                widgetSpacings="2px"
+                widgetEmptyColor="grey"
+                widgetHoverColors="orange"
+                widgetRatedColors="orange"
+              >
+                {hotelRatings()}
+              </Ratings>
+              <div>
+                <ReviewContainer>
+                  <UserRatings>
+                    <strong>
+                      {roundHalf(
+                        props.offer.reviews.reduce((acc, red) => acc + red) /
+                          props.offer.reviews.length
+                      ).toFixed(1)}
+                    </strong>
+                    &nbsp;/&nbsp;5
+                  </UserRatings>
+                  <span>&nbsp; {props.offer.reviews.length} reviews</span>
+                </ReviewContainer>
+              </div>
+            </div>
+          </DivFlexStart>
+          <DivFlexEnd>
+            <ReviewContainer>
+              <UserRatings>96%</UserRatings>
+              <span className="usersRecommendation">
+                Users recommended!
+                <FontAwesomeIcon icon={faThumbsUp} />
+              </span>
             </ReviewContainer>
-          </div>
-        </DivFlexStart>
+            <InlineFlexDiv>
+              <ul>
+                <li>1 facility</li>
+                <li>2 facility</li>
+                <li>3 facility</li>
+                <li>4 facility</li>
+              </ul>
+              <ul>
+                <li>5 facility</li>
+                <li>6 facility</li>
+                <li>7 facility</li>
+                <li>8 facility</li>
+              </ul>
+            </InlineFlexDiv>
+          </DivFlexEnd>
+        </InlineFlexDiv>
         <div className={classes.WeatherBox}>
           {props.isFetching ? (
             <LoadingSpinner />
@@ -206,11 +283,17 @@ const LastMinuteOffer = (props) => {
             </>
           )}
         </div>
-        Date:
-        <br />
-        {props.offer.from}
-        <br />
-        {props.offer.to}
+        <DateDiv>
+        <span> <FontAwesomeIcon icon={faCalendarAlt} />
+          {props.offer.from}</span>
+         
+        <span>
+        <FontAwesomeIcon icon={faCalendarAlt} />
+          {props.offer.to}
+        </span>
+
+        </DateDiv>
+
         <FacilitiesBox>{prepFacilitiesIcons}</FacilitiesBox>
       </OfferDetailsDiv>
 
@@ -240,7 +323,7 @@ const LastMinuteOffer = (props) => {
 const mapStateToProps = (state) => {
   return {
     weathers: state.weathers,
-    isFetching: state.isFetching,
+    // isFetching: state.isFetching,
   };
 };
 

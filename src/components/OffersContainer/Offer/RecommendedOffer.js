@@ -1,28 +1,27 @@
-import React, {Component} from "react";
+import React from "react";
 import classes from "./RecommendedOffer.module.scss";
-//import axios from "axios";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import LoadingSpinner from "../../../UI/LoadingSpinner/LoadingSpinner";
 
-class RecommendedOffer extends Component {
-  render() {
-    let weatherIcon;
-    let weatherDegree;
-    if (this.props.weathers.get(this.props.city) !== undefined) {
-      weatherIcon = this.props.weathers.get(this.props.city).current
-        .weather_icons[0];
-      weatherDegree = this.props.weathers.get(this.props.city).current
-        .temperature;
-    }
+const RecommendedOffer = (props) => {
 
-    return (
+  let weatherIcon;
+  let weatherDegree;
+  if (props.weathers.get(props.city) !== undefined) {
+    weatherIcon = props.weathers.get(props.city).current
+      .weather_icons[0];
+    weatherDegree = props.weathers.get(props.city).current
+      .temperature;
+  }
+
+  return (
       <div className={classes.RecommendedOffer}>
         <div className={classes.ImgContainer}>
-          <Link to={`/offerDetails/${this.props.city}`}>
+          <Link to={`/offerDetails/${props.city}`}>
             <img
-              src={`images/${this.props.cntrImgUrl}`}
-              alt={`${this.props.city} landscape`}
+              src={`images/${props.cntrImgUrl}`}
+              alt={`${props.city} landscape`}
             />
           </Link>
         </div>
@@ -30,16 +29,16 @@ class RecommendedOffer extends Component {
           <ul>
             <li>
               <div>
-                <h3>{this.props.country}</h3>
+                <h3>{props.country}</h3>
                 <p>
-                  <strong>{this.props.city}</strong>
+                  <strong>{props.city}</strong>
                 </p>
 
-                <h2>{this.props.price}</h2>
+                <h2>{props.price}</h2>
               </div>
             </li>
             <li style={{margin: "1em 2em"}} className={classes.WeatherBox}>
-              {this.props.isFetching ? (
+              {props.isFetching ? (
                 <LoadingSpinner />
               ) : (
                 <>
@@ -56,16 +55,15 @@ class RecommendedOffer extends Component {
             >
               Date:
               <br />
-              {this.props.from}
+              {props.from}
               <br />
-              {this.props.to}
+              {props.to}
             </li>
           </ul>
         </div>
       </div>
     );
   }
-}
 
 const mapStateToProps = (state) => {
   return {
@@ -74,8 +72,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-// const dispatchPropsToState = (dispatch) => {
-
-// };
 
 export default connect(mapStateToProps, null)(RecommendedOffer);
