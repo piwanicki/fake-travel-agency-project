@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import classes from "./LastMinuteOffersList.module.scss";
-import {lastMinuteData} from "../LastMinuteOffersData";
+import {LastMinuteData} from "../LastMinuteOffersData";
 import LastMinFilters from "./LastMinFilters/LastMinFilters";
 import LastMinuteOffer from "./LastMinuteOffer/LastMinuteOffer";
 import {connect} from 'react-redux';
@@ -8,12 +8,12 @@ import {connect} from 'react-redux';
 class LastMinuteOffersList extends Component {
   state = {
     allOffers: [],
-    countries: Object.keys(lastMinuteData),
+    countries: Object.keys(LastMinuteData),
   };
 
   componentDidMount = () => {
-    const lastMinuteOffers = Object.keys(lastMinuteData);
-    const offers = lastMinuteOffers.map((offer,index) => <LastMinuteOffer offer={lastMinuteData[offer]} key={index} />);
+    const lastMinuteOffers = Object.keys(LastMinuteData);
+    const offers = lastMinuteOffers.map((offer,index) => <LastMinuteOffer offer={LastMinuteData[offer]} key={index} />);
     this.setState({allOffers: offers});
   };
 

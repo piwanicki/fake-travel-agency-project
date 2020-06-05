@@ -18,7 +18,7 @@ const RecommendedOffer = (props) => {
   return (
       <div className={classes.RecommendedOffer}>
         <div className={classes.ImgContainer}>
-          <Link to={`/offerDetails/${props.city}`}>
+          <Link to={`recommended/offerDetails/${props.city}`}>
             <img
               src={`images/${props.cntrImgUrl}`}
               alt={`${props.city} landscape`}

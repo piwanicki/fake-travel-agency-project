@@ -46,9 +46,18 @@ class Layout extends Component {
         <Wrapper>
           <Switch>
             <Route exact path="/" component={MainPage} />
-            <Route exact path="/offerDetails/:city" component={OfferDetails} />
+            <Route
+              exact
+              path="/:offer/offerDetails/:city"
+              component={OfferDetails}
+            />
             <Route exact path="/offerServices/cars" component={Cars} />
             <Route exact path="/lastMinute" component={LastMinuteOffersList} />
+            <Route
+              exact
+              path="/:offer/offerDetails/:city"
+              component={OfferDetails}
+            />
             <Route
               exact
               path="/offerServices/cars/:carBrand/:carModel"

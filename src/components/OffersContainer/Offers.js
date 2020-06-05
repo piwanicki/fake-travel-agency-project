@@ -358,6 +358,8 @@ const Offers = {
     city: "Lisboa",
     from: "18-07-2020",
     to: "01-08-2020",
+    lat: "38.722252",
+    lon: "-9.139337",
     date: "18-07-2020 -> 01-08-2020",
     price: 900,
     kidPrice: 240,

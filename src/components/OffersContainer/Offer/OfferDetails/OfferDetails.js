@@ -17,12 +17,12 @@ import OfferGuide from "./OfferGuide/OfferGuide";
 import ImageModal from "../../../../UI/ImageModal/ImageModal";
 import CheckingTermModal from "./CheckingTermModal/CheckingTermModal";
 import {animateScroll as scroll} from "react-scroll";
-// import CustomSelect from "../../../../UI/CustomSelect/CustomSelect";
 import DescriptionTabs from "../../../../UI/DescriptionTabs/DescriptionTabs";
 import Tab from "../../../../UI/DescriptionTabs/Tab/Tab";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import SelectSearch from "react-select-search";
+import {LastMinuteData} from "../../LastMinuteModule/LastMinuteOffersData";
 
 class OfferDetails extends Component {
   state = {
@@ -146,9 +146,25 @@ class OfferDetails extends Component {
 
   render() {
     const cityOffer = this.props.match.params.city;
-    const offerDetails = Offers[cityOffer];
-    // const fromDt = this.reformatDate(offerDetails.from);
-    // const toDt = this.reformatDate(offerDetails.to);
+    const offerType = this.props.match.params.offer;
+    let offerDetails;
+
+    switch (offerType) {
+      case "recommended": {
+        offerDetails = Offers[cityOffer];
+        break;
+      }
+
+      case "lastMinute": {
+        offerDetails = LastMinuteData[cityOffer];
+        break;
+      }
+
+      default: {
+        break;
+      }
+    }
+
     const mainPhoto = offerDetails.photos[this.state.photoIndex];
     const modalMainPhoto = offerDetails.photos[this.state.modalPhotoIndex];
     const offerPhotos = offerDetails.photos;
@@ -180,8 +196,7 @@ class OfferDetails extends Component {
       case "guide": {
         descriptionContent = (
           <OfferGuide
-            city={cityOffer}
-            country={offerDetails.country}
+            offer={offerDetails}
             checkTerminHandler={this.checkTerminHandler}
           />
         );
@@ -241,10 +256,6 @@ class OfferDetails extends Component {
         name: "Full Feeding",
       },
     ];
-
-    // const customSelectStyles = {
-    //   margin: '2em'
-    // }
 
     return (
       <div className={classes.OfferDetailsContainer}>

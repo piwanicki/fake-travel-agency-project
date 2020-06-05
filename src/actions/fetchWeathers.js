@@ -5,11 +5,11 @@ import {
 } from "./fetchWeathersAction";
 import axios from "axios";
 import Offers from "../components/OffersContainer/Offers";
-import {lastMinuteData} from "../components/OffersContainer/LastMinuteModule/LastMinuteOffersData";
+import {LastMinuteData} from "../components/OffersContainer/LastMinuteModule/LastMinuteOffersData";
 
 function fetchWeathersHandler() {
   const recommendedOffers = Object.keys(Offers);
-  const lastMinuteOffers = Object.keys(lastMinuteData);
+  const lastMinuteOffers = Object.keys(LastMinuteData);
   const offers = [...recommendedOffers, ...lastMinuteOffers];
   // const offers = ['Madrid', 'Dubrovnik']
   return (dispatch) => {

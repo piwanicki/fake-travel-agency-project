@@ -2,11 +2,11 @@ import React from "react";
 import classes from "./OfferGuide.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import * as icons from "@fortawesome/free-solid-svg-icons";
-import Offers from "../../../Offers";
 import {connect} from "react-redux";
 
 const OfferGuide = (props) => {
-  const OfferObj = Offers[`${props.city}`];
+
+  const OfferObj = props.offer;
   const term = OfferObj.details["term"];
   const flights = OfferObj.details["flights"];
   const ryanFlights = flights["RyanAir"];

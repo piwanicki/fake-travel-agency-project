@@ -306,7 +306,7 @@ const LastMinuteOffer = (props) => {
           <PriceSpan> {props.offer.price}$ / 24h</PriceSpan>
         </PriceP>
         <span>
-          <Link to={`/lasMinute/${props.offer.country}`}>
+          <Link to={`/lastMinute/offerDetails/${props.offer.city}`}>
             <button>Details</button>
           </Link>
         </span>
