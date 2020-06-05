@@ -107,10 +107,11 @@ const ReviewContainer = styled.div`
     border-radius: 5px;
   }
   .usersRecommendation {
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: gray;
+    margin-left: 10px;
     svg {
-      margin-left: 5px;
+      margin-left: 10px;
     }
   }
 `;
@@ -130,16 +131,16 @@ const FacilitiesBox = styled.div`
 
 const DateDiv = styled.div`
   color: gray;
-  font-size:1.2em;
+  font-size: 1.2em;
   display: flex;
   flex-direction: column;
   span {
-    padding:0.5em;
+    padding: 0.5em;
   }
   svg {
-    margin-right:.5em;
+    margin-right: 0.5em;
   }
-`
+`;
 
 const LastMinuteOffer = (props) => {
   const [galleryIsOpen, showGallery] = useState(false);
@@ -284,14 +285,16 @@ const LastMinuteOffer = (props) => {
           )}
         </div>
         <DateDiv>
-        <span> <FontAwesomeIcon icon={faCalendarAlt} />
-          {props.offer.from}</span>
-         
-        <span>
-        <FontAwesomeIcon icon={faCalendarAlt} />
-          {props.offer.to}
-        </span>
+          <span>
+            {" "}
+            <FontAwesomeIcon icon={faCalendarAlt} />
+            {props.offer.from}
+          </span>
 
+          <span>
+            <FontAwesomeIcon icon={faCalendarAlt} />
+            {props.offer.to}
+          </span>
         </DateDiv>
 
         <FacilitiesBox>{prepFacilitiesIcons}</FacilitiesBox>
