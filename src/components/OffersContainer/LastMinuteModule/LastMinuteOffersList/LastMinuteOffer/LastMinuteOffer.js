@@ -260,16 +260,16 @@ const LastMinuteOffer = (props) => {
             </ReviewContainer>
             <InlineFlexDiv>
               <ul>
-                <li>1 facility</li>
-                <li>2 facility</li>
-                <li>3 facility</li>
-                <li>4 facility</li>
+                <li>1 advantage</li>
+                <li>2 advantage</li>
+                <li>3 advantage</li>
+                <li>4 advantage</li>
               </ul>
               <ul>
-                <li>5 facility</li>
-                <li>6 facility</li>
-                <li>7 facility</li>
-                <li>8 facility</li>
+                <li>5 advantage</li>
+                <li>6 advantage</li>
+                <li>7 advantage</li>
+                <li>8 advantage</li>
               </ul>
             </InlineFlexDiv>
           </DivFlexEnd>
@@ -303,7 +303,7 @@ const LastMinuteOffer = (props) => {
       <div className={classes.Pricing}>
         <PriceP>
           Price from <br />
-          <PriceSpan> {props.offer.price}$ / 24h</PriceSpan>
+          <PriceSpan> {props.offer.price}$</PriceSpan>
         </PriceP>
         <span>
           <Link to={`/lastMinute/offerDetails/${props.offer.city}`}>
@@ -326,7 +326,7 @@ const LastMinuteOffer = (props) => {
 const mapStateToProps = (state) => {
   return {
     weathers: state.weathers,
-    // isFetching: state.isFetching,
+    isFetching: state.isFetching,
   };
 };
 
