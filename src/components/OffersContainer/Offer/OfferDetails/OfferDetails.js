@@ -182,7 +182,7 @@ class OfferDetails extends Component {
 
     switch (this.state.descContent) {
       case "desc": {
-        descriptionContent = <DescriptionText details={offerDetails.details} />;
+        descriptionContent = <DescriptionText details={offerDetails.details} type={offerType}/>;
         break;
       }
 

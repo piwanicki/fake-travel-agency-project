@@ -1,17 +1,22 @@
 import React from "react";
 import classes from "./DescriptionText.module.scss";
 import recomendationLogo from "./recommendationLogo.jpg";
+import lastMinuteLogo from "./lastMinuteLogo.png";
 
 const DescriptionText = (props) => {
+
+  const logo = props.type === 'lastMinute' ? lastMinuteLogo : recomendationLogo;
+  const recommendetaionHeader = props.type === 'lastMinute' ? 'Last Minute offer!' : 'Highly recommended offer!';
+
   return (
     <div className={classes.DescriptionText}>
       <div className={classes.RecommendationContent}>
         <img
-          src={recomendationLogo}
-          alt="recommendation"
+          src={logo}
+          alt={`offer`}
           className={classes.RecomendationLogo}
         />
-        <h3> Highly recommended offer!</h3>
+        <h3>{recommendetaionHeader}</h3>
       </div>
       <div className={classes.AdvantagesDescription}>
         <span>Hotel advantages :</span>

@@ -1,13 +1,15 @@
 import React from "react";
 import classes from "./NavigationBar.module.scss";
 import {Link } from 'react-router-dom'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 const NavigationBar = props => {
   return (
     <div className={classes.NavigationBar}>
       <ul>
         <li>
-          <Link to="/lastMinute">LAST MINUTE</Link>
+          <Link to="/lastMinute">LAST MINUTE <FontAwesomeIcon icon={faClock} /></Link>
         </li>
         <li>
           <a href="/#"> All Inclusive </a>

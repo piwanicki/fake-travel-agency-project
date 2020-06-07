@@ -5,19 +5,25 @@
   background-color: #00a8cc;
   border-radius: 1em;
   height: 5em;
+  margin-top: 1em;
 
   ul {
     list-style: none;
     padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 
     :last-child {
       border-right: none;
     }
 
     li {
-      display: inline-block;
-      margin: 1em 0;
-      padding: 1em 3em;
+
+      padding: 1em 2.5em;
       text-decoration: none;
       border-right: 1px solid #000839;
 
@@ -26,6 +32,7 @@
       }
     }
   }
+
   a {
     color: inherit;
     text-decoration: none;

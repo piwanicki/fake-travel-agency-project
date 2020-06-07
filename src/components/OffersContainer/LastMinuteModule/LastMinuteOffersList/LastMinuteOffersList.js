@@ -1,20 +1,57 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import classes from "./LastMinuteOffersList.module.scss";
-import {LastMinuteData} from "../LastMinuteOffersData";
+import { LastMinuteData } from "../LastMinuteOffersData";
 import LastMinFilters from "./LastMinFilters/LastMinFilters";
 import LastMinuteOffer from "./LastMinuteOffer/LastMinuteOffer";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+
+const ListSitesDiv = styled.div`
+  border-top: 2px solid grey;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin: 0 1em;
+    cursor: pointer;
+    font-size: 1.5em;
+  }
+
+  span {
+    margin: 0 0.5em;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+`;
 
 class LastMinuteOffersList extends Component {
   state = {
     allOffers: [],
     countries: Object.keys(LastMinuteData),
+    page: 1,
+    pages: null,
   };
 
   componentDidMount = () => {
     const lastMinuteOffers = Object.keys(LastMinuteData);
-    const offers = lastMinuteOffers.map((offer,index) => <LastMinuteOffer offer={LastMinuteData[offer]} key={index} />);
-    this.setState({allOffers: offers});
+    const offers = lastMinuteOffers.map((offer, index) => (
+      <LastMinuteOffer offer={LastMinuteData[offer]} key={index} />
+    ));
+
+    let listPages = [];
+    const page = Math.ceil(offers.length / 5);
+    for (let i = 0; i < page; i++) {
+      listPages.push(<span>{i}</span>);
+    }
+    this.setState({ allOffers: offers, pages: listPages });
   };
 
   sortByKey = (key, array) => {
@@ -55,8 +92,8 @@ class LastMinuteOffersList extends Component {
           console.log(outputList);
 
           this.state.filterModels.length > 0
-            ? this.setState({filterModels: outputList})
-            : this.setState({allModels: outputList});
+            ? this.setState({ filterModels: outputList })
+            : this.setState({ allModels: outputList });
           break;
         }
 
@@ -64,8 +101,8 @@ class LastMinuteOffersList extends Component {
           console.log(`price ascending`);
           outputList = this.sortByPrice("ascending", arrayToSort);
           this.state.filterModels.length > 0
-            ? this.setState({filterModels: outputList})
-            : this.setState({allModels: outputList});
+            ? this.setState({ filterModels: outputList })
+            : this.setState({ allModels: outputList });
           break;
         }
 
@@ -73,13 +110,13 @@ class LastMinuteOffersList extends Component {
           console.log(`price descending`);
           outputList = this.sortByPrice("descending", arrayToSort);
           this.state.filterModels.length > 0
-            ? this.setState({filterModels: outputList})
-            : this.setState({allModels: outputList});
+            ? this.setState({ filterModels: outputList })
+            : this.setState({ allModels: outputList });
           break;
         }
 
         default: {
-          this.setState({filterModels: []});
+          this.setState({ filterModels: [] });
         }
       }
     } else {
@@ -88,7 +125,7 @@ class LastMinuteOffersList extends Component {
           outputList = allModels.filter(
             (car) => car.props.brand === methodValue
           );
-          this.setState({filterModels: outputList});
+          this.setState({ filterModels: outputList });
           break;
         }
 
@@ -98,7 +135,7 @@ class LastMinuteOffersList extends Component {
           outputList = allModels.filter(
             (car) => car.props["model"].vehicle === methodValue
           );
-          this.setState({filterModels: outputList});
+          this.setState({ filterModels: outputList });
           break;
         }
 
@@ -106,12 +143,12 @@ class LastMinuteOffersList extends Component {
           outputList = allModels.filter(
             (car) => car.props["model"].type === methodValue
           );
-          this.setState({filterModels: outputList});
+          this.setState({ filterModels: outputList });
           break;
         }
 
         default: {
-          this.setState({filterModels: []});
+          this.setState({ filterModels: [] });
         }
       }
     }
@@ -125,12 +162,17 @@ class LastMinuteOffersList extends Component {
   };
 
   render() {
-
-
     return (
       <div className={classes.LastMinuteList}>
-        <LastMinFilters countries={this.state.countries} when={"kiedy"} />
-        {this.state.allOffers}
+        <LastMinFilters countries={this.state.countries} />
+        {this.state.allOffers.splice(0, 5)}
+        <ListSitesDiv>
+          <div className="listControls">
+            <FontAwesomeIcon icon={faChevronLeft} />
+            {this.state.pages}
+            <FontAwesomeIcon icon={faChevronRight} />
+          </div>
+        </ListSitesDiv>
       </div>
     );
   }
@@ -147,8 +189,5 @@ const mapStateToProps = (state) => {
 
 // };
 
-
 //export default LastMinuteOffersList;
 export default connect(mapStateToProps, null)(LastMinuteOffersList);
-
-

@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import classes from "./LastMinuteOffer.module.scss";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import ImageModal from "../../../../../UI/ImageModal/ImageModal";
 import styled from "styled-components";
 import Ratings from "react-ratings-declarative";
-import {connect} from "react-redux";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faClock} from "@fortawesome/free-regular-svg-icons";
+import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock } from "@fortawesome/free-regular-svg-icons";
 import {
   faGlassCheers,
   faCar,
