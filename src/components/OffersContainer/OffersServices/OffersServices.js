@@ -2,23 +2,23 @@ import React from "react";
 import classes from "./OffersServices.module.scss";
 import OfferService from "./OfferService/OfferService";
 
-const OffersServices = props => {
+const OffersServices = (props) => {
   return (
     <div className={classes.OffersServices}>
       <OfferService
         header="All Inclusive"
         details="All Inclusive tours! Checkout our new offers!"
-        component='allInclusive'
+        component="allInclusive"
       />
       <OfferService
         header="Sightseeing Tour"
         details="Go sightseeing with our historician with passion and great humor! Checkout our offers."
-        component='sightseeingTour'
+        component="sightseeingTour"
       />
       <OfferService
         header="Facultative trips"
         details="Join to sightseeing tour in your current City!  Checkout our offers."
-        component='facultativeTrip'
+        component="facultativeTrip"
       />
 
       <OfferService

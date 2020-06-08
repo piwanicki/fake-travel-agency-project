@@ -3,50 +3,14 @@ import classes from './LastMinuteOffersList.module.scss'
 import { LastMinuteData } from '../LastMinuteOffersData'
 import LastMinFilters from './LastMinFilters/LastMinFilters'
 import LastMinuteOffer from './LastMinuteOffer/LastMinuteOffer'
-import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faChevronLeft,
-  faChevronRight
-} from '@fortawesome/free-solid-svg-icons'
-
-const ListSitesDiv = styled.div`
-  border-top: 2px solid grey;
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: grey;
-
-  svg {
-    margin: 0 1em;
-    cursor: pointer;
-    font-size: 1.5em;
-
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  span {
-    margin: 0 0.5em;
-    font-size: 1.3em;
-    cursor: pointer;
-  }
-
-  .activePage {
-    color: blue;
-    border-bottom: 2px solid blue;
-  }
-`
+import ListComponent from '../../../../UI/ListComponent/ListComponent'
 
 class LastMinuteOffersList extends Component {
   state = {
     allOffers: [],
     countries: Object.keys(LastMinuteData),
     page: 1,
-    pages: null,
+    pages: 0,
     pageIndex: 0
   }
 
@@ -55,22 +19,11 @@ class LastMinuteOffersList extends Component {
     const offers = lastMinuteOffers.map((offer, index) => (
       <LastMinuteOffer offer={LastMinuteData[offer]} key={index} />
     ))
-
     const offersToRender = [...offers].splice(0, 5)
-    let listPages = []
-    const pages = Math.ceil(offers.length / 5)
-    for (let i = 0; i < pages; i++) {
-      listPages.push(
-        <span key={i} id={`page-${i + 1}`}>
-          {i + 1}
-        </span>
-      )
-    }
-    console.log(listPages[0])
-    // listPages[0].classList.add('activePage');
+    const pages = Math.ceil(lastMinuteOffers.length / 5)
     this.setState({
       allOffers: offers,
-      pages: listPages.splice(0, 5),
+      pages: pages,
       offersToRender: offersToRender
     })
   }
@@ -174,40 +127,81 @@ class LastMinuteOffersList extends Component {
   }
 
   clearFilters = () => {
-    // document
-    //   .querySelectorAll("#styledSelect1")
-    //   .forEach((select) => (select.selectedIndex = 0));
-    // this.setState({filterModels: []});
+    console.log(`clear filters`)
   }
 
   selectPageHandler = e => {
-    console.log(e.target)
     const page = e.target.innerHTML !== '' ? parseInt(e.target.innerHTML) : null
-    if (page) {
-      const allOffers = this.state.allOffers
-      const offersToRender = [...allOffers].splice((page - 1) * 5, 5)
-      this.setState({ offersToRender: offersToRender })
-      const activePage = document.getElementById(`page-${page}`)
-      console.log(activePage)
-      activePage.classList.add('activePage')
+    if (page && page !== this.state.page) {
+      this.setState({ page: page })
+      this.addActivePageClass(page)
     }
   }
 
+  addActivePageClass = page => {
+    const activePage = document.querySelector(`#page-${this.state.page}`)
+    const nextActivePage = document.querySelector(`#page-${page}`)
+    activePage.classList.remove('activePage')
+    nextActivePage.classList.add('activePage')
+  }
+
+  nextPageHandler = () => {
+    const page = this.state.page
+    if (page === this.state.pages) return
+    this.addActivePageClass(page + 1)
+    this.setState({ page: page + 1 })
+  }
+
+  previousPageHandler = () => {
+    const page = this.state.page
+    if (page === 1) return
+    this.addActivePageClass(page - 1)
+    this.setState({ page: page - 1 })
+  }
+
+  filterByWhereHandler = val => {
+    console.log(val)
+  }
+
+  filterByTypeHandler = val => {
+    console.log(val)
+  }
+
+  filterByTransportHandler = val => {
+    console.log(val)
+  }
+
+  filterByStartDateHandler = val => {
+    console.log(val)
+  }
+
+  filterByEndDateHandler = val => {
+    console.log(val)
+  }
+
   render () {
+    const allOffers = this.state.allOffers
+    const offersToRender = [...allOffers].splice((this.state.page - 1) * 5, 5)
+
     return (
       <div className={classes.LastMinuteList}>
-        <LastMinFilters countries={this.state.countries} />
-        {this.state.offersToRender}
-        <ListSitesDiv>
-          <div
-            className='listControls'
-            onClick={e => this.selectPageHandler(e)}
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-            {this.state.pages}
-            <FontAwesomeIcon icon={faChevronRight} />
-          </div>
-        </ListSitesDiv>
+        <LastMinFilters
+          countries={this.state.countries}
+          filterByWhere={this.filterByWhereHandler}
+          filterByType={this.filterByTypeHandler}
+          filterByTransport={this.filterByTransportHandler}
+          filterByStartDate={this.filterByStartDateHandler}
+          filterByEndDate={this.filterByEndDateHandler}
+          clearFilters={this.clearFilters}
+        />
+        <ListComponent
+          selectPageHandler={this.selectPageHandler}
+          nextPageHandler={this.nextPageHandler}
+          previousPageHandler={this.previousPageHandler}
+          itemsToRender={offersToRender}
+          pages={this.state.pages}
+          page={this.state.page}
+        />
       </div>
     )
   }

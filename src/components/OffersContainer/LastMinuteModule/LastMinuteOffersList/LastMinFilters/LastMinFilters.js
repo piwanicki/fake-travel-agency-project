@@ -17,6 +17,45 @@ const LastMinFilters = (props) => {
   const [adults, setAdults] = useState(2);
   const [kids, setKids] = useState(0);
 
+  const [whereOption, setWhereOption] = useState();
+  const [typeOption, setTypeOption] = useState();
+  const [transportOption, setTransportOption] = useState();
+  const [startDtOption, setStartDtOption] = useState();
+  const [endDtOption, setEndtDtOption] = useState();
+
+  const filterByWhere = (val) => {
+    setWhereOption(val);
+    props.filterByWhere(val);
+  };
+  const filterByType = (val) => {
+    setTypeOption(val);
+    props.filterByType(val);
+  };
+
+  const filterByTransport = (val) => {
+    setTransportOption(val);
+    props.filterByTransport(val);
+  };
+
+  const filterByStartDate = (val) => {
+    setStartDtOption(val);
+    props.filterByStartDate(val);
+  };
+
+  const filterByEndDate = (val) => {
+    setEndtDtOption(val);
+    props.filterByEndDate(val);
+  };
+
+  const clearFilters = () => {
+    setWhereOption(null);
+    setTypeOption(null);
+    setTransportOption(null);
+    setStartDtOption(null);
+    setEndtDtOption(null);
+    props.clearFilters();
+  };
+
   const ShowGuestBoxHandler = (e) => {
     setShowGuestBox(!showGuestBox);
   };
@@ -75,7 +114,8 @@ const LastMinFilters = (props) => {
           options={whereOptions}
           placeholder={"Where..."}
           search={true}
-          onChange={props.filterByWhere}
+          onChange={filterByWhere}
+          value={whereOption}
         />
       </span>
 
@@ -84,7 +124,8 @@ const LastMinFilters = (props) => {
           options={typeOptions}
           placeholder={"Type..."}
           search={true}
-          onChange={props.filterByType}
+          onChange={filterByType}
+          value={typeOption}
         />
       </span>
 
@@ -93,7 +134,8 @@ const LastMinFilters = (props) => {
           options={transportOptions}
           placeholder={"Transport..."}
           search={true}
-          onChange={props.filterByTransport}
+          onChange={filterByTransport}
+          value={transportOption}
         />
       </span>
 
@@ -102,7 +144,8 @@ const LastMinFilters = (props) => {
         <DatePicker
           className={classes.DateFilters}
           placeholderText="Start Date"
-          onChange={props.filterByStartDate}
+          onChange={filterByStartDate}
+          value={startDtOption}
         />
       </span>
       <span>
@@ -110,7 +153,8 @@ const LastMinFilters = (props) => {
         <DatePicker
           className={classes.DateFilters}
           placeholderText="End Date"
-          onChange={props.filterByEndDate}
+          onChange={filterByEndDate}
+          value={endDtOption}
         />
       </span>
 
@@ -140,7 +184,7 @@ const LastMinFilters = (props) => {
         />
       ) : null}
 
-      <span onClick={props.clearFilters} className={classes.ClearFiltersBtn}>
+      <span onClick={clearFilters} className={classes.ClearFiltersBtn}>
         <FontAwesomeIcon icon={faFilter} />
         Clear Filters
       </span>

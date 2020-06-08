@@ -1,10 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "./CarsFilter.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFilter} from "@fortawesome/free-solid-svg-icons";
 import SelectSearch from "react-select-search";
 
 const CarsFilter = (props) => {
+  const [brandOption, setBrandOption] = useState();
+  const [vehicleOption, setVehicleOption] = useState();
+  const [vehicleTypeOption, setVehicleTypeOption] = useState();
+
+  const filterByVehicle = (val) => {
+    setVehicleOption(val);
+    props.filterByVehicle(val);
+  };
+  const filterByBrand = (val) => {
+    setBrandOption(val);
+    props.filterByBrand(val);
+  };
+
+  const filterByVehicleType = (val) => {
+    setVehicleTypeOption(val);
+    props.filterByVehicleType(val);
+  };
+
   const brandsOptions = props.brands.map((brand) => ({
     value: brand,
     name: brand,
@@ -54,13 +72,21 @@ const CarsFilter = (props) => {
     },
   ];
 
+  const clearFilters = () => {
+    props.clearFilters();
+    setBrandOption(null);
+    setVehicleOption(null);
+    setVehicleTypeOption(null);
+  };
+
   return (
     <div className={classes.CarsFilter} onChange={props.filterList}>
       <div className={classes.Vehicle}>
         <SelectSearch
           options={vehicleOptions}
           placeholder={"Vehicle"}
-          onChange={props.filterByVehicle}
+          onChange={filterByVehicle}
+          value={vehicleOption}
         />
       </div>
 
@@ -68,7 +94,8 @@ const CarsFilter = (props) => {
         <SelectSearch
           options={brandsOptions}
           placeholder={"Brands"}
-          onChange={props.filterByBrand}
+          onChange={filterByBrand}
+          value={brandOption}
         />
       </div>
 
@@ -76,7 +103,8 @@ const CarsFilter = (props) => {
         <SelectSearch
           options={vehicleTypeOptions}
           placeholder={"Vehicle Type"}
-          onChange={props.filterByVehicleType}
+          onChange={filterByVehicleType}
+          value={vehicleTypeOption}
         />
       </div>
 
@@ -88,7 +116,7 @@ const CarsFilter = (props) => {
         />
       </div>
 
-      <span onClick={props.clearFilters}>
+      <span onClick={clearFilters}>
         <FontAwesomeIcon icon={faFilter} />
         Clear Filters
       </span>

@@ -6,7 +6,7 @@ import Footer from "../../components/Navigation/Footer/Footer";
 import MainPage from "../../components/MainPage/MainPage";
 import {Switch, Route, Redirect} from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
-import Cars from "../../components/OffersContainer/OffersServices/Cars/Cars";
+import CarsList from "../../components/OffersContainer/OffersServices/Cars/CarsList";
 import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
 import DemoAlert from "../DemoAlert/DemoAlert";
 import Wrapper from "./Wrapper/Wrapper";
@@ -26,8 +26,8 @@ class Layout extends Component {
   };
 
   componentDidMount = () => {
-   //const {fetchWeathers} = this.props;
-   //fetchWeathers();
+    //const {fetchWeathers} = this.props;
+    //fetchWeathers();
   };
 
   showDemoAlertHandler = () => {
@@ -51,7 +51,7 @@ class Layout extends Component {
               path="/:offer/offerDetails/:city"
               component={OfferDetails}
             />
-            <Route exact path="/offerServices/cars" component={Cars} />
+            <Route exact path="/offerServices/cars" component={CarsList} />
             <Route exact path="/lastMinute" component={LastMinuteOffersList} />
             <Route
               exact

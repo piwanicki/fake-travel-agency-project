@@ -1,14 +1,16 @@
 import React, {Component} from "react";
-import classes from "./Cars.module.scss";
+import classes from "./CarsList.module.scss";
 import CarOffer from "./CarOffer/CarOffer";
 import CarsFilter from "./CarOffer/CarsFilter/CarsFilter";
 import CarsOffers from "./CarsOffers";
+import ListComponent from "../../../../UI/ListComponent/ListComponent";
 
-class Cars extends Component {
+class CarsList extends Component {
   state = {
     allModels: [],
     vehicleBrands: [],
     filterModels: [],
+    page: 1,
   };
 
   componentDidMount = () => {
@@ -39,6 +41,11 @@ class Cars extends Component {
     this.setState({
       allModels: allModels,
       vehicleBrands: vehicleBrands,
+    });
+
+    const pages = Math.ceil(allModels.length / 5);
+    this.setState({
+      pages: pages,
     });
   };
 
@@ -115,10 +122,9 @@ class Cars extends Component {
     console.log(`filter by brand ${brand}`);
     let outputList = [];
     const allModels = [...this.state.allModels];
-    console.log(allModels);
     outputList = allModels.filter((car) => car.props.brand === brand);
-    console.log(outputList);
-    this.setState({filterModels: outputList});
+    const pages = Math.ceil(outputList.length / 5);
+    this.setState({filterModels: outputList, pages: pages});
   };
 
   filterByVehicleType = (vehicleType) => {
@@ -131,13 +137,49 @@ class Cars extends Component {
   };
 
   clearFilters = () => {
-    document
-      .querySelectorAll("#styledSelect1")
-      .forEach((select) => (select.selectedIndex = 0));
     this.setState({filterModels: []});
+    const pages = Math.ceil(this.state.allModels.length / 5);
+    this.setState({
+      pages: pages,
+    });
+  };
+
+  selectPageHandler = (e) => {
+    const page =
+      e.target.innerHTML !== "" ? parseInt(e.target.innerHTML) : null;
+    if (page && page !== this.state.page) {
+      this.setState({page: page});
+      this.addActivePageClass(page);
+    }
+  };
+
+  addActivePageClass = (page) => {
+    const activePage = document.querySelector(`#page-${this.state.page}`);
+    const nextActivePage = document.querySelector(`#page-${page}`);
+    activePage.classList.remove("activePage");
+    nextActivePage.classList.add("activePage");
+  };
+
+  nextPageHandler = () => {
+    const page = this.state.page;
+    if (page === this.state.pages) return;
+    this.addActivePageClass(page + 1);
+    this.setState({page: page + 1});
+  };
+
+  previousPageHandler = () => {
+    const page = this.state.page;
+    if (page === 1) return;
+    this.addActivePageClass(page - 1);
+    this.setState({page: page - 1});
   };
 
   render() {
+    const allOffers = this.state.allModels;
+    const offersToRender =
+      this.state.filterModels.length === 0
+        ? [...allOffers].splice((this.state.page - 1) * 5, 5)
+        : this.state.filterModels.splice((this.state.page - 1) * 5, 5);
     return (
       <div className={classes.Cars}>
         <CarsFilter
@@ -149,12 +191,17 @@ class Cars extends Component {
           filterByVehicleType={this.filterByVehicleType}
           filterByBrand={this.filterByBrand}
         />
-        {this.state.filterModels.length === 0
-          ? this.state.allModels
-          : this.state.filterModels}
+        <ListComponent
+          selectPageHandler={this.selectPageHandler}
+          nextPageHandler={this.nextPageHandler}
+          previousPageHandler={this.previousPageHandler}
+          itemsToRender={offersToRender}
+          pages={this.state.pages}
+          page={this.state.page}
+        />
       </div>
     );
   }
 }
 
-export default Cars;
+export default CarsList;
