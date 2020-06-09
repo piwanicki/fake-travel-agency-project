@@ -24,15 +24,9 @@ class Layout extends Component {
   state = {
     showDemoAlert: false,
   };
-
-  componentDidMount = () => {
-    //const {fetchWeathers} = this.props;
-    //fetchWeathers();
-  };
-
   showDemoAlertHandler = () => {
-    const isShowing = this.state.showDemoAlert;
-    this.setState({showDemoAlert: !isShowing});
+    // const isShowing = this.state.showDemoAlert;
+    // this.setState({showDemoAlert: !isShowing});
   };
 
   render() {
@@ -83,12 +77,6 @@ const mapStateToProps = (state) => ({
   pending: getWeathersPending(state),
 });
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchWeathers: () => dispatch(fetchWeathersHandler),
-//   }
-// }
-
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
@@ -97,5 +85,4 @@ const mapDispatchToProps = (dispatch) =>
     dispatch
   );
 
-//export default Layout;
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);
