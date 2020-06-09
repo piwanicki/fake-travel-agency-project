@@ -51,7 +51,7 @@ class InfoPanel extends Component {
         </ul>
 
         <span className={classes.LoginLangBox}>
-          <Link to="Login">
+          <Link to="/Login/signIn">
             <CustomButton type="button">
               <strong>Login</strong>
             </CustomButton>

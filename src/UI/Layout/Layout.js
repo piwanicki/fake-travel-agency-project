@@ -59,8 +59,7 @@ class Layout extends Component {
               component={CarOfferDetails}
             />
                <Route
-              exact
-              path="/Login/"
+              path="/Login"
               component={LoginPage}
             />
 
