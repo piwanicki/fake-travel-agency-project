@@ -19,6 +19,7 @@ import {
   getWeathersError,
 } from "../../reducers/reducers";
 import fetchWeathersHandler from "../../actions/fetchWeathers";
+import LoginPage from "../../components/Auth/LoginPage";
 
 class Layout extends Component {
   state = {
@@ -56,6 +57,11 @@ class Layout extends Component {
               exact
               path="/offerServices/cars/:carBrand/:carModel"
               component={CarOfferDetails}
+            />
+               <Route
+              exact
+              path="/Login/"
+              component={LoginPage}
             />
 
             <Redirect from="/" to="/" />

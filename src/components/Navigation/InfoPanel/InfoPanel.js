@@ -11,6 +11,8 @@ import {
 import LangSelectBox from "./LangSelectBox/LangSelectBox";
 import english from "./LangSelectBox/langSelectorsIcon/england.png";
 // import polish from "./LangSelectBox/langSelectorsIcon/poland.png";
+import {Link} from "react-router-dom";
+import CustomButton from "../../../UI/CustomButton/CustomButton";
 
 class InfoPanel extends Component {
   state = {
@@ -49,9 +51,11 @@ class InfoPanel extends Component {
         </ul>
 
         <span className={classes.LoginLangBox}>
-          <button type="button">
-            <strong>Login</strong>
-          </button>
+          <Link to="Login">
+            <CustomButton type="button">
+              <strong>Login</strong>
+            </CustomButton>
+          </Link>
 
           <img
             src={english}

@@ -5,9 +5,6 @@ $shadowColor: #feb72b;
 .InfoPanel {
   width: 100%;
   text-align: center;
-  // display: inline-flex;
-  // justify-content: center;
-  // align-items: center;
 
   ul {
     list-style: none;
@@ -15,7 +12,7 @@ $shadowColor: #feb72b;
     padding-top: 1em;
     padding-left: 0;
     display: inline-block;
-    // width: 60%;
+
     li {
       text-decoration: none;
       display: inline-block;
@@ -25,39 +22,14 @@ $shadowColor: #feb72b;
 
   .LoginLangBox {
     position: absolute;
-    // float: right;
     top: 0.5em;
     right: 1em;
-  }
-
-  button {
-    margin: auto 2em;
-    vertical-align: middle;
-    width: 10em;
-    height: 2.5em;
-    box-shadow: inset 0px 0px 15px 3px $shadowColor;
-    background: $backgroundBtn;
-    background-color: $backgroundColorBtn;
-    border-radius: 17px;
-    border: 1px solid $backgroundColorBtn;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 15px;
-    padding: 6px 13px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px $shadowColor;
-  }
-
-  button:active {
-    position: relative;
-    top: 1px;
   }
 
   .LangSelector {
     width: 2em;
     height: 2em;
-
+    margin-left: 2em;
     cursor: pointer;
     vertical-align: middle;
   }
