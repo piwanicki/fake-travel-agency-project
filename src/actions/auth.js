@@ -21,7 +21,7 @@ export const authError = (error) => {
   };
 };
 
-export const auth = (email, password) => {
+export const signUp = (email, password) => {
   return (dispatch) => {
     dispatch(authPending());
     const authData = {
@@ -45,3 +45,28 @@ export const auth = (email, password) => {
       });
   };
 };
+
+export const signIn = (email, password) => {
+  return (dispatch) => {
+    dispatch(authPending());
+    const authData = {
+      email: email,
+      password: password,
+      returnSecureToken: true,
+    };
+    console.log(authData)
+    axios
+      .post(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
+        authData
+      )
+      .then((resolve) => {
+        console.log(resolve);
+        dispatch(authSuccess(resolve.data));
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(authError());
+      });
+  };
+}

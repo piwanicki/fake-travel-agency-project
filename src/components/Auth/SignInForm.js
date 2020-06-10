@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import CustomButton from "../../UI/CustomButton/CustomButton";
 import {Link} from "react-router-dom";
+import * as auth from "../../actions/auth";
+import {connect} from "react-redux";
 
 const LoginBox = styled.div`
   border-radius: 1em;
@@ -38,7 +40,7 @@ const LoginForm = styled.form`
   align-items: center;
   input[type="email"],
   input[type="password"] {
-    margin: 1em auto;
+    margin: 0.5em auto;
     background: #fff;
     border: 1px solid transparent;
     box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
@@ -58,6 +60,7 @@ const LoginForm = styled.form`
 
 const SignUpChanger = styled.div`
   align-self: flex-end;
+  justify-self: flex-end;
   padding-right: 0.5em;
   margin-top: 1em;
   color: grey;
@@ -72,15 +75,23 @@ const SignUpChanger = styled.div`
 `;
 
 const SignInForm = (props) => {
+  const [email, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [keepLogged, setKeepLogged] = useState(false);
+
+  const loginUser = (e) => {
+    props.onAuth(email, password);
+    e.preventDefault();
+  };
 
   return (
     <LoginBox>
       <h3>Sign in</h3>
-      <LoginForm onSubmit={props.loginHandler}>
+      <LoginForm>
         <input
           type="email"
           placeholder="Email Address"
-          onChange={(e) => props.setEmailAddress(e.target.value)}
+          onChange={(e) => setEmailAddress(e.target.value)}
           autoComplete={"user-email"}
           required
         />
@@ -88,29 +99,36 @@ const SignInForm = (props) => {
         <input
           type="password"
           placeholder="Password"
-          onChange={(e) => props.setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           autoComplete={"current-password"}
           required
         />
 
         <LoginBtnBox>
-          <CustomButton type="submit">Login</CustomButton>
+          <CustomButton onClick={loginUser}>Login</CustomButton>
           <KeepLoggedDiv>
             <input
               type="checkbox"
-              onChange={(e) => props.setKeepLogged(e.target.value)}
-            />{" "}
+              onChange={() => setKeepLogged(!keepLogged)}
+            />
             Keep Logged
           </KeepLoggedDiv>
         </LoginBtnBox>
+        <SignUpChanger>
+          <span>Do not have account? Register account for free.</span>
+          <Link to="/Login/signUp">
+            <CustomButton onClick={props.setSignForm}>Sign Up</CustomButton>
+          </Link>
+        </SignUpChanger>
       </LoginForm>
-      <SignUpChanger>
-        <span onClick={props.setSignForm}>Do not have account? Register account for free.</span>
-        <Link to="Login/signUp"></Link>
-        <CustomButton onClick={props.setSignForm}>Sign Up</CustomButton>
-      </SignUpChanger>
     </LoginBox>
   );
 };
 
-export default SignInForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password) => dispatch(auth.signIn(email, password)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignInForm);
