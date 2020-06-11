@@ -24,10 +24,18 @@ const Button = styled.button`
     position: relative;
     top: 1px;
   }
+
+  &:disabled {
+    background-color: grey;
+  }
 `;
 
 const CustomButton = (props) => {
-  return <Button onClick={props.onClick}>{props.children}</Button>;
+  return (
+    <Button onClick={props.onClick} disabled={props.disabled}>
+      {props.children}
+    </Button>
+  );
 };
 
 export default CustomButton;

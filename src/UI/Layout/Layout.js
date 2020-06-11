@@ -59,7 +59,7 @@ class Layout extends Component {
               component={CarOfferDetails}
             />
                <Route
-              path="/Login"
+              path="/Login/:form"
               component={LoginPage}
             />
 

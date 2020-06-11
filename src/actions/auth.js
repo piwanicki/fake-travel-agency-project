@@ -21,12 +21,11 @@ export const authError = (error) => {
   };
 };
 
-export const signUp = (email, password) => {
+export const signUp = (newUser) => {
   return (dispatch) => {
     dispatch(authPending());
     const authData = {
-      email: email,
-      password: password,
+    ...newUser,
       returnSecureToken: true,
     };
     console.log(authData)
