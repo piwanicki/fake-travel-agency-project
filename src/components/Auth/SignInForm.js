@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import CustomButton from "../../UI/CustomButton/CustomButton";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as auth from "../../actions/auth";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import SignFormBackdrop from "../../UI/Backdrop/SignFormBackdrop/SignFormBackdrop";
+import CustomInput from '../../UI/CustomInput/CustomInput';
 
 const LoginBox = styled.div`
   border-radius: 1em;
@@ -38,23 +40,6 @@ const LoginForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  input[type="email"],
-  input[type="password"] {
-    margin: 0.5em auto;
-    background: #fff;
-    border: 1px solid transparent;
-    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
-    border-radius: 3px;
-    cursor: pointer;
-    box-sizing: border-box;
-    height: 36px;
-    color: grey;
-    text-align: center;
-    width: 14rem;
-
-    &:hover {
-      border-color: grey;
-    }
   }
 `;
 
@@ -85,43 +70,45 @@ const SignInForm = (props) => {
   };
 
   return (
-    <LoginBox>
-      <h3>Sign in</h3>
-      <LoginForm>
-        <input
-          type="email"
-          placeholder="Email Address"
-          onChange={(e) => setEmailAddress(e.target.value)}
-          autoComplete={"user-email"}
-          required
-        />
+    <SignFormBackdrop>
+      <LoginBox>
+        <h3>Sign in</h3>
+        <LoginForm>
+          <CustomInput
+            type="email"
+            placeholder="Email Address"
+            onChange={(e) => setEmailAddress(e.target.value)}
+            autoComplete={"user-email"}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete={"current-password"}
-          required
-        />
+          <CustomInput
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete={"current-password"}
+            required
+          />
 
-        <LoginBtnBox>
-          <CustomButton onClick={loginUser}>Login</CustomButton>
-          <KeepLoggedDiv>
-            <input
-              type="checkbox"
-              onChange={() => setKeepLogged(!keepLogged)}
-            />
-            Keep Logged
-          </KeepLoggedDiv>
-        </LoginBtnBox>
-        <SignUpChanger>
-          <span>Do not have account? Register account for free.</span>
-          <Link to="/Login/signUp">
-            <CustomButton onClick={props.setSignForm}>Sign Up</CustomButton>
-          </Link>
-        </SignUpChanger>
-      </LoginForm>
-    </LoginBox>
+          <LoginBtnBox>
+            <CustomButton onClick={loginUser}>Login</CustomButton>
+            <KeepLoggedDiv>
+              <input
+                type="checkbox"
+                onChange={() => setKeepLogged(!keepLogged)}
+              />
+              Keep Logged
+            </KeepLoggedDiv>
+          </LoginBtnBox>
+          <SignUpChanger>
+            <span>Do not have account? Register account for free.</span>
+            <Link to="/Login/signUp">
+              <CustomButton onClick={props.setSignForm}>Sign Up</CustomButton>
+            </Link>
+          </SignUpChanger>
+        </LoginForm>
+      </LoginBox>
+    </SignFormBackdrop>
   );
 };
 
