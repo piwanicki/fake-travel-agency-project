@@ -1,23 +1,23 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import classes from "./Layout.module.scss";
 import NavigationHeader from "../../components/Navigation/NavigationHeader/NavigationHeader";
 import ContactInfoBar from "../../components/ContactInfoBar/ContactInfoBar";
 import Footer from "../../components/Navigation/Footer/Footer";
 import MainPage from "../../components/MainPage/MainPage";
-import { Switch, Route, Redirect } from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
 import CarsList from "../../components/OffersContainer/OffersServices/Cars/CarsList";
 import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
 import DemoAlert from "../DemoAlert/DemoAlert";
 import Wrapper from "./Wrapper/Wrapper";
 import LastMinuteOffersList from "../../components/OffersContainer/LastMinuteModule/LastMinuteOffersList/LastMinuteOffersList";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {
   getWeathers,
-  getWeathersPending,
+  getIsFetching,
   getWeathersError,
-} from "../../reducers/reducers";
+} from "../../reducers/weathers";
 import fetchWeathersHandler from "../../actions/fetchWeathers";
 // import LoginPage from "../../components/Auth/LoginPage";
 import SignUpForm from "../../components/Auth/SingUpForm";
@@ -60,10 +60,6 @@ class Layout extends Component {
               path="/offerServices/cars/:carBrand/:carModel"
               component={CarOfferDetails}
             />
-            {/* <Route
-              path="/Login/:form"
-              component={LoginPage}
-            /> */}
 
             <Route path="/Login/SignUp" component={SignUpForm} />
 
@@ -85,7 +81,7 @@ class Layout extends Component {
 const mapStateToProps = (state) => ({
   error: getWeathersError(state),
   weathers: getWeathers(state),
-  pending: getWeathersPending(state),
+  pending: getIsFetching(state),
 });
 
 const mapDispatchToProps = (dispatch) =>

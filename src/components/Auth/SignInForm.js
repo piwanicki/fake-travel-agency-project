@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import CustomButton from "../../UI/CustomButton/CustomButton";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import * as auth from "../../actions/auth";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import SignFormBackdrop from "../../UI/Backdrop/SignFormBackdrop/SignFormBackdrop";
-import CustomInput from '../../UI/CustomInput/CustomInput';
+import CustomInput from "../../UI/CustomInput/CustomInput";
+import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
 
 const LoginBox = styled.div`
   border-radius: 1em;
@@ -69,47 +70,64 @@ const SignInForm = (props) => {
     e.preventDefault();
   };
 
+  console.log(props.authPending);
+  console.log(props.authData);
   return (
     <SignFormBackdrop>
       <LoginBox>
-        <h3>Sign in</h3>
-        <LoginForm>
-          <CustomInput
-            type="email"
-            placeholder="Email Address"
-            onChange={(e) => setEmailAddress(e.target.value)}
-            autoComplete={"user-email"}
-            required
-          />
-
-          <CustomInput
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete={"current-password"}
-            required
-          />
-
-          <LoginBtnBox>
-            <CustomButton onClick={loginUser}>Login</CustomButton>
-            <KeepLoggedDiv>
-              <input
-                type="checkbox"
-                onChange={() => setKeepLogged(!keepLogged)}
+        {props.authPending ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            <h3>Sign in</h3>
+            <LoginForm>
+              <CustomInput
+                type="email"
+                placeholder="Email Address"
+                onChange={(e) => setEmailAddress(e.target.value)}
+                autoComplete={"user-email"}
+                required
               />
-              Keep Logged
-            </KeepLoggedDiv>
-          </LoginBtnBox>
-          <SignUpChanger>
-            <span>Do not have account? Register account for free.</span>
-            <Link to="/Login/signUp">
-              <CustomButton onClick={props.setSignForm}>Sign Up</CustomButton>
-            </Link>
-          </SignUpChanger>
-        </LoginForm>
+
+              <CustomInput
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete={"current-password"}
+                required
+              />
+
+              <LoginBtnBox>
+                <CustomButton onClick={loginUser}>Login</CustomButton>
+                <KeepLoggedDiv>
+                  <input
+                    type="checkbox"
+                    onChange={() => setKeepLogged(!keepLogged)}
+                  />
+                  Keep Logged
+                </KeepLoggedDiv>
+              </LoginBtnBox>
+              <SignUpChanger>
+                <span>Do not have account? Register account for free.</span>
+                <Link to="/Login/signUp">
+                  <CustomButton onClick={props.setSignForm}>
+                    Sign Up
+                  </CustomButton>
+                </Link>
+              </SignUpChanger>
+            </LoginForm>
+          </>
+        )}
       </LoginBox>
     </SignFormBackdrop>
   );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    authPending: state.auth.authPending,
+    authData: state.auth.authData,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -118,4 +136,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignInForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);

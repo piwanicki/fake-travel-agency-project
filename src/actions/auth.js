@@ -40,7 +40,7 @@ export const signUp = (newUser) => {
       })
       .catch((error) => {
         console.log(error);
-        dispatch(authError());
+        dispatch(authError(error));
       });
   };
 };
@@ -56,7 +56,7 @@ export const signIn = (email, password) => {
     console.log(authData)
     axios
       .post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
         authData
       )
       .then((resolve) => {
@@ -65,7 +65,7 @@ export const signIn = (email, password) => {
       })
       .catch((error) => {
         console.log(error);
-        dispatch(authError());
+        dispatch(authError(error));
       });
   };
 }

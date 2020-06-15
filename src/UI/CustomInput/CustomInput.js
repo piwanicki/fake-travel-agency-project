@@ -26,6 +26,9 @@ const CustomInput = (props) => {
       placeholder={props.placeholder}
       required={props.required}
       onChange={props.onChange}
+      ref={props.refs}
+      onBlur={props.onBlur}
+      autoComplete={props.autoComplete}
     />
   );
 };

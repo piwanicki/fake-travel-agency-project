@@ -67,8 +67,8 @@ const RecommendedOffer = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    weathers: state.weathers,
-    isFetching: state.isFetching,
+    weathers: state.weather.weathers,
+    isFetching: state.weather.isFetching,
   };
 };
 

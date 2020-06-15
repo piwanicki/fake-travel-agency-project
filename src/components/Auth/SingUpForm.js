@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import CustomButton from "../../UI/CustomButton/CustomButton";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 import * as auth from "../../actions/auth";
 import SignFormBackdrop from "../../UI/Backdrop/SignFormBackdrop/SignFormBackdrop";
 import CustomInput from "../../UI/CustomInput/CustomInput";
+import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
 
 const LoginBox = styled.div`
   border-radius: 1em;
@@ -62,7 +63,10 @@ const SignUpForm = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+  const confirmPasswordInput = React.createRef();
+
   const validatePassword = () => {
+    console.log(`validation`);
     if (confirmPassword !== password) {
       confirmPasswordInput.current.setCustomValidity("Passwords Don't Match");
       return false;
@@ -71,11 +75,13 @@ const SignUpForm = (props) => {
       return true;
     }
   };
-  const confirmPasswordInput = React.createRef();
 
   const registerUser = (e) => {
     e.preventDefault();
+    console.log(confirmPassword);
+    console.log(password);
     console.log(validatePassword());
+
     if (validatePassword()) {
       const newUser = {
         email: email,
@@ -87,6 +93,8 @@ const SignUpForm = (props) => {
       props.onSignUp(newUser);
     }
   };
+
+  console.log(props.authPending);
 
   return (
     <SignFormBackdrop>
@@ -142,13 +150,18 @@ const SignUpForm = (props) => {
               type="password"
               placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
+              onBlur={validatePassword}
               autoComplete={"current-password"}
               required
-              ref={confirmPasswordInput}
+              refs={confirmPasswordInput}
             />
           </FlexDiv>
           <LoginBtnBox>
-            <CustomButton type="button">Sign Up</CustomButton>
+            {props.authPending ? (
+              <LoadingSpinner />
+            ) : (
+              <CustomButton>Sign Up</CustomButton>
+            )}
           </LoginBtnBox>
           <SignInChanger>
             <span>Do you have account? Please login.</span>
@@ -162,10 +175,16 @@ const SignUpForm = (props) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    authPending: state.auth.authPending,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onSignUp: (email, password) => dispatch(auth.signUp(email, password)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignUpForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
