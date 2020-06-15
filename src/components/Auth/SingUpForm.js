@@ -94,8 +94,6 @@ const SignUpForm = (props) => {
     }
   };
 
-  console.log(props.authPending);
-
   return (
     <SignFormBackdrop>
       <LoginBox>

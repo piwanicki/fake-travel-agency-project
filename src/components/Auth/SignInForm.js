@@ -70,8 +70,6 @@ const SignInForm = (props) => {
     e.preventDefault();
   };
 
-  console.log(props.authPending);
-  console.log(props.authData);
   return (
     <SignFormBackdrop>
       <LoginBox>
@@ -126,7 +124,6 @@ const SignInForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     authPending: state.auth.authPending,
-    authData: state.auth.authData,
   };
 };
 

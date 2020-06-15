@@ -24,7 +24,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         authPending: false,
-        authData: action.authData,
+        token: action.token,
+        userId : action.userId
       };
     }
 

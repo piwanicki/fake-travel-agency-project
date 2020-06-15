@@ -8,9 +8,13 @@ export const authPending = () => {
 };
 
 export const authSuccess = (authData) => {
+  console.log(authData);
+  const token = authData.idToken;
+  const userId = authData.localId;
   return {
     type: authActions.AUTH_SUCCESS,
-    authData: authData,
+    token: token,
+    userId: userId,
   };
 };
 
@@ -25,10 +29,10 @@ export const signUp = (newUser) => {
   return (dispatch) => {
     dispatch(authPending());
     const authData = {
-    ...newUser,
+      ...newUser,
       returnSecureToken: true,
     };
-    console.log(authData)
+    console.log(authData);
     axios
       .post(
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
@@ -53,7 +57,7 @@ export const signIn = (email, password) => {
       password: password,
       returnSecureToken: true,
     };
-    console.log(authData)
+    console.log(authData);
     axios
       .post(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
@@ -68,4 +72,4 @@ export const signIn = (email, password) => {
         dispatch(authError(error));
       });
   };
-}
+};
