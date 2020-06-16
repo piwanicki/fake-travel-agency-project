@@ -11,10 +11,12 @@ export const authSuccess = (authData) => {
   console.log(authData);
   const token = authData.idToken;
   const userId = authData.localId;
+  const displayName = authData.displayName;
   return {
     type: authActions.AUTH_SUCCESS,
     token: token,
     userId: userId,
+    displayName: displayName
   };
 };
 
@@ -24,6 +26,22 @@ export const authError = (error) => {
     error: error,
   };
 };
+
+export const logout = () => {
+  return {
+    type: authActions.AUTH_LOGOUT,
+  }
+}
+
+export const checkAuthTimeout = (expTime) => {
+  return dispatch => {
+    console.log(`checkAuthTimeout  => ${expTime}s`);
+    setTimeout(() => {
+      dispatch(logout())
+    },expTime * 1000)
+  };
+  
+}
 
 export const signUp = (newUser) => {
   return (dispatch) => {
@@ -66,6 +84,8 @@ export const signIn = (email, password) => {
       .then((resolve) => {
         console.log(resolve);
         dispatch(authSuccess(resolve.data));
+        dispatch(checkAuthTimeout(resolve.data.expiresIn))
+        
       })
       .catch((error) => {
         console.log(error);

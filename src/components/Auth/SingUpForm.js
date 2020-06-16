@@ -88,6 +88,7 @@ const SignUpForm = (props) => {
         password: password,
         firstNme: firstName,
         lastName: lastName,
+        displayName: firstName
       };
 
       props.onSignUp(newUser);
@@ -181,7 +182,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSignUp: (email, password) => dispatch(auth.signUp(email, password)),
+    onSignUp: (newUser) => dispatch(auth.signUp(newUser)),
   };
 };
 

@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-// import classes from "./InfoPanel.module.css";
 import classes from "./InfoPanel.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -13,6 +12,16 @@ import english from "./LangSelectBox/langSelectorsIcon/england.png";
 // import polish from "./LangSelectBox/langSelectorsIcon/poland.png";
 import {Link} from "react-router-dom";
 import CustomButton from "../../../UI/CustomButton/CustomButton";
+import {connect} from "react-redux";
+import {AUTH_LOGOUT} from "../../../actions/authActions";
+import styled from 'styled-components';
+
+const LogoutBtn = styled.span`
+  margin-left: 2em;
+  border-bottom: 2px solid white;
+  padding: 5px;
+  cursor: pointer;
+`;
 
 class InfoPanel extends Component {
   state = {
@@ -33,6 +42,19 @@ class InfoPanel extends Component {
   };
 
   render() {
+    const isLogged = this.props.userLogged ? (
+      <span>
+        Hello, {this.props.userDisplayName}
+        <LogoutBtn onClick={this.props.signOut}>Logout</LogoutBtn>
+      </span>
+    ) : (
+      <Link to="/Login/signIn">
+        <CustomButton type="button">
+          <strong>Login</strong>
+        </CustomButton>
+      </Link>
+    );
+
     return (
       <div className={classes.InfoPanel}>
         <ul>
@@ -51,12 +73,7 @@ class InfoPanel extends Component {
         </ul>
 
         <span className={classes.LoginLangBox}>
-          <Link to="/Login/signIn">
-            <CustomButton type="button">
-              <strong>Login</strong>
-            </CustomButton>
-          </Link>
-
+          {isLogged}
           <img
             src={english}
             alt="language icon"
@@ -73,4 +90,17 @@ class InfoPanel extends Component {
   }
 }
 
-export default InfoPanel;
+const mapStateToProps = (state) => {
+  return {
+    userLogged: state.auth.userLogged,
+    userDisplayName: state.auth.userDisplayName,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch({type: AUTH_LOGOUT}),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InfoPanel);

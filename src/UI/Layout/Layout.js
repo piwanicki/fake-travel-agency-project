@@ -12,16 +12,15 @@ import DemoAlert from "../DemoAlert/DemoAlert";
 import Wrapper from "./Wrapper/Wrapper";
 import LastMinuteOffersList from "../../components/OffersContainer/LastMinuteModule/LastMinuteOffersList/LastMinuteOffersList";
 import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
 import {
   getWeathers,
   getIsFetching,
   getWeathersError,
 } from "../../reducers/weathers";
 import fetchWeathersHandler from "../../actions/fetchWeathers";
-// import LoginPage from "../../components/Auth/LoginPage";
 import SignUpForm from "../../components/Auth/SingUpForm";
 import SignInForm from "../../components/Auth/SignInForm";
+import UserPanel from "../../components/Auth/UserPanel";
 
 class Layout extends Component {
   state = {
@@ -30,6 +29,10 @@ class Layout extends Component {
   showDemoAlertHandler = () => {
     // const isShowing = this.state.showDemoAlert;
     // this.setState({showDemoAlert: !isShowing});
+  };
+
+  componentDidMount = () => {
+    //this.props.fetchWeathers();
   };
 
   render() {
@@ -64,8 +67,7 @@ class Layout extends Component {
             <Route path="/Login/SignUp" component={SignUpForm} />
 
             <Route path="/Login/SignIn" component={SignInForm} />
-
-            <Redirect from="/" to="/" />
+            <Route path="/userPanel" component={UserPanel} />
           </Switch>
 
           <ContactInfoBar />
@@ -82,14 +84,13 @@ const mapStateToProps = (state) => ({
   error: getWeathersError(state),
   weathers: getWeathers(state),
   pending: getIsFetching(state),
+  userLogged: state.auth.userLogged,
 });
 
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      fetchWeathers: fetchWeathersHandler,
-    },
-    dispatch
-  );
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchWeathers: () => dispatch(fetchWeathersHandler()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);

@@ -1,12 +1,13 @@
-import {AUTH_PENDING, AUTH_SUCCESS, AUTH_ERROR} from "../actions/authActions";
+import {AUTH_PENDING, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT} from "../actions/authActions";
 
 const initialState = {
   error: null,
   authPending: false,
-  userLogged: false,
+  userLogged: true,
   token: null,
   userId: null,
   authData: null,
+  userDisplayName: 'Test'
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,7 +26,9 @@ const reducer = (state = initialState, action) => {
         ...state,
         authPending: false,
         token: action.token,
-        userId : action.userId
+        userId : action.userId,
+        userLogged: action.token !== null,
+        userDisplayName: action.displayName
       };
     }
 
@@ -35,6 +38,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         authPending: false,
       };
+    }
+
+    case AUTH_LOGOUT :  {
+      console.log(`Auth logout`)
+      return {
+        ...state,
+        token: null,
+        userId: null,
+        userLogged: false
+      }
     }
     default:
       return state;
