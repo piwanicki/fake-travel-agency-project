@@ -28,12 +28,12 @@ class Layout extends Component {
     showDemoAlert: false,
   };
   showDemoAlertHandler = () => {
-    // const isShowing = this.state.showDemoAlert;
-    // this.setState({showDemoAlert: !isShowing});
+    const isShowing = this.state.showDemoAlert;
+    this.setState({showDemoAlert: !isShowing});
   };
 
   componentDidMount = () => {
-    //this.props.fetchWeathers();
+    this.props.fetchWeathers();
     this.props.onTryAutoLogin();
   };
 
