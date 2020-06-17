@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import CustomButton from "../../UI/CustomButton/CustomButton";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import * as auth from "../../actions/auth";
 import {connect} from "react-redux";
 import SignFormBackdrop from "../../UI/Backdrop/SignFormBackdrop/SignFormBackdrop";
@@ -70,8 +70,13 @@ const SignInForm = (props) => {
     e.preventDefault();
   };
 
+  const loginError = props.error;
+  console.log(loginError)
+
+  const authRedirect = props.userLogged ? <Redirect to="/userPanel" /> : null;
   return (
     <SignFormBackdrop>
+      {authRedirect}
       <LoginBox>
         {props.authPending ? (
           <LoadingSpinner />
@@ -124,6 +129,8 @@ const SignInForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     authPending: state.auth.authPending,
+    error: state.auth.error,
+    userLogged: state.auth.userLogged,
   };
 };
 

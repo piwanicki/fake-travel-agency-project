@@ -18,6 +18,7 @@ import {
   getWeathersError,
 } from "../../reducers/weathers";
 import fetchWeathersHandler from "../../actions/fetchWeathers";
+import {chekAuthState} from "../../actions/auth";
 import SignUpForm from "../../components/Auth/SingUpForm";
 import SignInForm from "../../components/Auth/SignInForm";
 import UserPanel from "../../components/Auth/UserPanel";
@@ -33,6 +34,7 @@ class Layout extends Component {
 
   componentDidMount = () => {
     //this.props.fetchWeathers();
+    this.props.onTryAutoLogin();
   };
 
   render() {
@@ -67,7 +69,11 @@ class Layout extends Component {
             <Route path="/Login/SignUp" component={SignUpForm} />
 
             <Route path="/Login/SignIn" component={SignInForm} />
-            <Route path="/userPanel" component={UserPanel} />
+            {this.props.userLogged ? (
+              <Route path="/userPanel" component={UserPanel} />
+            ) : (
+              <Redirect to="/" />
+            )}
           </Switch>
 
           <ContactInfoBar />
@@ -90,6 +96,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchWeathers: () => dispatch(fetchWeathersHandler()),
+    onTryAutoLogin: () => dispatch(chekAuthState()),
   };
 };
 

@@ -6,6 +6,10 @@ import {
   faMobile,
   faMapMarkedAlt,
   faEnvelopeOpen,
+  faUser,
+  faIdCard,
+  faEnvelope,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import LangSelectBox from "./LangSelectBox/LangSelectBox";
 import english from "./LangSelectBox/langSelectorsIcon/england.png";
@@ -13,19 +17,49 @@ import english from "./LangSelectBox/langSelectorsIcon/england.png";
 import {Link} from "react-router-dom";
 import CustomButton from "../../../UI/CustomButton/CustomButton";
 import {connect} from "react-redux";
-import {AUTH_LOGOUT} from "../../../actions/authActions";
-import styled from 'styled-components';
+import {logout} from "../../../actions/auth";
+import styled from "styled-components";
 
 const LogoutBtn = styled.span`
-  margin-left: 2em;
+  margin-left: 1em;
   border-bottom: 2px solid white;
-  padding: 5px;
+  padding: 5px 0;
+  cursor: pointer;
+`;
+
+const UserMenu = styled.div`
+  position: absolute;
+  top: 2em;
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  border: 1px solid grey;
+  color: black;
+  border-radius: 1em;
+`;
+
+const UserMenuEl = styled.div`
+  margin: 2rem 1rem;
+  height: 30px;
+  border-bottom: 1px solid grey;
+  font-size: 1.4rem;
+  padding-bottom: 1rem;
+  color: grey;
+  text-align: left;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
+
+const UserInfoSpan = styled.span`
   cursor: pointer;
 `;
 
 class InfoPanel extends Component {
   state = {
     langSelectBox: false,
+    showUserMenu: false,
   };
 
   showLangSelectorBox = () => {
@@ -41,18 +75,51 @@ class InfoPanel extends Component {
     this.showLangSelectorBox();
   };
 
+  showUserMenu = () => {
+    const isShowing = this.state.showUserMenu;
+    this.setState({showUserMenu: !isShowing});
+  };
+
   render() {
-    const isLogged = this.props.userLogged ? (
-      <span>
-        Hello, {this.props.userDisplayName}
-        <LogoutBtn onClick={this.props.signOut}>Logout</LogoutBtn>
-      </span>
-    ) : (
+    const userInfoSpan = (
+      <UserInfoSpan>
+        <span onMouseEnter={this.showUserMenu}>
+          Hello, {this.props.userDisplayName}
+          <FontAwesomeIcon icon={faUser} className={classes.UserIcon} />
+        </span>
+
+        <LogoutBtn onClick={this.props.signOut}> Logout</LogoutBtn>
+      </UserInfoSpan>
+    );
+
+    const loginBtn = (
       <Link to="/Login/signIn">
         <CustomButton type="button">
           <strong>Login</strong>
         </CustomButton>
       </Link>
+    );
+
+    const isLogged = this.props.userLogged ? userInfoSpan : loginBtn;
+
+    const userMenuJSX = (
+      <UserMenu onMouseLeave={this.showUserMenu}>
+        <UserMenuEl>
+          <Link to={"/userPanel"}>
+            <FontAwesomeIcon icon={faIdCard} /> User Panel
+          </Link>
+        </UserMenuEl>
+        <UserMenuEl>
+          <Link to={"/userPanel/favorites"}>
+            <FontAwesomeIcon icon={faHeart} /> Favorites
+          </Link>
+        </UserMenuEl>
+        <UserMenuEl>
+          <Link to={"/contactForm"}>
+            <FontAwesomeIcon icon={faEnvelope} /> Contact Us
+          </Link>
+        </UserMenuEl>
+      </UserMenu>
     );
 
     return (
@@ -74,6 +141,7 @@ class InfoPanel extends Component {
 
         <span className={classes.LoginLangBox}>
           {isLogged}
+          {this.state.showUserMenu ? userMenuJSX : null}
           <img
             src={english}
             alt="language icon"
@@ -99,7 +167,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signOut: () => dispatch({type: AUTH_LOGOUT}),
+    signOut: () => dispatch(logout()),
   };
 };
 
