@@ -80,7 +80,6 @@ export const signUp = (newUser) => {
       ...newUser,
       returnSecureToken: true,
     };
-    console.log(authData);
     axios
       .post(
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",

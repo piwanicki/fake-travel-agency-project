@@ -17,7 +17,7 @@ import {
   getIsFetching,
   getWeathersError,
 } from "../../reducers/weathers";
-import fetchWeathersHandler from "../../actions/fetchWeathers";
+import {chekWeathersState} from "../../actions/fetchWeathers";
 import {chekAuthState} from "../../actions/auth";
 import SignUpForm from "../../components/Auth/SingUpForm";
 import SignInForm from "../../components/Auth/SignInForm";
@@ -28,11 +28,12 @@ class Layout extends Component {
     showDemoAlert: false,
   };
   showDemoAlertHandler = () => {
-    // const isShowing = this.state.showDemoAlert;
-    // this.setState({showDemoAlert: !isShowing});
+    const isShowing = this.state.showDemoAlert;
+    this.setState({showDemoAlert: !isShowing});
   };
 
   componentDidMount = () => {
+    this.props.chekWeathersState();
     //this.props.fetchWeathers();
     this.props.onTryAutoLogin();
   };
@@ -95,8 +96,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchWeathers: () => dispatch(fetchWeathersHandler()),
+    //fetchWeathers: () => dispatch(fetchWeathersHandler()),
     onTryAutoLogin: () => dispatch(chekAuthState()),
+    chekWeathersState: () => dispatch(chekWeathersState()),
   };
 };
 

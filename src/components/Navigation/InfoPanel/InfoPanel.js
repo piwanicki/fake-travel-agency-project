@@ -31,7 +31,7 @@ const UserMenu = styled.div`
   position: absolute;
   top: 2em;
   width: 200px;
-  height: 300px;
+  height: 240px;
   background-color: white;
   border: 1px solid grey;
   color: black;
@@ -49,6 +49,10 @@ const UserMenuEl = styled.div`
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  :last-child {
+    border-bottom: none;
   }
 `;
 
@@ -76,6 +80,7 @@ class InfoPanel extends Component {
   };
 
   showUserMenu = () => {
+    console.log(`show`);
     const isShowing = this.state.showUserMenu;
     this.setState({showUserMenu: !isShowing});
   };
@@ -83,7 +88,7 @@ class InfoPanel extends Component {
   render() {
     const userInfoSpan = (
       <UserInfoSpan>
-        <span onMouseEnter={this.showUserMenu}>
+        <span onMouseOver={this.showUserMenu}>
           Hello, {this.props.userDisplayName}
           <FontAwesomeIcon icon={faUser} className={classes.UserIcon} />
         </span>
