@@ -73,7 +73,7 @@ const SignInForm = (props) => {
   const loginError = props.error;
   console.log(loginError)
 
-  const authRedirect = props.userLogged ? <Redirect to="/userPanel" /> : null;
+  const authRedirect = props.userLogged ? <Redirect to="/userPanel/userInfo" /> : null;
   return (
     <SignFormBackdrop>
       {authRedirect}

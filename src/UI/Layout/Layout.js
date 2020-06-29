@@ -71,10 +71,8 @@ class Layout extends Component {
 
             <Route path="/Login/SignIn" component={SignInForm} />
             {this.props.userLogged ? (
-              <Route path="/userPanel" component={UserPanel} />
-            ) : (
-              <Redirect to="/" />
-            )}
+              <Route path="/userPanel/:content" component={UserPanel} exact/>
+            ) : <Redirect to='/' />}
           </Switch>
 
           <ContactInfoBar />

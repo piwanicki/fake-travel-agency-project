@@ -7,6 +7,7 @@ import * as auth from "../../actions/auth";
 import SignFormBackdrop from "../../UI/Backdrop/SignFormBackdrop/SignFormBackdrop";
 import CustomInput from "../../UI/CustomInput/CustomInput";
 import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
+import {Redirect} from "react-router-dom";
 
 const LoginBox = styled.div`
   border-radius: 1em;
@@ -88,15 +89,20 @@ const SignUpForm = (props) => {
         password: password,
         firstNme: firstName,
         lastName: lastName,
-        displayName: firstName
+        displayName: firstName,
       };
 
       props.onSignUp(newUser);
     }
   };
 
+  const authRedirect = props.userLogged ? (
+    <Redirect to="/userPanel/userInfo" />
+  ) : null;
+
   return (
     <SignFormBackdrop>
+      {authRedirect}
       <LoginBox>
         <h3>Sign up</h3>
         <LoginForm onSubmit={registerUser}>
@@ -177,6 +183,7 @@ const SignUpForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     authPending: state.auth.authPending,
+    userLogged: state.auth.userLogged,
   };
 };
 

@@ -36,6 +36,7 @@ const UserMenu = styled.div`
   border: 1px solid grey;
   color: black;
   border-radius: 1em;
+  z-index: 2;
 `;
 
 const UserMenuEl = styled.div`
@@ -74,13 +75,11 @@ class InfoPanel extends Component {
   };
 
   langSelectHandler = (event) => {
-    const langSelected = event.target.id;
-    console.log(langSelected);
+    //const langSelected = event.target.id;
     this.showLangSelectorBox();
   };
 
   showUserMenu = () => {
-    console.log(`show`);
     const isShowing = this.state.showUserMenu;
     this.setState({showUserMenu: !isShowing});
   };
@@ -88,7 +87,7 @@ class InfoPanel extends Component {
   render() {
     const userInfoSpan = (
       <UserInfoSpan>
-        <span onMouseOver={this.showUserMenu}>
+        <span onMouseEnter={this.showUserMenu}>
           Hello, {this.props.userDisplayName}
           <FontAwesomeIcon icon={faUser} className={classes.UserIcon} />
         </span>
@@ -110,7 +109,7 @@ class InfoPanel extends Component {
     const userMenuJSX = (
       <UserMenu onMouseLeave={this.showUserMenu}>
         <UserMenuEl>
-          <Link to={"/userPanel"}>
+          <Link to={"/userPanel/userInfo"}>
             <FontAwesomeIcon icon={faIdCard} /> User Panel
           </Link>
         </UserMenuEl>
