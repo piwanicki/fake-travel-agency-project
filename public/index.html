@@ -24,7 +24,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>React App</title>
+  <title>Fake Travel Agency</title>
 </head>
 
 <body>
@@ -41,27 +41,28 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   <script src='%PUBLIC_URL%/mapsdk/tomtom.min.js'> </script>
-  <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
+<!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
-      authDomain: "fake-travel-agency-db.firebaseapp.com",
-      databaseURL: "https://fake-travel-agency-db.firebaseio.com",
-      projectId: "fake-travel-agency-db",
-      storageBucket: "fake-travel-agency-db.appspot.com",
-      messagingSenderId: "703773200233",
-      appId: "1:703773200233:web:ff934fbfab1ff60ec4b7f8",
-      measurementId: "G-YTYRP8CB82"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
+    authDomain: "fake-travel-agency-db.firebaseapp.com",
+    databaseURL: "https://fake-travel-agency-db.firebaseio.com",
+    projectId: "fake-travel-agency-db",
+    storageBucket: "fake-travel-agency-db.appspot.com",
+    messagingSenderId: "703773200233",
+    appId: "1:703773200233:web:ff934fbfab1ff60ec4b7f8",
+    measurementId: "G-YTYRP8CB82"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
   </script>
 </body>
 

@@ -3,6 +3,7 @@ import {
   AUTH_SUCCESS,
   AUTH_ERROR,
   AUTH_LOGOUT,
+  UPD_USERDATA
 } from "../actions/authActions";
 
 const initialState = {
@@ -13,6 +14,9 @@ const initialState = {
   userId: null,
   authData: null,
   userDisplayName: "",
+  userFirstName: "",
+  userLastName: "",
+  registeredFrom: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -54,6 +58,17 @@ const reducer = (state = initialState, action) => {
         userLogged: false,
         userDisplayName: "",
       };
+    }
+
+    case UPD_USERDATA: {
+      console.log(`update user data with :`);
+      console.log(action.userData);
+      return {
+        userFirstName: action.userData.firstName,
+        userLastName: action.userData.lastName,
+        registeredFrom: action.userData.regFrom
+      }
+
     }
     default:
       return state;

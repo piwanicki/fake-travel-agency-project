@@ -65,9 +65,9 @@ const SignUpForm = (props) => {
   const [lastName, setLastName] = useState("");
 
   const confirmPasswordInput = React.createRef();
+  document.title = "Sign Up";
 
   const validatePassword = () => {
-    console.log(`validation`);
     if (confirmPassword !== password) {
       confirmPasswordInput.current.setCustomValidity("Passwords Don't Match");
       return false;
@@ -79,10 +79,6 @@ const SignUpForm = (props) => {
 
   const registerUser = (e) => {
     e.preventDefault();
-    console.log(confirmPassword);
-    console.log(password);
-    console.log(validatePassword());
-
     if (validatePassword()) {
       const newUser = {
         email: email,
@@ -91,7 +87,6 @@ const SignUpForm = (props) => {
         lastName: lastName,
         displayName: firstName,
       };
-
       props.onSignUp(newUser);
     }
   };
@@ -161,19 +156,23 @@ const SignUpForm = (props) => {
               refs={confirmPasswordInput}
             />
           </FlexDiv>
-          <LoginBtnBox>
-            {props.authPending ? (
-              <LoadingSpinner />
-            ) : (
-              <CustomButton>Sign Up</CustomButton>
-            )}
-          </LoginBtnBox>
-          <SignInChanger>
-            <span>Do you have account? Please login.</span>
-            <Link to="/Login/signIn">
-              <CustomButton onClick={props.setSignForm}>Sign In</CustomButton>
-            </Link>
-          </SignInChanger>
+          {props.authPending ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              <LoginBtnBox>
+                <CustomButton>Sign Up</CustomButton>
+              </LoginBtnBox>
+              <SignInChanger>
+                <span>Do you have account? Please login.</span>
+                <Link to="/Login/signIn">
+                  <CustomButton onClick={props.setSignForm}>
+                    Sign In
+                  </CustomButton>
+                </Link>
+              </SignInChanger>
+            </>
+          )}
         </LoginForm>
       </LoginBox>
     </SignFormBackdrop>
