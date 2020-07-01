@@ -34,17 +34,19 @@ const updateUserData = (userData) => {
   };
 };
 
-const fetchUserData = (userId, token) => {
-  instance
-    .get(`/users/${userId}.json?auth=${token}`)
-    .then((res) => {
-      console.log(res.data);
-      updateUserData(res.data);
-    })
-    .catch((err) => console.log(err));
-};
+// const fetchUserData = (userId, token) => {
+//   return dispatch => {
+//     instance
+//     .get(`/users/${userId}.json?auth=${token}`)
+//     .then((res) => {
+//       console.log(res.data);
+//       dispatch(updateUserData(res.data));
+//     })
+//     .catch((err) => console.log(err));
+//   }
+// };
 
-const setLocalStorage = (resolve) => {
+const setLocalStorageUserLogInfo = (resolve) => {
   const expirationDate = new Date(
     new Date().getTime() + resolve.data.expiresIn * 1000
   );
@@ -54,11 +56,22 @@ const setLocalStorage = (resolve) => {
   localStorage.setItem("userDisplayName", resolve.data.displayName);
 };
 
+const setLocalStorageUserAddData = (resolve) => {
+  localStorage.setItem("firstName", resolve.data.firstName);
+  localStorage.setItem("lastName", resolve.data.firstName);
+  localStorage.setItem("userEmail", resolve.data.email);
+  localStorage.setItem("regFromDt", resolve.data.regFrom);
+};
+
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("expirationDate");
   localStorage.removeItem("userId");
   localStorage.removeItem("userDisplayName");
+  localStorage.removeItem("firstName");
+  localStorage.removeItem("lastName");
+  localStorage.removeItem("userEmail");
+  localStorage.removeItem("regFromDt");
   return {
     type: authActions.AUTH_LOGOUT,
   };
@@ -87,12 +100,19 @@ export const chekAuthState = () => {
           localId: localStorage.getItem("userId"),
           displayName: localStorage.getItem("userDisplayName"),
         };
+        const userInfoData = {
+          firstName: localStorage.getItem("firstName"),
+          lastName: localStorage.getItem("lastName"),
+          email: localStorage.getItem("userEmail"),
+          regFrom: localStorage.getItem("regFromDt"),
+        };
         dispatch(authSuccess(authData));
         dispatch(
           checkAuthTimeout(
             (expirationDate.getTime() - new Date().getTime()) / 1000
           )
         );
+        dispatch(updateUserData(userInfoData));
       }
     }
   };
@@ -111,7 +131,7 @@ export const signUp = (newUser) => {
         authData
       )
       .then((resolve) => {
-        setLocalStorage(resolve);
+        setLocalStorageUserLogInfo(resolve);
         dispatch(authSuccess(resolve.data));
 
         var userInfoDb = {...newUser};
@@ -120,7 +140,7 @@ export const signUp = (newUser) => {
         instance
           .put(`/users/${resolve.data.localId}.json`, userInfoDb)
           .then((resolve) => {
-            console.log(resolve);
+            setLocalStorageUserAddData(resolve);
           })
           .catch((error) => {
             console.log(error);
@@ -146,10 +166,21 @@ export const signIn = (email, password) => {
         authData
       )
       .then((resolve) => {
-        setLocalStorage(resolve);
-        dispatch(fetchUserData(resolve.data.localId, resolve.data.idToken));
-        dispatch(authSuccess(resolve.data));
-        dispatch(checkAuthTimeout(resolve.data.expiresIn));
+        setLocalStorageUserLogInfo(resolve);
+        //fetchUserData(resolve.data.localId, resolve.data.idToken);
+
+        instance
+          .get(
+            `/users/${resolve.data.localId}.json?auth=${resolve.data.idToken}`
+          )
+          .then((res) => {
+            setLocalStorageUserAddData(res);
+            dispatch(updateUserData(res.data));
+            dispatch(authSuccess(resolve.data));
+            dispatch(checkAuthTimeout(resolve.data.expiresIn));
+          })
+
+          .catch((err) => console.log(err));
       })
       .catch((error) => {
         dispatch(authError(error));

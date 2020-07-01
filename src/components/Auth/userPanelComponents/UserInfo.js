@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {connect} from "react-redux";
 
 const UserInfoDiv = styled.div`
   display: flex;
@@ -8,21 +9,62 @@ const UserInfoDiv = styled.div`
 `;
 
 const InfoDiv = styled.div`
-  width: 250px;
+  width: 500px;
   font-size: 1.5em;
   height: 100px;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  span {
+    margin: 0 20px;
+    font-size: 1.2em;
+  }
 `;
 
 const UserInfo = (props) => {
   return (
     <UserInfoDiv>
-      <InfoDiv>Name : {props.userName}</InfoDiv>
-      <InfoDiv>Surname : {props.userSurname}</InfoDiv>
-      <InfoDiv>User display Name : {props.userDisplayName}</InfoDiv>
-      <InfoDiv>Registered from: {props.userRegisteredTime}</InfoDiv>
+      <InfoDiv>
+        <span>Name :</span>
+        <span>
+          <strong>{props.userName}</strong>
+        </span>
+      </InfoDiv>
+      <InfoDiv>
+        <span>Lastname :</span>
+        <span>
+          <strong>{props.userLastName}</strong>
+        </span>
+      </InfoDiv>
+      <InfoDiv>
+        <span>User display Name :</span>
+        <span>
+          <strong>{props.userDisplayName}</strong>
+        </span>
+      </InfoDiv>
+      <InfoDiv>
+        <span>User E-mail :</span>
+        <span>
+          <strong>{props.userEmail}</strong>
+        </span>
+      </InfoDiv>
+      <InfoDiv>
+        <span>Registered from :</span>
+        <span>
+          <strong>{props.registeredFrom}</strong>
+        </span>
+      </InfoDiv>
     </UserInfoDiv>
   );
 };
 
-export default UserInfo;
+const mapStateToProps = (state) => {
+  return {
+    userName: state.auth.userFirstName,
+    userLastName: state.auth.userLastName,
+    userDisplayName: state.auth.userDisplayName,
+    registeredFrom: state.auth.registeredFrom,
+    userEmail: state.auth.userEmail,
+  };
+};
+
+export default connect(mapStateToProps, null)(UserInfo);

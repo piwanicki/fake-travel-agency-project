@@ -12,17 +12,16 @@ const initialState = {
   userLogged: false,
   token: null,
   userId: null,
-  authData: null,
   userDisplayName: "",
   userFirstName: "",
   userLastName: "",
-  registeredFrom: null
+  userEmail: "",
+  registeredFrom: ""
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_PENDING: {
-      console.log(`Auth Pending`);
       return {
         ...state,
         authPending: true,
@@ -30,7 +29,6 @@ const reducer = (state = initialState, action) => {
     }
 
     case AUTH_SUCCESS: {
-      console.log(`Auth success`);
       return {
         ...state,
         authPending: false,
@@ -42,7 +40,6 @@ const reducer = (state = initialState, action) => {
     }
 
     case AUTH_ERROR: {
-      console.log(`Auth error`);
       return {
         ...state,
         authPending: false,
@@ -50,7 +47,6 @@ const reducer = (state = initialState, action) => {
     }
 
     case AUTH_LOGOUT: {
-      console.log(`Auth logout`);
       return {
         ...state,
         token: null,
@@ -61,10 +57,10 @@ const reducer = (state = initialState, action) => {
     }
 
     case UPD_USERDATA: {
-      console.log(`update user data with :`);
-      console.log(action.userData);
       return {
+        ...state,
         userFirstName: action.userData.firstName,
+        userEmail: action.userData.email,
         userLastName: action.userData.lastName,
         registeredFrom: action.userData.regFrom
       }

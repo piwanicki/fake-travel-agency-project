@@ -80,12 +80,15 @@ const SignUpForm = (props) => {
   const registerUser = (e) => {
     e.preventDefault();
     if (validatePassword()) {
+      const dt = new Date();
+      const regFromDt = [dt.getDate(), dt.getMonth()+1, dt.getFullYear()].join(" / ");
       const newUser = {
         email: email,
         password: password,
-        firstNme: firstName,
+        firstName: firstName,
         lastName: lastName,
         displayName: firstName,
+        regFrom: regFromDt,
       };
       props.onSignUp(newUser);
     }
