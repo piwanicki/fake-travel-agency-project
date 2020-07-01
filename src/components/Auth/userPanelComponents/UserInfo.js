@@ -1,45 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import Button from "../../../UI/CustomButton/CustomButton";
+import CustomInput from "../../../UI/CustomInput/CustomInput";
 
 const UserInfoDiv = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  margin: 50px;
+  height: 600px;
+
+  button {
+    align-self: flex-end;
+    margin: 0;
+  }
 `;
 
 const InfoDiv = styled.div`
-  width: 500px;
-  font-size: 1.5em;
-  height: 100px;
+  padding: 1em;
+  width: 450px;
   display: flex;
-  justify-content: space-between;
+
   span {
-    margin: 0 20px;
+    width: 180px;
+    margin: 0 25px;
     font-size: 1.2em;
+    text-align: left;
+  }
+`;
+
+const StatisticDiv = styled.div`
+  border-top: 1px solid grey;
+  margin: 20px 0;
+  padding: 20px 0;
+  font-size: 1.2em;
+
+  div {
+    margin: 10px;
   }
 `;
 
 const UserInfo = (props) => {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const userNameInput = <CustomInput type="text" placeholder="New Name..." />;
+  const userSurnameInput = (
+    <CustomInput type="text" placeholder="New Surname..." />
+  );
+  const userDisplayName = (
+    <CustomInput type="text" placeholder="New Display Name..." />
+  );
+
   return (
     <UserInfoDiv>
       <InfoDiv>
         <span>Name :</span>
-        <span>
-          <strong>{props.userName}</strong>
-        </span>
+
+        {isEditing ? (
+          userNameInput
+        ) : (
+          <span>
+            <strong>{props.userName}</strong>
+          </span>
+        )}
       </InfoDiv>
       <InfoDiv>
-        <span>Lastname :</span>
-        <span>
-          <strong>{props.userLastName}</strong>
-        </span>
+        <span>Surname :</span>
+        {isEditing ? (
+          userSurnameInput
+        ) : (
+          <span>
+            <strong>{props.userLastName}</strong>
+          </span>
+        )}
       </InfoDiv>
       <InfoDiv>
         <span>User display Name :</span>
-        <span>
-          <strong>{props.userDisplayName}</strong>
-        </span>
+        {isEditing ? (
+          userDisplayName
+        ) : (
+          <span>
+            <strong>{props.userDisplayName}</strong>
+          </span>
+        )}
       </InfoDiv>
       <InfoDiv>
         <span>User E-mail :</span>
@@ -53,6 +96,14 @@ const UserInfo = (props) => {
           <strong>{props.registeredFrom}</strong>
         </span>
       </InfoDiv>
+      <Button onClick={() => setIsEditing(!isEditing)}>Edit</Button>
+      <StatisticDiv>
+        <h4>Statistics</h4>
+        <div>Favorites : 5</div>
+        <div>Realized Trips : 5</div>
+        <div>Reservations : 5</div>
+        <div>Last login : {props.registeredFrom}</div>
+      </StatisticDiv>
     </UserInfoDiv>
   );
 };
