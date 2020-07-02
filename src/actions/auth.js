@@ -34,17 +34,12 @@ const updateUserData = (userData) => {
   };
 };
 
-// const fetchUserData = (userId, token) => {
-//   return dispatch => {
-//     instance
-//     .get(`/users/${userId}.json?auth=${token}`)
-//     .then((res) => {
-//       console.log(res.data);
-//       dispatch(updateUserData(res.data));
-//     })
-//     .catch((err) => console.log(err));
-//   }
-// };
+export const updateUserDbData = userUpdData => {
+  return {
+    type: authActions.UPD_DB_USERDATA,
+    userUpdData: userUpdData
+  }
+}
 
 const setLocalStorageUserLogInfo = (resolve) => {
   const expirationDate = new Date(
@@ -58,7 +53,7 @@ const setLocalStorageUserLogInfo = (resolve) => {
 
 const setLocalStorageUserAddData = (resolve) => {
   localStorage.setItem("firstName", resolve.data.firstName);
-  localStorage.setItem("lastName", resolve.data.firstName);
+  localStorage.setItem("surname", resolve.data.surname);
   localStorage.setItem("userEmail", resolve.data.email);
   localStorage.setItem("regFromDt", resolve.data.regFrom);
 };
@@ -69,7 +64,7 @@ export const logout = () => {
   localStorage.removeItem("userId");
   localStorage.removeItem("userDisplayName");
   localStorage.removeItem("firstName");
-  localStorage.removeItem("lastName");
+  localStorage.removeItem("surname");
   localStorage.removeItem("userEmail");
   localStorage.removeItem("regFromDt");
   return {
@@ -102,7 +97,7 @@ export const chekAuthState = () => {
         };
         const userInfoData = {
           firstName: localStorage.getItem("firstName"),
-          lastName: localStorage.getItem("lastName"),
+          surname: localStorage.getItem("surname"),
           email: localStorage.getItem("userEmail"),
           regFrom: localStorage.getItem("regFromDt"),
         };
@@ -167,8 +162,6 @@ export const signIn = (email, password) => {
       )
       .then((resolve) => {
         setLocalStorageUserLogInfo(resolve);
-        //fetchUserData(resolve.data.localId, resolve.data.idToken);
-
         instance
           .get(
             `/users/${resolve.data.localId}.json?auth=${resolve.data.idToken}`

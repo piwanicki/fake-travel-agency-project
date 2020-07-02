@@ -62,7 +62,7 @@ const SignUpForm = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [surname, setSurname] = useState("");
 
   const confirmPasswordInput = React.createRef();
   document.title = "Sign Up";
@@ -81,12 +81,14 @@ const SignUpForm = (props) => {
     e.preventDefault();
     if (validatePassword()) {
       const dt = new Date();
-      const regFromDt = [dt.getDate(), dt.getMonth()+1, dt.getFullYear()].join(" / ");
+      const regFromDt = `${dt.getDate()}/${
+        dt.getMonth() + 1
+      }/${dt.getFullYear()}`;
       const newUser = {
         email: email,
         password: password,
         firstName: firstName,
-        lastName: lastName,
+        surname: surname,
         displayName: firstName,
         regFrom: regFromDt,
       };
@@ -115,12 +117,12 @@ const SignUpForm = (props) => {
           </FlexDiv>
 
           <FlexDiv>
-            <span>Last Name</span>
+            <span>Surname</span>
 
             <CustomInput
               type="text"
-              placeholder="Last Name"
-              onChange={(e) => setLastName(e.target.value)}
+              placeholder="Surname"
+              onChange={(e) => setSurname(e.target.value)}
               required
             />
           </FlexDiv>

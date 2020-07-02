@@ -3,7 +3,8 @@ import {
   AUTH_SUCCESS,
   AUTH_ERROR,
   AUTH_LOGOUT,
-  UPD_USERDATA
+  UPD_USERDATA,
+  UPD_DB_USERDATA
 } from "../actions/authActions";
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
   userId: null,
   userDisplayName: "",
   userFirstName: "",
-  userLastName: "",
+  userSurname: "",
   userEmail: "",
   registeredFrom: ""
 };
@@ -61,10 +62,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         userFirstName: action.userData.firstName,
         userEmail: action.userData.email,
-        userLastName: action.userData.lastName,
+        userSurname: action.userData.surname,
         registeredFrom: action.userData.regFrom
-      }
+      }  
+    }
 
+    case UPD_DB_USERDATA: {
+      console.log(`UPD_DB_USERDATA`)
+      return {
+        ...state,
+        userFirstName: action.userUpdData.firstName,
+        userDisplayName: action.userUpdData.displayName,
+        userSurname: action.userUpdData.surname,
+      }
     }
     default:
       return state;

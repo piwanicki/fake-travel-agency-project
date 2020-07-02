@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import Button from "../../../UI/CustomButton/CustomButton";
 import CustomInput from "../../../UI/CustomInput/CustomInput";
+import instance from "../../../axios-db-instance";
+import {updateUserDbData} from "../../../actions/auth";
 
 const UserInfoDiv = styled.div`
   display: flex;
@@ -17,9 +19,11 @@ const UserInfoDiv = styled.div`
 `;
 
 const InfoDiv = styled.div`
-  padding: 1em;
   width: 450px;
   display: flex;
+  height: 50px;
+  align-items: center;
+  box-sizing: border-box;
 
   span {
     width: 180px;
@@ -43,12 +47,51 @@ const StatisticDiv = styled.div`
 const UserInfo = (props) => {
   const [isEditing, setIsEditing] = useState(false);
 
-  const userNameInput = <CustomInput type="text" placeholder="New Name..." />;
+  const newNameInputRef = React.createRef();
+  const newSurnameInputRef = React.createRef();
+  const newDisplayNameInputRef = React.createRef();
+
+  const updateUserDataDB = () => {
+    setIsEditing(!isEditing);
+    const updUserData = {
+      displayName: newDisplayNameInputRef.current.value,
+      firstName: newNameInputRef.current.value,
+      surname: newSurnameInputRef.current.value,
+      email: props.userEmail,
+      regFrom: props.registeredFrom,
+    };
+    props.updDbUserData(updUserData);
+
+    instance
+      .patch(`/users/${props.userId}.json`, updUserData)
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const button = isEditing ? (
+    <Button onClick={updateUserDataDB}>Save</Button>
+  ) : (
+    <Button onClick={() => setIsEditing(!isEditing)}>Edit</Button>
+  );
+
+  const userNameInput = (
+    <CustomInput type="text" placeholder="New Name..." refs={newNameInputRef} />
+  );
   const userSurnameInput = (
-    <CustomInput type="text" placeholder="New Surname..." />
+    <CustomInput
+      type="text"
+      placeholder="New Surname..."
+      refs={newSurnameInputRef}
+    />
   );
   const userDisplayName = (
-    <CustomInput type="text" placeholder="New Display Name..." />
+    <CustomInput
+      type="text"
+      placeholder="New Display Name..."
+      refs={newDisplayNameInputRef}
+    />
   );
 
   return (
@@ -70,7 +113,7 @@ const UserInfo = (props) => {
           userSurnameInput
         ) : (
           <span>
-            <strong>{props.userLastName}</strong>
+            <strong>{props.userSurname}</strong>
           </span>
         )}
       </InfoDiv>
@@ -96,7 +139,7 @@ const UserInfo = (props) => {
           <strong>{props.registeredFrom}</strong>
         </span>
       </InfoDiv>
-      <Button onClick={() => setIsEditing(!isEditing)}>Edit</Button>
+      {button}
       <StatisticDiv>
         <h4>Statistics</h4>
         <div>Favorites : 5</div>
@@ -111,11 +154,18 @@ const UserInfo = (props) => {
 const mapStateToProps = (state) => {
   return {
     userName: state.auth.userFirstName,
-    userLastName: state.auth.userLastName,
+    userSurname: state.auth.userSurname,
     userDisplayName: state.auth.userDisplayName,
     registeredFrom: state.auth.registeredFrom,
     userEmail: state.auth.userEmail,
+    userId: state.auth.userId,
   };
 };
 
-export default connect(mapStateToProps, null)(UserInfo);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updDbUserData: (userDbData) => dispatch(updateUserDbData(userDbData)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);
