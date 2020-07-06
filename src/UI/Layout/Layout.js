@@ -25,7 +25,7 @@ import UserPanel from "../../components/Auth/UserPanel";
 
 class Layout extends Component {
   state = {
-    showDemoAlert: false,
+    showDemoAlert: true,
   };
   showDemoAlertHandler = () => {
     this.setState((previousState) => ({
