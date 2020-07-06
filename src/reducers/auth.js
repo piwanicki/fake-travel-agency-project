@@ -4,7 +4,7 @@ import {
   AUTH_ERROR,
   AUTH_LOGOUT,
   UPD_USERDATA,
-  UPD_DB_USERDATA
+  UPD_DB_USERDATA,
 } from "../actions/authActions";
 
 const initialState = {
@@ -17,7 +17,7 @@ const initialState = {
   userFirstName: "",
   userSurname: "",
   userEmail: "",
-  registeredFrom: ""
+  registeredFrom: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -60,21 +60,22 @@ const reducer = (state = initialState, action) => {
     case UPD_USERDATA: {
       return {
         ...state,
+        authPending: false,
         userFirstName: action.userData.firstName,
         userEmail: action.userData.email,
         userSurname: action.userData.surname,
-        registeredFrom: action.userData.regFrom
-      }  
+        registeredFrom: action.userData.regFrom,
+      };
     }
 
     case UPD_DB_USERDATA: {
-      console.log(`UPD_DB_USERDATA`)
       return {
         ...state,
+        authPending: false,
         userFirstName: action.userUpdData.firstName,
         userDisplayName: action.userUpdData.displayName,
         userSurname: action.userUpdData.surname,
-      }
+      };
     }
     default:
       return state;

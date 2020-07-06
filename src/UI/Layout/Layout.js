@@ -35,7 +35,6 @@ class Layout extends Component {
 
   componentDidMount = () => {
     this.props.chekWeathersState();
-    //this.props.fetchWeathers();
     this.props.onTryAutoLogin();
   };
 

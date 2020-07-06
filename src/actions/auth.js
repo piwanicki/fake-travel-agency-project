@@ -34,12 +34,12 @@ const updateUserData = (userData) => {
   };
 };
 
-export const updateUserDbData = userUpdData => {
+export const updateUserDbData = (userUpdData) => {
   return {
     type: authActions.UPD_DB_USERDATA,
-    userUpdData: userUpdData
-  }
-}
+    userUpdData: userUpdData,
+  };
+};
 
 const setLocalStorageUserLogInfo = (resolve) => {
   const expirationDate = new Date(
@@ -69,6 +69,20 @@ export const logout = () => {
   localStorage.removeItem("regFromDt");
   return {
     type: authActions.AUTH_LOGOUT,
+  };
+};
+
+export const updateUserDbInfoHandler = (updUserData) => {
+  return (dispatch) => {
+    dispatch(authPending());
+    instance
+      .patch(`/users/${updUserData.userId}.json`, updUserData)
+      .then(() => {
+        dispatch(updateUserDbData(updUserData));
+        localStorage.setItem("firstName", updUserData.firstName);
+        localStorage.setItem("surname", updUserData.surname);
+      })
+      .catch((error) => console.log(error));
   };
 };
 
@@ -136,6 +150,7 @@ export const signUp = (newUser) => {
           .put(`/users/${resolve.data.localId}.json`, userInfoDb)
           .then((resolve) => {
             setLocalStorageUserAddData(resolve);
+            dispatch(updateUserDbInfoHandler(newUser));
           })
           .catch((error) => {
             console.log(error);

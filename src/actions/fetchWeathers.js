@@ -13,7 +13,6 @@ const offers = [...recommendedOffers, ...lastMinuteOffers];
 //const offers = ["Madrid", "Dubrovnik"];
 
 export const fetchWeathersHandler = (city) => {
-  console.log(`fetch weathers`);
   return (dispatch) => {
     dispatch(fetchWeathersPending());
     return axios
@@ -42,6 +41,8 @@ export const chekWeathersState = () => {
         } else {
           dispatch(fetchWeathersError(weathers.error));
         }
+      } else {
+        dispatch(fetchWeathersHandler(city));
       }
     });
   };

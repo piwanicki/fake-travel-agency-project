@@ -3,18 +3,29 @@ import styled from "styled-components";
 import {connect} from "react-redux";
 import Button from "../../../UI/CustomButton/CustomButton";
 import CustomInput from "../../../UI/CustomInput/CustomInput";
-import instance from "../../../axios-db-instance";
-import {updateUserDbData} from "../../../actions/auth";
+import {updateUserDbInfoHandler} from "../../../actions/auth";
+import LoadingSpinner from "../../../UI/LoadingSpinner/LoadingSpinner";
 
 const UserInfoDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
   height: 600px;
 
   button {
     align-self: flex-end;
     margin: 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    width: 675px;
+    height: 280px;
+
+    .spinnerBox {
+      margin: auto;
+      align-self: center;
+      justify-self: center;
+    }
   }
 `;
 
@@ -51,7 +62,8 @@ const UserInfo = (props) => {
   const newSurnameInputRef = React.createRef();
   const newDisplayNameInputRef = React.createRef();
 
-  const updateUserDataDB = () => {
+  const updateUserDataDB = (e) => {
+    e.preventDefault();
     setIsEditing(!isEditing);
     const updUserData = {
       displayName: newDisplayNameInputRef.current.value,
@@ -61,29 +73,28 @@ const UserInfo = (props) => {
       regFrom: props.registeredFrom,
     };
     props.updDbUserData(updUserData);
-
-    instance
-      .patch(`/users/${props.userId}.json`, updUserData)
-      .then(() => {})
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   const button = isEditing ? (
-    <Button onClick={updateUserDataDB}>Save</Button>
+    <Button type="submit">Save</Button>
   ) : (
     <Button onClick={() => setIsEditing(!isEditing)}>Edit</Button>
   );
 
   const userNameInput = (
-    <CustomInput type="text" placeholder="New Name..." refs={newNameInputRef} />
+    <CustomInput
+      type="text"
+      placeholder="New Name..."
+      refs={newNameInputRef}
+      required={true}
+    />
   );
   const userSurnameInput = (
     <CustomInput
       type="text"
       placeholder="New Surname..."
       refs={newSurnameInputRef}
+      required={true}
     />
   );
   const userDisplayName = (
@@ -91,55 +102,67 @@ const UserInfo = (props) => {
       type="text"
       placeholder="New Display Name..."
       refs={newDisplayNameInputRef}
+      required={true}
     />
   );
 
   return (
     <UserInfoDiv>
-      <InfoDiv>
-        <span>Name :</span>
+      <form onSubmit={updateUserDataDB}>
+        {props.authPending ? (
+          <span className="spinnerBox">
+            <LoadingSpinner className="" />
+          </span>
+        ) : (
+          <>
+            <InfoDiv>
+              <span>Name :</span>
 
-        {isEditing ? (
-          userNameInput
-        ) : (
-          <span>
-            <strong>{props.userName}</strong>
-          </span>
+              {isEditing ? (
+                userNameInput
+              ) : (
+                <span>
+                  <strong>{props.userName}</strong>
+                </span>
+              )}
+            </InfoDiv>
+            <InfoDiv>
+              <span>Surname :</span>
+              {isEditing ? (
+                userSurnameInput
+              ) : (
+                <span>
+                  <strong>{props.userSurname}</strong>
+                </span>
+              )}
+            </InfoDiv>
+            <InfoDiv>
+              <span>User display Name :</span>
+              {isEditing ? (
+                userDisplayName
+              ) : (
+                <span>
+                  <strong>{props.userDisplayName}</strong>
+                </span>
+              )}
+            </InfoDiv>
+            <InfoDiv>
+              <span>User E-mail :</span>
+              <span>
+                <strong>{props.userEmail}</strong>
+              </span>
+            </InfoDiv>
+            <InfoDiv>
+              <span>Registered from :</span>
+              <span>
+                <strong>{props.registeredFrom}</strong>
+              </span>
+            </InfoDiv>
+            {button}
+          </>
         )}
-      </InfoDiv>
-      <InfoDiv>
-        <span>Surname :</span>
-        {isEditing ? (
-          userSurnameInput
-        ) : (
-          <span>
-            <strong>{props.userSurname}</strong>
-          </span>
-        )}
-      </InfoDiv>
-      <InfoDiv>
-        <span>User display Name :</span>
-        {isEditing ? (
-          userDisplayName
-        ) : (
-          <span>
-            <strong>{props.userDisplayName}</strong>
-          </span>
-        )}
-      </InfoDiv>
-      <InfoDiv>
-        <span>User E-mail :</span>
-        <span>
-          <strong>{props.userEmail}</strong>
-        </span>
-      </InfoDiv>
-      <InfoDiv>
-        <span>Registered from :</span>
-        <span>
-          <strong>{props.registeredFrom}</strong>
-        </span>
-      </InfoDiv>
-      {button}
+      </form>
+
       <StatisticDiv>
         <h4>Statistics</h4>
         <div>Favorites : 5</div>
@@ -159,12 +182,14 @@ const mapStateToProps = (state) => {
     registeredFrom: state.auth.registeredFrom,
     userEmail: state.auth.userEmail,
     userId: state.auth.userId,
+   authPending: state.auth.authPending,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updDbUserData: (userDbData) => dispatch(updateUserDbData(userDbData)),
+    updDbUserData: (userDbData) =>
+      dispatch(updateUserDbInfoHandler(userDbData)),
   };
 };
 
