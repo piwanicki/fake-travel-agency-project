@@ -7,6 +7,7 @@ import * as auth from "../../actions/auth";
 import SignFormBackdrop from "../../UI/Backdrop/SignFormBackdrop/SignFormBackdrop";
 import CustomInput from "../../UI/CustomInput/CustomInput";
 import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
+import {Redirect} from "react-router-dom";
 
 const LoginBox = styled.div`
   border-radius: 1em;
@@ -61,12 +62,12 @@ const SignUpForm = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [surname, setSurname] = useState("");
 
   const confirmPasswordInput = React.createRef();
+  document.title = "Sign Up";
 
   const validatePassword = () => {
-    console.log(`validation`);
     if (confirmPassword !== password) {
       confirmPasswordInput.current.setCustomValidity("Passwords Don't Match");
       return false;
@@ -78,25 +79,30 @@ const SignUpForm = (props) => {
 
   const registerUser = (e) => {
     e.preventDefault();
-    console.log(confirmPassword);
-    console.log(password);
-    console.log(validatePassword());
-
     if (validatePassword()) {
+      const dt = new Date();
+      const regFromDt = `${dt.getDate()}/${
+        dt.getMonth() + 1
+      }/${dt.getFullYear()}`;
       const newUser = {
         email: email,
         password: password,
-        firstNme: firstName,
-        lastName: lastName,
-        displayName: firstName
+        firstName: firstName,
+        surname: surname,
+        displayName: firstName,
+        regFrom: regFromDt,
       };
-
       props.onSignUp(newUser);
     }
   };
 
+  const authRedirect = props.userLogged ? (
+    <Redirect to="/userPanel/userInfo" />
+  ) : null;
+
   return (
     <SignFormBackdrop>
+      {authRedirect}
       <LoginBox>
         <h3>Sign up</h3>
         <LoginForm onSubmit={registerUser}>
@@ -111,12 +117,12 @@ const SignUpForm = (props) => {
           </FlexDiv>
 
           <FlexDiv>
-            <span>Last Name</span>
+            <span>Surname</span>
 
             <CustomInput
               type="text"
-              placeholder="Last Name"
-              onChange={(e) => setLastName(e.target.value)}
+              placeholder="Surname"
+              onChange={(e) => setSurname(e.target.value)}
               required
             />
           </FlexDiv>
@@ -155,19 +161,23 @@ const SignUpForm = (props) => {
               refs={confirmPasswordInput}
             />
           </FlexDiv>
-          <LoginBtnBox>
-            {props.authPending ? (
-              <LoadingSpinner />
-            ) : (
-              <CustomButton>Sign Up</CustomButton>
-            )}
-          </LoginBtnBox>
-          <SignInChanger>
-            <span>Do you have account? Please login.</span>
-            <Link to="/Login/signIn">
-              <CustomButton onClick={props.setSignForm}>Sign In</CustomButton>
-            </Link>
-          </SignInChanger>
+          {props.authPending ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              <LoginBtnBox>
+                <CustomButton>Sign Up</CustomButton>
+              </LoginBtnBox>
+              <SignInChanger>
+                <span>Do you have account? Please login.</span>
+                <Link to="/Login/signIn">
+                  <CustomButton onClick={props.setSignForm}>
+                    Sign In
+                  </CustomButton>
+                </Link>
+              </SignInChanger>
+            </>
+          )}
         </LoginForm>
       </LoginBox>
     </SignFormBackdrop>
@@ -177,6 +187,7 @@ const SignUpForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     authPending: state.auth.authPending,
+    userLogged: state.auth.userLogged,
   };
 };
 

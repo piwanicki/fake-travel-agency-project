@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -19,18 +19,20 @@ const Input = styled.input`
   }
 `;
 
-const CustomInput = (props) => {
-  return (
-    <Input
-      type={props.type}
-      placeholder={props.placeholder}
-      required={props.required}
-      onChange={props.onChange}
-      ref={props.refs}
-      onBlur={props.onBlur}
-      autoComplete={props.autoComplete}
-    />
-  );
-};
+class CustomInput extends Component {
+  render() {
+    return (
+      <Input
+        type={this.props.type}
+        placeholder={this.props.placeholder}
+        required={this.props.required}
+        onChange={this.props.onChange}
+        ref={this.props.refs}
+        onBlur={this.props.onBlur}
+        autoComplete={this.props.autoComplete}
+      />
+    );
+  }
+}
 
 export default CustomInput;

@@ -7,6 +7,11 @@ import {
   faSuitcaseRolling,
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import UserInfo from "./userPanelComponents/UserInfo";
+import UserFavorites from "./userPanelComponents/UserFavorites";
+import UserRealizedTrips from "./userPanelComponents/UserRealizedTrips";
+import UserReservations from "./userPanelComponents/UserReservations";
+import {Link} from "react-router-dom";
 
 const UserPanelContainer = styled.div`
   margin: 0 2em;
@@ -35,6 +40,11 @@ const Function = styled.div`
   justify-content: left;
   align-items: center;
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   &:first-child {
     border-top: 1px solid grey;
   }
@@ -44,37 +54,85 @@ const Function = styled.div`
   }
 `;
 
-const UserInfoDiv = styled.div`
+const ContentDiv = styled.div`
   width: 70%;
   padding: 2em;
 `;
 
 const UserPanel = (props) => {
+  const USER_INFO = "userInfo";
+  const FAVORITES = "favorites";
+  const RESERVATIONS = "reservations";
+  const REALIZED_TRIPS = "realizedTrips";
+
+  const userInfo = <UserInfo />;
+  const favorites = <UserFavorites />;
+  const reservations = <UserReservations />;
+  const realizedTrips = <UserRealizedTrips />;
+
+  let content;
+  const contentUrl = props.match.params.content;
+
+  switch (contentUrl) {
+    case USER_INFO: {
+      content = userInfo;
+      break;
+    }
+
+    case FAVORITES: {
+      content = favorites;
+      break;
+    }
+
+    case RESERVATIONS: {
+      content = reservations;
+      break;
+    }
+
+    case REALIZED_TRIPS: {
+      content = realizedTrips;
+      break;
+    }
+
+    default: {
+      return content;
+    }
+  }
+  document.title = 'User Panel';
+
   return (
     <UserPanelContainer>
       <FunctionsDiv>
         <Function>
-          <span>
-            <FontAwesomeIcon icon={faIdCard} /> User Info
-          </span>
+          <Link to={"/userPanel/userInfo"}>
+            <span id={USER_INFO}>
+              <FontAwesomeIcon icon={faIdCard} /> User Info
+            </span>
+          </Link>
         </Function>
         <Function>
-          <span>
-            <FontAwesomeIcon icon={faHeart} /> Favorites Offers
-          </span>
+          <Link to={"/userPanel/favorites"}>
+            <span id={FAVORITES}>
+              <FontAwesomeIcon icon={faHeart} /> Favorites Offers
+            </span>
+          </Link>
         </Function>
         <Function>
-          <span>
-            <FontAwesomeIcon icon={faCheck} /> Reservations
-          </span>
+          <Link to={"/userPanel/reservations"}>
+            <span id={RESERVATIONS}>
+              <FontAwesomeIcon icon={faCheck} /> Reservations
+            </span>
+          </Link>
         </Function>
         <Function>
-          <span>
-            <FontAwesomeIcon icon={faSuitcaseRolling} /> Realized Trips
-          </span>
+          <Link to="/userPanel/realizedTrips">
+            <span id={REALIZED_TRIPS}>
+              <FontAwesomeIcon icon={faSuitcaseRolling} /> Realized Trips
+            </span>
+          </Link>
         </Function>
       </FunctionsDiv>
-      <UserInfoDiv></UserInfoDiv>
+      <ContentDiv>{content}</ContentDiv>
     </UserPanelContainer>
   );
 };

@@ -31,11 +31,12 @@ const UserMenu = styled.div`
   position: absolute;
   top: 2em;
   width: 200px;
-  height: 300px;
+  height: 240px;
   background-color: white;
   border: 1px solid grey;
   color: black;
   border-radius: 1em;
+  z-index: 2;
 `;
 
 const UserMenuEl = styled.div`
@@ -49,6 +50,10 @@ const UserMenuEl = styled.div`
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  :last-child {
+    border-bottom: none;
   }
 `;
 
@@ -70,8 +75,7 @@ class InfoPanel extends Component {
   };
 
   langSelectHandler = (event) => {
-    const langSelected = event.target.id;
-    console.log(langSelected);
+    //const langSelected = event.target.id;
     this.showLangSelectorBox();
   };
 
@@ -105,7 +109,7 @@ class InfoPanel extends Component {
     const userMenuJSX = (
       <UserMenu onMouseLeave={this.showUserMenu}>
         <UserMenuEl>
-          <Link to={"/userPanel"}>
+          <Link to={"/userPanel/userInfo"}>
             <FontAwesomeIcon icon={faIdCard} /> User Panel
           </Link>
         </UserMenuEl>

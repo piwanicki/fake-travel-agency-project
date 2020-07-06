@@ -4,7 +4,7 @@ import NavigationHeader from "../../components/Navigation/NavigationHeader/Navig
 import ContactInfoBar from "../../components/ContactInfoBar/ContactInfoBar";
 import Footer from "../../components/Navigation/Footer/Footer";
 import MainPage from "../../components/MainPage/MainPage";
-import {Switch, Route, Redirect} from "react-router-dom";
+import {Switch, Route, Redirect, withRouter} from "react-router-dom";
 import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
 import CarsList from "../../components/OffersContainer/OffersServices/Cars/CarsList";
 import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
@@ -17,7 +17,7 @@ import {
   getIsFetching,
   getWeathersError,
 } from "../../reducers/weathers";
-import fetchWeathersHandler from "../../actions/fetchWeathers";
+import {chekWeathersState} from "../../actions/fetchWeathers";
 import {chekAuthState} from "../../actions/auth";
 import SignUpForm from "../../components/Auth/SingUpForm";
 import SignInForm from "../../components/Auth/SignInForm";
@@ -28,12 +28,13 @@ class Layout extends Component {
     showDemoAlert: false,
   };
   showDemoAlertHandler = () => {
-    const isShowing = this.state.showDemoAlert;
-    this.setState({showDemoAlert: !isShowing});
+    this.setState((previousState) => ({
+      showDemoAlert: !previousState.showDemoAlert,
+    }));
   };
 
   componentDidMount = () => {
-    this.props.fetchWeathers();
+    this.props.chekWeathersState();
     this.props.onTryAutoLogin();
   };
 
@@ -70,10 +71,11 @@ class Layout extends Component {
 
             <Route path="/Login/SignIn" component={SignInForm} />
             {this.props.userLogged ? (
-              <Route path="/userPanel" component={UserPanel} />
+              <Route path="/userPanel/:content" component={UserPanel} exact />
             ) : (
               <Redirect to="/" />
             )}
+            <Redirect to="/" />
           </Switch>
 
           <ContactInfoBar />
@@ -95,9 +97,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchWeathers: () => dispatch(fetchWeathersHandler()),
+    //fetchWeathers: () => dispatch(fetchWeathersHandler()),
     onTryAutoLogin: () => dispatch(chekAuthState()),
+    chekWeathersState: () => dispatch(chekWeathersState()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout));

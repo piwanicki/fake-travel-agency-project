@@ -70,10 +70,10 @@ const SignInForm = (props) => {
     e.preventDefault();
   };
 
-  const loginError = props.error;
-  console.log(loginError)
+  //const loginError = props.error;
+  document.title = 'Sign In'
 
-  const authRedirect = props.userLogged ? <Redirect to="/userPanel" /> : null;
+  const authRedirect = props.userLogged ? <Redirect to="/userPanel/userInfo" /> : null;
   return (
     <SignFormBackdrop>
       {authRedirect}

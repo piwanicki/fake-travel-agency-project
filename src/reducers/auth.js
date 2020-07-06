@@ -3,6 +3,8 @@ import {
   AUTH_SUCCESS,
   AUTH_ERROR,
   AUTH_LOGOUT,
+  UPD_USERDATA,
+  UPD_DB_USERDATA,
 } from "../actions/authActions";
 
 const initialState = {
@@ -11,14 +13,16 @@ const initialState = {
   userLogged: false,
   token: null,
   userId: null,
-  authData: null,
   userDisplayName: "",
+  userFirstName: "",
+  userSurname: "",
+  userEmail: "",
+  registeredFrom: "",
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_PENDING: {
-      console.log(`Auth Pending`);
       return {
         ...state,
         authPending: true,
@@ -26,7 +30,6 @@ const reducer = (state = initialState, action) => {
     }
 
     case AUTH_SUCCESS: {
-      console.log(`Auth success`);
       return {
         ...state,
         authPending: false,
@@ -38,7 +41,6 @@ const reducer = (state = initialState, action) => {
     }
 
     case AUTH_ERROR: {
-      console.log(`Auth error`);
       return {
         ...state,
         authPending: false,
@@ -46,13 +48,33 @@ const reducer = (state = initialState, action) => {
     }
 
     case AUTH_LOGOUT: {
-      console.log(`Auth logout`);
       return {
         ...state,
         token: null,
         userId: null,
         userLogged: false,
         userDisplayName: "",
+      };
+    }
+
+    case UPD_USERDATA: {
+      return {
+        ...state,
+        authPending: false,
+        userFirstName: action.userData.firstName,
+        userEmail: action.userData.email,
+        userSurname: action.userData.surname,
+        registeredFrom: action.userData.regFrom,
+      };
+    }
+
+    case UPD_DB_USERDATA: {
+      return {
+        ...state,
+        authPending: false,
+        userFirstName: action.userUpdData.firstName,
+        userDisplayName: action.userUpdData.displayName,
+        userSurname: action.userUpdData.surname,
       };
     }
     default:

@@ -17,7 +17,11 @@ const DemoAlert = (props) => {
               offer details
             </li>
             <li>
-              Last Minute Module -> simple list with last minute offers / offers details. Filters and sorting are still in development and will be soon updated
+              Last Minute Module -&gt; simple list with last minute offers / offers details. Filters and sorting are still in development and will be soon updated
+            </li>
+
+            <li>
+              User Authentication Module -&gt; Possibility of register and login for new users. Firebase Authentication is connected here as backend.
             </li>
           </ul>
           <p>Application will be updated with new features soon. Enjoy!</p>
