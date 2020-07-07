@@ -2,6 +2,8 @@ import dubrovnik1 from "../../OffersContainer/offerDetailsPhotos/dubrovnikPhotos
 
 export const LastMinuteData = {
   Stambul: {
+    type: "The Group Tour",
+    transport: "Flight",
     country: "Turkey",
     city: "Stambul",
     hotel: "Hotel Turkey",
@@ -10,6 +12,10 @@ export const LastMinuteData = {
     lon: "-76.299370",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 1
+    },
     price: 475,
     kidPrice: 140,
     details: {
@@ -65,13 +71,7 @@ export const LastMinuteData = {
       - 32 kg - 470 PLN
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
-      term: [
-        {from: "15-09-2020", to: "01-10-2020"},
-        {from: "16-09-2020", to: "02-10-2020"},
-        {from: "17-09-2020", to: "03-10-2020"},
-        {from: "18-09-2020", to: "04-10-2020"},
-        {from: "19-09-2020", to: "05-10-2020"},
-      ],
+      term: [{from: "19-09-2020", to: "05-10-2020"}],
 
       flights: {
         RyanAir: {
@@ -113,10 +113,12 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "All Inclusive", "Flight"],
+    facilitiesTags: ["Last Minute", "All Inclusive", "Flight", "Group"],
   },
 
   Cairo: {
+    transport: "On Your Own",
+    type: "Cultural Travel",
     country: "Egipt",
     city: "Cairo",
     hotel: "Hotel Cairo",
@@ -125,6 +127,10 @@ export const LastMinuteData = {
     lon: "31.235712",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 0
+    },
     price: 500,
     kidPrice: 240,
     details: {
@@ -180,10 +186,6 @@ export const LastMinuteData = {
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
       term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
         {from: "19-07-2020", to: "05-08-2020"},
       ],
 
@@ -223,6 +225,8 @@ export const LastMinuteData = {
   },
 
   Bangkok: {
+    transport: "Flight",
+    type: "Cultural Travel",
     country: "Tailand",
     hotel: "Hotel Bangkok",
     hotelRat: 5,
@@ -231,6 +235,10 @@ export const LastMinuteData = {
     lon: "100.501762",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 2
+    },
     price: 800,
     kidPrice: 340,
     details: {
@@ -290,9 +298,6 @@ export const LastMinuteData = {
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
       term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
         {from: "18-07-2020", to: "04-08-2020"},
         {from: "19-07-2020", to: "05-08-2020"},
       ],
@@ -337,18 +342,24 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "On Your Own"],
+    facilitiesTags: ["Last Minute", "Flight"],
   },
 
   Madrid: {
-    country: "Turkey",
+    transport: "Flight",
+    type: "The Group Tour",
+    country: "Spain",
     city: "Stambul",
-    hotel: "Hotel Turkey",
+    hotel: "Hotel Spain",
     hotelRat: 3,
     lat: "3.895360",
     lon: "-76.299370",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 0
+    },
     price: 475,
     kidPrice: 140,
     details: {
@@ -404,13 +415,7 @@ export const LastMinuteData = {
       - 32 kg - 470 PLN
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
-      term: [
-        {from: "15-09-2020", to: "01-10-2020"},
-        {from: "16-09-2020", to: "02-10-2020"},
-        {from: "17-09-2020", to: "03-10-2020"},
-        {from: "18-09-2020", to: "04-10-2020"},
-        {from: "19-09-2020", to: "05-10-2020"},
-      ],
+      term: [{from: "18-09-2020", to: "04-10-2020"}],
 
       flights: {
         RyanAir: {
@@ -452,18 +457,24 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "All Inclusive", "Flight"],
+    facilitiesTags: ["Last Minute", "All Inclusive", "Flight", "Group"],
   },
 
   Paris: {
-    country: "Egipt",
+    transport: "On Your Own",
+    type: "The Group Tour",
+    country: "France",
     city: "Cairo",
-    hotel: "Hotel Cairo",
+    hotel: "Hotel France",
     hotelRat: 3,
     lat: "30.044420",
     lon: "31.235712",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 0
+    },
     price: 500,
     kidPrice: 240,
     details: {
@@ -521,9 +532,6 @@ export const LastMinuteData = {
       term: [
         {from: "15-07-2020", to: "01-08-2020"},
         {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
       ],
 
       flights: {
@@ -558,10 +566,12 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2, 4, 5],
-    facilitiesTags: ["Last Minute", "All Inclusive", "On Your Own"],
+    facilitiesTags: ["Last Minute", "All Inclusive", "On Your Own", "Group"],
   },
 
   Tokyo: {
+    transport: "Flight",
+    type: "Cultural Travel",
     country: "Japan",
     hotel: "Hotel Tokyo",
     hotelRat: 5,
@@ -570,6 +580,10 @@ export const LastMinuteData = {
     lon: "100.501762",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 0
+    },
     price: 800,
     kidPrice: 340,
     details: {
@@ -628,13 +642,7 @@ export const LastMinuteData = {
       - 32 kg - 470 PLN
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
-      term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
-      ],
+      term: [{from: "17-07-2020", to: "03-08-2020"}],
 
       flights: {
         RyanAir: {
@@ -676,9 +684,11 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "On Your Own"],
+    facilitiesTags: ["Last Minute", "Flight"],
   },
   Barcelona: {
+    transport: "Flight",
+    type: "Vacation",
     country: "Spain",
     hotel: "Hotel Barcelona",
     hotelRat: 5,
@@ -687,6 +697,10 @@ export const LastMinuteData = {
     lon: "100.501762",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 1
+    },
     price: 800,
     kidPrice: 340,
     details: {
@@ -793,9 +807,11 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "On Your Own"],
+    facilitiesTags: ["Last Minute", "Flight"],
   },
   Warsaw: {
+    transport: "Bus",
+    type: "The Group Tour",
     country: "Poland",
     hotel: "Hotel Warsaw",
     hotelRat: 5,
@@ -804,8 +820,13 @@ export const LastMinuteData = {
     lon: "100.501762",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 4,
+      kids: 2
+    },
     price: 800,
     kidPrice: 340,
+
     details: {
       desc:
         "Located in the center of Sunny Beach, just 250 meters from the sea and close to shops, bars and restaurants.",
@@ -862,13 +883,7 @@ export const LastMinuteData = {
       - 32 kg - 470 PLN
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
-      term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
-      ],
+      term: [{from: "18-07-2020", to: "04-08-2020"}],
 
       flights: {
         RyanAir: {
@@ -910,10 +925,12 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "On Your Own"],
+    facilitiesTags: ["Last Minute", "Bus", "Group"],
   },
 
   Gdansk: {
+    transport: "On Your Own",
+    type: "Vacation",
     country: "Poland",
     hotel: "Hotel Gdansk",
     hotelRat: 5,
@@ -922,6 +939,10 @@ export const LastMinuteData = {
     lon: "100.501762",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 2
+    },
     price: 800,
     kidPrice: 340,
     details: {
@@ -980,13 +1001,7 @@ export const LastMinuteData = {
       - 32 kg - 470 PLN
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
-      term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
-      ],
+      term: [{from: "15-07-2020", to: "01-08-2020"}],
 
       flights: {
         RyanAir: {
@@ -1032,6 +1047,8 @@ export const LastMinuteData = {
   },
 
   Vienna: {
+    transport: "On Your Own",
+    type: "The Group Tour",
     country: "Austria",
     hotel: "Hotel Vienna",
     hotelRat: 5,
@@ -1040,6 +1057,10 @@ export const LastMinuteData = {
     lon: "100.501762",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 0
+    },
     price: 800,
     kidPrice: 340,
     details: {
@@ -1146,10 +1167,12 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "On Your Own"],
+    facilitiesTags: ["Last Minute", "On Your Own", "Group"],
   },
 
   Berlin: {
+    transport: "On Your Own",
+    type: "The Group Tour",
     country: "Germany",
     hotel: "Hotel Berlin",
     hotelRat: 5,
@@ -1158,6 +1181,10 @@ export const LastMinuteData = {
     lon: "100.501762",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 0
+    },
     price: 800,
     kidPrice: 340,
     details: {
@@ -1264,10 +1291,12 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "On Your Own"],
+    facilitiesTags: ["Last Minute", "On Your Own", "Group"],
   },
 
   Lisboa: {
+    transport: "Flight",
+    type: "Vacation",
     country: "Portugal",
     hotel: "Hotel Lisboa",
     hotelRat: 5,
@@ -1276,6 +1305,10 @@ export const LastMinuteData = {
     lon: "100.501762",
     from: "15-07-2020",
     to: "01-08-2020",
+    guests: {
+      adults: 2,
+      kids: 0
+    },
     price: 800,
     kidPrice: 340,
     details: {
@@ -1382,6 +1415,6 @@ export const LastMinuteData = {
     },
     photos: [dubrovnik1],
     reviews: [5, 3, 2],
-    facilitiesTags: ["Last Minute", "On Your Own"],
+    facilitiesTags: ["Last Minute", "Flight"],
   },
 };

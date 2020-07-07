@@ -13,6 +13,8 @@ import {
   faPlane,
   faThumbsUp,
   faCalendarAlt,
+  faUsers,
+  faBus,
 } from "@fortawesome/free-solid-svg-icons";
 import LoadingSpinner from "../../../../../UI/LoadingSpinner/LoadingSpinner";
 
@@ -186,6 +188,16 @@ const LastMinuteOffer = (props) => {
 
       case "Flight": {
         icon = faPlane;
+        break;
+      }
+
+      case "Group": {
+        icon = faUsers;
+        break;
+      }
+
+      case "Bus": {
+        icon = faBus;
         break;
       }
       default: {

@@ -47,6 +47,16 @@ const LastMinFilters = (props) => {
     props.filterByEndDate(val);
   };
 
+  const setAdultsHandler = (val) => {
+    setAdults(val);
+    props.filterByGuests(true,val)
+  }
+
+  const setKidsHandler = (val) => {
+    setKids(val);
+    props.filterByGuests(false,val)
+  }
+
   const clearFilters = () => {
     setWhereOption(null);
     setTypeOption(null);
@@ -56,7 +66,7 @@ const LastMinFilters = (props) => {
     props.clearFilters();
   };
 
-  const ShowGuestBoxHandler = (e) => {
+  const ShowGuestBoxHandler = () => {
     setShowGuestBox(!showGuestBox);
   };
 
@@ -71,38 +81,16 @@ const LastMinFilters = (props) => {
     borderRadius: "10px",
   };
 
-  const transportOptions = [
-    {
-      value: "fly",
-      name: "Fly",
-    },
-    {
-      value: "bus",
-      name: "Bus",
-    },
-    {
-      value: "onYourOwn",
-      name: "On Your Own",
-    },
-  ];
+  const transportOptions = props.transport.map((transport) => {
+    return {name: transport, value: transport};
+  });
 
-  const typeOptions = [
-    {
-      value: "type1",
-      name: "Type 1",
-    },
-    {
-      value: "type2",
-      name: "Type 2",
-    },
-    {
-      value: "type3",
-      name: "Type 3",
-    },
-  ];
+  const typeOptions = props.types.map((type) => {
+    return {name: type, value: type};
+  });
 
   const whereOptions = props.countries.map((country) => {
-    return {name: country, value: country.toLowerCase()};
+    return {name: country, value: country};
   });
 
   const guestBoxIcon = showGuestBox ? faAngleUp : faAngleDown;
@@ -146,6 +134,7 @@ const LastMinFilters = (props) => {
           placeholderText="Start Date"
           onChange={filterByStartDate}
           value={startDtOption}
+          selected={startDtOption}
         />
       </span>
       <span>
@@ -155,6 +144,7 @@ const LastMinFilters = (props) => {
           placeholderText="End Date"
           onChange={filterByEndDate}
           value={endDtOption}
+          selected={endDtOption}
         />
       </span>
 
@@ -171,13 +161,13 @@ const LastMinFilters = (props) => {
       {showGuestBox ? (
         <CustomGuestBox
           customStyle={customGuestBoxStyles}
-          customAddAdultHandler={() => setAdults(adults + 1)}
+          customAddAdultHandler={() => setAdultsHandler(adults + 1)}
           customRmAdultHandler={() => {
-            if (adults > 0) setAdults(adults - 1);
+            if (adults > 0) setAdultsHandler(adults - 1);
           }}
-          customAddKidHandler={() => setKids(kids + 1)}
+          customAddKidHandler={() => setKidsHandler(kids + 1)}
           customRmKidHandler={() => {
-            if (kids > 0) setKids(kids - 1);
+            if (kids > 0) setKidsHandler(kids - 1);
           }}
           kids={kids}
           adults={adults}

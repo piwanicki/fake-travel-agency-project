@@ -7,6 +7,7 @@ import {
   faCalendarAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../Offers";
+import {LastMinuteData} from "../../LastMinuteModule/LastMinuteOffersData";
 import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
 import {connect} from "react-redux";
 import ReactDOM from "react-dom";
@@ -22,7 +23,6 @@ import Tab from "../../../../UI/DescriptionTabs/Tab/Tab";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import SelectSearch from "react-select-search";
-import {LastMinuteData} from "../../LastMinuteModule/LastMinuteOffersData";
 
 class OfferDetails extends Component {
   state = {
@@ -35,8 +35,6 @@ class OfferDetails extends Component {
     photosList: null,
     checkingTerm: false,
     termStatus: false,
-    startDate: new Date(),
-    endDate: new Date(),
   };
 
   startDateHandleChange = (date) => {
@@ -84,6 +82,13 @@ class OfferDetails extends Component {
       images: imagesList,
       photosListDiv: photosListDiv,
     });
+    const startDate = new Date();
+    let endDate = new Date();
+    endDate = endDate.setDate(startDate.getDate() + 7);
+    this.setState({
+      startDate: startDate,
+      endDate: endDate,
+    });
   };
 
   showImgModalHandler = () => {
@@ -118,25 +123,27 @@ class OfferDetails extends Component {
 
   checkTerminHandler = (key) => {
     this.setState({checkingTerm: true});
-    const offer = Offers[this.props.match.params.city];
+    const offer = Offers[this.props.match.params.city]
+      ? Offers[this.props.match.params.city]
+      : LastMinuteData[this.props.match.params.city];
     const from = offer.details["term"][key].from;
     const to = offer.details["term"][key].to;
+    const startDate = new Date(this.reformatDate(from));
+    const endDate = new Date(this.reformatDate(to));
 
     setTimeout(() => {
       this.setState({termStatus: true});
     }, 1000);
     setTimeout(() => {
-      this.setState({checkingTerm: false});
+      this.setState({
+        checkingTerm: false,
+        startDate: startDate,
+        endDate: endDate,
+      });
       scroll.scrollToTop();
-      this.toDateRef.classList.add(classes.SlideBckCenter);
-      this.fromDateRef.classList.add(classes.SlideBckCenter);
-      this.toDateRef.value = this.reformatDate(to);
-      this.fromDateRef.value = this.reformatDate(from);
     }, 2000);
     setTimeout(() => {
       this.setState({termStatus: false});
-      this.toDateRef.classList.remove(classes.SlideBckCenter);
-      this.fromDateRef.classList.remove(classes.SlideBckCenter);
     }, 7000);
   };
 
@@ -182,7 +189,9 @@ class OfferDetails extends Component {
 
     switch (this.state.descContent) {
       case "desc": {
-        descriptionContent = <DescriptionText details={offerDetails.details} type={offerType}/>;
+        descriptionContent = (
+          <DescriptionText details={offerDetails.details} type={offerType} />
+        );
         break;
       }
 
@@ -280,7 +289,7 @@ class OfferDetails extends Component {
 
               <button
                 onClick={this.nextImageListItem}
-                disabled={this.state.listSite + 5 === offerPhotos.length}
+                disabled={this.state.listSite + 5 >= offerPhotos.length}
               >
                 <FontAwesomeIcon icon={faChevronCircleRight} />
               </button>
@@ -335,9 +344,10 @@ class OfferDetails extends Component {
               <div className={classes.SummaryPrice}>
                 <span style={{fontSize: "0.9em"}}> Summary :</span>
                 <p>
-                  {this.props.adults * offerDetails.price +
-                    this.props.kids * offerDetails.kidPrice}
-                  $
+                  {`${
+                    this.props.adults * offerDetails.price +
+                    this.props.kids * offerDetails.kidPrice
+                  } $`}
                 </p>
               </div>
             </div>
@@ -382,8 +392,8 @@ class OfferDetails extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    adults: state.adults,
-    kids: state.kids,
+    adults: state.guests.adults,
+    kids: state.guests.kids,
   };
 };
 

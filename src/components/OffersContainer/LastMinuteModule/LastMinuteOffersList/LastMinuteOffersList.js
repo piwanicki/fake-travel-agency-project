@@ -1,198 +1,196 @@
-import React, { Component } from 'react'
-import classes from './LastMinuteOffersList.module.scss'
-import { LastMinuteData } from '../LastMinuteOffersData'
-import LastMinFilters from './LastMinFilters/LastMinFilters'
-import LastMinuteOffer from './LastMinuteOffer/LastMinuteOffer'
-import ListComponent from '../../../../UI/ListComponent/ListComponent'
+import React, {Component} from "react";
+import classes from "./LastMinuteOffersList.module.scss";
+import {LastMinuteData} from "../LastMinuteOffersData";
+import LastMinFilters from "./LastMinFilters/LastMinFilters";
+import LastMinuteOffer from "./LastMinuteOffer/LastMinuteOffer";
+import ListComponent from "../../../../UI/ListComponent/ListComponent";
 
 class LastMinuteOffersList extends Component {
   state = {
     allOffers: [],
-    countries: Object.keys(LastMinuteData),
+    filteredOffers: [],
+    countries: [],
+    types: [],
+    transport: [],
     page: 1,
     pages: 0,
-    pageIndex: 0
-  }
+    pageIndex: 0,
+  };
 
   componentDidMount = () => {
-    const lastMinuteOffers = Object.keys(LastMinuteData)
+    const lastMinuteOffers = Object.keys(LastMinuteData);
     const offers = lastMinuteOffers.map((offer, index) => (
       <LastMinuteOffer offer={LastMinuteData[offer]} key={index} />
-    ))
-    const offersToRender = [...offers].splice(0, 5)
-    const pages = Math.ceil(lastMinuteOffers.length / 5)
+    ));
+    const offersToRender = [...offers].splice(0, 5);
+    const pages = Math.ceil(lastMinuteOffers.length / 5);
+
+    const countries = [
+      ...new Set(lastMinuteOffers.map((city) => LastMinuteData[city].country)),
+    ];
+    const types = [
+      ...new Set(lastMinuteOffers.map((city) => LastMinuteData[city].type)),
+    ];
+    const transport = [
+      ...new Set(
+        lastMinuteOffers.map((city) => LastMinuteData[city].transport)
+      ),
+    ];
     this.setState({
       allOffers: offers,
       pages: pages,
-      offersToRender: offersToRender
-    })
-  }
+      offersToRender: offersToRender,
+      countries: countries,
+      types: types,
+      transport: transport,
+    });
+  };
 
   sortByKey = (key, array) => {
     return array.sort((a, b) => {
-      const val1 = a[key]
-      const val2 = b[key]
-      return val1 < val2 ? -1 : val1 > val2 ? 1 : 0
-    })
-  }
+      const val1 = a[key];
+      const val2 = b[key];
+      return val1 < val2 ? -1 : val1 > val2 ? 1 : 0;
+    });
+  };
 
   sortByPrice = (how, array) => {
     return array.sort((a, b) => {
-      const offer1 = a.price
-      const offer2 = b.price
-      let sorted
-      if (how === 'ascending')
-        sorted = offer1 < offer2 ? -1 : offer1 > offer2 ? 1 : 0
-      if (how === 'descending')
-        sorted = offer1 > offer2 ? -1 : offer1 < offer2 ? 1 : 0
-      return sorted
-    })
-  }
-
-  filterList = e => {
-    const dataSetVal = Object.values(e.target.dataset)
-    const method = dataSetVal[0]
-    const methodValue = e.target.value
-    let outputList = []
-    const allModels = [...this.state.allModels]
-    const filterModels = [...this.state.filterModels]
-
-    if (method === 'sorting') {
-      const arrayToSort =
-        this.state.filterModels.length > 0 ? filterModels : allModels
-      switch (methodValue) {
-        case 'alphabetical': {
-          outputList = this.sortByKey('key', arrayToSort)
-          console.log(outputList)
-
-          this.state.filterModels.length > 0
-            ? this.setState({ filterModels: outputList })
-            : this.setState({ allModels: outputList })
-          break
-        }
-
-        case 'price ascending': {
-          console.log(`price ascending`)
-          outputList = this.sortByPrice('ascending', arrayToSort)
-          this.state.filterModels.length > 0
-            ? this.setState({ filterModels: outputList })
-            : this.setState({ allModels: outputList })
-          break
-        }
-
-        case 'price descending': {
-          console.log(`price descending`)
-          outputList = this.sortByPrice('descending', arrayToSort)
-          this.state.filterModels.length > 0
-            ? this.setState({ filterModels: outputList })
-            : this.setState({ allModels: outputList })
-          break
-        }
-
-        default: {
-          this.setState({ filterModels: [] })
-        }
-      }
-    } else {
-      switch (method) {
-        case 'vehicleBrand': {
-          outputList = allModels.filter(car => car.props.brand === methodValue)
-          this.setState({ filterModels: outputList })
-          break
-        }
-
-        case 'vehicle': {
-          console.log(`switch vehicle`)
-          console.log(methodValue)
-          outputList = allModels.filter(
-            car => car.props['model'].vehicle === methodValue
-          )
-          this.setState({ filterModels: outputList })
-          break
-        }
-
-        case 'vehicleType': {
-          outputList = allModels.filter(
-            car => car.props['model'].type === methodValue
-          )
-          this.setState({ filterModels: outputList })
-          break
-        }
-
-        default: {
-          this.setState({ filterModels: [] })
-        }
-      }
-    }
-  }
+      const offer1 = a.price;
+      const offer2 = b.price;
+      let sorted;
+      if (how === "ascending")
+        sorted = offer1 < offer2 ? -1 : offer1 > offer2 ? 1 : 0;
+      if (how === "descending")
+        sorted = offer1 > offer2 ? -1 : offer1 < offer2 ? 1 : 0;
+      return sorted;
+    });
+  };
 
   clearFilters = () => {
-    console.log(`clear filters`)
-  }
+    const pages = Math.ceil(this.state.allOffers.length / 5);
+    this.setState({filteredOffers: [], pages: pages});
+  };
 
-  selectPageHandler = e => {
-    const page = e.target.innerHTML !== '' ? parseInt(e.target.innerHTML) : null
+  selectPageHandler = (e) => {
+    const page =
+      e.target.innerHTML !== "" ? parseInt(e.target.innerHTML) : null;
     if (page && page !== this.state.page) {
-      this.setState({ page: page })
-      this.addActivePageClass(page)
+      this.setState({page: page});
+      this.addActivePageClass(page);
     }
-  }
+  };
 
-  addActivePageClass = page => {
-    const activePage = document.querySelector(`#page-${this.state.page}`)
-    const nextActivePage = document.querySelector(`#page-${page}`)
-    activePage.classList.remove('activePage')
-    nextActivePage.classList.add('activePage')
-  }
+  addActivePageClass = (page) => {
+    const activePage = document.querySelector(`#page-${this.state.page}`);
+    const nextActivePage = document.querySelector(`#page-${page}`);
+    activePage.classList.remove("activePage");
+    nextActivePage.classList.add("activePage");
+  };
 
   nextPageHandler = () => {
-    const page = this.state.page
-    if (page === this.state.pages) return
-    this.addActivePageClass(page + 1)
-    this.setState({ page: page + 1 })
-  }
+    const page = this.state.page;
+    if (page === this.state.pages) return;
+    this.addActivePageClass(page + 1);
+    this.setState({page: page + 1});
+  };
 
   previousPageHandler = () => {
-    const page = this.state.page
-    if (page === 1) return
-    this.addActivePageClass(page - 1)
-    this.setState({ page: page - 1 })
-  }
+    const page = this.state.page;
+    if (page === 1) return;
+    this.addActivePageClass(page - 1);
+    this.setState({page: page - 1});
+  };
 
-  filterByWhereHandler = val => {
-    console.log(val)
-  }
+  updatePages = (arr) => {
+    const pages = Math.ceil(arr.length / 5);
+    this.setState({page: 1, pages: pages});
+  };
 
-  filterByTypeHandler = val => {
-    console.log(val)
-  }
+  filterByWhereHandler = (val) => {
+    const filteredOffers = [...this.state.allOffers].filter(
+      (offer) => offer.props.offer.country === val
+    );
+    this.updatePages(filteredOffers);
+    this.setState({filteredOffers: filteredOffers});
+  };
 
-  filterByTransportHandler = val => {
-    console.log(val)
-  }
+  filterByTypeHandler = (val) => {
+    const filteredOffers = [...this.state.allOffers].filter(
+      (offer) => offer.props.offer.type === val
+    );
+    this.updatePages(filteredOffers);
+    this.setState({filteredOffers: filteredOffers});
+  };
 
-  filterByStartDateHandler = val => {
-    console.log(val)
-  }
+  filterByTransportHandler = (val) => {
+    const filteredOffers = [...this.state.allOffers].filter(
+      (offer) => offer.props.offer.transport === val
+    );
+    this.updatePages(filteredOffers);
+    this.setState({filteredOffers: filteredOffers});
+  };
 
-  filterByEndDateHandler = val => {
-    console.log(val)
-  }
+  reformatDate = (date) => {
+    return date.split("-").reverse().join("-");
+  };
 
-  render () {
-    const allOffers = this.state.allOffers
-    const offersToRender = [...allOffers].splice((this.state.page - 1) * 5, 5)
+  filterByStartDateHandler = (val) => {
+    const filteredOffers = [...this.state.allOffers].filter((offer) => {
+      const fromDt = new Date(this.reformatDate(offer.props.offer.from));
+      const toDt = new Date(this.reformatDate(offer.props.offer.to));
+      return val <= fromDt && val <= toDt;
+    });
+    this.updatePages(filteredOffers);
+    this.setState({filteredOffers: filteredOffers});
+  };
+
+  filterByEndDateHandler = (val) => {
+    const filteredOffers = [...this.state.allOffers].filter((offer) => {
+      const toDt = new Date(this.reformatDate(offer.props.offer.to));
+      return val <= toDt;
+    });
+    this.updatePages(filteredOffers);
+    this.setState({filteredOffers: filteredOffers});
+  };
+
+  filterByGuestsHandler = (isAdult, val) => {
+    let filteredOffers = [...this.state.allOffers];
+    if (isAdult) {
+      filteredOffers = filteredOffers.filter((offer) => {
+        return val <= offer.props.offer.guests.adults;
+      });
+    } else {
+      filteredOffers = filteredOffers.filter(
+        (offer) => val <= offer.props.offer.guests.kids
+      );
+    }
+    this.updatePages(filteredOffers);
+    this.setState({filteredOffers: filteredOffers});
+  };
+
+  render() {
+    const allOffers =
+      this.state.filteredOffers.length > 0
+        ? this.state.filteredOffers
+        : this.state.allOffers;
+    const offersToRender = [...allOffers].splice((this.state.page - 1) * 5, 5);
 
     return (
       <div className={classes.LastMinuteList}>
         <LastMinFilters
           countries={this.state.countries}
+          transport={this.state.transport}
+          types={this.state.types}
           filterByWhere={this.filterByWhereHandler}
           filterByType={this.filterByTypeHandler}
           filterByTransport={this.filterByTransportHandler}
           filterByStartDate={this.filterByStartDateHandler}
           filterByEndDate={this.filterByEndDateHandler}
+          filterByGuests={this.filterByGuestsHandler}
           clearFilters={this.clearFilters}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
         />
         <ListComponent
           selectPageHandler={this.selectPageHandler}
@@ -203,8 +201,8 @@ class LastMinuteOffersList extends Component {
           page={this.state.page}
         />
       </div>
-    )
+    );
   }
 }
 
-export default LastMinuteOffersList
+export default LastMinuteOffersList;

@@ -134,6 +134,7 @@ export const signUp = (newUser) => {
       ...newUser,
       returnSecureToken: true,
     };
+    console.log(authData);
     axios
       .post(
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
@@ -141,16 +142,16 @@ export const signUp = (newUser) => {
       )
       .then((resolve) => {
         setLocalStorageUserLogInfo(resolve);
-        dispatch(authSuccess(resolve.data));
 
         var userInfoDb = {...newUser};
         delete userInfoDb.password;
-
+        console.log(resolve);
         instance
           .put(`/users/${resolve.data.localId}.json`, userInfoDb)
           .then((resolve) => {
             setLocalStorageUserAddData(resolve);
-            dispatch(updateUserDbInfoHandler(newUser));
+            dispatch(updateUserData(newUser));
+            dispatch(authSuccess(resolve.data));
           })
           .catch((error) => {
             console.log(error);
@@ -182,6 +183,7 @@ export const signIn = (email, password) => {
             `/users/${resolve.data.localId}.json?auth=${resolve.data.idToken}`
           )
           .then((res) => {
+            console.log(res);
             setLocalStorageUserAddData(res);
             dispatch(updateUserData(res.data));
             dispatch(authSuccess(resolve.data));
