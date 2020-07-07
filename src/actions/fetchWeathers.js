@@ -36,11 +36,9 @@ export const chekWeathersState = () => {
     offers.forEach((city) => {
       const weathers = JSON.parse(localStorage.getItem(city));
       if (weathers !== null) {
-        if (weathers.success) {
-          dispatch(fetchWeathersSuccess(city));
-        } else {
-          dispatch(fetchWeathersError(weathers.error));
-        }
+        if (weathers.location !== null) {
+          dispatch(fetchWeathersSuccess(weathers));
+        } 
       } else {
         dispatch(fetchWeathersHandler(city));
       }
