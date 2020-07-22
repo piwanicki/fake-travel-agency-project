@@ -5,12 +5,8 @@ import ContactInfoBar from "../../components/ContactInfoBar/ContactInfoBar";
 import Footer from "../../components/Navigation/Footer/Footer";
 import MainPage from "../../components/MainPage/MainPage";
 import {Switch, Route, Redirect, withRouter} from "react-router-dom";
-import OfferDetails from "../../components/OffersContainer/Offer/OfferDetails/OfferDetails";
-import CarsList from "../../components/OffersContainer/OffersServices/Cars/CarsList";
-import CarOfferDetails from "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails";
 import DemoAlert from "../DemoAlert/DemoAlert";
 import Wrapper from "./Wrapper/Wrapper";
-import LastMinuteOffersList from "../../components/OffersContainer/LastMinuteModule/LastMinuteOffersList/LastMinuteOffersList";
 import {connect} from "react-redux";
 import {
   getWeathers,
@@ -19,9 +15,38 @@ import {
 } from "../../reducers/weathers";
 import {chekWeathersState} from "../../actions/fetchWeathers";
 import {chekAuthState} from "../../actions/auth";
-import SignUpForm from "../../components/Auth/SingUpForm";
-import SignInForm from "../../components/Auth/SignInForm";
-import UserPanel from "../../components/Auth/UserPanel";
+import asyncComponent from "../../containers/asyncComponent";
+
+// lazy loading
+const asyncLastMinuteOffersList = asyncComponent(() => {
+  return import(
+    "../../components/OffersContainer/LastMinuteModule/LastMinuteOffersList/LastMinuteOffersList"
+  );
+});
+const asyncCarsList = asyncComponent(() => {
+  return import(
+    "../../components/OffersContainer/OffersServices/Cars/CarsList"
+  );
+});
+const asyncCarOfferDetails = asyncComponent(() => {
+  return import(
+    "../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails"
+  );
+});
+const asyncOfferDetails = asyncComponent(() => {
+  return import(
+    "../../components/OffersContainer/Offer/OfferDetails/OfferDetails"
+  );
+});
+const asyncUserPanel = asyncComponent(() => {
+  return import("../../components/Auth/UserPanel");
+});
+const asyncSignUpForm = asyncComponent(() => {
+  return import("../../components/Auth/SingUpForm");
+});
+const asyncSignInForm = asyncComponent(() => {
+  return import("../../components/Auth/SignInForm");
+});
 
 class Layout extends Component {
   state = {
@@ -49,29 +74,32 @@ class Layout extends Component {
         <Wrapper>
           <Switch>
             <Route exact path="/" component={MainPage} />
+            <Route exact path="/offerServices/cars" component={asyncCarsList} />
             <Route
               exact
-              path="/:offer/offerDetails/:city"
-              component={OfferDetails}
+              path="/lastMinute"
+              component={asyncLastMinuteOffersList}
             />
-            <Route exact path="/offerServices/cars" component={CarsList} />
-            <Route exact path="/lastMinute" component={LastMinuteOffersList} />
             <Route
               exact
               path="/:offer/offerDetails/:city"
-              component={OfferDetails}
+              component={asyncOfferDetails}
             />
             <Route
               exact
               path="/offerServices/cars/:carBrand/:carModel"
-              component={CarOfferDetails}
+              component={asyncCarOfferDetails}
             />
 
-            <Route path="/Login/SignUp" component={SignUpForm} />
+            <Route path="/Login/SignUp" component={asyncSignUpForm} />
 
-            <Route path="/Login/SignIn" component={SignInForm} />
+            <Route path="/Login/SignIn" component={asyncSignInForm} />
             {this.props.userLogged ? (
-              <Route path="/userPanel/:content" component={UserPanel} exact />
+              <Route
+                path="/userPanel/:content"
+                component={asyncUserPanel}
+                exact
+              />
             ) : (
               <Redirect to="/" />
             )}

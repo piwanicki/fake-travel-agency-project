@@ -98,7 +98,7 @@ const UserPanel = (props) => {
       return content;
     }
   }
-  document.title = 'User Panel';
+  document.title = "User Panel";
 
   return (
     <UserPanelContainer>
