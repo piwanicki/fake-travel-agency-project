@@ -108,7 +108,6 @@ class CarsList extends Component {
   };
 
   filterByVehicle = (vehicle) => {
-    console.log(`filter by vehicle ${vehicle}`);
     let outputList = [];
     const allModels = [...this.state.allModels];
     outputList = allModels.filter(
@@ -119,7 +118,6 @@ class CarsList extends Component {
   };
 
   filterByBrand = (brand) => {
-    console.log(`filter by brand ${brand}`);
     let outputList = [];
     const allModels = [...this.state.allModels];
     outputList = allModels.filter((car) => car.props.brand === brand);
@@ -128,10 +126,11 @@ class CarsList extends Component {
   };
 
   filterByVehicleType = (vehicleType) => {
-    console.log(`filter by vehicleType ${vehicleType}`);
     let outputList = [];
     const allModels = [...this.state.allModels];
-    outputList = allModels.filter((car) => car.props.type === vehicleType);
+    outputList = allModels.filter(
+      (car) => car.props.model.type === vehicleType
+    );
     console.log(outputList);
     this.setState({filterModels: outputList});
   };

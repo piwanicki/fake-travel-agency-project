@@ -1,0 +1,10 @@
+.MobileMenu {
+    display: none;
+    font-size: 40px;
+}
+
+@media (max-width: 768px) {
+    .MobileMenu {
+      display: inline-block;
+    }
+  }

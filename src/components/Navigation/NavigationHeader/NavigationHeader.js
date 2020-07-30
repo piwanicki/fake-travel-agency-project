@@ -3,6 +3,7 @@ import classes from './NavigationHeader.module.css';
 import InfoPanel from '../InfoPanel/InfoPanel';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import Logo from '../../../UI/Logo/Logo';
+import MobileNav from '../NavigationBar/MobileNav/MobileNav';
 
  const NavigationHeader = props => {
 
@@ -11,6 +12,7 @@ import Logo from '../../../UI/Logo/Logo';
       <Logo />
       <InfoPanel />
       <NavigationBar />
+      <MobileNav />
     </div>
   )
   

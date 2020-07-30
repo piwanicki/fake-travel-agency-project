@@ -1,4 +1,4 @@
-.NavigationBar {
+.NavigationBarDesktop {
   text-align: center;
   width: 65%;
   margin: auto auto;
@@ -22,7 +22,6 @@
     }
 
     li {
-
       padding: 1em 2.5em;
       text-decoration: none;
       border-right: 1px solid #000839;
@@ -41,5 +40,16 @@
     &:hover {
       border-bottom: 2px solid #feb72b;
     }
+  }
+
+  .MobileMenu {
+    display: none;
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .NavigationBarDesktop {
+    display: none;
   }
 }
