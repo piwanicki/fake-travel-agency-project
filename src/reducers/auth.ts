@@ -20,7 +20,7 @@ const initialState = {
   registeredFrom: "",
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case AUTH_PENDING: {
       return {

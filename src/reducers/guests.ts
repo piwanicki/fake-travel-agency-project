@@ -10,7 +10,7 @@ const initialState = {
   kids: 0,
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action : any) => {
   switch (action.type) {
     case ADD_ADDULT: {
       return {...state, adults: state.adults + 1};

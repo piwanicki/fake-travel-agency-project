@@ -1,8 +1,12 @@
-import React from "react";
+import * as React from "react";
 import Layout from "./UI/Layout/Layout";
 import {BrowserRouter} from "react-router-dom";
 
-const App = (props) => {
+interface IProps {
+  // props here
+}
+
+const App: React.FC<IProps> = () => {
   return (
     <BrowserRouter>
       <Layout></Layout>
