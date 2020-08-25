@@ -21,7 +21,10 @@ export type RootReducer = ReturnType<typeof rootReducer>
 const composeEnhancers =
   //process.env.NODE_ENV === "development" ?
   (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose // : null;
-export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
+export const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+)
 
 ReactDOM.render(
   <Provider store={store}>

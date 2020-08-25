@@ -359,7 +359,6 @@ class OfferDetails extends Component {
 
         <div className={classes.OfferDescription}>
           <DescriptionTabs
-            width="680px"
             updateContent={this.updateContent}
             activeTab={this.state.descContent}
           >

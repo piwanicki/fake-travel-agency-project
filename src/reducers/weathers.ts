@@ -3,14 +3,17 @@ import {
   FETCH_WEATHERS_SUCCESS,
   FETCH_WEATHERS_ERROR,
 } from "../actions/fetchWeathersAction";
+import { WeathersTypes } from '../types/WeathersTypes'
 
-const initialState = {
-  weathers: new Map(),
+
+
+const initialState: WeathersTypes = {
+  weathers: new Map<String, any>(),
   isFetching: false,
-  error: null
+  error: ''
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action ) => {
   switch (action.type) {
     case FETCH_WEATHERS_PENDING:
       console.log("fetchWeathers pending");

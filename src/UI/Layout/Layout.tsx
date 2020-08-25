@@ -13,10 +13,10 @@ import {
   getIsFetching,
   getWeathersError
 } from '../../reducers/weathers'
-import { chekWeathersState } from '../../actions/fetchWeathers';
+import { chekWeathersState } from '../../actions/fetchWeathers'
 import { chekAuthState } from '../../actions/auth'
 import asyncComponent from '../../containers/asyncComponent'
-
+import { RootReducer } from '../..'
 
 // lazy loading
 const asyncLastMinuteOffersList = asyncComponent(() => {
@@ -29,7 +29,8 @@ const asyncCarsList = asyncComponent(() => {
 })
 const asyncCarOfferDetails = asyncComponent(() => {
   return import(
-    '../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails')
+    '../../components/OffersContainer/OffersServices/Cars/CarOffer/CarOfferDetails/CarOfferDetails'
+  )
 })
 const asyncOfferDetails = asyncComponent(() => {
   return import(
@@ -47,27 +48,33 @@ const asyncSignInForm = asyncComponent(() => {
 })
 
 interface MapStateToPropsTypes {
-  error: any
+  error: string
   weathers: any
-  pending: any
+  pending: boolean
   userLogged: boolean
+}
+
+interface MapDispatchToPropsTypes {
   chekWeathersState: () => void
   onTryAutoLogin: () => void
 }
 
-interface MapDispatchToPropsTypes {
-  // Your properties here
-}
-
 interface IProps {
-  userLogged: boolean
+  // Component Props
 }
 
 interface IState {
   showDemoAlert: boolean
 }
 
-class Layout extends React.Component<IProps & MapStateToPropsTypes, IState> {
+class Layout extends React.Component<
+  IProps & MapStateToPropsTypes & MapDispatchToPropsTypes,
+  IState
+> {
+  state: IState = {
+    showDemoAlert: false
+  }
+
   showDemoAlertHandler = () => {
     this.setState(previousState => ({
       showDemoAlert: !previousState.showDemoAlert
@@ -106,9 +113,7 @@ class Layout extends React.Component<IProps & MapStateToPropsTypes, IState> {
               path='/offerServices/cars/:carBrand/:carModel'
               component={asyncCarOfferDetails}
             />
-
             <Route path='/Login/SignUp' component={asyncSignUpForm} />
-
             <Route path='/Login/SignIn' component={asyncSignInForm} />
             {this.props.userLogged ? (
               <Route
@@ -132,11 +137,11 @@ class Layout extends React.Component<IProps & MapStateToPropsTypes, IState> {
   }
 }
 
-const mapStateToProps = (state: MapStateToPropsTypes, ownProps: IProps) => ({
+const mapStateToProps = (state: RootReducer) => ({
   error: getWeathersError(state),
   weathers: getWeathers(state),
   pending: getIsFetching(state),
-  userLogged: state.auth!.userLogged
+  userLogged: state.auth['userLogged']
 })
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -148,10 +153,8 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 export default withRouter(
-  connect<MapStateToPropsTypes, MapDispatchToPropsTypes>(
+  connect<MapStateToPropsTypes, MapDispatchToPropsTypes, IProps, RootReducer>(
     mapStateToProps,
     mapDispatchToProps
-  )(Layout) as any
+  )(Layout)
 )
-//export default withRouter(connect<IState>(mapStateToProps, mapDispatchToProps)(Layout)) ;
-//export default connect<IState>(mapStateToProps, mapDispatchToProps)(Layout);

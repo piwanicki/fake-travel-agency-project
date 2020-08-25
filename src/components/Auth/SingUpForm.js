@@ -87,10 +87,10 @@ const SignUpForm = (props) => {
       const newUser = {
         email: email,
         password: password,
-        firstName: firstName,
-        surname: surname,
-        displayName: firstName,
-        regFrom: regFromDt,
+        userFirstName: firstName,
+        userSurname: surname,
+        userDisplayName: firstName,
+        registeredFrom: regFromDt,
       };
       props.onSignUp(newUser);
     }

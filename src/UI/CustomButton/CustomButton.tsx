@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const Button = styled.button`
   margin: auto;
@@ -28,14 +28,19 @@ const Button = styled.button`
   &:disabled {
     background-color: grey;
   }
-`;
+`
 
-const CustomButton = (props) => {
+interface IProps {
+  onClick: () => void
+  disabled: boolean
+}
+
+const CustomButton: React.FC<IProps> = props => {
   return (
     <Button onClick={props.onClick} disabled={props.disabled}>
       {props.children}
     </Button>
-  );
-};
+  )
+}
 
-export default CustomButton;
+export default CustomButton

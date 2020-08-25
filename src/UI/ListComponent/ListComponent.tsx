@@ -1,7 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
+import React from 'react'
+import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faChevronLeft,
+  faChevronRight
+} from '@fortawesome/free-solid-svg-icons'
 
 const ListSitesDiv = styled.div`
   border-top: 2px solid grey;
@@ -32,32 +35,32 @@ const ListSitesDiv = styled.div`
     color: blue;
     border-bottom: 2px solid blue;
   }
-`;
+`
 
 const RenderedOffersDiv = styled.div`
   min-height: 1075px;
   margin-bottom: 1em;
-`;
+`
 
-const ListComponent = (props) => {
-  let listPages = Array.from({length: props.pages});
-  const pagesHTML = listPages.map((el, index) => {
+const ListComponent = props => {
+  let listPages = Array.from({ length: props.pages })
+  const pagesHTML = listPages.map((_el, index) => {
     return (
       <span
         key={index}
         id={`page-${index + 1}`}
-        className={index + 1 === props.page ? "activePage" : ""}
+        className={index + 1 === props.page ? 'activePage' : ''}
       >
         {index + 1}
       </span>
-    );
-  });
+    )
+  })
 
   return (
     <>
       <RenderedOffersDiv>{props.itemsToRender}</RenderedOffersDiv>
       <ListSitesDiv>
-        <div className="listControls" onClick={props.selectPageHandler}>
+        <div className='listControls' onClick={props.selectPageHandler}>
           <FontAwesomeIcon
             icon={faChevronLeft}
             onClick={props.previousPageHandler}
@@ -70,7 +73,7 @@ const ListComponent = (props) => {
         </div>
       </ListSitesDiv>
     </>
-  );
-};
+  )
+}
 
-export default ListComponent;
+export default ListComponent

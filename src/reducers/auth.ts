@@ -6,21 +6,24 @@ import {
   UPD_USERDATA,
   UPD_DB_USERDATA,
 } from "../actions/authActions";
+import { AuthTypes } from '../types/AuthTypes';
+import { AuthActionTypes } from '../actions/authActions';
+import {Reducer} from 'redux';
 
-const initialState = {
-  error: null,
+const initialState: AuthTypes = {
+  error: '',
   authPending: false,
   userLogged: false,
-  token: null,
-  userId: null,
-  userDisplayName: "",
-  userFirstName: "",
-  userSurname: "",
-  userEmail: "",
-  registeredFrom: "",
+  token: '',
+  userId: '',
+  userDisplayName: '',
+  userFirstName: '',
+  userSurname: '',
+  userEmail: '',
+  registeredFrom: '',
 };
 
-const reducer = (state = initialState, action: any) => {
+const reducer: Reducer<AuthTypes, AuthActionTypes> = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_PENDING: {
       return {
@@ -30,13 +33,14 @@ const reducer = (state = initialState, action: any) => {
     }
 
     case AUTH_SUCCESS: {
+      const data = action.data;
       return {
         ...state,
         authPending: false,
-        token: action.token,
-        userId: action.userId,
-        userLogged: action.token !== null,
-        userDisplayName: action.displayName,
+        token: data.token,
+        userId: data.userId,
+        userLogged: data.token !== null,
+        userDisplayName: data.userDisplayName,
       };
     }
 
@@ -44,37 +48,40 @@ const reducer = (state = initialState, action: any) => {
       return {
         ...state,
         authPending: false,
+        error: action.error
       };
     }
 
     case AUTH_LOGOUT: {
       return {
         ...state,
-        token: null,
-        userId: null,
+        token: '',
+        userId: '',
         userLogged: false,
         userDisplayName: "",
       };
     }
 
     case UPD_USERDATA: {
+      const data = action.data;
       return {
         ...state,
         authPending: false,
-        userFirstName: action.userData.firstName,
-        userEmail: action.userData.email,
-        userSurname: action.userData.surname,
-        registeredFrom: action.userData.regFrom,
+        userFirstName: data.userFirstName,
+        userEmail: data.email,
+        userSurname: data.userSurname,
+        registeredFrom: data.registeredFrom,
       };
     }
 
     case UPD_DB_USERDATA: {
+      const data = action.data;
       return {
         ...state,
         authPending: false,
-        userFirstName: action.userUpdData.firstName,
-        userDisplayName: action.userUpdData.displayName,
-        userSurname: action.userUpdData.surname,
+        userFirstName: data.userFirstName,
+        userDisplayName: data.userDisplayName,
+        userSurname: data.userSurname,
       };
     }
     default:
