@@ -9,7 +9,6 @@ interface IProps {
 
 const DescriptionTabs: React.FC<IProps> = props => {
   const [activeTab, selectTab] = useState(props.activeTab)
-
   const selectTabHandler = (id: string) => {
     if (id !== '') {
       document.getElementById(activeTab)?.classList.remove(classes.SelectedTab)

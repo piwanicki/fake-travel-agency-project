@@ -1,15 +1,7 @@
 import React, {Component} from "react";
 import classes from "./OfferDetails.module.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-  faChevronCircleLeft,
-  faChevronCircleRight,
-  faCalendarAlt,
-} from "@fortawesome/free-solid-svg-icons";
 import Offers from "../../Offers";
 import {LastMinuteData} from "../../LastMinuteModule/LastMinuteOffersData";
-import GuestBox from "../../../SearchPanel/GuestBox/GuestBox";
-import {connect} from "react-redux";
 import ReactDOM from "react-dom";
 import LocalizationMap from "./LocalizationMap/LocalizationMap";
 import DescriptionText from "./DescriptionText/DescriptionText";
@@ -18,17 +10,16 @@ import OfferGuide from "./OfferGuide/OfferGuide";
 import ImageModal from "../../../../UI/ImageModal/ImageModal";
 import CheckingTermModal from "./CheckingTermModal/CheckingTermModal";
 import {animateScroll as scroll} from "react-scroll";
-import DescriptionTabs from "../../../../UI/DescriptionTabs/DescriptionTabs";
-import Tab from "../../../../UI/DescriptionTabs/Tab/Tab";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import SelectSearch from "react-select-search";
+import DetailsUserMenu from "./DetailsUserMenu/DetailsUserMenu";
+import PhotoContainer from "./PhotoContainer/PhotoContainer";
+import OfferDescription from "./OfferDescription/OfferDescription";
 
 class OfferDetails extends Component {
   state = {
     photoIndex: 0,
     images: [],
-    descContent: "desc",
+    currentContent: "desc",
     showImgModal: false,
     modalPhotoIndex: 0,
     listSite: 1,
@@ -50,7 +41,7 @@ class OfferDetails extends Component {
   };
 
   reformatDate = (date) => {
-    return date.split("-").reverse().join("-");
+    return date.split("/").reverse().join("/");
   };
 
   changeImageHandler = (index) => {
@@ -148,7 +139,7 @@ class OfferDetails extends Component {
   };
 
   updateContent = (id) => {
-    this.setState({descContent: id});
+    this.setState({currentContent: id});
   };
 
   render() {
@@ -187,21 +178,19 @@ class OfferDetails extends Component {
       </li>
     ));
 
-    switch (this.state.descContent) {
+    switch (this.state.currentContent) {
       case "desc": {
         descriptionContent = (
           <DescriptionText details={offerDetails.details} type={offerType} />
         );
         break;
       }
-
       case "loc": {
         descriptionContent = (
           <LocalizationMap lat={offerDetails.lat} lon={offerDetails.lon} />
         );
         break;
       }
-
       case "guide": {
         descriptionContent = (
           <OfferGuide
@@ -211,189 +200,60 @@ class OfferDetails extends Component {
         );
         break;
       }
-
       case "rev": {
         descriptionContent = <OfferReview />;
         break;
       }
-
       default: {
         descriptionContent = <DescriptionText details={offerDetails.details} />;
       }
     }
 
-    const fromOptions = [
-      {
-        value: "somewhere1",
-        name: "Somewhere 1",
-      },
-      {
-        value: "somewhere2",
-        name: "Somewhere 2",
-      },
-      {
-        value: "somewhere3",
-        name: "Somewhere 3",
-      },
-    ];
-
-    const roomOptions = [
-      {
-        value: "singleRoom",
-        name: "Single room",
-      },
-      {
-        value: "doubleRoom",
-        name: "Double Room",
-      },
-      {
-        value: "tripleRoom",
-        name: "Triple Room",
-      },
-    ];
-    const mealOptions = [
-      {
-        value: "onlyBreakfasts",
-        name: "Only Breakfasts",
-      },
-      {
-        value: "onlyDinners",
-        name: "Only Dinners",
-      },
-      {
-        value: "fullFeeding",
-        name: "Full Feeding",
-      },
-    ];
-
     return (
       <div className={classes.OfferDetailsContainer}>
         <div className={classes.OfferDetails}>
-          <div className={classes.PhotoContainer}>
-            <img
-              className={classes.MainPhoto}
-              src={mainPhoto}
-              alt={`big landscape`}
-              onClick={this.showImgModalHandler}
-            />
-            <div className={classes.PhotosSlider}>
-              <button
-                onClick={this.previousImageListItem}
-                disabled={this.state.listSite === 1}
-              >
-                <FontAwesomeIcon icon={faChevronCircleLeft} />
-              </button>
-              <div className={classes.PhotosListDiv}>
-                <ul className="PhotosList">{photos}</ul>
-              </div>
+          <PhotoContainer
+            mainPhoto={mainPhoto}
+            showImgModalHandler={this.showImgModalHandler}
+            previousImageListItem={this.previousImageListItem}
+            nextImageListItem={this.nextImageListItem}
+            photos={photos}
+            listSite={this.state.listSite}
+          />
 
-              <button
-                onClick={this.nextImageListItem}
-                disabled={this.state.listSite + 5 >= offerPhotos.length}
-              >
-                <FontAwesomeIcon icon={faChevronCircleRight} />
-              </button>
-            </div>
-          </div>
-          <div className={classes.DetailsContainer}>
-            <div className={classes.Dates}>
-              <p>Date :</p>
-              <div className={classes.DatePickerBox}>
-                <FontAwesomeIcon icon={faCalendarAlt} />
-                Start
-                <DatePicker
-                  selected={this.state.startDate}
-                  onChange={this.startDateHandleChange}
-                  placeholderText="Start Date"
-                  className={classes.DatePicker}
-                />
-              </div>
-              <div className={classes.DatePickerBox}>
-                <FontAwesomeIcon icon={faCalendarAlt} />
-                End
-                <DatePicker
-                  selected={this.state.endDate}
-                  onChange={this.endDateHandleChange}
-                  placeholderText="End Date"
-                  className={classes.DatePicker}
-                />
-              </div>
-            </div>
-
-            <GuestBox customStyle={{color: "black"}} />
-
-            <div className={classes.CustomOptions}>
-              <span>From: </span>
-              <SelectSearch options={fromOptions} />
-              <br />
-              <span>Room: </span>
-              <SelectSearch options={roomOptions} />
-              <br />
-              <span>Meal: </span>
-              <SelectSearch options={mealOptions} />
-            </div>
-
-            <div className={classes.PricingDetails}>
-              <div>
-                Adult :<p>{offerDetails.price} $</p>
-              </div>
-              <div>
-                Kid :<p>{offerDetails.kidPrice} $</p>
-              </div>
-
-              <div className={classes.SummaryPrice}>
-                <span style={{fontSize: "0.9em"}}> Summary :</span>
-                <p>
-                  {`${
-                    this.props.adults * offerDetails.price +
-                    this.props.kids * offerDetails.kidPrice
-                  } $`}
-                </p>
-              </div>
-            </div>
-            <button className={classes.BookBtn} type="button">
-              Book
-            </button>
-          </div>
+          <DetailsUserMenu
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            offerDetails={offerDetails}
+            adult={this.props.adults}
+            kids={this.props.kids}
+            startDateHandleChange={this.startDateHandleChange}
+            endDateHandleChange={this.endDateHandleChange}
+          />
         </div>
 
-        <div className={classes.OfferDescription}>
-          <DescriptionTabs
-            updateContent={this.updateContent}
-            activeTab={this.state.descContent}
-          >
-            <Tab tabTitle="Description" id="desc" />
-            <Tab tabTitle="Localization" id="loc" />
-            <Tab tabTitle="Guide" id="guide" />
-            <Tab tabTitle="Reviews" id="rev" />
-          </DescriptionTabs>
+        <OfferDescription
+          updateContent={this.updateContent}
+          activeTab={this.state.currentContent}
+          descriptionContent={descriptionContent}
+        />
 
-          <div className={classes.DescriptionText}>{descriptionContent}</div>
+        {this.state.showImgModal ? (
+          <ImageModal
+            mainPhoto={modalMainPhoto}
+            photos={offerPhotos}
+            photoIndex={this.state.photoIndex}
+            listSite={this.state.listSite}
+            showModal={this.showImgModalHandler}
+          />
+        ) : null}
 
-          {this.state.showImgModal ? (
-            <ImageModal
-              mainPhoto={modalMainPhoto}
-              photos={offerPhotos}
-              photoIndex={this.state.photoIndex}
-              listSite={this.state.listSite}
-              showModal={this.showImgModalHandler}
-            />
-          ) : null}
-
-          {this.state.checkingTerm ? (
-            <CheckingTermModal status={this.state.termStatus} />
-          ) : null}
-        </div>
+        {this.state.checkingTerm ? (
+          <CheckingTermModal status={this.state.termStatus} />
+        ) : null}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    adults: state.guests.adults,
-    kids: state.guests.kids,
-  };
-};
-
-export default connect(mapStateToProps, null)(OfferDetails);
+export default OfferDetails;

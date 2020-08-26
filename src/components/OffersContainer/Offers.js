@@ -20,9 +20,8 @@ const Offers = {
     city: "Dubrovnik",
     lat: "42.651",
     lon: "18.091",
-    from: "15-07-2020",
-    to: "01-08-2020",
-    date: "15-07-2020 -> 01-08-2020",
+    from: "15/07/2020",
+    to: "01/08/2020",
     price: 500,
     kidPrice: 240,
     details: {
@@ -42,7 +41,13 @@ const Offers = {
       ],
 
       facilitiesIcons: [
-        ['faWifi','Free Wifi'],['faSwimmingPool','Swimming Pool'],['faParking','Free Parking'],['faGlassCheers','Open Bar'],['faWheelchair','Adapted for disabled persons'],['faBaby','Baby Room'],['faTableTennis','Play Room']
+        ["faWifi", "Free Wifi"],
+        ["faSwimmingPool", "Swimming Pool"],
+        ["faParking", "Free Parking"],
+        ["faGlassCheers", "Open Bar"],
+        ["faWheelchair", "Adapted for disabled persons"],
+        ["faBaby", "Baby Room"],
+        ["faTableTennis", "Play Room"],
       ],
 
       meals: [
@@ -76,52 +81,61 @@ const Offers = {
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
       term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
+        {from: "15/07/2020", to: "01/08/2020"},
+        {from: "16/07/2020", to: "02/08/2020"},
+        {from: "17/07/2020", to: "03/08/2020"},
+        {from: "18/07/2020", to: "04/08/2020"},
+        {from: "19/07/2020", to: "05/08/2020"},
       ],
 
       flights: {
         RyanAir: {
           Katowice: {
-            departure: ['15:35',"15-07-2020"],
-            arrival: ['15:35',"01-08-2020"]
+            departure: ["15:35", "15/07/2020"],
+            arrival: ["15:35", "01/08/2020"],
           },
           Gdansk: {
-            departure: ['12:30',"16-07-2020"],
-            arrival: ['12:30',"02-08-2020"],
+            departure: ["12:30", "16/07/2020"],
+            arrival: ["12:30", "02/08/2020"],
           },
           Warszawa: {
-            departure: ['17:30',"17-07-2020"],
-            arrival:   ['12:30',"03-08-2020"],
+            departure: ["17:30", "17/07/2020"],
+            arrival: ["12:30", "03/08/2020"],
           },
 
           Krakow: {
-            departure:['17:30',"18-07-2020"],
-            arrival:  ['12:30',"04-08-2020"],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
 
           Wroclaw: {
-            departure:['17:30',"19-07-2020"],
-            arrival:  ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: ['17:30',"19-07-2020",],
-            arrival:   ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
           Krakow: {
-            departure: ['17:30','18-07-2020'],
-            arrival:   ['12:30','04-08-2020'],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
         },
       },
     },
-    photos: [dubrovnik1, dubrovnik2, dubrovnik3, dubrovnik4, dubrovnik5,dubrovnik6,dubrovnik7,dubrovnik1],
+    photos: [
+      dubrovnik1,
+      dubrovnik2,
+      dubrovnik3,
+      dubrovnik4,
+      dubrovnik5,
+      dubrovnik6,
+      dubrovnik7,
+      dubrovnik1,
+    ],
   },
 
   Rome: {
@@ -129,9 +143,8 @@ const Offers = {
     city: "Rome",
     lat: "41.900",
     lon: "12.483",
-    from: "17-07-2020",
-    to: " 28-08-2020",
-    date: "17-07-2020 -> 28-08-2020",
+    from: "17/07/2020",
+    to: " 28/08/2020",
     price: 600,
     kidPrice: 240,
     details: {
@@ -151,7 +164,10 @@ const Offers = {
       ],
 
       facilitiesIcons: [
-        ['faWifi','Free Wifi'],['faSwimmingPool','Swimming Pool'],['faParking','Free Parking'],['faGlassCheers','Open Bar'] 
+        ["faWifi", "Free Wifi"],
+        ["faSwimmingPool", "Swimming Pool"],
+        ["faParking", "Free Parking"],
+        ["faGlassCheers", "Open Bar"],
       ],
 
       meals: [
@@ -185,47 +201,47 @@ const Offers = {
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
       term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
+        {from: "15/07/2020", to: "01/08/2020"},
+        {from: "16/07/2020", to: "02/08/2020"},
+        {from: "17/07/2020", to: "03/08/2020"},
+        {from: "18/07/2020", to: "04/08/2020"},
+        {from: "19/07/2020", to: "05/08/2020"},
       ],
 
       flights: {
         RyanAir: {
           Katowice: {
-            departure: ['15:35',"15-07-2020"],
-            arrival: ['15:35',"01-08-2020"]
+            departure: ["15:35", "15/07/2020"],
+            arrival: ["15:35", "01/08/2020"],
           },
           Gdansk: {
-            departure: ['12:30',"16-07-2020"],
-            arrival: ['12:30',"02-08-2020"],
+            departure: ["12:30", "16/07/2020"],
+            arrival: ["12:30", "02/08/2020"],
           },
           Warszawa: {
-            departure: ['17:30',"17-07-2020"],
-            arrival:   ['12:30',"03-08-2020"],
+            departure: ["17:30", "17/07/2020"],
+            arrival: ["12:30", "03/08/2020"],
           },
 
           Krakow: {
-            departure:['17:30',"18-07-2020"],
-            arrival:  ['12:30',"04-08-2020"],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
 
           Wroclaw: {
-            departure:['17:30',"19-07-2020"],
-            arrival:  ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: ['17:30',"19-07-2020",],
-            arrival:   ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
           Krakow: {
-            departure: ['17:30','18-07-2020'],
-            arrival:   ['12:30','04-08-2020'],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
         },
       },
@@ -237,9 +253,8 @@ const Offers = {
     city: "Madrid",
     lat: "40.400",
     lon: "-3.683",
-    from: "1-07-2020",
-    to: "01-08-2020",
-    date: "1-07-2020 -> 01-08-2020",
+    from: "01/07/2020",
+    to: "01/08/2020",
     price: 300,
     kidPrice: 240,
     details: {
@@ -259,7 +274,11 @@ const Offers = {
       ],
 
       facilitiesIcons: [
-        ['faWifi','Free Wifi'],['faGlassCheers','Open Bar'],['faWheelchair','Adapted for disabled persons'],['faBaby','Baby Room'],['faTableTennis','Play Room']
+        ["faWifi", "Free Wifi"],
+        ["faGlassCheers", "Open Bar"],
+        ["faWheelchair", "Adapted for disabled persons"],
+        ["faBaby", "Baby Room"],
+        ["faTableTennis", "Play Room"],
       ],
 
       meals: [
@@ -293,47 +312,47 @@ const Offers = {
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
       term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
+        {from: "15/07/2020", to: "01/08/2020"},
+        {from: "16/07/2020", to: "02/08/2020"},
+        {from: "17/07/2020", to: "03/08/2020"},
+        {from: "18/07/2020", to: "04/08/2020"},
+        {from: "19/07/2020", to: "05/08/2020"},
       ],
 
       flights: {
         RyanAir: {
           Katowice: {
-            departure: ['15:35',"15-07-2020"],
-            arrival: ['15:35',"01-08-2020"]
+            departure: ["15:35", "15/07/2020"],
+            arrival: ["15:35", "01/08/2020"],
           },
           Gdansk: {
-            departure: ['12:30',"16-07-2020"],
-            arrival: ['12:30',"02-08-2020"],
+            departure: ["12:30", "16/07/2020"],
+            arrival: ["12:30", "02/08/2020"],
           },
           Warszawa: {
-            departure: ['17:30',"17-07-2020"],
-            arrival:   ['12:30',"03-08-2020"],
+            departure: ["17:30", "17/07/2020"],
+            arrival: ["12:30", "03/08/2020"],
           },
 
           Krakow: {
-            departure:['17:30',"18-07-2020"],
-            arrival:  ['12:30',"04-08-2020"],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
 
           Wroclaw: {
-            departure:['17:30',"19-07-2020"],
-            arrival:  ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: ['17:30',"19-07-2020",],
-            arrival:   ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
           Krakow: {
-            departure: ['17:30','18-07-2020'],
-            arrival:   ['12:30','04-08-2020'],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
         },
       },
@@ -345,8 +364,8 @@ const Offers = {
     city: "Paris",
     lat: "48.867",
     lon: "2.333",
-    from: "15-08-2020",
-    to: "01-08-2020",
+    from: "15/08/2020",
+    to: "01/08/2020",
     date: "15-08-2020 -> 01-08-2020",
     price: 400,
     kidPrice: 240,
@@ -356,11 +375,10 @@ const Offers = {
   Lisboa: {
     country: "Portugal",
     city: "Lisboa",
-    from: "18-07-2020",
-    to: "01-08-2020",
+    from: "18/07/2020",
+    to: "01/08/2020",
     lat: "38.722252",
     lon: "-9.139337",
-    date: "18-07-2020 -> 01-08-2020",
     price: 900,
     kidPrice: 240,
     details: {
@@ -380,7 +398,11 @@ const Offers = {
       ],
 
       facilitiesIcons: [
-        ['faWifi','Free Wifi'],['faSwimmingPool','Swimming Pool'],['faParking','Free Parking'],['faWheelchair','Adapted For disabled persons'],['faTableTennis','Play Room']
+        ["faWifi", "Free Wifi"],
+        ["faSwimmingPool", "Swimming Pool"],
+        ["faParking", "Free Parking"],
+        ["faWheelchair", "Adapted For disabled persons"],
+        ["faTableTennis", "Play Room"],
       ],
 
       meals: [
@@ -414,47 +436,47 @@ const Offers = {
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
       term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
+        {from: "15/07/2020", to: "01/08/2020"},
+        {from: "16/07/2020", to: "02/08/2020"},
+        {from: "17/07/2020", to: "03/08/2020"},
+        {from: "18/07/2020", to: "04/08/2020"},
+        {from: "19/07/2020", to: "05/08/2020"},
       ],
 
       flights: {
         RyanAir: {
           Katowice: {
-            departure: ['15:35',"15-07-2020"],
-            arrival: ['15:35',"01-08-2020"]
+            departure: ["15:35", "15/07/2020"],
+            arrival: ["15:35", "01/08/2020"],
           },
           Gdansk: {
-            departure: ['12:30',"16-07-2020"],
-            arrival: ['12:30',"02-08-2020"],
+            departure: ["12:30", "16/07/2020"],
+            arrival: ["12:30", "02/08/2020"],
           },
           Warszawa: {
-            departure: ['17:30',"17-07-2020"],
-            arrival:   ['12:30',"03-08-2020"],
+            departure: ["17:30", "17/07/2020"],
+            arrival: ["12:30", "03/08/2020"],
           },
 
           Krakow: {
-            departure:['17:30',"18-07-2020"],
-            arrival:  ['12:30',"04-08-2020"],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
 
           Wroclaw: {
-            departure:['17:30',"19-07-2020"],
-            arrival:  ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: ['17:30',"19-07-2020",],
-            arrival:   ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
           Krakow: {
-            departure: ['17:30','18-07-2020'],
-            arrival:   ['12:30','04-08-2020'],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
         },
       },
@@ -466,9 +488,8 @@ const Offers = {
     city: "Tokyo",
     lat: "35.690",
     lon: "139.692",
-    from: "16-08-2020",
-    to: "01-08-2020",
-    date: "16-08-2020 -> 01-08-2020",
+    from: "16/08/2020",
+    to: "01/08/2020",
     price: 530,
     kidPrice: 240,
     details: {
@@ -487,9 +508,11 @@ const Offers = {
         "Wi-Fi payable (1 hour - 2.4 BGN; 1 day - 12 BGN; 3 days - 24 BGN; 7 days - 36 BGN)",
       ],
 
-
       facilitiesIcons: [
-        ['faWifi','Free Wifi'],['faSwimmingPool','Swimming Pool'],['faParking','Free Parking'],['faGlassCheers','Open Bar']
+        ["faWifi", "Free Wifi"],
+        ["faSwimmingPool", "Swimming Pool"],
+        ["faParking", "Free Parking"],
+        ["faGlassCheers", "Open Bar"],
       ],
 
       meals: [
@@ -523,47 +546,47 @@ const Offers = {
       Warning! If luggage or additional services are added after confirming the booking, their price will be higher`,
 
       term: [
-        {from: "15-07-2020", to: "01-08-2020"},
-        {from: "16-07-2020", to: "02-08-2020"},
-        {from: "17-07-2020", to: "03-08-2020"},
-        {from: "18-07-2020", to: "04-08-2020"},
-        {from: "19-07-2020", to: "05-08-2020"},
+        {from: "15/07/2020", to: "01/08/2020"},
+        {from: "16/07/2020", to: "02/08/2020"},
+        {from: "17/07/2020", to: "03/08/2020"},
+        {from: "18/07/2020", to: "04/08/2020"},
+        {from: "19/07/2020", to: "05/08/2020"},
       ],
 
       flights: {
         RyanAir: {
           Katowice: {
-            departure: ['15:35',"15-07-2020"],
-            arrival: ['15:35',"01-08-2020"]
+            departure: ["15:35", "15/07/2020"],
+            arrival: ["15:35", "01/08/2020"],
           },
           Gdansk: {
-            departure: ['12:30',"16-07-2020"],
-            arrival: ['12:30',"02-08-2020"],
+            departure: ["12:30", "16/07/2020"],
+            arrival: ["12:30", "02/08/2020"],
           },
           Warszawa: {
-            departure: ['17:30',"17-07-2020"],
-            arrival:   ['12:30',"03-08-2020"],
+            departure: ["17:30", "17/07/2020"],
+            arrival: ["12:30", "03/08/2020"],
           },
 
           Krakow: {
-            departure:['17:30',"18-07-2020"],
-            arrival:  ['12:30',"04-08-2020"],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
 
           Wroclaw: {
-            departure:['17:30',"19-07-2020"],
-            arrival:  ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
         },
 
         WizzAir: {
           Wroclaw: {
-            departure: ['17:30',"19-07-2020",],
-            arrival:   ['12:30',"05-08-2020"],
+            departure: ["17:30", "19/07/2020"],
+            arrival: ["12:30", "05/08/2020"],
           },
           Krakow: {
-            departure: ['17:30','18-07-2020'],
-            arrival:   ['12:30','04-08-2020'],
+            departure: ["17:30", "18/07/2020"],
+            arrival: ["12:30", "04/08/2020"],
           },
         },
       },
