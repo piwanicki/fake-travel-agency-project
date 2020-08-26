@@ -6,9 +6,15 @@
   z-index: 100;
   background-color: #000000e5;
   overflow-y: hidden;
+  width: 100vw;
+
+  .ImagesList {
+    width: 100vw;
+  }
 
   .ImageControls {
     position: relative;
+    width: 100vw;
 
     .Arrow {
       position: absolute;
@@ -48,7 +54,7 @@
     height: 83vh;
     margin-top: 2vh;
     margin-right: 5vw;
-    margin-left:  5vw;
+    margin-left: 5vw;
   }
 
   ul {
