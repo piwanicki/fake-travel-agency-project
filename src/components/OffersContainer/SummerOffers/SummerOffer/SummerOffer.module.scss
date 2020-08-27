@@ -1,0 +1,64 @@
+.SummerOffer {
+  display: inline-block;
+  margin: 1em 1.5em;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.13);
+  cursor: pointer;
+  height: 325px;
+
+  .ImgContainer {
+    width: 250px;
+    height: 250px;
+
+    img {
+      height: 250px;
+    }
+  }
+
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+
+  span {
+    font-size: 1.4em;
+    padding: 5px;
+    color: #cd0000;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
+
+  .WeatherBox {
+    display: inline-block;
+
+    h3 {
+      margin: 0;
+      color: #000066;
+    }
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 2em;
+    }
+  }
+
+  .SummerOfferDetailsBox {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    color: #000066;
+    padding: 5px;
+    border: 1px solid gray;
+
+    div {
+      width: 50%;
+    }
+  }
+
+  &:hover {
+    transition: transform 0.8s;
+    transform: scale(1.05);
+  }
+}

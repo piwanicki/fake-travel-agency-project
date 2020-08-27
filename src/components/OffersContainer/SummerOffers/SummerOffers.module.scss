@@ -1,0 +1,48 @@
+.SummerOffersSection {
+  text-align: center;
+  margin: 3em auto;
+
+  p {
+    font-size: 2em;
+    margin: 0 auto;
+  }
+}
+
+.SummerOffersContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+  .Arrow {
+    margin: auto 10px;
+    font-size: 3em;
+
+    &:hover {
+      transition: transform 0.7s;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    &:active {
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  .NewsLetterContainer {
+    button {
+      &:active {
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+
+  .SummerOffersListBox {
+    overflow: hidden;
+    width: 1240px;
+    height: 370px;
+  }
+}

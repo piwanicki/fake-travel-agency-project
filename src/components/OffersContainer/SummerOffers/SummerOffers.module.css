@@ -1,8 +1,6 @@
 .SummerOffersContainer {
-  display: grid;
+  display: flex;
   justify-content: center;
-  grid-template-rows: auto;
-  grid-template-columns: 3em auto auto auto auto 3em;
   text-align: center;
   align-items: center;
 }
@@ -40,3 +38,6 @@
 }
 
 
+.SummerOffersListBox {
+  overflow: hidden;
+}

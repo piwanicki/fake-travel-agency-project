@@ -1,17 +1,14 @@
-import React, { Component } from "react";
-import classes from "./SummerOffers.module.css";
+import React, {Component} from "react";
+import classes from "./SummerOffers.module.scss";
 import SummerOffer from "./SummerOffer/SummerOffer";
 import SummerOffersData from "./SummerOffersData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight
-} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
 class SummerOffers extends Component {
   state = {
     index: 0,
-    offerArrLength: Object.keys(SummerOffersData).length
+    offerArrLength: Object.keys(SummerOffersData).length,
   };
 
   nextOfferHandler = () => {
@@ -19,7 +16,7 @@ class SummerOffers extends Component {
     const offerArrLength = this.state.offerArrLength;
     currentIndex = currentIndex + 4 >= offerArrLength ? 0 : currentIndex + 1;
     this.setState({
-      index: currentIndex
+      index: currentIndex,
     });
   };
 
@@ -28,7 +25,7 @@ class SummerOffers extends Component {
     const offerArrLength = this.state.offerArrLength;
     currentIndex = currentIndex - 1 < 0 ? offerArrLength - 4 : currentIndex - 1;
     this.setState({
-      index: currentIndex
+      index: currentIndex,
     });
   };
 
@@ -42,7 +39,6 @@ class SummerOffers extends Component {
           price={SummerOffersData[offer].price}
           country={SummerOffersData[offer].country}
           discount={SummerOffersData[offer].discount}
-          oldPrice={SummerOffersData[offer].oldPrice}
         />
       ));
 
@@ -55,7 +51,7 @@ class SummerOffers extends Component {
             className={classes.Arrow}
             onClick={this.previousOfferHandler}
           />
-          {cntrOffer}
+          <div className={classes.SummerOffersListBox}>{cntrOffer}</div>
           <FontAwesomeIcon
             icon={faChevronRight}
             className={classes.Arrow}

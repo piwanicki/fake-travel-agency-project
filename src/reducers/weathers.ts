@@ -5,8 +5,6 @@ import {
 } from "../actions/fetchWeathersAction";
 import { WeathersTypes } from '../types/WeathersTypes'
 
-
-
 const initialState: WeathersTypes = {
   weathers: new Map<String, any>(),
   isFetching: false,
