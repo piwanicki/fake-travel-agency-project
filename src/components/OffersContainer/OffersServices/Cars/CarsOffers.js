@@ -31,10 +31,11 @@ import maseratiLogo from "./carsPhotos/maseratiLogo.png";
 const CarsOffers = {
   Maserati: {
     logo: maseratiLogo,
-
+    brand: 'Maserati',
     models: {
       Levante: {
         vehicle: "Car",
+        model: 'Levante',
         type: "Suv",
         price: 500,
         photos: [
@@ -58,19 +59,11 @@ const CarsOffers = {
           "Road : 10.2 l/100km",
           "Urban : 15.4 l/100km",
         ],
-
-        /* 
-          Engine Layout: V6
-          Displacement : 2979 cc
-          Acceleration : 6.0 sec
-          Max speed : 251 km/h
-          Max power : 350 HP
-          Traction : AWD
-      */
       },
       Ghibli: {
         vehicle: "Car",
         type: "Sedan",
+        model: 'Ghibli',
         price: 450,
         photos: [ghibliPhoto1],
         details: [
@@ -92,10 +85,11 @@ const CarsOffers = {
 
   Volkswagen: {
     logo: vwLogo,
-
+    brand: 'Volkswagen',
     models: {
       Golf_7: {
         vehicle: "Car",
+        model: 'Golf VII',
         type: "Hatchback",
         price: 150,
         photos: [golf7Photo1],
@@ -115,6 +109,7 @@ const CarsOffers = {
       },
       Golf_8: {
         vehicle: "Car",
+        model: 'Golf VIII',
         type: "Hatchback",
         price: 250,
         photos: [golf8Photo1],
@@ -136,6 +131,7 @@ const CarsOffers = {
       Jetta: {
         vehicle: "Car",
         type: "Sedan",
+        model: 'Jetta',
         price: 200,
         photos: [jettaPhoto1, jettaPhoto2],
         details: [
@@ -157,10 +153,11 @@ const CarsOffers = {
 
   Audi: {
     logo: audiLogo,
-
+    brand: 'Audi',
     models: {
       A3: {
         vehicle: "Car",
+        model: 'A3',
         type: "Hatchback",
         price: 100,
         photos: [audiA3Photo1],
@@ -182,6 +179,7 @@ const CarsOffers = {
       A4: {
         vehicle: "Car",
         type: "Sedan",
+        model: 'A4',
         price: 130,
         photos: [audiA4Photo1],
         details: [
@@ -202,6 +200,7 @@ const CarsOffers = {
       A4_Avant: {
         vehicle: "Car",
         type: "Combi",
+        model: 'A4 Avant',
         price: 130,
         photos: [audiA4AvantPhoto1],
         details: [
@@ -222,6 +221,7 @@ const CarsOffers = {
       A5: {
         vehicle: "Car",
         type: "Sedan",
+        model: 'A5',
         price: 130,
         photos: [audiA5Photo1, audiA5Photo2],
         details: [
@@ -243,8 +243,10 @@ const CarsOffers = {
 
   Mercedes: {
     logo: mbLogo,
+    brand: 'Mercedes',
     models: {
       Class_A: {
+        model: 'Class A',
         vehicle: "Car",
         type: "Hatchback",
         price: 120,

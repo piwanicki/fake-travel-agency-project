@@ -12,7 +12,7 @@ import CheckingTermModal from "./CheckingTermModal/CheckingTermModal";
 import {animateScroll as scroll} from "react-scroll";
 import "react-datepicker/dist/react-datepicker.css";
 import DetailsUserMenu from "./DetailsUserMenu/DetailsUserMenu";
-import PhotoContainer from "./PhotoContainer/PhotoContainer";
+import PhotoContainer from "../../../../UI/PhotoContainer/PhotoContainer";
 import OfferDescription from "./OfferDescription/OfferDescription";
 
 class OfferDetails extends Component {
@@ -91,26 +91,26 @@ class OfferDetails extends Component {
     });
   };
 
-  nextImageListItem = () => {
-    let listSite = this.state.listSite;
-    const PhotosListDiv = document.querySelector(".PhotosList");
-    PhotosListDiv.style.transform = `translateX(-${listSite * 180}px)`;
-    PhotosListDiv.style.transition = "transform 0.5s";
-    this.setState({
-      listSite: listSite + 1,
-    });
-  };
+  // nextImageListItem = () => {
+  //   let listSite = this.state.listSite;
+  //   const PhotosListDiv = document.querySelector(".PhotosList");
+  //   PhotosListDiv.style.transform = `translateX(-${listSite * 180}px)`;
+  //   PhotosListDiv.style.transition = "transform 0.5s";
+  //   this.setState({
+  //     listSite: listSite + 1,
+  //   });
+  // };
 
-  previousImageListItem = () => {
-    let listSite = this.state.listSite;
-    const currentPosition = listSite * 180 - 180;
-    const PhotosListDiv = document.querySelector(".PhotosList");
-    PhotosListDiv.style.transform = `translateX(-${currentPosition - 180}px)`;
-    PhotosListDiv.style.transition = "transform 0.5s";
-    this.setState({
-      listSite: listSite - 1,
-    });
-  };
+  // previousImageListItem = () => {
+  //   let listSite = this.state.listSite;
+  //   const currentPosition = listSite * 180 - 180;
+  //   const PhotosListDiv = document.querySelector(".PhotosList");
+  //   PhotosListDiv.style.transform = `translateX(-${currentPosition - 180}px)`;
+  //   PhotosListDiv.style.transition = "transform 0.5s";
+  //   this.setState({
+  //     listSite: listSite - 1,
+  //   });
+  // };
 
   checkTerminHandler = (key) => {
     this.setState({checkingTerm: true});
@@ -215,10 +215,7 @@ class OfferDetails extends Component {
           <PhotoContainer
             mainPhoto={mainPhoto}
             showImgModalHandler={this.showImgModalHandler}
-            previousImageListItem={this.previousImageListItem}
-            nextImageListItem={this.nextImageListItem}
             photos={photos}
-            listSite={this.state.listSite}
           />
 
           <DetailsUserMenu

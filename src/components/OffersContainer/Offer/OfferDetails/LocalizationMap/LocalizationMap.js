@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import classes from "./LocalizationMap.module.scss";
 
 class LocalizationMap extends Component {
@@ -9,8 +9,9 @@ class LocalizationMap extends Component {
       center: [this.props.lat, this.props.lon],
       basePath: "/mapsdk",
       zoom: 15,
+      language: "en-GB",
     });
-  }
+  };
 
   render() {
     return <div className={classes.LocalizationMap} id="map"></div>;

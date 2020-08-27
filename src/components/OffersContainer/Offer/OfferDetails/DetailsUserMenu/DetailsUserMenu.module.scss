@@ -1,6 +1,7 @@
 .DetailsUserMenu {
   margin: 0 auto;
   width: 300px;
+  height: 720px;
   box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.26);
   background-color: rgba(255, 255, 255, 0.6);
 
@@ -68,20 +69,20 @@
     padding: 0.7em;
 
     span {
-      margin-right: .8em;
+      margin-right: 0.8em;
     }
 
     div {
       text-align: right;
       margin: 0.7em 0;
-      height: 4vh;
+      height: 20px;
     }
 
     p {
       font-size: 1.5em;
       color: #cd0000;
       display: inline-block;
-      margin: 0.2em 0.5em;
+      margin: 0 0.5em;
     }
 
     .SummaryPrice {
@@ -94,6 +95,6 @@
     width: 280px;
     height: 2.5em;
     font-size: 1.5em;
-    margin: 10px;
+    margin: 20px 10px;
   }
 }

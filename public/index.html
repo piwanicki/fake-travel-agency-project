@@ -9,6 +9,7 @@
   <meta name="description" content="Fake Travel Agency" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Poppins&display=swap" rel="stylesheet">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
   <!-- <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/mapsdk/map.css"> -->
   <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -41,28 +42,29 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   <script src='%PUBLIC_URL%/mapsdk/tomtom.min.js'> </script>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
-    authDomain: "fake-travel-agency-db.firebaseapp.com",
-    databaseURL: "https://fake-travel-agency-db.firebaseio.com",
-    projectId: "fake-travel-agency-db",
-    storageBucket: "fake-travel-agency-db.appspot.com",
-    messagingSenderId: "703773200233",
-    appId: "1:703773200233:web:ff934fbfab1ff60ec4b7f8",
-    measurementId: "G-YTYRP8CB82"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCIe6F-n4XKDOZOS8Fk_MQwivJgVF4542o",
+      authDomain: "fake-travel-agency-db.firebaseapp.com",
+      databaseURL: "https://fake-travel-agency-db.firebaseio.com",
+      projectId: "fake-travel-agency-db",
+      storageBucket: "fake-travel-agency-db.appspot.com",
+      messagingSenderId: "703773200233",
+      appId: "1:703773200233:web:ff934fbfab1ff60ec4b7f8",
+      measurementId: "G-YTYRP8CB82"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
   </script>
 </body>
 
