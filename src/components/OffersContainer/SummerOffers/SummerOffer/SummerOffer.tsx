@@ -22,7 +22,7 @@ const SummerOffer: React.FC<IProps & MapStateToPropsTypes> = props => {
   let weatherIconUrl: string = ''
   let weatherDegree: number | undefined
   // if (props.weathers.get(props.city) !== undefined) {
-  if (localStorage.getItem('Madrid') !== undefined) {
+  if (localStorage.getItem('Madrid') !== null) {
     // weatherIconUrl = props.weathers.get(props.city).current.weather_icons[0]
     // weatherDegree = props.weathers.get(props.city).current.temperature
     const weatherJson = JSON.parse(localStorage.getItem('Madrid')!)
@@ -44,7 +44,7 @@ const SummerOffer: React.FC<IProps & MapStateToPropsTypes> = props => {
           <h3>{country}</h3>
         </div>
         <div className={classes.WeatherBox}>
-          {props.isFetching ? (
+          {props.isFetching || !weatherIconUrl || !weatherDegree ? (
             <LoadingSpinner />
           ) : (
             <>
