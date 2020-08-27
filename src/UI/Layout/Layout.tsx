@@ -72,7 +72,7 @@ class Layout extends React.Component<
   IState
 > {
   state: IState = {
-    showDemoAlert: false
+    showDemoAlert: true
   }
 
   showDemoAlertHandler = () => {
