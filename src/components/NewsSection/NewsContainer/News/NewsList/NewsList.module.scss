@@ -1,0 +1,21 @@
+.NewsList {
+  color: black;
+  h2 {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+
+  ul {
+    text-decoration: none;
+    list-style: none;
+    font-size: 1.2em;
+    padding: 0 2rem;
+    li {
+      padding: 5px 0;
+
+      h4 {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -9,11 +9,13 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import authReducer from './reducers/auth'
 import guestReducer from './reducers/guests'
 import weatherReducer from './reducers/weathers'
+import newsReducer from './reducers/news';
 
 const rootReducer = combineReducers({
   weather: weatherReducer,
   guests: guestReducer,
-  auth: authReducer
+  auth: authReducer,
+  news: newsReducer
 })
 
 export type RootReducer = ReturnType<typeof rootReducer>

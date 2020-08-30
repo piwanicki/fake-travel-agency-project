@@ -8,7 +8,7 @@ import {
 } from "../actions/authActions";
 import { AuthTypes } from '../types/AuthTypes';
 import { AuthActionTypes } from '../actions/authActions';
-import {Reducer} from 'redux';
+import { Reducer } from 'redux';
 
 const initialState: AuthTypes = {
   error: '',

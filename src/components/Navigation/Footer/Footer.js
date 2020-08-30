@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./Footer.module.css";
+import CustomInput from "../../../UI/CustomInput/CustomInput";
 
-const Footer = props => {
+const Footer = (props) => {
   return (
     <div className={classes.Footer}>
       <div className={classes.FooterContent}>
@@ -11,7 +12,6 @@ const Footer = props => {
             <li> About us </li>
             <li> Contact </li>
             <li> Agency locations </li>
-            <li> Career </li>
             <li> Career </li>
           </ul>
         </div>
@@ -40,10 +40,10 @@ const Footer = props => {
       </div>
 
       <div className={classes.NewsLetterContainer}>
-        <span style={{ fontSize: "1.2em" }}>
+        <span style={{fontSize: "1.2em"}}>
           Join to our newsletter and receive new offers and special promotions!{" "}
         </span>
-        <input
+        <CustomInput
           type="email"
           placeholder=" Your email address..."
           id={classes.newsLetterInput}

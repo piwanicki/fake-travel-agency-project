@@ -15,6 +15,7 @@ import {
 } from '../../reducers/weathers'
 import { chekWeathersState } from '../../actions/fetchWeathers'
 import { chekAuthState } from '../../actions/auth'
+import { checkNewsState } from '../../actions/news'
 import asyncComponent from '../../containers/asyncComponent'
 import { RootReducer } from '../..'
 
@@ -47,6 +48,12 @@ const asyncSignInForm = asyncComponent(() => {
   return import('../../components/Auth/SignInForm')
 })
 
+const asyncNewsList = asyncComponent(() => {
+  return import(
+    '../../components/NewsSection/NewsContainer/News/NewsList/NewsList'
+  )
+})
+
 interface MapStateToPropsTypes {
   error: string
   weathers: any
@@ -57,6 +64,7 @@ interface MapStateToPropsTypes {
 interface MapDispatchToPropsTypes {
   chekWeathersState: () => void
   onTryAutoLogin: () => void
+  checkNewsState: () => void
 }
 
 interface IProps {
@@ -72,7 +80,7 @@ class Layout extends React.Component<
   IState
 > {
   state: IState = {
-    showDemoAlert: true
+    showDemoAlert: false
   }
 
   showDemoAlertHandler = () => {
@@ -84,6 +92,7 @@ class Layout extends React.Component<
   componentDidMount = () => {
     this.props.chekWeathersState()
     this.props.onTryAutoLogin()
+    this.props.checkNewsState()
   }
 
   render () {
@@ -113,6 +122,7 @@ class Layout extends React.Component<
               path='/offerServices/cars/:carBrand/:carModel'
               component={asyncCarOfferDetails}
             />
+            <Route exact path='/News' component={asyncNewsList} />
             <Route path='/Login/SignUp' component={asyncSignUpForm} />
             <Route path='/Login/SignIn' component={asyncSignInForm} />
             {this.props.userLogged ? (
@@ -148,7 +158,8 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     //fetchWeathers: () => dispatch(fetchWeathersHandler()),
     onTryAutoLogin: () => dispatch(chekAuthState()),
-    chekWeathersState: () => dispatch(chekWeathersState())
+    chekWeathersState: () => dispatch(chekWeathersState()),
+    checkNewsState: () => dispatch(checkNewsState())
   }
 }
 
