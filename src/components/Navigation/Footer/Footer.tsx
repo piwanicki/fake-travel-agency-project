@@ -1,7 +1,16 @@
-import React from "react";
-import classes from "./Footer.module.css";
+import React, { useState } from 'react'
+import classes from './Footer.module.scss'
+import CustomInput from '../../../UI/CustomInput/CustomInput'
+import CustomButton from '../../../UI/CustomButton/CustomButton'
+import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy'
 
 const Footer = props => {
+  const [showPP, setShowPP] = useState(false)
+
+  const signNewsLetterHandler = () => {
+    console.log(`signed`)
+  }
+
   return (
     <div className={classes.Footer}>
       <div className={classes.FooterContent}>
@@ -11,7 +20,6 @@ const Footer = props => {
             <li> About us </li>
             <li> Contact </li>
             <li> Agency locations </li>
-            <li> Career </li>
             <li> Career </li>
           </ul>
         </div>
@@ -40,21 +48,29 @@ const Footer = props => {
       </div>
 
       <div className={classes.NewsLetterContainer}>
-        <span style={{ fontSize: "1.2em" }}>
-          Join to our newsletter and receive new offers and special promotions!{" "}
+        <span className={classes.JoinDesc}>
+          Join to our newsletter and receive new offers and special promotions!
         </span>
-        <input
-          type="email"
-          placeholder=" Your email address..."
-          id={classes.newsLetterInput}
+        <CustomInput
+          type='email'
+          placeholder=' Your email address...'
+          className={classes.newsLetterInput}
         />
-        <button type="button"> Join </button>
+        <CustomButton onClick={signNewsLetterHandler}> Join </CustomButton>
         <br />
-        *By clicking the 'Join' button you confirm that you have read the
-        Privacy Policy.
+        *By clicking the 'Join' button you confirm that you have read the &nbsp;
+        <span
+          className={classes.PrivPolicyBtn}
+          onClick={() => setShowPP(!showPP)}
+        >
+          Privacy Policy.
+        </span>
       </div>
+      {showPP ? (
+        <PrivacyPolicy showPPHandler={() => setShowPP(!showPP)} />
+      ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

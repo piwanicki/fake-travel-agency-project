@@ -32,7 +32,7 @@ const Button = styled.button`
 
 interface IProps {
   onClick: () => void
-  disabled: boolean
+  disabled?: boolean
 }
 
 const CustomButton: React.FC<IProps> = props => {

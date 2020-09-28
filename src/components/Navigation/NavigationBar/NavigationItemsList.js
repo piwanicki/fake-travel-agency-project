@@ -1,7 +1,7 @@
 import React from "react";
-import {Link } from 'react-router-dom'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faClock} from "@fortawesome/free-solid-svg-icons";
 
 export const NavigationItemsList = (props) => {
   return (
@@ -21,7 +21,7 @@ export const NavigationItemsList = (props) => {
         <a href="/#"> Our Destinations </a>
       </li>
       <li>
-        <Link to={"/offerServices/cars"}>Cars </Link>
+        <Link to="/offerServices/cars">Cars </Link>
       </li>
       <li>
         <a href="/#"> Insurance</a>

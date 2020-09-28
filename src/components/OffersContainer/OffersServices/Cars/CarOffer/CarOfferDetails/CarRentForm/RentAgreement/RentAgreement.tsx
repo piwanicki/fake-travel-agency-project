@@ -1,9 +1,14 @@
-import React from "react";
-import classes from "./RentAgreement.module.scss";
+import React from 'react'
+import PopupContainer from '../../../../../../../../UI/PopupContainer/PopupContainer'
 
-const RentAgreement = (props) => {
+const RentAgreement = props => {
+
   return (
-    <div className={classes.RentAgreement}>
+    <PopupContainer
+      title='Rent Agreement'
+      checkboxHandler={props.acceptRentAgreement}
+      showPopupHandler={props.showRentAgreement}
+    >
       <h3>Rent Agreement</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat
@@ -57,17 +62,8 @@ const RentAgreement = (props) => {
         odio diam, ac facilisis tortor convallis a. Aliquam erat volutpat. Duis
         sed pulvinar dolor.
       </p>
+    </PopupContainer>
+  )
+}
 
-      <span>
-        I have read and accept rent agreement.
-        <input type="checkbox" onChange={props.acceptRentAgreement} />
-      </span>
-
-      <span onClick={props.showRentAgreement} className={classes.RejectBtn}>
-        Close
-      </span>
-    </div>
-  );
-};
-
-export default RentAgreement;
+export default RentAgreement

@@ -9,7 +9,9 @@ const CarRentForm = (props) => {
   const [showRentAgreement, showHandler] = useState(false);
   const [acceptAgreement, acceptHandler] = useState(false);
   const today = new Date();
-  const [startTime, setStartTime] = useState( new Date().setHours(today.getHours() + 1));
+  const [startTime, setStartTime] = useState(
+    new Date().setHours(today.getHours() + 1)
+  );
   const [endTime, setEndTime] = useState(
     new Date().setHours(today.getHours() + 2)
   );

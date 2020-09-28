@@ -1,10 +1,16 @@
-.RentAgreement {
+@mixin fixed-center {
   position: fixed;
-  top: 10%;
-  left: 15%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.PopupContainer {
+  @include fixed-center();
   width: 70%;
   height: 70%;
   border: 2px solid black;
+  color: black;
   background-color: whitesmoke;
   overflow-y: scroll;
   z-index: 100;

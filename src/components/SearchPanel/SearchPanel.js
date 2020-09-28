@@ -7,7 +7,7 @@ import SelectSearch from "react-select-search";
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // import {faPlane, faBus, faTaxi} from "@fortawesome/free-solid-svg-icons";
 import Offers from "../OffersContainer/Offers";
-import "./SearchSelect.css";
+import "./SearchSelect.scss";
 
 class SearchPanel extends Component {
   state = {

@@ -21,7 +21,7 @@ const DemoAlert = (props) => {
             </li>
 
             <li>
-              User Authentication Module -&gt; Possibility of register and login for new users. Firebase Authentication is connected here as backend. You can also modify your user account data.
+              User Authentication Module -&gt; (Only via https) Possibility of register and login for new users. Firebase Authentication is connected here as backend. You can also modify your user account data.
             </li>
             <li>
               <strong>Module in development -&gt;</strong> Migrating to TS , then Media queries / RWD

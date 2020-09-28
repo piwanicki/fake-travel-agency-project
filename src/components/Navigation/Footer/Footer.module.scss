@@ -1,0 +1,63 @@
+$border: 1px #f5f5f080 solid;
+$bg-color: #005082;
+$main-color: #f5f5f0;
+
+.Footer {
+  height: 25em;
+  margin: auto;
+  width: 100%;
+  background-color: $bg-color;
+  color: $main-color;
+
+  .FooterContent {
+    margin: auto 3em;
+    padding: 1em 1em;
+    font-size: 1.1em;
+    text-align: right;
+
+    p {
+      text-align: center;
+      font-size: 1.1em;
+    }
+
+    div {
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+      border-top: $border;
+      margin: auto 1em;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0.2em 0.5em;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .NewsLetterContainer {
+    border-top: $border;
+    border-bottom: 1px $border;
+    width: 80%;
+    min-height: 4em;
+    margin: 1em auto;
+    text-align: center;
+
+    input {
+      margin: 1em;
+    }
+
+    .JoinDesc {
+      font-size: 1.2em;
+    }
+
+    .PrivPolicyBtn {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
