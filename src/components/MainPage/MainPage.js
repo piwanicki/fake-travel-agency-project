@@ -1,6 +1,6 @@
 import React from "react";
 import SearchPanel from "../SearchPanel/SearchPanel";
-import OffersContainer from "../OffersContainer/OffersContainer";
+import RecommendedOffersContainer from "../OffersContainer/RecommendedOffersContainer";
 import Offers from "../OffersContainer/Offers";
 import OffersServices from "../OffersContainer/OffersServices/OffersServices";
 import SummerOffers from "../OffersContainer/SummerOffers/SummerOffers";
@@ -13,7 +13,7 @@ const MainPage = (props) => {
     <>
       <SearchPanel />
       <Wrapper>
-        <OffersContainer offers={Offers} />
+        <RecommendedOffersContainer offers={Offers} />
         <OffersServices />
         <SummerOffers />
         <InspirationOffers />

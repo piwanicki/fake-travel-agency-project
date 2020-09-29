@@ -5,6 +5,7 @@ import {faWrench, faGasPump} from "@fortawesome/free-solid-svg-icons";
 import ImageModal from "../../../../../UI/ImageModal/ImageModal";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
+import CustomButton from '../../../../../UI/CustomButton/CustomButton';
 
 class CarOffer extends Component {
   state = {
@@ -14,14 +15,6 @@ class CarOffer extends Component {
   openGalleryHandler = () => {
     const galleryIsOpen = this.state.galleryIsOpen;
     this.setState({galleryIsOpen: !galleryIsOpen});
-  };
-
-  previousImageHandler = () => {
-    console.log(`previousImageHandler`);
-  };
-
-  nextImageHandler = () => {
-    console.log(`nextImageHandler`);
   };
 
   PriceSpan = styled.span`
@@ -57,7 +50,7 @@ class CarOffer extends Component {
         </div>
         <div className={classes.VehicleBrand}>
           <div>
-            <h3 style={{color: "#000066"}}>{this.props.brand}</h3>
+            <h3>{this.props.brand}</h3>
 
             <img
               src={brandLogo}
@@ -66,7 +59,7 @@ class CarOffer extends Component {
             />
           </div>
 
-          <h4 style={{color: "#cd0000"}}>{carModelSplitted}</h4>
+          <h4>{carModelSplitted}</h4>
         </div>
 
         <div className={classes.SpecTable}>
@@ -123,7 +116,7 @@ class CarOffer extends Component {
             <Link
               to={`/offerServices/cars/${this.props.brand}/${this.props.modelName}`}
             >
-              <button>Details</button>
+              <CustomButton>Details</CustomButton>
             </Link>
           </span>
         </div>

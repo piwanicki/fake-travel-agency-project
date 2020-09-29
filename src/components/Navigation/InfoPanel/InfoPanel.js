@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import LangSelectBox from "./LangSelectBox/LangSelectBox";
 import english from "./LangSelectBox/langSelectorsIcon/england.png";
-// import polish from "./LangSelectBox/langSelectorsIcon/poland.png";
+import polish from "./LangSelectBox/langSelectorsIcon/poland.png";
 import {Link} from "react-router-dom";
 import CustomButton from "../../../UI/CustomButton/CustomButton";
 import {connect} from "react-redux";
@@ -65,6 +65,7 @@ class InfoPanel extends Component {
   state = {
     langSelectBox: false,
     showUserMenu: false,
+    langIcon: english,
   };
 
   showLangSelectorBox = () => {
@@ -75,7 +76,9 @@ class InfoPanel extends Component {
   };
 
   langSelectHandler = (event) => {
-    //const langSelected = event.target.id;
+    const langSelected = event.target.id;
+    const langIcon = langSelected === "polish" ? polish : english;
+    this.setState({langIcon: langIcon});
     this.showLangSelectorBox();
   };
 
@@ -147,7 +150,7 @@ class InfoPanel extends Component {
           {isLogged}
           {this.state.showUserMenu ? userMenuJSX : null}
           <img
-            src={english}
+            src={this.state.langIcon}
             alt="language icon"
             className={classes.LangSelector}
             onClick={this.showLangSelectorBox}

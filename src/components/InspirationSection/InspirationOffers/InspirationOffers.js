@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./InspirationOffers.module.css";
+import classes from "./InspirationOffers.module.scss";
 import InspirationOffer from "./InspirationOffer/InspirationOffer";
 import {Inspirations} from "./Content";
 

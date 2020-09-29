@@ -1,69 +1,69 @@
-import React, {useState} from "react";
-import classes from "./CarRentForm.module.scss";
-import RentAgreement from "./RentAgreement/RentAgreement";
-import DatePicker from "react-datepicker";
-import SelectSearch from "react-select-search";
-import Offers from "../../../../../Offers";
+import React, { useState } from 'react'
+import classes from './CarRentForm.module.scss'
+import RentAgreement from './RentAgreement/RentAgreement'
+import DatePicker from 'react-datepicker'
+import SelectSearch from 'react-select-search'
+import Offers from '../../../../../Offers'
+import CustomButton from '../../../../../../../UI/CustomButton/CustomButton'
 
-const CarRentForm = (props) => {
-  const [showRentAgreement, showHandler] = useState(false);
-  const [acceptAgreement, acceptHandler] = useState(false);
-  const today = new Date();
+const CarRentForm = props => {
+  const [showRentAgreement, showHandler] = useState(false)
+  const [acceptAgreement, acceptHandler] = useState(false)
+  const today = new Date()
   const [startTime, setStartTime] = useState(
     new Date().setHours(today.getHours() + 1)
-  );
+  )
   const [endTime, setEndTime] = useState(
     new Date().setHours(today.getHours() + 2)
-  );
+  )
 
-  const [startDay, setStartDay] = useState(new Date());
+  const [startDay, setStartDay] = useState(new Date())
   const [endDay, setEndDay] = useState(
     new Date().setDate(startDay.getDate() + 1)
-  );
+  )
 
   const openRentAgreementHandler = () => {
-    showHandler(!showRentAgreement);
-  };
+    showHandler(!showRentAgreement)
+  }
 
   const acceptRentAgreementHandler = () => {
-    acceptHandler(!acceptAgreement);
-  };
+    acceptHandler(!acceptAgreement)
+  }
 
-  const rentHandler = (event) => {
-    event.preventDefault();
-    console.log(`rentHandler`);
-  };
+  const rentHandler = () => {
+    console.log(`Rent`)
+  }
 
-  const setStartTimeHandler = (time) => {
-    setStartTime(time);
-  };
+  const setStartTimeHandler = time => {
+    setStartTime(time)
+  }
 
-  const setEndTimeHandler = (time) => {
-    setEndTime(time);
-  };
+  const setEndTimeHandler = time => {
+    setEndTime(time)
+  }
 
-  const setStartDayHandler = (day) => {
-    setStartDay(day);
-  };
+  const setStartDayHandler = day => {
+    setStartDay(day)
+  }
 
-  const setEndDayHandler = (day) => {
-    setEndDay(day);
-  };
+  const setEndDayHandler = day => {
+    setEndDay(day)
+  }
 
-  const locOptions = Object.keys(Offers).map((country) => {
-    return {name: country, value: country.toLowerCase()};
-  });
+  const locOptions = Object.keys(Offers).map(country => {
+    return { name: country, value: country.toLowerCase() }
+  })
   return (
     <form onSubmit={rentHandler}>
       <div className={classes.CarRentForm}>
-        <p style={{marginLeft: "1em"}}>
+        <p className={classes.AcceptText}>
           Please fill the rent form and accept rules to complete the process...
         </p>
 
         <div className={classes.PersonalData}>
           <p>Personal data </p>
-          <input type="text" placeholder="Name" required />
-          <input type="text" placeholder="Surname" required />
+          <input type='text' placeholder='Name' required />
+          <input type='text' placeholder='Surname' required />
         </div>
 
         <div className={classes.TermData}>
@@ -71,8 +71,8 @@ const CarRentForm = (props) => {
           <span>
             <DatePicker
               selected={startDay}
-              onChange={(day) => setStartDayHandler(day)}
-              placeholderText="From..."
+              onChange={day => setStartDayHandler(day)}
+              placeholderText='From...'
               required
               className={classes.TermPicker}
             />
@@ -80,8 +80,8 @@ const CarRentForm = (props) => {
           <span>
             <DatePicker
               selected={endDay}
-              onChange={(day) => setEndDayHandler(day)}
-              placeholderText="To..."
+              onChange={day => setEndDayHandler(day)}
+              placeholderText='To...'
               required
               className={classes.TermPicker}
             />
@@ -93,26 +93,26 @@ const CarRentForm = (props) => {
           <span>
             <DatePicker
               selected={startTime}
-              onChange={(time) => setStartTimeHandler(time)}
+              onChange={time => setStartTimeHandler(time)}
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={60}
-              timeCaption="Time"
-              dateFormat="h:00 aa"
-              placeholderText="Start..."
+              timeCaption='Time'
+              dateFormat='h:00 aa'
+              placeholderText='Start...'
               className={classes.TermPicker}
             />
           </span>
           <span>
             <DatePicker
               selected={endTime}
-              onChange={(time) => setEndTimeHandler(time)}
+              onChange={time => setEndTimeHandler(time)}
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={60}
-              timeCaption="Time"
-              dateFormat="h:00 aa"
-              placeholderText="End..."
+              timeCaption='Time'
+              dateFormat='h:00 aa'
+              placeholderText='End...'
               className={classes.TermPicker}
             />
           </span>
@@ -123,30 +123,28 @@ const CarRentForm = (props) => {
           <span>
             <SelectSearch
               options={locOptions}
-              placeholder={"Location"}
+              placeholder={'Location'}
               search={true}
             ></SelectSearch>
           </span>
 
-          <div style={{textAlign: "left", width: "210px", marginTop: "1em"}}>
-            <div
-              style={{
-                display: "inline-block",
-                width: "130px",
-                textAlign: "center",
-                transform: "translateY(25%)",
-              }}
-            >
+          <div className={classes.LicenseBox}>
+            <div className={classes.LicenseText}>
               Period of having a driving license
             </div>
-            <input type="number" min="0" style={{width: "70px"}} required />
+            <input
+              className={classes.LicenseInput}
+              type='number'
+              min='0'
+              required
+            />
           </div>
         </div>
 
-        <div className={classes.AcceptBtn}>
+        <div className={classes.AcceptBox}>
           <span>
             <input
-              type="checkbox"
+              type='checkbox'
               onChange={acceptRentAgreementHandler}
               required
               checked={acceptAgreement}
@@ -154,18 +152,14 @@ const CarRentForm = (props) => {
             * Check here to indicate that you have read and agree to the terms
             of the &nbsp;
             <span
-              style={{
-                color: "blue",
-                textDecoration: "underline",
-                cursor: "pointer",
-              }}
+              className={classes.RentAgreementPopup}
               onClick={openRentAgreementHandler}
             >
               Car Renting Agreement
             </span>
             .
           </span>
-          <button type="submit">Rent</button>
+          <CustomButton onClick={rentHandler}>Rent</CustomButton>
         </div>
 
         {showRentAgreement ? (
@@ -176,7 +170,7 @@ const CarRentForm = (props) => {
         ) : null}
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default CarRentForm;
+export default CarRentForm

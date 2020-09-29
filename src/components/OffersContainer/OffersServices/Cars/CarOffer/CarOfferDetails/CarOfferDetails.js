@@ -4,7 +4,7 @@ import CarsOffers from "../../CarsOffers";
 import ImageModal from "../../../../../../UI/ImageModal/ImageModal";
 import CarRentDetails from "./CarRentDetails/CarRentDetails";
 import CarRentForm from "./CarRentForm/CarRentForm";
-import RentDescription from './RentDescription/RentDescription';
+import RentDescription from "./RentDescription/RentDescription";
 import PhotoContainer from "../../../../../../UI/PhotoContainer/PhotoContainer";
 import CarDetails from "./CarDetails/CarDetails";
 
@@ -85,20 +85,15 @@ class CarOfferDetails extends Component {
             listSite={this.state.listSite}
             photos={photos}
             showImgModalHandler={this.showImgModalHandler}
-
-            //previousImageListItem={this.previousImageListItem}
-            //nextImageListItem={this.nextImageListItem}
           />
 
           <CarDetails car={Car} brand={carBrand} carLogo={carLogo} />
-
-   
         </div>
         <RentDescription
-            updateContent={this.updateContent}
-            currentContent={this.state.descContent}
-            descriptionContent={descriptionContent}
-          />
+          updateContent={this.updateContent}
+          currentContent={this.state.descContent}
+          descriptionContent={descriptionContent}
+        />
 
         {this.state.showGallery ? (
           <ImageModal

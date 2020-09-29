@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./ContactInfoBar.module.css";
+import classes from "./ContactInfoBar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,

@@ -131,7 +131,6 @@ class CarsList extends Component {
     outputList = allModels.filter(
       (car) => car.props.model.type === vehicleType
     );
-    console.log(outputList);
     this.setState({filterModels: outputList});
   };
 

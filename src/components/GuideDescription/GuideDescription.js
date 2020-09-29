@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './GuideDescription.module.css';
+import classes from './GuideDescription.module.scss';
 
 const GuideDescription = props => {
   return (

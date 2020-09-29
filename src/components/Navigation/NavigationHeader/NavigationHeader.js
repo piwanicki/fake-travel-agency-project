@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './NavigationHeader.module.css';
+import classes from './NavigationHeader.module.scss';
 import InfoPanel from '../InfoPanel/InfoPanel';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import Logo from '../../../UI/Logo/Logo';

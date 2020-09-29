@@ -6,15 +6,10 @@ import LoadingSpinner from '../../../UI/LoadingSpinner/LoadingSpinner'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { RootReducer } from '../../../index'
+import Offers from '../Offers'
 
 interface IProps {
-  country: string
-  date: string
-  from: string
-  to: string
-  city: string
-  price: number
-  cntrImgUrl: string
+  offer: Offers
 }
 
 interface MapStateToPropsTypes {
@@ -23,20 +18,24 @@ interface MapStateToPropsTypes {
 }
 
 const RecommendedOffer: React.FC<IProps & MapStateToPropsTypes> = props => {
+
+  const { country, from, to, city, price } = props.offer;
+  const cntrImgUrl = `photo_${country.toLowerCase()}.jpg`;
+
   let weatherIconUrl: string = ''
   let weatherDegree: number | undefined
-  if (props.weathers.get(props.city) !== undefined) {
-    weatherIconUrl = props.weathers.get(props.city).current.weather_icons[0]
-    weatherDegree = props.weathers.get(props.city).current.temperature
+  if (props.weathers.get(city) !== undefined) {
+    weatherIconUrl = props.weathers.get(city).current.weather_icons[0]
+    weatherDegree = props.weathers.get(city).current.temperature
   }
 
   return (
     <div className={classes.RecommendedOffer}>
       <div className={classes.ImgContainer}>
-        <Link to={`recommended/offerDetails/${props.city}`}>
+        <Link to={`recommended/offerDetails/${city}`}>
           <img
-            src={`images/${props.cntrImgUrl}`}
-            alt={`${props.city} landscape`}
+            src={`images/${cntrImgUrl}`}
+            alt={`${city} landscape`}
           />
         </Link>
       </div>
@@ -44,11 +43,11 @@ const RecommendedOffer: React.FC<IProps & MapStateToPropsTypes> = props => {
         <ul>
           <li>
             <div>
-              <h3>{props.country}</h3>
+              <h3>{country}</h3>
               <p>
-                <strong>{props.city}</strong>
+                <strong>{city}</strong>
               </p>
-              <h2>{props.price}</h2>
+              <h2>{price}</h2>
             </div>
           </li>
           <li className={classes.WeatherBox}>
@@ -66,8 +65,8 @@ const RecommendedOffer: React.FC<IProps & MapStateToPropsTypes> = props => {
               <FontAwesomeIcon icon={faCalendarAlt} />
             </span>
             <span>
-              <p>{props.from}</p>
-              <p>{props.to}</p>
+              <p>{from}</p>
+              <p>{to}</p>
             </span>
           </li>
         </ul>
